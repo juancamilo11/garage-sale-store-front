@@ -1,3 +1,15 @@
+# Proyecto para el curso: Análisis y Diseño de Sistemas II
+## Universidad de Antioquia - Seccional Oriente
+
+---
+
+Integrantes: 
+* Juan Camilo Cardona Calderón
+* Jose Manuel Bernal Aguilar
+* Santiago Echeverry Arango
+
+---
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
