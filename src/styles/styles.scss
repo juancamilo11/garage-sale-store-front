@@ -1,0 +1,13 @@
+//Base styles and settings
+@import "./base/setting";
+@import "./base/base";
+
+//Styles for components
+@import "./components/buttons";
+
+//Styles for pages
+@import "./pages/garageSalePage";
+@import "./pages/loginPage";
+@import "./pages/storeCatalogPage";
+@import "./pages/storeSetupPage";
+@import "./pages/userProfilePage";
