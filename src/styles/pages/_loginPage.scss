@@ -1,0 +1,75 @@
+.login__main-container {
+  width: 100vw;
+  height: 100vh;
+  background-color: red;
+}
+
+.login__sidebar {
+  width: 30%;
+  min-width: 400px;
+  background-color: white;
+  height: 100vh;
+}
+
+.login__welcome-section {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.login__welcome-section-img {
+  margin: 50px 0px 30px 0px;
+  width: 100px;
+}
+
+.login__welcome-section-title {
+  padding: 0px 15px;
+  text-align: center;
+}
+
+.login__login-buttons-section {
+  width: 100%;
+  margin-top: 100px;
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.login__button-login {
+  position: relative;
+  height: 50px;
+  outline: none;
+  border: none;
+  border-radius: 3px;
+  width: 80%;
+  margin: 10px 0px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.login__login-buttons-img {
+  height: 50px;
+  background-color: #fff;
+  border-bottom-left-radius: 3px;
+  border-top-left-radius: 3px;
+  position: absolute;
+  padding: 3px;
+  left: 0;
+}
+
+.login__button-google {
+  background-color: #db4437;
+}
+
+.login__button-facebook {
+  background-color: #519259;
+}
+
+.login__button-microsoft {
+  background-color: #4285f4;
+}
