@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { Navigate } from "react-router-dom";
 
 const PublicRoute = ({ children }) => {
-  const { auth } = useSelector((state) => state.state);
+  const auth = useSelector((state) => state.auth);
 
   return auth?.uid ? <Navigate to="/store" /> : children;
 };

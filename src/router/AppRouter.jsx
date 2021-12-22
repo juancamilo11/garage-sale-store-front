@@ -38,7 +38,7 @@ const AppRouter = () => {
     <BrowserRouter>
       <Routes>
         <Route
-          path="/login"
+          path="/auth/login"
           element={
             <PublicRoute>
               <LoginPage />
