@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAuth, onAuthStateChanged } from "@firebase/auth";
 import { login } from "../actions/authActions";
+import { Router } from "react-router-dom";
 const AppRouter = () => {
   const [checkingAuthState, setCheckingAuthState] = useState(true);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -21,10 +22,18 @@ const AppRouter = () => {
     });
   }, []);
 
+  if (checkingAuthState) {
+    return (
+      <div className="commons__loading-div">
+        <h1 className="commons__loading-title">Loading...</h1>
+      </div>
+    );
+  }
+
   return (
-    <div>
-      <h1>App router</h1>
-    </div>
+    <Router>
+      <div></div>
+    </Router>
   );
 };
 
