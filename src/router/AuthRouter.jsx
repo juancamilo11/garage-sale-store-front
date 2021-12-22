@@ -1,7 +1,17 @@
 import React from "react";
+import { BrowserRouter, Routes } from "react-router-dom";
+import LoginPage from "../pages/login/LoginPage";
 
 const AuthRouter = () => {
-  return <div></div>;
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route exact path="/auth/login" element={<LoginPage />} />
+        {/* <Route exact path="/auth/register" element={<RegisterPage />}/> */}
+        <Navigate to="/auth/login" />
+      </Routes>
+    </BrowserRouter>
+  );
 };
 
 export default AuthRouter;
