@@ -7,7 +7,7 @@ if(!logged) -> {}
 
 */
 
-export default authReducer = (state = initialState, action) => {
+const authReducer = (state = {}, action) => {
   switch (action.type) {
     case types.authLogin:
       return {
@@ -22,3 +22,5 @@ export default authReducer = (state = initialState, action) => {
       return state;
   }
 };
+
+export default authReducer;
