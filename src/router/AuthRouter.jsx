@@ -8,7 +8,7 @@ const AuthRouter = () => {
       <Routes>
         <Route exact path="/auth/login" element={<LoginPage />} />
         {/* <Route exact path="/auth/register" element={<RegisterPage />}/> */}
-        <Navigate to="/auth/login" />
+        <Route path="/*" element={<GarageSalePage />} />
       </Routes>
     </BrowserRouter>
   );

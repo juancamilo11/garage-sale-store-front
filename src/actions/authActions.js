@@ -7,7 +7,7 @@ const auth = getAuth();
 const provider = new GoogleAuthProvider();
 
 export const login = (uid, displayName, photoUrl) => ({
-  action: types.authLogin,
+  type: types.authLogin,
   payload: { uid, displayName, photoUrl },
 });
 
@@ -20,6 +20,7 @@ export const startGoogleLogin = () => {
         // console.log(user.email);
         // console.log(user.uid);
         dispatch(login(user.uid, user.displayName, user.photoURL));
+        console.log(user);
         dispatch(finishLoading());
       })
       .catch((err) => {
