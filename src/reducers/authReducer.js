@@ -6,6 +6,7 @@ if(logged) -> {uid: 3DN43784387MCM7, name: Juan Camilo Cardona Calderón, photoU
 if(!logged) -> {} 
 
 */
+
 export default authReducer = (state = initialState, action) => {
   switch (action.type) {
     case types.authLogin:
