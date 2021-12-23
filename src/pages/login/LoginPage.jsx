@@ -26,9 +26,9 @@ const LoginPage = () => {
             className="login__welcome-section-img"
             alt="logo"
           />
-          <h6 className="login__welcome-section-title">
+          <h5 className="login__welcome-section-title">
             Ingresa y explora el mundo de las ventas de garaje
-          </h6>
+          </h5>
         </div>
         <div className="login__login-buttons-section">
           <button
@@ -83,6 +83,14 @@ const LoginPage = () => {
           </button>
         </div>
       </div>
+      <div
+        className="login__welcome-img-container"
+        style={{
+          backgroundImage: `url(${
+            process.env.PUBLIC_URL + "/assets/img/login/login-main-image.jpg"
+          })`,
+        }}
+      ></div>
     </div>
   );
 };
