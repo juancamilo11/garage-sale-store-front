@@ -7,6 +7,7 @@ import LoginPage from "../pages/login/LoginPage";
 import PublicRoute from "./PublicRoute";
 import PrivateRoute from "./PrivateRoute";
 import DashboardRoutes from "./DashboardRoutes";
+import Loader from "../components/gui/Loader";
 const AppRouter = () => {
   const [checkingAuthState, setCheckingAuthState] = useState(true);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -27,11 +28,7 @@ const AppRouter = () => {
   }, []);
 
   if (checkingAuthState) {
-    return (
-      <div className="commons__loading-div">
-        <h1 className="commons__loading-title">Loading...</h1>
-      </div>
-    );
+    return <Loader />;
   }
 
   return (
