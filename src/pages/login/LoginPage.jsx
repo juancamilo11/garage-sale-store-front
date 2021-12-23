@@ -38,24 +38,48 @@ const LoginPage = () => {
             <img
               src={
                 process.env.PUBLIC_URL +
-                "/assets/img/login-buttons/google-img.png"
+                "/assets/img/login/login-buttons/google-img.png"
               }
               className="login__login-buttons-img"
               alt="google-login"
             />
-            Login with Google
+            <span className="login__login-button-text">
+              Ingresar con Google
+            </span>
           </button>
           <button
             onClick={handleLoginWithFacebook}
             className="login__button-login login__button-facebook"
           >
-            Login with Facebook
+            <img
+              src={
+                process.env.PUBLIC_URL +
+                "/assets/img/login/login-buttons/facebook-img.png"
+              }
+              className="login__login-buttons-img"
+              id="login__login-facebook-button"
+              alt="facebook-login"
+            />
+            <span className="login__login-button-text">
+              Ingresar con Facebook
+            </span>
           </button>
           <button
             onClick={handleLoginWithMicrosoft}
             className="login__button-login login__button-microsoft"
           >
-            Login with Microsoft
+            <img
+              src={
+                process.env.PUBLIC_URL +
+                "/assets/img/login/login-buttons/microsoft-img.png"
+              }
+              className="login__login-buttons-img"
+              id="login__login-microsoft-button"
+              alt="microsoft-login"
+            />
+            <span className="login__login-button-text">
+              Ingresar con Microsoft
+            </span>
           </button>
         </div>
       </div>
