@@ -90,7 +90,17 @@ const LoginPage = () => {
             process.env.PUBLIC_URL + "/assets/img/login/login-main-image.jpg"
           })`,
         }}
-      ></div>
+      >
+        <section className="login__store-description">
+          <h1 className="login__store-description-title">Garage Sale Store</h1>
+          <h5 className="login__store-description-title">
+            Compra y vende productos de la vida cotidiana
+          </h5>
+          <h3 className="login__store-description-title">
+            ¡Todo a un buen precio!
+          </h3>
+        </section>
+      </div>
     </div>
   );
 };

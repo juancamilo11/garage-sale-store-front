@@ -97,4 +97,17 @@
   height: 100vh;
   background-size: cover;
   background-repeat: no-repeat;
+  position: relative;
+}
+
+.login__store-description {
+  position: absolute;
+  color: white;
+  font-size: 2.5rem;
+  top: -30px;
+  left: 40px;
+}
+
+.login__store-description-title {
+  font-weight: bold;
 }
