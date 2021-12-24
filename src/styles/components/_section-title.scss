@@ -2,12 +2,17 @@
   display: flex;
   flex-direction: column;
   margin-top: 70px;
-  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.section-title__title {
+  font-size: 2.4rem;
+  font-weight: 500;
 }
 
 .section-title__decorator {
   height: 5px;
   width: 100%;
-  background-color: red;
+  background-color: #94b3fd;
   margin-top: -5px;
 }

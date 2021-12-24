@@ -10,11 +10,11 @@ const UserProfilePage = () => {
         <HomeUserProfile />
       </div>
 
-      <SectionTitle sectionTitle="Información Personal" />
+      {/* <SectionTitle sectionTitle="Información Personal" /> */}
 
-      <div className="userprofile__data-container">
+      {/* <div className="userprofile__data-container">
         <UserPersonalData />
-      </div>
+      </div> */}
     </div>
   );
 };
