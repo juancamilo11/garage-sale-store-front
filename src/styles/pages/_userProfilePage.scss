@@ -1,29 +1,31 @@
 .userprofile__main-container {
-  height: 100vh;
-  width: 100vw;
   display: flex;
+  flex-direction: column;
   padding: 30px;
   justify-content: center;
   align-items: center;
   position: relative;
   user-select: none;
+  margin-bottom: 250px;
 }
+
+// Home section
 
 .userprofile__home-background {
   background-attachment: fixed;
-  background-size: cover;
-  background-position: center;
+  background-size: contain;
+  // background-position: center;
+  background-repeat: no-repeat;
   height: 100vh;
-  width: 100vw;
+  width: 95vw;
   position: absolute;
   z-index: -1;
-  filter: brightness(20%); // Más oscura
+  filter: brightness(20%);
 }
 
 .userprofile__profile-picture {
-  height: 250px;
+  height: 150px;
   border-radius: 50%;
-  margin-right: 40px;
   box-shadow: 0px 0px 2px 3px darkgray;
 }
 
@@ -47,3 +49,5 @@
   margin-top: -20px;
   margin-bottom: 100px;
 }
+
+// Home section
