@@ -13,7 +13,7 @@ const DashboardRoutes = () => {
       <Route exact path="/store-setup" element={<StoreSetupPage />} />
       <Route exact path="/user-profile" element={<UserProfilePage />} />
 
-      <Route path="/*" element={<GarageSalePage />} />
+      <Route path="/*" element={<StoreCatalogPage />} />
     </Routes>
   );
 };

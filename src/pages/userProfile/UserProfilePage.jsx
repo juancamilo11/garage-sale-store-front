@@ -8,9 +8,8 @@ const UserProfilePage = () => {
       <div className="userprofile__home-container">
         <HomeUserProfile />
       </div>
+
       <div className="userprofile__data-container">
-        <UserPersonalData />
-        <UserPersonalData />
         <UserPersonalData />
       </div>
     </div>
