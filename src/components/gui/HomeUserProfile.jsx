@@ -14,23 +14,25 @@ const HomeUserProfile = () => {
           })`,
         }}
       ></div>
-
-      <picture>
-        <img
-          className="userprofile__profile-picture"
-          src={auth.photoUrl}
-          alt="uUer profile photo"
-        />
-      </picture>
-      <div className="userprofile__home-description">
-        <h1 className="userprofile__home-name">{auth.name}</h1>
-        <img
-          className="userprofile__nationality-flag"
-          src={
-            process.env.PUBLIC_URL + "/assets/user-profile/nationality-flag.svg"
-          }
-          alt="Nationality flag"
-        />
+      <div className="userprofile__home-content">
+        <picture>
+          <img
+            className="userprofile__profile-picture"
+            src={auth.photoUrl}
+            alt="uUer profile photo"
+          />
+        </picture>
+        <div className="userprofile__home-description">
+          <h1 className="userprofile__home-name">{auth.name}</h1>
+          <img
+            className="userprofile__nationality-flag"
+            src={
+              process.env.PUBLIC_URL +
+              "/assets/user-profile/nationality-flag.svg"
+            }
+            alt="Nationality flag"
+          />
+        </div>
       </div>
     </div>
   );
