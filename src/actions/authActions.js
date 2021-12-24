@@ -16,9 +16,9 @@ export const startGoogleLogin = () => {
     dispatch(startLoading());
     signInWithPopup(auth, provider)
       .then(({ user }) => {
-        // console.log(user.displayName);
-        // console.log(user.email);
-        // console.log(user.uid);
+        console.log(user.displayName);
+        console.log(user.email);
+        console.log(user.uid);
         dispatch(login(user.uid, user.displayName, user.photoURL));
         console.log(user);
         dispatch(finishLoading());

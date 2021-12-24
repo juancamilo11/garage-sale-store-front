@@ -7,7 +7,7 @@ const PublicRoute = ({ children }) => {
   const auth = useSelector((state) => state.auth);
 
   return auth?.uid ? (
-    <Navigate to="/store" element={<StoreCatalogPage />} />
+    <Navigate to="/store-catalog" element={<StoreCatalogPage />} />
   ) : (
     children
   );

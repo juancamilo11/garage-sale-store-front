@@ -8,8 +8,8 @@ import UserProfilePage from "../pages/userProfile/UserProfilePage";
 const DashboardRoutes = () => {
   return (
     <Routes>
-      <Route exact path="/store" element={<GarageSalePage />} />
       <Route exact path="/store-catalog" element={<StoreCatalogPage />} />
+      <Route exact path="/store" element={<GarageSalePage />} />
       <Route exact path="/store-setup" element={<StoreSetupPage />} />
       <Route exact path="/user-profile" element={<UserProfilePage />} />
 

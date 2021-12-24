@@ -1,9 +1,10 @@
 import React from "react";
+import HomeUserProfile from "../../components/gui/HomeUserProfile";
 
 const UserProfilePage = () => {
   return (
-    <div>
-      <h1>User profiles</h1>
+    <div className="userprofile__main-container">
+      <HomeUserProfile />
     </div>
   );
 };
