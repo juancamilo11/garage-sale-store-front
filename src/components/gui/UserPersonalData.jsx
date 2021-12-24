@@ -8,7 +8,7 @@ const userData = {
   phone: "(+57) 3122555477",
   dateOfBirth: "1999-02-25",
   dateRegistred: "2021-12-15",
-  address: "Crra 14# 8-21",
+  address: "Crra 14# 8-21 Barrio el divino niño",
   postalCode: "055010",
 };
 
@@ -17,45 +17,32 @@ const UserPersonalData = () => {
 
   return (
     <div className="userprofile__data-main-container">
-      <table>
-        <tr>
-          <td>
-            <div>
-              <i class="fas fa-user-circle"></i>
+      <table className="userprofile__data-table">
+        <tr className="userprofile__table-row">
+          <td className="userprofile__table-item">
+            <div className="userprofile__item-container">
+              <i className="fas fa-user-circle userprofile__data-item-icon"></i>
               <div className="userprofile__data-item">
-                <h3>Nombre</h3>
-                <span>{auth.name}</span>
+                <h4>Nombre</h4>
+                <span className="userprofile__data-item-value">
+                  {auth.name}
+                </span>
               </div>
             </div>
           </td>
           <td>
             <div>
-              <i class="fas fa-envelope-open-text"></i>
-              <div className="userprofile__data-item">
-                <h3>Correo electrónico</h3>
-                <span>{userData.email}</span>
-              </div>
-            </div>
-          </td>
-        </tr>
-
-        <tr>
-          <td>
-            <div>
-              <i class="fas fa-phone-square"></i>
-              <div className="userprofile__data-item">
-                <h3>Teléfono</h3>
-                <span>{userData.cellphone}</span>
-              </div>
-            </div>
-          </td>
-          <td>
-            <div>
-              <i class="fas fa-calendar-alt"></i>
-              <div className="userprofile__data-item">
-                <h3>Fecha de nacimiento</h3>
-                <span>{userData.dateOfBirth}</span>
-              </div>
+              <td className="userprofile__table-item">
+                <div className="userprofile__item-container">
+                  <i className="fas fa-envelope-open-text userprofile__data-item-icon"></i>
+                  <div className="userprofile__data-item">
+                    <h4>Correo electrónico</h4>
+                    <span className="userprofile__data-item-value">
+                      {userData.email}
+                    </span>
+                  </div>
+                </div>
+              </td>
             </div>
           </td>
         </tr>
@@ -63,20 +50,32 @@ const UserPersonalData = () => {
         <tr>
           <td>
             <div>
-              <i class="fas fa-mobile-alt"></i>
-              <div className="userprofile__data-item">
-                <h3>Celular</h3>
-                <span>{userData.phone}</span>
-              </div>
+              <td className="userprofile__table-item">
+                <div className="userprofile__item-container">
+                  <i className="fas fa-phone-square userprofile__data-item-icon"></i>
+                  <div className="userprofile__data-item">
+                    <h4>Teléfono</h4>
+                    <span className="userprofile__data-item-value">
+                      {userData.cellphone}
+                    </span>
+                  </div>
+                </div>
+              </td>
             </div>
           </td>
           <td>
             <div>
-              <i class="fas fa-user-plus"></i>
-              <div className="userprofile__data-item">
-                <h3>Fecha de registro</h3>
-                <span>{userData.dateRegistred}</span>
-              </div>
+              <td className="userprofile__table-item">
+                <div className="userprofile__item-container">
+                  <i className="fas fa-calendar-alt userprofile__data-item-icon"></i>
+                  <div className="userprofile__data-item">
+                    <h4>Fecha de nacimiento</h4>
+                    <span className="userprofile__data-item-value">
+                      {userData.dateOfBirth}
+                    </span>
+                  </div>
+                </div>
+              </td>
             </div>
           </td>
         </tr>
@@ -84,20 +83,65 @@ const UserPersonalData = () => {
         <tr>
           <td>
             <div>
-              <i class="fas fa-home"></i>
-              <div className="userprofile__data-item">
-                <h3>Dirección</h3>
-                <span>{userData.address}</span>
-              </div>
+              <td className="userprofile__table-item">
+                <div className="userprofile__item-container">
+                  <i className="fas fa-mobile-alt userprofile__data-item-icon"></i>
+                  <div className="userprofile__data-item">
+                    <h4>Celular</h4>
+                    <span className="userprofile__data-item-value">
+                      {userData.phone}
+                    </span>
+                  </div>
+                </div>
+              </td>
             </div>
           </td>
           <td>
             <div>
-              <i class="fas fa-mail-bulk"></i>
-              <div className="userprofile__data-item">
-                <h3>Código Postal</h3>
-                <span>{userData.postalCode}</span>
-              </div>
+              <td className="userprofile__table-item">
+                <div className="userprofile__item-container">
+                  <i className="fas fa-user-plus userprofile__data-item-icon"></i>
+                  <div className="userprofile__data-item">
+                    <h4>Fecha de registro</h4>
+                    <span className="userprofile__data-item-value">
+                      {userData.dateRegistred}
+                    </span>
+                  </div>
+                </div>
+              </td>
+            </div>
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <div>
+              <td className="userprofile__table-item">
+                <div className="userprofile__item-container">
+                  <i className="fas fa-home userprofile__data-item-icon"></i>
+                  <div className="userprofile__data-item">
+                    <h4>Dirección</h4>
+                    <span className="userprofile__data-item-value">
+                      {userData.address}
+                    </span>
+                  </div>
+                </div>
+              </td>
+            </div>
+          </td>
+          <td>
+            <div>
+              <td className="userprofile__table-item">
+                <div className="userprofile__item-container">
+                  <i className="fas fa-mail-bulk userprofile__data-item-icon"></i>
+                  <div className="userprofile__data-item">
+                    <h4>Código Postal</h4>
+                    <span className="userprofile__data-item-value">
+                      {userData.postalCode}
+                    </span>
+                  </div>
+                </div>
+              </td>
             </div>
           </td>
         </tr>

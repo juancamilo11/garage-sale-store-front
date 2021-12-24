@@ -68,5 +68,29 @@
 }
 
 .userprofile__data-main-container {
-  background-color: red;
+  background-color: blue;
+  padding: 10px;
+}
+
+.userprofile__item-container {
+  padding: 30px;
+  width: 400px;
+  position: relative;
+  background-color: yellow;
+}
+
+.userprofile__data-item-icon {
+  color: white;
+  position: absolute;
+  left: 0px;
+  align-self: flex-start;
+  font-size: 50px;
+}
+
+.userprofile__data-item {
+  margin-left: 50px;
+}
+
+.userprofile__data-item-value {
+  margin-left: 20px;
 }
