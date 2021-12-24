@@ -65,32 +65,69 @@
 
 .userprofile__data-container {
   background-color: white;
+  width: 80%;
+  margin-left: 10%;
+  margin-right: 10%;
+  display: flex;
+  justify-content: center;
+}
+
+.userprofile__data-table {
+  align-self: center;
 }
 
 .userprofile__data-main-container {
-  background-color: blue;
+  // background-color: blue;
   padding: 10px;
+  border: 1px solid lightgray;
+  border-radius: 10px;
 }
 
 .userprofile__item-container {
-  padding: 30px;
+  padding: 10px 10px;
   width: 400px;
   position: relative;
-  background-color: yellow;
+  background-color: #94b3fd;
+  margin: 5px;
+  border: 1px soid darkgray;
+  border-radius: 5px;
+  display: flex;
 }
 
 .userprofile__data-item-icon {
-  color: white;
+  color: black;
   position: absolute;
-  left: 0px;
-  align-self: flex-start;
-  font-size: 50px;
+  left: 25px;
+  align-self: center;
+  font-size: 30px;
 }
 
 .userprofile__data-item {
-  margin-left: 50px;
+  margin-left: 70px;
 }
 
 .userprofile__data-item-value {
-  margin-left: 20px;
+  margin-left: 15px;
+  font-weight: 600;
+}
+
+.userprofile__data-title {
+  font-weight: 600;
+}
+
+.userprofile__centered-container {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding: 15px;
+}
+
+.userprofile__button-update {
+  padding: 5px 25px;
+  border: 1px solid black;
+  border-radius: 5px;
+  font-size: 1.2em;
+  background-color: #21117e;
+  color: white;
 }

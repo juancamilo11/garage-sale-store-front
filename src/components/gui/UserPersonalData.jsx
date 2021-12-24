@@ -23,7 +23,7 @@ const UserPersonalData = () => {
             <div className="userprofile__item-container">
               <i className="fas fa-user-circle userprofile__data-item-icon"></i>
               <div className="userprofile__data-item">
-                <h4>Nombre</h4>
+                <h4 className="userprofile__data-title">Nombre</h4>
                 <span className="userprofile__data-item-value">
                   {auth.name}
                 </span>
@@ -36,7 +36,9 @@ const UserPersonalData = () => {
                 <div className="userprofile__item-container">
                   <i className="fas fa-envelope-open-text userprofile__data-item-icon"></i>
                   <div className="userprofile__data-item">
-                    <h4>Correo electrónico</h4>
+                    <h4 className="userprofile__data-title">
+                      Correo electrónico
+                    </h4>
                     <span className="userprofile__data-item-value">
                       {userData.email}
                     </span>
@@ -54,7 +56,7 @@ const UserPersonalData = () => {
                 <div className="userprofile__item-container">
                   <i className="fas fa-phone-square userprofile__data-item-icon"></i>
                   <div className="userprofile__data-item">
-                    <h4>Teléfono</h4>
+                    <h4 className="userprofile__data-title">Teléfono</h4>
                     <span className="userprofile__data-item-value">
                       {userData.cellphone}
                     </span>
@@ -69,7 +71,9 @@ const UserPersonalData = () => {
                 <div className="userprofile__item-container">
                   <i className="fas fa-calendar-alt userprofile__data-item-icon"></i>
                   <div className="userprofile__data-item">
-                    <h4>Fecha de nacimiento</h4>
+                    <h4 className="userprofile__data-title">
+                      Fecha de nacimiento
+                    </h4>
                     <span className="userprofile__data-item-value">
                       {userData.dateOfBirth}
                     </span>
@@ -87,7 +91,7 @@ const UserPersonalData = () => {
                 <div className="userprofile__item-container">
                   <i className="fas fa-mobile-alt userprofile__data-item-icon"></i>
                   <div className="userprofile__data-item">
-                    <h4>Celular</h4>
+                    <h4 className="userprofile__data-title">Celular</h4>
                     <span className="userprofile__data-item-value">
                       {userData.phone}
                     </span>
@@ -102,7 +106,9 @@ const UserPersonalData = () => {
                 <div className="userprofile__item-container">
                   <i className="fas fa-user-plus userprofile__data-item-icon"></i>
                   <div className="userprofile__data-item">
-                    <h4>Fecha de registro</h4>
+                    <h4 className="userprofile__data-title">
+                      Fecha de registro
+                    </h4>
                     <span className="userprofile__data-item-value">
                       {userData.dateRegistred}
                     </span>
@@ -120,7 +126,7 @@ const UserPersonalData = () => {
                 <div className="userprofile__item-container">
                   <i className="fas fa-home userprofile__data-item-icon"></i>
                   <div className="userprofile__data-item">
-                    <h4>Dirección</h4>
+                    <h4 className="userprofile__data-title">Dirección</h4>
                     <span className="userprofile__data-item-value">
                       {userData.address}
                     </span>
@@ -135,7 +141,7 @@ const UserPersonalData = () => {
                 <div className="userprofile__item-container">
                   <i className="fas fa-mail-bulk userprofile__data-item-icon"></i>
                   <div className="userprofile__data-item">
-                    <h4>Código Postal</h4>
+                    <h4 className="userprofile__data-title">Código Postal</h4>
                     <span className="userprofile__data-item-value">
                       {userData.postalCode}
                     </span>
@@ -146,6 +152,9 @@ const UserPersonalData = () => {
           </td>
         </tr>
       </table>
+      <div className="userprofile__centered-container">
+        <button className="userprofile__button-update">Editar</button>
+      </div>
     </div>
   );
 };

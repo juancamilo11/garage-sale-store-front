@@ -11,7 +11,6 @@ const UserProfilePage = () => {
       </div>
 
       <SectionTitle sectionTitle="Información Personal" />
-
       <div className="userprofile__data-container">
         <UserPersonalData />
       </div>
