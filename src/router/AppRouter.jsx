@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAuth, onAuthStateChanged } from "@firebase/auth";
 import { login } from "../actions/authActions";
-import { BrowserRouter, Route, Router, Routes } from "react-router-dom";
+import { BrowserRouter, Outlet, Route, Router, Routes } from "react-router-dom";
 import LoginPage from "../pages/login/LoginPage";
 import PublicRoute from "./PublicRoute";
 import PrivateRoute from "./PrivateRoute";
