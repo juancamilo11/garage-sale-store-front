@@ -1,0 +1,13 @@
+.section-title__main-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 70px;
+  margin-top: 50px;
+}
+
+.section-title__decorator {
+  height: 5px;
+  width: 100%;
+  background-color: red;
+  margin-top: -5px;
+}

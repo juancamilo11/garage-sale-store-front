@@ -1,5 +1,6 @@
 import React from "react";
 import HomeUserProfile from "../../components/gui/HomeUserProfile";
+import SectionTitle from "../../components/gui/SectionTitle";
 import UserPersonalData from "../../components/gui/UserPersonalData";
 
 const UserProfilePage = () => {
@@ -8,6 +9,8 @@ const UserProfilePage = () => {
       <div className="userprofile__home-container">
         <HomeUserProfile />
       </div>
+
+      <SectionTitle sectionTitle="Información Personal" />
 
       <div className="userprofile__data-container">
         <UserPersonalData />
