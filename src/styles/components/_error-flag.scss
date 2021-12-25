@@ -1,0 +1,20 @@
+.error-flag__container {
+  margin-top: 5px;
+  margin-bottom: 10px;
+  padding: 5px 5px;
+  background-color: #ff0000;
+  border-radius: 5px;
+  align-self: center;
+}
+
+.error-flag__message {
+  font-size: 1.2rem;
+  color: white;
+  font-weight: 500;
+}
+
+.user-form-data__error-flag {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}

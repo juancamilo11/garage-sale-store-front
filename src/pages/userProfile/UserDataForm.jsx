@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import ErrorFlag from "../../components/gui/ErrorFlag";
 import SectionTitle from "../../components/gui/SectionTitle";
 import useForm from "../../hooks/useForm";
 import latamCountries from "./../../helpers/latamCountries";
@@ -53,6 +54,9 @@ const UserDataForm = () => {
                 autoComplete="off"
               />
             </div>
+            <div className="user-form-data__error-flag">
+              <ErrorFlag message="hola, hay un error" width="93%" />
+            </div>
             <div className="user-form-data__input-container">
               <label
                 htmlFor="cellphone"
@@ -70,6 +74,9 @@ const UserDataForm = () => {
                 autoComplete="off"
               />
             </div>
+            <div className="user-form-data__error-flag">
+              <ErrorFlag message="hola, hay un error" width="93%" />
+            </div>
             <div className="user-form-data__input-container">
               <label htmlFor="email" className="user-form-data__input-label">
                 Email
@@ -83,6 +90,9 @@ const UserDataForm = () => {
                 className="user-form-data__input"
                 autoComplete="off"
               />
+            </div>
+            <div className="user-form-data__error-flag">
+              <ErrorFlag message="hola, hay un error" width="93%" />
             </div>
             <div className="user-form-data__input-container">
               <label
@@ -100,6 +110,9 @@ const UserDataForm = () => {
                 className="user-form-data__input"
                 autoComplete="off"
               />
+            </div>
+            <div className="user-form-data__error-flag">
+              <ErrorFlag message="hola, hay un error" width="93%" />
             </div>
           </div>
           <div className="user-form-data__inputs-container">
@@ -149,6 +162,9 @@ const UserDataForm = () => {
                 </optgroup>
               </select>
             </div>
+            <div className="user-form-data__error-flag">
+              <ErrorFlag message="hola, hay un error" width="93%" />
+            </div>
             <div className="user-form-data__input-container">
               <label htmlFor="address" className="user-form-data__input-label">
                 Dirección
@@ -162,6 +178,9 @@ const UserDataForm = () => {
                 className="user-form-data__input"
                 autoComplete="off"
               />
+            </div>
+            <div className="user-form-data__error-flag">
+              <ErrorFlag message="hola, hay un error" width="93%" />
             </div>
             <div className="user-form-data__input-container">
               <label
@@ -180,6 +199,9 @@ const UserDataForm = () => {
                 autoComplete="off"
               />
             </div>
+            <div className="user-form-data__error-flag">
+              <ErrorFlag message="hola, hay un error" width="93%" />
+            </div>
             <div className="user-form-data__input-container">
               <label
                 htmlFor="registerDate"
@@ -196,6 +218,9 @@ const UserDataForm = () => {
                 className="user-form-data__input"
                 autoComplete="off"
               />
+            </div>
+            <div className="user-form-data__error-flag">
+              <ErrorFlag message="hola, hay un error" width="93%" />
             </div>
           </div>
         </div>
