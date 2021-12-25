@@ -1,16 +1,27 @@
-.navbar__main-container {
+.navbar-user-profile__main-container {
   width: 100%;
-  background-color: red;
+  background-color: rgb(41, 41, 218);
   position: fixed;
   z-index: 15;
   top: 0px;
-  height: 40px;
+  height: 45px;
+  display: flex;
+  justify-content: space-between;
 }
 
 //User profile nav
 
 .nav-user-profile__links-container {
   width: 50%;
+  // background-color: yellow;
+  height: 100%;
+}
+
+.nav-user-profile__buttons-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  width: 30%;
   height: 100%;
 }
 
@@ -27,8 +38,34 @@
 }
 
 .nav-user-profile__link {
-  background-color: green !important;
+  // background-color: green !important;
   align-self: center;
   font-size: 1.2rem;
-  font-weight: 500;
+  font-weight: 700;
+  color: white;
+}
+
+.nav-user-profile__link a {
+  color: #8e8e8e;
+  text-decoration: none;
+  transition: color 0.3s;
+  padding: 5px 10px;
+  border-radius: 10px;
+}
+
+.nav-user-profile__link a:hover {
+  background-color: #004bc4;
+  color: #40bad9;
+}
+
+.nav-user-profile__button {
+  padding: 0px 20px;
+  border: 1px solid black;
+  border-radius: 5px;
+  font-size: 1.2em;
+  height: 35px;
+  align-self: center;
+  text-align: center;
+  background-color: #21117e;
+  color: white;
 }

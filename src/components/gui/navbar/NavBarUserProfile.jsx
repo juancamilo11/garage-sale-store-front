@@ -2,7 +2,7 @@ import React from "react";
 
 const NavBarUserProfile = () => {
   return (
-    <nav className="navbar__main-container">
+    <nav className="navbar-user-profile__main-container">
       <div className="nav-user-profile__links-container">
         <ul className="nav-user-profile__links-list">
           <li className="nav-user-profile__link">
@@ -21,6 +21,12 @@ const NavBarUserProfile = () => {
             <a href="#favorite-store-list__section">Favoritos</a>
           </li>
         </ul>
+      </div>
+      <div className="nav-user-profile__buttons-container">
+        <button className="nav-user-profile__button">
+          Regresar al catálogo de tiendas
+        </button>
+        <button className="nav-user-profile__button">Salir</button>
       </div>
     </nav>
   );
