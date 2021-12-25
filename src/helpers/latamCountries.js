@@ -1,5 +1,11 @@
 const latamCountries = [
   {
+    region: "NN",
+    name: "País de Nacimiento",
+    code: "NN",
+    flag: "NN",
+  },
+  {
     region: "North America",
     name: "Mexico",
     code: "MX",

@@ -1,10 +1,35 @@
 import React from "react";
 import { useState } from "react";
 import SectionTitle from "../../components/gui/SectionTitle";
+import useForm from "../../hooks/useForm";
 import latamCountries from "./../../helpers/latamCountries";
 
 const UserDataForm = () => {
-  const handleSubmit = () => {};
+  const [formValues, handleInputChange, resetForm] = useForm({
+    name: "",
+    cellphone: "",
+    email: "",
+    postalCode: "",
+    countryCode: "",
+    address: "",
+    dateOfBirth: "",
+    registerDate: "",
+  });
+
+  const {
+    name,
+    cellphone,
+    email,
+    postalCode,
+    countryCode,
+    address,
+    dateOfBirth,
+    registerDate,
+  } = formValues;
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  };
   return (
     <div className="user-form-data__main-container">
       <div className="user-form-data__section-title">
@@ -22,8 +47,8 @@ const UserDataForm = () => {
                 type="text"
                 name="name"
                 id="name"
-                valie=""
-                // onChange={}
+                value={name}
+                onChange={handleInputChange}
                 className="user-form-data__input"
                 autoComplete="off"
               />
@@ -39,8 +64,8 @@ const UserDataForm = () => {
                 type="text"
                 name="cellphone"
                 id="cellphone"
-                value=""
-                // onChange={}
+                value={cellphone}
+                onChange={handleInputChange}
                 className="user-form-data__input"
                 autoComplete="off"
               />
@@ -53,22 +78,25 @@ const UserDataForm = () => {
                 type="email"
                 name="email"
                 id="email"
-                value=""
-                // onChange={}
+                value={email}
+                onChange={handleInputChange}
                 className="user-form-data__input"
                 autoComplete="off"
               />
             </div>
             <div className="user-form-data__input-container">
-              <label htmlFor="name" className="user-form-data__input-label">
+              <label
+                htmlFor="postalCode"
+                className="user-form-data__input-label"
+              >
                 Código Postal
               </label>
               <input
                 type="text"
-                name="codPostal"
-                id="codPostal"
-                value=""
-                // onChange={}
+                name="postalCode"
+                id="postalCode"
+                value={postalCode}
+                onChange={handleInputChange}
                 className="user-form-data__input"
                 autoComplete="off"
               />
@@ -76,18 +104,21 @@ const UserDataForm = () => {
           </div>
           <div className="user-form-data__inputs-container">
             <div className="user-form-data__input-container">
-              <label htmlFor="name" className="user-form-data__input-label">
+              <label htmlFor="country" className="user-form-data__input-label">
                 País
               </label>
               <select
                 type="select"
                 name="country"
                 id="country"
-                value=""
-                onChange=""
+                value={countryCode}
+                onChange={handleInputChange}
                 className="user-form-data__input"
                 autoComplete="off"
               >
+                <option value={latamCountries[0].code}>
+                  {latamCountries[0].name}
+                </option>
                 <optgroup label="Norteamérica">
                   {latamCountries
                     .filter((country) => country.region === "North America")
@@ -116,47 +147,52 @@ const UserDataForm = () => {
                       <option value={country.code}>{country.name}</option>
                     ))}
                 </optgroup>
-                )
               </select>
             </div>
             <div className="user-form-data__input-container">
-              <label htmlFor="name" className="user-form-data__input-label">
+              <label htmlFor="address" className="user-form-data__input-label">
                 Dirección
               </label>
               <input
                 type="text"
                 name="address"
                 id="address"
-                value=""
-                // onChange={}
+                value={address}
+                onChange={handleInputChange}
                 className="user-form-data__input"
                 autoComplete="off"
               />
             </div>
             <div className="user-form-data__input-container">
-              <label htmlFor="name" className="user-form-data__input-label">
-                F. de Nacimiento:
+              <label
+                htmlFor="dateOfBirth"
+                className="user-form-data__input-label"
+              >
+                F. de Nacimiento
               </label>
               <input
                 type="date"
                 name="dateOfBirth"
                 id="dateOfBirth"
-                value=""
-                // onChange={}
+                value={dateOfBirth}
+                onChange={handleInputChange}
                 className="user-form-data__input"
                 autoComplete="off"
               />
             </div>
             <div className="user-form-data__input-container">
-              <label htmlFor="name" className="user-form-data__input-label">
-                Fecha de registro
+              <label
+                htmlFor="registerDate"
+                className="user-form-data__input-label"
+              >
+                F.de registro
               </label>
               <input
                 type="date"
                 name="registerDate"
                 id="registerDate"
-                value=""
-                // onChange={}
+                value={registerDate}
+                onChange={handleInputChange}
                 className="user-form-data__input"
                 autoComplete="off"
               />
