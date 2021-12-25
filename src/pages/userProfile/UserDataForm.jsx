@@ -1,9 +1,10 @@
 import React from "react";
+import { useState } from "react";
 import SectionTitle from "../../components/gui/SectionTitle";
+import latamCountries from "./../../helpers/latamCountries";
 
 const UserDataForm = () => {
   const handleSubmit = () => {};
-
   return (
     <div className="user-form-data__main-container">
       <div className="user-form-data__section-title">
@@ -87,16 +88,35 @@ const UserDataForm = () => {
                 className="user-form-data__input"
                 autoComplete="off"
               >
-                <option
-                  style={{
-                    backgroundImage: `url(${
-                      process.env.PUBLIC_URL +
-                      "/assets/user-profile/user-home-photo.jpg"
-                    })`,
-                  }}
-                >
-                  Colombia
-                </option>
+                <optgroup label="Norteamérica">
+                  {latamCountries
+                    .filter((country) => country.region === "North America")
+                    .map((country) => (
+                      <option value={country.code}>{country.name}</option>
+                    ))}
+                </optgroup>
+                <optgroup label="Centroamérica">
+                  {latamCountries
+                    .filter((country) => country.region === "Central America")
+                    .map((country) => (
+                      <option value={country.code}>{country.name}</option>
+                    ))}
+                </optgroup>
+                <optgroup label="Suramérica">
+                  {latamCountries
+                    .filter((country) => country.region === "South America")
+                    .map((country) => (
+                      <option value={country.code}>{country.name}</option>
+                    ))}
+                </optgroup>
+                <optgroup label="El Caribe">
+                  {latamCountries
+                    .filter((country) => country.region === "Caribean")
+                    .map((country) => (
+                      <option value={country.code}>{country.name}</option>
+                    ))}
+                </optgroup>
+                )
               </select>
             </div>
             <div className="user-form-data__input-container">
@@ -115,7 +135,7 @@ const UserDataForm = () => {
             </div>
             <div className="user-form-data__input-container">
               <label htmlFor="name" className="user-form-data__input-label">
-                Fecha de Nacimiento:
+                F. de Nacimiento:
               </label>
               <input
                 type="date"
