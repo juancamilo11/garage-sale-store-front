@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import ErrorFlag from "../../components/gui/ErrorFlag";
 import SectionTitle from "../../components/gui/SectionTitle";
+import userDataFormValidator from "../../helpers/userDataFormValidator";
 import useForm from "../../hooks/useForm";
 import latamCountries from "./../../helpers/latamCountries";
 
@@ -30,6 +31,12 @@ const UserDataForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const errorReport = userDataFormValidator(formValues);
+    if (errorReport.hasErrors()) {
+      console.log("Los datos han sido actualizados exitosamente.");
+    } else {
+      //Se muestra un mensaje de error con sweetalert o con toastify
+    }
   };
   return (
     <div className="user-form-data__main-container">

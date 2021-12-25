@@ -14,6 +14,7 @@
 // Home section
 
 .userprofile__home-background {
+  // position: relative;
   background-attachment: fixed;
   background-size: cover;
   background-repeat: no-repeat;
@@ -91,6 +92,22 @@
   border: 1px soid darkgray;
   border-radius: 5px;
   display: flex;
+  cursor: pointer;
+  border-bottom: 5px solid transparent;
+  transition: border 0.3s;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.userprofile__item-container:hover {
+  background-color: #5a88f3;
+  transition: border 0.3s;
+  border-bottom: 5px solid #29c4e7;
+}
+
+.userprofile__item-container:hover i {
+  transition: all 0.3s;
+  color: #40bad5;
 }
 
 .userprofile__data-item-icon {

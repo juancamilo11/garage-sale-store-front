@@ -1,5 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import ButtonChangeHomeImage from "./ButtonChangeHomeImage";
+import ButtonCreateNewStore from "./ButtonCreateNewStore";
 
 const HomeUserProfile = () => {
   const auth = useSelector((state) => state.auth);
@@ -14,6 +16,8 @@ const HomeUserProfile = () => {
           })`,
         }}
       ></div>
+      <ButtonChangeHomeImage />
+      <ButtonCreateNewStore />
       <div className="userprofile__home-content">
         <picture>
           <img
