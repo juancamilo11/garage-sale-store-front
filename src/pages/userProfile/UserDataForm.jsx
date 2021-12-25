@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import ErrorFlag from "../../components/gui/ErrorFlag";
+import NavBarFormUserData from "../../components/gui/navbar/NavBarFormUserData";
 import SectionTitle from "../../components/gui/SectionTitle";
 import userDataFormValidator from "../../helpers/userDataFormValidator";
 import useForm from "../../hooks/useForm";
@@ -40,6 +41,7 @@ const UserDataForm = () => {
   };
   return (
     <div className="user-form-data__main-container">
+      <NavBarFormUserData />
       <div className="user-form-data__section-title">
         <SectionTitle sectionTitle="Edición de datos personales" />
       </div>

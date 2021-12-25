@@ -1,6 +1,17 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const NavBarUserProfile = () => {
+  const navigate = useNavigate();
+
+  const handleGoToCatalog = () => {
+    navigate("/store-catalog");
+  };
+
+  const handleLogout = () => {
+    navigate("/store-catalog");
+  };
+
   return (
     <nav className="navbar-user-profile__main-container">
       <div className="nav-user-profile__links-container">
@@ -23,10 +34,15 @@ const NavBarUserProfile = () => {
         </ul>
       </div>
       <div className="nav-user-profile__buttons-container">
-        <button className="nav-user-profile__button">
+        <button
+          className="nav-user-profile__button"
+          onClick={handleGoToCatalog}
+        >
           Regresar al catálogo de tiendas
         </button>
-        <button className="nav-user-profile__button">Salir</button>
+        <button className="nav-user-profile__button" onClick={handleLogout}>
+          Salir
+        </button>
       </div>
     </nav>
   );
