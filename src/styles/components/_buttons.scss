@@ -2,26 +2,18 @@
   padding: 3px 15px;
 }
 
-.buttons__button-new-portait {
-  padding: 10px 12px;
-  border-radius: 50%;
-  font-size: 30px;
-  position: absolute;
-  z-index: 20;
-  right: 20px;
-  top: 10px;
-  background-color: lightgray;
-  border: 1px solid #222;
-}
-
 .buttons__button-new-store {
   padding: 11px 10px;
   border-radius: 50%;
   font-size: 30px;
-  position: absolute;
+  position: fixed;
   z-index: 20;
   right: 20px;
-  bottom: 35px;
+  bottom: 15px;
   background-color: lightgray;
   border: 1px solid #222;
+}
+
+.button__input-file-hidden {
+  display: none;
 }
