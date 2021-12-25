@@ -1,5 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 const userData = {
   name: "Juan Camilo Cardona",
@@ -13,6 +14,11 @@ const userData = {
 };
 
 const UserPersonalData = () => {
+  const navigate = useNavigate();
+  const showUserFormData = () => {
+    navigate("/user-data-form");
+  };
+
   const auth = useSelector((state) => state.auth);
 
   return (
@@ -153,7 +159,12 @@ const UserPersonalData = () => {
         </tr>
       </table>
       <div className="userprofile__centered-container">
-        <button className="userprofile__button-update">Editar</button>
+        <button
+          className="userprofile__button-update"
+          onClick={showUserFormData}
+        >
+          Editar
+        </button>
       </div>
     </div>
   );
