@@ -20,20 +20,19 @@
   background-repeat: no-repeat;
   height: 100vh;
   width: 100vw;
-  z-index: 5;
+  z-index: 30;
   filter: brightness(20%);
 }
 
 .userprofile__home-content {
   position: absolute;
-  z-index: 20;
+  z-index: 50;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
 .userprofile__profile-picture {
-  z-index: 10;
   position: relative;
   height: 150px;
   border-radius: 50%;
@@ -41,7 +40,6 @@
 }
 
 .userprofile__home-description {
-  z-index: 10;
   display: flex;
   flex-direction: column;
   align-items: center;

@@ -1,0 +1,34 @@
+.navbar__main-container {
+  width: 100%;
+  background-color: red;
+  position: fixed;
+  z-index: 15;
+  top: 0px;
+  height: 40px;
+}
+
+//User profile nav
+
+.nav-user-profile__links-container {
+  width: 50%;
+  height: 100%;
+}
+
+.nav-user-profile__links-list {
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  //   background-color: blue;
+  justify-content: space-around;
+  color: #555;
+  font-weight: 400;
+  width: 100%;
+  height: 100%;
+}
+
+.nav-user-profile__link {
+  background-color: green !important;
+  align-self: center;
+  font-size: 1.2rem;
+  font-weight: 500;
+}
