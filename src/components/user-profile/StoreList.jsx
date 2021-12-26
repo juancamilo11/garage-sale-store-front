@@ -1,7 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
+import StoreCard from "./StoreCard";
 
 const StoreList = () => {
-  return <div>Lista de tiendas activas del usuario</div>;
+  return (
+    <section className="userprofile__store-list">
+      {new Array(10).fill(0).map((store) => (
+        <StoreCard />
+      ))}
+    </section>
+  );
 };
 
 export default StoreList;

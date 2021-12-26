@@ -145,3 +145,44 @@
   background-color: #21117e;
   color: white;
 }
+
+// List of user active stores
+
+.userprofile__store-list {
+  width: 90%;
+  margin-left: 5%;
+  margin-right: 5%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.userprofile__store-item-container {
+  // position: relative;
+  height: 35vw;
+  width: 40vw;
+  border: 3px solid black;
+  min-width: 500px;
+  min-height: 400px;
+  overflow-wrap: wrap;
+  margin: 15px;
+}
+
+.userprofile__store-item-img {
+  height: 25vw;
+  min-height: 300px;
+  width: 100%;
+  background-color: #21117e;
+}
+
+.userprofile__store-item-info {
+  // bottom: 0px;
+  // min-height: 100px;
+  // position: absolute;
+  width: 100%;
+  height: 8vw;
+  // background-color: yellow;
+  // border: 1px solid gray;
+}
