@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import ButtonCreateNewStore from "./ButtonCreateNewStore";
+import ButtonCreateNewStore from "../ButtonCreateNewStore";
 
 const HomeUserProfile = () => {
   const auth = useSelector((state) => state.auth);

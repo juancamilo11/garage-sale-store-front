@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
 import { useSelector } from "react-redux";
-import ErrorFlag from "../../components/gui/ErrorFlag";
-import NavBarFormUserData from "../../components/gui/navbar/NavBarFormUserData";
-import SectionTitle from "../../components/gui/SectionTitle";
+import ErrorFlag from "../../components/ErrorFlag";
+import NavBarFormUserData from "../../components/navbar/NavBarFormUserData";
+import SectionTitle from "../../components/SectionTitle";
 import userDataFormValidator from "../../helpers/userDataFormValidator";
 import useForm from "../../hooks/useForm";
 import latamCountries from "./../../helpers/latamCountries";

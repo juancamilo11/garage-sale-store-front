@@ -1,13 +1,14 @@
 import React from "react";
-import FavoriteProductList from "../../components/gui/FavoriteProductList";
-import FavoriteStoreList from "../../components/gui/FavoriteStoreList";
-import Footer from "../../components/gui/Footer";
-import HomeUserProfile from "../../components/gui/HomeUserProfile";
-import NavBarUserProfile from "../../components/gui/navbar/NavBarUserProfile";
-import SectionTitle from "../../components/gui/SectionTitle";
-import StoreCardList from "../../components/gui/StoreCardList";
-import TransactionCardList from "../../components/gui/TransactionCardList";
-import UserPersonalData from "../../components/gui/UserPersonalData";
+
+import Footer from "../../components/Footer";
+import HomeUserProfile from "../../components/user-profile/HomeUserProfile";
+import NavBarUserProfile from "../../components/navbar/NavBarUserProfile";
+import TransactionCardList from "../../components/user-profile/TransactionCardList";
+import UserPersonalData from "../../components/user-profile/UserPersonalData";
+import SectionTitle from "../../components/SectionTitle";
+import FavoriteProductList from "../../components/user-profile/FavoriteProductList";
+import FavoriteStoreList from "../../components/user-profile/FavoriteStoreList";
+import StoreCardList from "../../components/user-profile/StoreCardList";
 
 const UserProfilePage = () => {
   return (
