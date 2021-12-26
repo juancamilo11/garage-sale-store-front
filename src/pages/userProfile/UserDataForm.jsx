@@ -10,6 +10,7 @@ import latamCountries from "./../../helpers/latamCountries";
 const UserDataForm = () => {
   const [formValues, handleInputChange, resetForm] = useForm({
     name: "",
+    occupation: "",
     cellphone: "",
     email: "",
     postalCode: "",
@@ -21,6 +22,7 @@ const UserDataForm = () => {
 
   const {
     name,
+    occupation,
     cellphone,
     email,
     postalCode,
@@ -32,6 +34,7 @@ const UserDataForm = () => {
 
   const [errorsState, setErrorsState] = useState({
     name: { hasErrors: false, message: "" },
+    occupation: { hasErrors: false, message: "" },
     cellphone: { hasErrors: false, message: "" },
     email: { hasErrors: false, message: "" },
     postalCode: { hasErrors: false, message: "" },
@@ -43,6 +46,7 @@ const UserDataForm = () => {
 
   const handleInputValidation = (e) => {
     handleInputChange(e);
+    userDataFormValidator(e, setErrorsState);
   };
 
   const handleSubmit = (e) => {
@@ -83,6 +87,33 @@ const UserDataForm = () => {
                 <ErrorFlag message={errorsState.name.message} width="93%" />
               )}
             </div>
+
+            <div className="user-form-data__input-container">
+              <label
+                htmlFor="occupation"
+                className="user-form-data__input-label"
+              >
+                Occupation
+              </label>
+              <input
+                type="text"
+                name="occupation"
+                id="occupation"
+                value={occupation}
+                onChange={handleInputValidation}
+                className="user-form-data__input"
+                autoComplete="off"
+              />
+            </div>
+            <div className="user-form-data__error-flag">
+              {errorsState.occupation.hasErrors && (
+                <ErrorFlag
+                  message={errorsState.occupation.message}
+                  width="93%"
+                />
+              )}
+            </div>
+
             <div className="user-form-data__input-container">
               <label
                 htmlFor="cellphone"
@@ -154,6 +185,63 @@ const UserDataForm = () => {
             </div>
           </div>
           <div className="user-form-data__inputs-container">
+            <div className="user-form-data__input-container">
+              <label
+                htmlFor="countryCode"
+                className="user-form-data__input-label"
+              >
+                País
+              </label>
+              <select
+                type="select"
+                name="countryCode"
+                id="countryCode"
+                value={countryCode}
+                onChange={handleInputValidation}
+                className="user-form-data__input"
+                autoComplete="off"
+              >
+                <option value={latamCountries[0].code}>
+                  {latamCountries[0].name}
+                </option>
+                <optgroup label="Norteamérica">
+                  {latamCountries
+                    .filter((country) => country.region === "North America")
+                    .map((country) => (
+                      <option value={country.code}>{country.name}</option>
+                    ))}
+                </optgroup>
+                <optgroup label="Centroamérica">
+                  {latamCountries
+                    .filter((country) => country.region === "Central America")
+                    .map((country) => (
+                      <option value={country.code}>{country.name}</option>
+                    ))}
+                </optgroup>
+                <optgroup label="Suramérica">
+                  {latamCountries
+                    .filter((country) => country.region === "South America")
+                    .map((country) => (
+                      <option value={country.code}>{country.name}</option>
+                    ))}
+                </optgroup>
+                <optgroup label="El Caribe">
+                  {latamCountries
+                    .filter((country) => country.region === "Caribean")
+                    .map((country) => (
+                      <option value={country.code}>{country.name}</option>
+                    ))}
+                </optgroup>
+              </select>
+            </div>
+            <div className="user-form-data__error-flag">
+              {errorsState.countryCode.hasErrors && (
+                <ErrorFlag
+                  message={errorsState.countryCode.message}
+                  width="93%"
+                />
+              )}
+            </div>
             <div className="user-form-data__input-container">
               <label htmlFor="country" className="user-form-data__input-label">
                 País
