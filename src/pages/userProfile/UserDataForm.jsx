@@ -61,6 +61,7 @@ const UserDataForm = () => {
       //Se muestra un mensaje de error con sweetalert o con toastify
     }
   };
+
   return (
     <div className="user-form-data__main-container">
       <NavBarFormUserData />

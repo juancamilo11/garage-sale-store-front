@@ -1,3 +1,5 @@
+import validator from "validator";
+
 const userDataFormValidator = (e, setErrorsState) => {
   const { name: fieldName, value } = e.target;
   console.log(fieldName + " " + value);
@@ -31,12 +33,9 @@ const userDataFormValidator = (e, setErrorsState) => {
     case "postalCode":
       handlePostalCodeValidation(value, setErrorsState);
       break;
-    case "countryCode":
-      handleCountryCodeValidation(value, setErrorsState);
-      break;
-    case "countryCode":
-      handleCountryCodeValidation(value, setErrorsState);
-      break;
+    // case "countryCode":
+    //   handleCountryCodeValidation(value, setErrorsState);
+    //   break;
     case "phone":
       handlePhoneValidation(value, setErrorsState);
       break;
@@ -76,9 +75,7 @@ const handleNameValidation = (value, setErrorsState) => {
 };
 
 const handleOccupationValidation = (value, setErrorsState) => {
-  const nameRegex = new RegExp("^[A-Z a-z]{1,}[.]{0,1}[A-Z a-z]{3,50}$");
-
-  if (nameRegex.test(value)) {
+  if (value.trim().length > 3) {
     setErrorsState((state) => {
       return { ...state, ["occupation"]: { hasErrors: false, message: "" } };
     });
@@ -91,7 +88,7 @@ const handleOccupationValidation = (value, setErrorsState) => {
           message:
             "La ocupación '" +
             value +
-            "' es inválido, intente con otro nombre.",
+            "' es inválida, intente con otra ocupación.",
         },
       };
     });
@@ -99,23 +96,90 @@ const handleOccupationValidation = (value, setErrorsState) => {
 };
 
 const handleCellphoneValidation = (value, setErrorsState) => {
-  const cellphoneRegex = new RegExp("^[A-Z a-z]{1,}[.]{0,1}[A-Z a-z]{3,50}$");
+  const phoneRegex = new RegExp(
+    "^(\\+\\d{1,3}( )?)?((\\(\\d{3}\\))|\\d{3})[- .]?\\d{3}[- .]?\\d{4}$"
+  );
+
+  if (phoneRegex.test(value)) {
+    setErrorsState((state) => {
+      return { ...state, ["cellphone"]: { hasErrors: false, message: "" } };
+    });
+  } else {
+    setErrorsState((state) => {
+      return {
+        ...state,
+        ["cellphone"]: {
+          hasErrors: true,
+          message:
+            "El número telefónico '" +
+            value +
+            "' es inválido, intente con otro número.",
+        },
+      };
+    });
+  }
 };
 
-const handleEmailValidation = (value, setErrorsState) => {};
+const handleEmailValidation = (value, setErrorsState) => {
+  if (validator.isEmail(value)) {
+    setErrorsState((state) => {
+      return { ...state, ["email"]: { hasErrors: false, message: "" } };
+    });
+  } else {
+    setErrorsState((state) => {
+      return {
+        ...state,
+        ["email"]: {
+          hasErrors: true,
+          message:
+            "El email telefónico '" +
+            value +
+            "' es inválido, intente con otro email.",
+        },
+      };
+    });
+  }
+};
 
-const handlePostalCodeValidation = (value, setErrorsState) => {};
+const handlePostalCodeValidation = (value, setErrorsState) => {
+  if (validator.isPostalCode(value, "any")) {
+    setErrorsState((state) => {
+      return { ...state, ["postalCode"]: { hasErrors: false, message: "" } };
+    });
+  } else {
+    setErrorsState((state) => {
+      return {
+        ...state,
+        ["postalCode"]: {
+          hasErrors: true,
+          message:
+            "El código postal '" +
+            value +
+            "' es inválido, intente con otro valor.",
+        },
+      };
+    });
+  }
+};
 
-const handleCountryCodeValidation = (value, setErrorsState) => {};
+// const handleCountryCodeValidation = (value, setErrorsState) => {
+//   //Utilizar la librería validator
+// };
 
 const handlePhoneValidation = (value, setErrorsState) => {
   const cellphoneRegex = new RegExp("^[A-Z a-z]{1,}[.]{0,1}[A-Z a-z]{3,50}$");
 };
 
-const handleAddressValidation = (value, setErrorsState) => {};
+const handleAddressValidation = (value, setErrorsState) => {
+  //Utilizar la librería validator
+};
 
-const handleDateOfBirthValidation = (value, setErrorsState) => {};
+const handleDateOfBirthValidation = (value, setErrorsState) => {
+  //Utilizar la librería validator
+};
 
-const handleRegisterDateValidation = (value, setErrorsState) => {};
+const handleRegisterDateValidation = (value, setErrorsState) => {
+  //Utilizar la librería validator
+};
 
 export default userDataFormValidator;
