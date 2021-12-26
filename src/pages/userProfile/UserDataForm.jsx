@@ -30,10 +30,25 @@ const UserDataForm = () => {
     registerDate,
   } = formValues;
 
+  const [errorsState, setErrorsState] = useState({
+    name: { hasErrors: false, message: "" },
+    cellphone: { hasErrors: false, message: "" },
+    email: { hasErrors: false, message: "" },
+    postalCode: { hasErrors: false, message: "" },
+    countryCode: { hasErrors: false, message: "" },
+    address: { hasErrors: false, message: "" },
+    dateOfBirth: { hasErrors: false, message: "" },
+    registerDate: { hasErrors: false, message: "" },
+  });
+
+  const handleInputValidation = (e) => {
+    handleInputChange(e);
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const errorReport = userDataFormValidator(formValues);
-    if (errorReport.hasErrors()) {
+    if (!errorReport.hasErrors()) {
       console.log("Los datos han sido actualizados exitosamente.");
     } else {
       //Se muestra un mensaje de error con sweetalert o con toastify
@@ -58,13 +73,15 @@ const UserDataForm = () => {
                 name="name"
                 id="name"
                 value={name}
-                onChange={handleInputChange}
+                onChange={handleInputValidation}
                 className="user-form-data__input"
                 autoComplete="off"
               />
             </div>
             <div className="user-form-data__error-flag">
-              <ErrorFlag message="hola, hay un error" width="93%" />
+              {errorsState.name.hasErrors && (
+                <ErrorFlag message={errorsState.name.message} width="93%" />
+              )}
             </div>
             <div className="user-form-data__input-container">
               <label
@@ -78,13 +95,18 @@ const UserDataForm = () => {
                 name="cellphone"
                 id="cellphone"
                 value={cellphone}
-                onChange={handleInputChange}
+                onChange={handleInputValidation}
                 className="user-form-data__input"
                 autoComplete="off"
               />
             </div>
             <div className="user-form-data__error-flag">
-              <ErrorFlag message="hola, hay un error" width="93%" />
+              {errorsState.cellphone.hasErrors && (
+                <ErrorFlag
+                  message={errorsState.cellphone.message}
+                  width="93%"
+                />
+              )}
             </div>
             <div className="user-form-data__input-container">
               <label htmlFor="email" className="user-form-data__input-label">
@@ -95,13 +117,15 @@ const UserDataForm = () => {
                 name="email"
                 id="email"
                 value={email}
-                onChange={handleInputChange}
+                onChange={handleInputValidation}
                 className="user-form-data__input"
                 autoComplete="off"
               />
             </div>
             <div className="user-form-data__error-flag">
-              <ErrorFlag message="hola, hay un error" width="93%" />
+              {errorsState.email.hasErrors && (
+                <ErrorFlag message={errorsState.email.message} width="93%" />
+              )}
             </div>
             <div className="user-form-data__input-container">
               <label
@@ -115,13 +139,18 @@ const UserDataForm = () => {
                 name="postalCode"
                 id="postalCode"
                 value={postalCode}
-                onChange={handleInputChange}
+                onChange={handleInputValidation}
                 className="user-form-data__input"
                 autoComplete="off"
               />
             </div>
             <div className="user-form-data__error-flag">
-              <ErrorFlag message="hola, hay un error" width="93%" />
+              {errorsState.postalCode.hasErrors && (
+                <ErrorFlag
+                  message={errorsState.postalCode.message}
+                  width="93%"
+                />
+              )}
             </div>
           </div>
           <div className="user-form-data__inputs-container">
@@ -134,7 +163,7 @@ const UserDataForm = () => {
                 name="country"
                 id="country"
                 value={countryCode}
-                onChange={handleInputChange}
+                onChange={handleInputValidation}
                 className="user-form-data__input"
                 autoComplete="off"
               >
@@ -172,7 +201,12 @@ const UserDataForm = () => {
               </select>
             </div>
             <div className="user-form-data__error-flag">
-              <ErrorFlag message="hola, hay un error" width="93%" />
+              {errorsState.countryCode.hasErrors && (
+                <ErrorFlag
+                  message={errorsState.countryCode.message}
+                  width="93%"
+                />
+              )}
             </div>
             <div className="user-form-data__input-container">
               <label htmlFor="address" className="user-form-data__input-label">
@@ -183,13 +217,15 @@ const UserDataForm = () => {
                 name="address"
                 id="address"
                 value={address}
-                onChange={handleInputChange}
+                onChange={handleInputValidation}
                 className="user-form-data__input"
                 autoComplete="off"
               />
             </div>
             <div className="user-form-data__error-flag">
-              <ErrorFlag message="hola, hay un error" width="93%" />
+              {errorsState.address.hasErrors && (
+                <ErrorFlag message={errorsState.address.message} width="93%" />
+              )}
             </div>
             <div className="user-form-data__input-container">
               <label
@@ -203,13 +239,18 @@ const UserDataForm = () => {
                 name="dateOfBirth"
                 id="dateOfBirth"
                 value={dateOfBirth}
-                onChange={handleInputChange}
+                onChange={handleInputValidation}
                 className="user-form-data__input"
                 autoComplete="off"
               />
             </div>
             <div className="user-form-data__error-flag">
-              <ErrorFlag message="hola, hay un error" width="93%" />
+              {errorsState.dateOfBirth.hasErrors && (
+                <ErrorFlag
+                  message={errorsState.dateOfBirth.message}
+                  width="93%"
+                />
+              )}
             </div>
             <div className="user-form-data__input-container">
               <label
@@ -223,13 +264,18 @@ const UserDataForm = () => {
                 name="registerDate"
                 id="registerDate"
                 value={registerDate}
-                onChange={handleInputChange}
+                onChange={handleInputValidation}
                 className="user-form-data__input"
                 autoComplete="off"
               />
             </div>
             <div className="user-form-data__error-flag">
-              <ErrorFlag message="hola, hay un error" width="93%" />
+              {errorsState.registerDate.hasErrors && (
+                <ErrorFlag
+                  message={errorsState.registerDate.message}
+                  width="93%"
+                />
+              )}
             </div>
           </div>
         </div>
