@@ -18,6 +18,10 @@ export const login = (
   payload: { uid, displayName, email, photoUrl, creationTime, lastSignInTime },
 });
 
+export const logout = () => ({
+  type: types.authLogout,
+});
+
 export const startGoogleLogin = () => {
   return (dispatch) => {
     dispatch(startLoading());
@@ -40,5 +44,14 @@ export const startGoogleLogin = () => {
         dispatch(finishLoading());
         console.log(err);
       });
+  };
+};
+
+export const startLogout = () => {
+  return async (dispatch) => {
+    await auth.signOut().then(() => {
+      dispatch(logout());
+      // dispatch(finishLoading());
+    });
   };
 };

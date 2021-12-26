@@ -1,7 +1,10 @@
 import React from "react";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { startLogout } from "../../actions/authActions";
 
 const NavBarFormUserData = () => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const handleGoToProfile = () => {
@@ -9,7 +12,7 @@ const NavBarFormUserData = () => {
   };
 
   const handleLogout = () => {
-    window.alert("pendiente: hacer el logout de firebase");
+    dispatch(startLogout());
   };
 
   return (
