@@ -1,7 +1,7 @@
 import React from "react";
 
-const TransactionCardList = () => {
+const TransactionList = () => {
   return <div>Lista de tarjetas de transacciones (Compras o ventas)</div>;
 };
 
-export default TransactionCardList;
+export default TransactionList;

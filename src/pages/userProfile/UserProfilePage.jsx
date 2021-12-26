@@ -3,12 +3,12 @@ import React from "react";
 import Footer from "../../components/Footer";
 import HomeUserProfile from "../../components/user-profile/HomeUserProfile";
 import NavBarUserProfile from "../../components/navbar/NavBarUserProfile";
-import TransactionCardList from "../../components/user-profile/TransactionCardList";
 import UserPersonalData from "../../components/user-profile/UserPersonalData";
 import SectionTitle from "../../components/SectionTitle";
 import FavoriteProductList from "../../components/user-profile/FavoriteProductList";
 import FavoriteStoreList from "../../components/user-profile/FavoriteStoreList";
-import StoreCardList from "../../components/user-profile/StoreCardList";
+import StoreList from "../../components/user-profile/StoreList";
+import TransactionList from "../../components/user-profile/TransactionList";
 
 const UserProfilePage = () => {
   return (
@@ -34,7 +34,7 @@ const UserProfilePage = () => {
         className="userprofile__stores-container"
         id="store-card-list__section"
       >
-        <StoreCardList />
+        <StoreList />
       </div>
 
       <SectionTitle sectionTitle="Historial de tus compras" />
@@ -42,12 +42,12 @@ const UserProfilePage = () => {
         className="userprofile__purchases-container"
         id="transaction-card-list__section"
       >
-        <TransactionCardList />
+        <TransactionList />
       </div>
 
       <SectionTitle sectionTitle="Historial de tus ventas" />
       <div className="userprofile__sales-container">
-        <TransactionCardList />
+        <TransactionList />
       </div>
 
       <SectionTitle sectionTitle="Tus tiendas favoritas" />

@@ -1,7 +1,7 @@
 import React from "react";
 
-const StoreCardList = () => {
+const StoreList = () => {
   return <div>Lista de tiendas activas del usuario</div>;
 };
 
-export default StoreCardList;
+export default StoreList;
