@@ -1,15 +1,22 @@
 import React from "react";
 
-const fakeStore = {
-  name: "La tienda de Maria",
-  startingDate: "2021-10-22",
-  endingDate: "2021-10-27",
-};
-
 const StoreCard = () => {
+  const fakeStore = {
+    name: "La tienda de Maria",
+    startingDate: "2021-10-22",
+    endingDate: "2021-10-27",
+  };
+
   return (
     <div className="userprofile__store-item-container">
-      <div className="userprofile__store-item-img"></div>
+      <div
+        className="userprofile__store-item-img"
+        style={{
+          backgroundImage: `url(${
+            process.env.PUBLIC_URL + "/assets/user-profile/user-home-photo.jpg"
+          })`,
+        }}
+      ></div>
       <div className="userprofile__store-item-info">
         <h3 className="userprofile__store-item-name">{fakeStore.name}</h3>
         <h6 className="userprofile__store-item-duration">
