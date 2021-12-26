@@ -1,3 +1,4 @@
+import moment from "moment";
 import validator from "validator";
 
 const userDataFormValidator = (e, setErrorsState) => {
@@ -96,11 +97,11 @@ const handleOccupationValidation = (value, setErrorsState) => {
 };
 
 const handleCellphoneValidation = (value, setErrorsState) => {
-  const phoneRegex = new RegExp(
+  const cellphoneRegex = new RegExp(
     "^(\\+\\d{1,3}( )?)?((\\(\\d{3}\\))|\\d{3})[- .]?\\d{3}[- .]?\\d{4}$"
   );
 
-  if (phoneRegex.test(value)) {
+  if (cellphoneRegex.test(value)) {
     setErrorsState((state) => {
       return { ...state, ["cellphone"]: { hasErrors: false, message: "" } };
     });
@@ -167,14 +168,84 @@ const handlePostalCodeValidation = (value, setErrorsState) => {
 // };
 
 const handlePhoneValidation = (value, setErrorsState) => {
-  const cellphoneRegex = new RegExp("^[A-Z a-z]{1,}[.]{0,1}[A-Z a-z]{3,50}$");
+  const phoneRegex = new RegExp(
+    "^(\\+\\d{1,3}( )?)?((\\(\\d{3}\\))|\\d{3})[- .]?\\d{3}[- .]?\\d{4}$"
+  );
+
+  if (phoneRegex.test(value)) {
+    setErrorsState((state) => {
+      return { ...state, ["phone"]: { hasErrors: false, message: "" } };
+    });
+  } else {
+    setErrorsState((state) => {
+      return {
+        ...state,
+        ["phone"]: {
+          hasErrors: true,
+          message:
+            "El número telefónico '" +
+            value +
+            "' es inválido, intente con otro número.",
+        },
+      };
+    });
+  }
 };
 
 const handleAddressValidation = (value, setErrorsState) => {
-  //Utilizar la librería validator
+  if (value.trim().length >= 10) {
+    setErrorsState((state) => {
+      return { ...state, ["address"]: { hasErrors: false, message: "" } };
+    });
+  } else {
+    setErrorsState((state) => {
+      return {
+        ...state,
+        ["address"]: {
+          hasErrors: true,
+          message:
+            "La ocupación '" +
+            value +
+            "' es inválida, intente con otra ocupación.",
+        },
+      };
+    });
+  }
 };
 
 const handleDateOfBirthValidation = (value, setErrorsState) => {
+  console.log(value);
+  const dateOfBirth = moment(value);
+  const now = moment();
+  const yearsDiff = now.toObject().years - dateOfBirth.toObject().years;
+  console.log(yearsDiff);
+  if (dateOfBirth.isAfter(now)) {
+    setErrorsState((state) => {
+      return {
+        ...state,
+        ["dateOfBirth"]: {
+          hasErrors: true,
+          message:
+            "La fecha ingresada está en el futuro, por favor ingresa una fecha válida.",
+        },
+      };
+    });
+  } else if (yearsDiff < 14 && yearsDiff < 14 && yearsDiff >= 0) {
+    setErrorsState((state) => {
+      return {
+        ...state,
+        ["dateOfBirth"]: {
+          hasErrors: true,
+          message:
+            "Error: Lo sentimos, debes ser mayor de 14 años para poder tener una cuenta, al continuar aceptas estar bajo la supervisión de un adulto.",
+        },
+      };
+    });
+  } else {
+    setErrorsState((state) => {
+      return { ...state, ["dateOfBirth"]: { hasErrors: false, message: "" } };
+    });
+  }
   //Utilizar la librería validator
 };
 
