@@ -6,9 +6,15 @@ import { finishLoading, startLoading } from "./uiActions";
 const auth = getAuth();
 const provider = new GoogleAuthProvider();
 
-export const login = (uid, displayName, photoUrl) => ({
+export const login = (
+  uid,
+  displayName,
+  photoUrl,
+  creationTime,
+  lastSignInTime
+) => ({
   type: types.authLogin,
-  payload: { uid, displayName, photoUrl },
+  payload: { uid, displayName, photoUrl, creationTime, lastSignInTime },
 });
 
 export const startGoogleLogin = () => {
@@ -16,10 +22,16 @@ export const startGoogleLogin = () => {
     dispatch(startLoading());
     signInWithPopup(auth, provider)
       .then(({ user }) => {
-        console.log(user.displayName);
-        console.log(user.email);
-        console.log(user.uid);
-        dispatch(login(user.uid, user.displayName, user.photoURL));
+        dispatch(
+          login(
+            user.uid,
+            user.displayName,
+            user.email,
+            user.photoURL,
+            user.metadata.creationTime,
+            user.metadata.lastSignInTime
+          )
+        );
         console.log(user);
         dispatch(finishLoading());
       })

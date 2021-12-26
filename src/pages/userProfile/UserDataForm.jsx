@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
+import { useSelector } from "react-redux";
 import ErrorFlag from "../../components/gui/ErrorFlag";
 import NavBarFormUserData from "../../components/gui/navbar/NavBarFormUserData";
 import SectionTitle from "../../components/gui/SectionTitle";
@@ -8,8 +9,17 @@ import useForm from "../../hooks/useForm";
 import latamCountries from "./../../helpers/latamCountries";
 
 const UserDataForm = () => {
+  const auth = useSelector((state) => state.auth);
+  console.log(auth);
+
+  useEffect(() => {
+    window.alert(
+      "falta setear los valores cuando se carga este componente form."
+    );
+  }, []);
+
   const [formValues, handleInputChange, resetForm] = useForm({
-    name: "",
+    name: auth.name,
     occupation: "",
     cellphone: "",
     email: "",
@@ -35,7 +45,6 @@ const UserDataForm = () => {
   } = formValues;
 
   const [errorsState, setErrorsState] = useState({
-    name: { hasErrors: false, message: "" },
     occupation: { hasErrors: false, message: "" },
     cellphone: { hasErrors: false, message: "" },
     email: { hasErrors: false, message: "" },
@@ -78,18 +87,13 @@ const UserDataForm = () => {
               <input
                 autoFocus="true"
                 type="text"
+                readOnly
                 name="name"
                 id="name"
                 value={name}
-                onChange={handleInputValidation}
                 className="user-form-data__input"
                 autoComplete="off"
               />
-            </div>
-            <div className="user-form-data__error-flag">
-              {errorsState.name.hasErrors && (
-                <ErrorFlag message={errorsState.name.message} width="93%" />
-              )}
             </div>
 
             <div className="user-form-data__input-container">
@@ -155,6 +159,7 @@ const UserDataForm = () => {
                 onChange={handleInputValidation}
                 className="user-form-data__input"
                 autoComplete="off"
+                readOnly
               />
             </div>
             <div className="user-form-data__error-flag">
@@ -337,6 +342,9 @@ const UserDataForm = () => {
           </div>
         </div>
         <div className="user-form-data__centered-container">
+          <button className="user-form-data__button-update" type="submit">
+            Enviar
+          </button>
           <button className="user-form-data__button-update" type="submit">
             Enviar
           </button>

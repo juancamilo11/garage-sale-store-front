@@ -28,9 +28,9 @@ const userDataFormValidator = (e, setErrorsState) => {
     case "cellphone":
       handleCellphoneValidation(value, setErrorsState);
       break;
-    case "email":
-      handleEmailValidation(value, setErrorsState);
-      break;
+    // case "email":
+    //   handleEmailValidation(value, setErrorsState);
+    //   break;
     case "postalCode":
       handlePostalCodeValidation(value, setErrorsState);
       break;
@@ -46,9 +46,9 @@ const userDataFormValidator = (e, setErrorsState) => {
     case "dateOfBirth":
       handleDateOfBirthValidation(value, setErrorsState);
       break;
-    case "registerDate":
-      handleRegisterDateValidation(value, setErrorsState);
-      break;
+    // case "registerDate":
+    //   handleRegisterDateValidation(value, setErrorsState);
+    //   break;
     default:
       break;
   }
@@ -121,26 +121,9 @@ const handleCellphoneValidation = (value, setErrorsState) => {
   }
 };
 
-const handleEmailValidation = (value, setErrorsState) => {
-  if (validator.isEmail(value)) {
-    setErrorsState((state) => {
-      return { ...state, ["email"]: { hasErrors: false, message: "" } };
-    });
-  } else {
-    setErrorsState((state) => {
-      return {
-        ...state,
-        ["email"]: {
-          hasErrors: true,
-          message:
-            "El email telefónico '" +
-            value +
-            "' es inválido, intente con otro email.",
-        },
-      };
-    });
-  }
-};
+// const handleEmailValidation = (value, setErrorsState) => {
+//
+// };
 
 const handlePostalCodeValidation = (value, setErrorsState) => {
   if (validator.isPostalCode(value, "any")) {
@@ -164,7 +147,7 @@ const handlePostalCodeValidation = (value, setErrorsState) => {
 };
 
 // const handleCountryCodeValidation = (value, setErrorsState) => {
-//   //Utilizar la librería validator
+//
 // };
 
 const handlePhoneValidation = (value, setErrorsState) => {
@@ -246,11 +229,10 @@ const handleDateOfBirthValidation = (value, setErrorsState) => {
       return { ...state, ["dateOfBirth"]: { hasErrors: false, message: "" } };
     });
   }
-  //Utilizar la librería validator
 };
 
-const handleRegisterDateValidation = (value, setErrorsState) => {
-  //Utilizar la librería validator
-};
+// const handleRegisterDateValidation = (value, setErrorsState) => {
+//
+// };
 
 export default userDataFormValidator;

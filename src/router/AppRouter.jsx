@@ -19,7 +19,16 @@ const AppRouter = () => {
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       if (user?.uid) {
-        dispatch(login(user.uid, user.displayName, user.photoURL));
+        console.log(user);
+        dispatch(
+          login(
+            user.uid,
+            user.displayName,
+            user.photoURL,
+            user.metadata.creationTime,
+            user.metadata.lastSignInTime
+          )
+        );
       } else {
         setIsLoggedIn(false);
       }
