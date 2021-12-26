@@ -8,9 +8,34 @@ import userDataFormValidator from "../../helpers/userDataFormValidator";
 import useForm from "../../hooks/useForm";
 import latamCountries from "./../../helpers/latamCountries";
 
+const initialErrorsState = {
+  occupation: { hasErrors: false, message: "" },
+  cellphone: { hasErrors: false, message: "" },
+  email: { hasErrors: false, message: "" },
+  postalCode: { hasErrors: false, message: "" },
+  countryCode: { hasErrors: false, message: "" },
+  phone: { hasErrors: false, message: "" },
+  address: { hasErrors: false, message: "" },
+  dateOfBirth: { hasErrors: false, message: "" },
+  registerDate: { hasErrors: false, message: "" },
+};
+
 const UserDataForm = () => {
   const auth = useSelector((state) => state.auth);
   console.log(auth);
+
+  const initialFormValues = {
+    name: auth.name,
+    occupation: "",
+    cellphone: "",
+    email: auth.email,
+    postalCode: "",
+    countryCode: "",
+    phone: "",
+    address: "",
+    dateOfBirth: "",
+    registerDate: auth.creationTime,
+  };
 
   useEffect(() => {
     window.alert(
@@ -18,18 +43,7 @@ const UserDataForm = () => {
     );
   }, []);
 
-  const [formValues, handleInputChange, resetForm] = useForm({
-    name: auth.name,
-    occupation: "",
-    cellphone: "",
-    email: "",
-    postalCode: "",
-    countryCode: "",
-    phone: "",
-    address: "",
-    dateOfBirth: "",
-    registerDate: "",
-  });
+  const [formValues, handleInputChange, resetForm] = useForm(initialFormValues);
 
   const {
     name,
@@ -44,17 +58,7 @@ const UserDataForm = () => {
     registerDate,
   } = formValues;
 
-  const [errorsState, setErrorsState] = useState({
-    occupation: { hasErrors: false, message: "" },
-    cellphone: { hasErrors: false, message: "" },
-    email: { hasErrors: false, message: "" },
-    postalCode: { hasErrors: false, message: "" },
-    countryCode: { hasErrors: false, message: "" },
-    phone: { hasErrors: false, message: "" },
-    address: { hasErrors: false, message: "" },
-    dateOfBirth: { hasErrors: false, message: "" },
-    registerDate: { hasErrors: false, message: "" },
-  });
+  const [errorsState, setErrorsState] = useState(initialErrorsState);
 
   const handleInputValidation = (e) => {
     handleInputChange(e);
@@ -63,12 +67,18 @@ const UserDataForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const errorReport = userDataFormValidator(formValues);
-    if (!errorReport.hasErrors()) {
-      console.log("Los datos han sido actualizados exitosamente.");
-    } else {
-      //Se muestra un mensaje de error con sweetalert o con toastify
-    }
+    // const errorReport = userDataFormValidator(formValues);
+    // if (!errorReport.hasErrors()) {
+    //   console.log("Los datos han sido actualizados exitosamente.");
+    // } else {
+    //   //Se muestra un mensaje de error con sweetalert o con toastify
+    // }
+  };
+
+  const handleResetForm = (e) => {
+    e.preventDefault();
+    resetForm(initialFormValues);
+    setErrorsState(initialErrorsState);
   };
 
   return (
@@ -156,7 +166,6 @@ const UserDataForm = () => {
                 name="email"
                 id="email"
                 value={email}
-                onChange={handleInputValidation}
                 className="user-form-data__input"
                 autoComplete="off"
                 readOnly
@@ -322,13 +331,13 @@ const UserDataForm = () => {
                 F.de registro
               </label>
               <input
-                type="date"
+                type="text"
                 name="registerDate"
                 id="registerDate"
                 value={registerDate}
-                onChange={handleInputValidation}
                 className="user-form-data__input"
                 autoComplete="off"
+                readOnly
               />
             </div>
             <div className="user-form-data__error-flag">
@@ -345,8 +354,11 @@ const UserDataForm = () => {
           <button className="user-form-data__button-update" type="submit">
             Enviar
           </button>
-          <button className="user-form-data__button-update" type="submit">
-            Enviar
+          <button
+            className="user-form-data__button-update"
+            onClick={handleResetForm}
+          >
+            Eliminar cambios
           </button>
         </div>
       </form>

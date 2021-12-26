@@ -9,12 +9,13 @@ const provider = new GoogleAuthProvider();
 export const login = (
   uid,
   displayName,
+  email,
   photoUrl,
   creationTime,
   lastSignInTime
 ) => ({
   type: types.authLogin,
-  payload: { uid, displayName, photoUrl, creationTime, lastSignInTime },
+  payload: { uid, displayName, email, photoUrl, creationTime, lastSignInTime },
 });
 
 export const startGoogleLogin = () => {

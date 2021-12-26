@@ -24,6 +24,7 @@ const AppRouter = () => {
           login(
             user.uid,
             user.displayName,
+            user.email,
             user.photoURL,
             user.metadata.creationTime,
             user.metadata.lastSignInTime
