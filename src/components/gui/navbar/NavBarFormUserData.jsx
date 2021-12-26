@@ -15,7 +15,7 @@ const NavBarFormUserData = () => {
   return (
     <nav className="navbar-user-profile__main-container">
       <div className="nav-user-profile__links-container"></div>
-      <div className="nav-user-profile__buttons-container">
+      <div className="nav-form-data__buttons-container">
         <button
           className="nav-user-profile__button"
           onClick={handleGoToProfile}

@@ -1,28 +1,39 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import ErrorFlag from "./ErrorFlag";
 
 const userData = {
   name: "Juan Camilo Cardona",
   email: "juancamilo19997814@gmail.com",
   cellphone: "(4) 5537781",
-  phone: "(+57) 3122555477",
-  dateOfBirth: "1999-02-25",
+  phone: "",
+  dateOfBirth: "",
   dateRegistred: "2021-12-15",
   address: "Crra 14# 8-21 Barrio el divino niño",
   postalCode: "055010",
 };
 
 const UserPersonalData = () => {
+  const auth = useSelector((state) => state.auth);
   const navigate = useNavigate();
   const showUserFormData = () => {
     navigate("/user-data-form");
   };
 
-  const auth = useSelector((state) => state.auth);
-
   return (
     <div className="userprofile__data-main-container">
+      {(userData.cellphone === "" ||
+        userData.phone === "" ||
+        userData.dateOfBirth === "" ||
+        userData.address === "" ||
+        userData.postalCode === "") && (
+        <ErrorFlag
+          message="Aún te faltan datos personales por especificar"
+          width="100%"
+        />
+      )}
+
       <table className="userprofile__data-table">
         <tr className="userprofile__table-row">
           <td className="userprofile__table-item">

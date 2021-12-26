@@ -95,7 +95,6 @@ const UserDataForm = () => {
                 Nombre
               </label>
               <input
-                autoFocus="true"
                 type="text"
                 readOnly
                 name="name"
@@ -103,9 +102,9 @@ const UserDataForm = () => {
                 value={name}
                 className="user-form-data__input"
                 autoComplete="off"
+                readOnly
               />
             </div>
-
             <div className="user-form-data__input-container">
               <label
                 htmlFor="occupation"
@@ -170,11 +169,6 @@ const UserDataForm = () => {
                 autoComplete="off"
                 readOnly
               />
-            </div>
-            <div className="user-form-data__error-flag">
-              {errorsState.email.hasErrors && (
-                <ErrorFlag message={errorsState.email.message} width="93%" />
-              )}
             </div>
             <div className="user-form-data__input-container">
               <label
@@ -340,26 +334,20 @@ const UserDataForm = () => {
                 readOnly
               />
             </div>
-            <div className="user-form-data__error-flag">
-              {errorsState.registerDate.hasErrors && (
-                <ErrorFlag
-                  message={errorsState.registerDate.message}
-                  width="93%"
-                />
-              )}
-            </div>
           </div>
         </div>
         <div className="user-form-data__centered-container">
-          <button className="user-form-data__button-update" type="submit">
-            Enviar
-          </button>
-          <button
-            className="user-form-data__button-update"
-            onClick={handleResetForm}
-          >
-            Eliminar cambios
-          </button>
+          <div className="user-form-data__buttons-container">
+            <button className="user-form-data__button-update" type="submit">
+              Confirmar cambios
+            </button>
+            <button
+              className="user-form-data__button-update"
+              onClick={handleResetForm}
+            >
+              Resetear los datos
+            </button>
+          </div>
         </div>
       </form>
     </div>

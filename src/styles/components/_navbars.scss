@@ -21,7 +21,7 @@
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
-  width: 30%;
+  width: 450px;
   height: 100%;
 }
 
@@ -68,4 +68,14 @@
   text-align: center;
   background-color: #21117e;
   color: white;
+}
+
+//Form data nav
+
+.nav-form-data__buttons-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  width: 360px;
+  height: 100%;
 }
