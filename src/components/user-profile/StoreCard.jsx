@@ -11,12 +11,12 @@ const StoreCard = () => {
     <div className="userprofile__store-item-container">
       <div className="userprofile__store-item-img"></div>
       <div className="userprofile__store-item-info">
-        <h3>{fakeStore.name}</h3>
-        <h6>
+        <h3 className="userprofile__store-item-name">{fakeStore.name}</h3>
+        <h6 className="userprofile__store-item-duration">
           Disponible desde el {fakeStore.startingDate} hasta el{" "}
           {fakeStore.endingDate}
         </h6>
-        <button>Ver más...</button>
+        <button className="userprofile__store-item-button">Ver más...</button>
       </div>
     </div>
   );
