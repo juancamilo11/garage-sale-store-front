@@ -15,6 +15,7 @@ const UserDataForm = () => {
     email: "",
     postalCode: "",
     countryCode: "",
+    phone: "",
     address: "",
     dateOfBirth: "",
     registerDate: "",
@@ -27,6 +28,7 @@ const UserDataForm = () => {
     email,
     postalCode,
     countryCode,
+    phone,
     address,
     dateOfBirth,
     registerDate,
@@ -39,6 +41,7 @@ const UserDataForm = () => {
     email: { hasErrors: false, message: "" },
     postalCode: { hasErrors: false, message: "" },
     countryCode: { hasErrors: false, message: "" },
+    phone: { hasErrors: false, message: "" },
     address: { hasErrors: false, message: "" },
     dateOfBirth: { hasErrors: false, message: "" },
     registerDate: { hasErrors: false, message: "" },
@@ -243,57 +246,22 @@ const UserDataForm = () => {
               )}
             </div>
             <div className="user-form-data__input-container">
-              <label htmlFor="country" className="user-form-data__input-label">
-                País
+              <label htmlFor="phone" className="user-form-data__input-label">
+                Celular
               </label>
-              <select
-                type="select"
-                name="country"
-                id="country"
-                value={countryCode}
+              <input
+                type="text"
+                name="phone"
+                id="phone"
+                value={phone}
                 onChange={handleInputValidation}
                 className="user-form-data__input"
                 autoComplete="off"
-              >
-                <option value={latamCountries[0].code}>
-                  {latamCountries[0].name}
-                </option>
-                <optgroup label="Norteamérica">
-                  {latamCountries
-                    .filter((country) => country.region === "North America")
-                    .map((country) => (
-                      <option value={country.code}>{country.name}</option>
-                    ))}
-                </optgroup>
-                <optgroup label="Centroamérica">
-                  {latamCountries
-                    .filter((country) => country.region === "Central America")
-                    .map((country) => (
-                      <option value={country.code}>{country.name}</option>
-                    ))}
-                </optgroup>
-                <optgroup label="Suramérica">
-                  {latamCountries
-                    .filter((country) => country.region === "South America")
-                    .map((country) => (
-                      <option value={country.code}>{country.name}</option>
-                    ))}
-                </optgroup>
-                <optgroup label="El Caribe">
-                  {latamCountries
-                    .filter((country) => country.region === "Caribean")
-                    .map((country) => (
-                      <option value={country.code}>{country.name}</option>
-                    ))}
-                </optgroup>
-              </select>
+              />
             </div>
             <div className="user-form-data__error-flag">
-              {errorsState.countryCode.hasErrors && (
-                <ErrorFlag
-                  message={errorsState.countryCode.message}
-                  width="93%"
-                />
+              {errorsState.phone.hasErrors && (
+                <ErrorFlag message={errorsState.phone.message} width="93%" />
               )}
             </div>
             <div className="user-form-data__input-container">
