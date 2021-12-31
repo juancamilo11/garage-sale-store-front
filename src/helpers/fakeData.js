@@ -26,6 +26,18 @@ export const fakeFavStoreData = {
   id: "1",
   storePortraitUrl: "./../../public/assets/user-profile/user-home-photo.jpg",
   storeName: "Los recuerdos de Tommy",
-  endingDate: "2022-05-04",
+  productName: "Licuadora X-max 5000",
+  favoriteSince: "2022-05-04",
   seller: "Juanita López",
+  storeUrl: "",
+};
+
+export const fakeFavProductData = {
+  id: "1",
+  productImageUrl: "./../../public/assets/user-profile/user-home-photo.jpg",
+  storeName: "Los recuerdos de Tommy",
+  productName: "Licuadora X-max 5000",
+  favoriteSince: "2022-05-04",
+  seller: "Juanita López",
+  productUrl: "",
 };
