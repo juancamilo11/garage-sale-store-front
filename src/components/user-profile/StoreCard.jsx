@@ -1,12 +1,12 @@
 import React from "react";
 
-const StoreCard = () => {
-  const fakeStore = {
-    name: "La tienda de Maria",
-    startingDate: "2021-10-22",
-    endingDate: "2021-10-27",
-  };
+const fakeStore = {
+  name: "La tienda de Maria",
+  startingDate: "2021-10-22",
+  endingDate: "2021-10-27",
+};
 
+const StoreCard = () => {
   return (
     <div className="userprofile__store-item-container">
       <div
