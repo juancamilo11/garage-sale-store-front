@@ -8,7 +8,6 @@
 
 - Juan Camilo Cardona Calderón
 - Jose Manuel Bernal Aguilar
-- Santiago Echeverry Arango
 
 ---
 
