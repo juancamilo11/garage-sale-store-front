@@ -1,4 +1,5 @@
 export const fakeBuyData = {
+  id: "1",
   productImageUrl: "./../../public/assets/common/fake-products/img-shirt.jpg",
   transactionType: "buy",
   productName: "Camisa X-Max",
@@ -10,6 +11,7 @@ export const fakeBuyData = {
 };
 
 export const fakeSellData = {
+  id: "1",
   productImageUrl: "./../../public/assets/common/fake-products/img-pants.PNG",
   transactionType: "Sell",
   productName: "Pantalones X-fit",
@@ -18,4 +20,12 @@ export const fakeSellData = {
   quantity: 2,
   price: 10000,
   currency: "COP",
+};
+
+export const fakeFavStoreData = {
+  id: "1",
+  storePortraitUrl: "./../../public/assets/user-profile/user-home-photo.jpg",
+  storeName: "Los recuerdos de Tommy",
+  endingDate: "2022-05-04",
+  seller: "Juanita López",
 };

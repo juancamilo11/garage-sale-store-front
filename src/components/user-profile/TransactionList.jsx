@@ -9,9 +9,9 @@ const TransactionList = ({ transactionType }) => {
 
   // useEffect(() => {
   //   if(transactionType === "buy") {
-  // Hacer un query solicitando el historial de transacciones del usuario y que tengan el transactionType igual a buy
+  // Hacer un query solicitando el historial de transacciones del usuario y que tengan el transactionType igual a buy(Usar el useFetch)
   //   } else if(transactionType ==="sell"){
-  // Hacer un query solicitando el historial de transacciones del usuario y que tengan el transactionType igual a sell
+  // Hacer un query solicitando el historial de transacciones del usuario y que tengan el transactionType igual a sell(Usar el useFetch)
 
   //   }
   // }, []);

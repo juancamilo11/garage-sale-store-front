@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 const TransactionCard = ({ transactionData }) => {
-  const navigate = useNavigate();
+  //   const navigate = useNavigate();
   const auth = useSelector((state) => state.auth);
   const handleGoToProduct = (e) => {
     //Registrar la ruta con los query params
