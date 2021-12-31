@@ -5,9 +5,6 @@ const Footer = () => {
     <>
       <br />
       <br />
-      <br />
-      <br />
-      <br />
       <div className="footer-basic">
         <footer className="footer-container">
           <div className="social">
@@ -22,8 +19,8 @@ const Footer = () => {
             </a>
           </div>
           <p className="copyright">
-            Hecho por: <br /> Juan Camilo Cardona Calderón | Jose Manuel Bernal
-            Aguilar | Santiago Echeverri Arango
+            Hecho por: <br /> Juan Camilo Cardona Calderón & Jose Manuel Bernal
+            Aguilar
           </p>
           <p className="copyright">Curso: Análisis y Diseño de Sistemas II</p>
           <p className="copyright">Copyright &copy; Garage Sale Store</p>

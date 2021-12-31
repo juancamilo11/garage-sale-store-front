@@ -430,3 +430,109 @@
 .userprofile__fav-store-button-delete {
   bottom: 10px;
 }
+
+//List of favorite user's favorite products
+
+.userprofile__fav-product-list {
+  width: 90%;
+  margin-left: 5%;
+  margin-right: 5%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.userprofile__fav-product-item-container {
+  // position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 450px;
+  align-items: flex-start;
+  width: 20vw;
+  min-width: 305px;
+  // overflow: hidden;
+  outline: 1px solid rgb(202, 202, 202);
+  overflow-wrap: wrap;
+  margin: 15px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+  // border: 1px solid darkgray;
+  overflow: hidden;
+}
+
+.userprofile__fav-product-item-container:hover {
+  & .userprofile__transaction-item-img {
+    padding: 20px;
+    transition: all 2.5 ease;
+  }
+}
+
+.userprofile__fav-product-item-img {
+  height: 350px;
+  width: 20vw;
+  min-width: 305px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position-x: center;
+  background-position-y: 0px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.userprofile__fav-product-item-info {
+  background-color: darkgray;
+  padding: 5px;
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  height: 170px;
+  overflow-y: hidden;
+
+  // background-color: yellow;
+}
+
+.userprofile__fav-product-main-container {
+  justify-content: space-between;
+  display: flex;
+  flex-direction: row;
+}
+
+.userprofile__fav-product-item-name {
+  padding: 0px;
+  font-size: 24px;
+  margin-bottom: 16px;
+}
+
+.userprofile__fav-product-item-price {
+  font-size: 20px;
+}
+
+.userprofile__fav-product-item-description {
+  padding: 0px 5px;
+  margin-top: -15px;
+  font-size: 12px;
+}
+
+.userprofile__fav-product-button-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.userprofile__fav-product-item-button {
+  padding: 5px 10px;
+  background-color: #21117e;
+  color: white;
+  outline: none;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+.userprofile__fav-product-button-delete {
+  bottom: 10px;
+}

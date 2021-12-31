@@ -10,13 +10,6 @@ const FavoriteStoreCard = ({ favStoreData }) => {
     //navigate(`/transaction?uid=${auth.uid}&transactionId=${12345}`);
   };
 
-  /*
-  storeName: "Los recuerdos de Tommy",
-  productName: "Licuadora X-max 5000",
-  favoriteSince: "2022-05-04",
-  seller: "Juanita López",
-*/
-
   return (
     <div className="userprofile__fav-store-item-container">
       <div
@@ -34,9 +27,6 @@ const FavoriteStoreCard = ({ favStoreData }) => {
           </h3>
         </div>
         <div className="userprofile__fav-store-info-container">
-          <p className="userprofile__fav-store-item-description">
-            Vendido en: {favStoreData.storeName}
-          </p>
           <p className="userprofile__fav-store-item-description">
             En favoritos desde: {favStoreData.favoriteSince}
           </p>
