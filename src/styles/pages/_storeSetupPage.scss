@@ -1,0 +1,12 @@
+.store-setup__main-container {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  background-color: white;
+  align-items: center;
+  position: relative;
+  user-select: none;
+  overflow-x: hidden;
+  overflow-anchor: hidden;
+}
