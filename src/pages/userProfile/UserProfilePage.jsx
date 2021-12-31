@@ -42,12 +42,12 @@ const UserProfilePage = () => {
         className="userprofile__purchases-container"
         id="transaction-card-list__section"
       >
-        <TransactionList />
+        <TransactionList transactionType="buy" />
       </div>
 
       <SectionTitle sectionTitle="Historial de tus ventas" />
       <div className="userprofile__sales-container">
-        <TransactionList />
+        <TransactionList transactionType="sell" />
       </div>
 
       <SectionTitle sectionTitle="Tus tiendas favoritas" />

@@ -250,6 +250,13 @@
   overflow: hidden;
 }
 
+.userprofile__transaction-item-container:hover {
+  & .userprofile__transaction-item-img {
+    padding: 20px;
+    transition: all 2.5 ease;
+  }
+}
+
 .userprofile__transaction-item-img {
   height: 350px;
   width: 20vw;
@@ -276,10 +283,20 @@
   // background-color: yellow;
 }
 
+.userprofile__transaction-main-container {
+  justify-content: space-between;
+  display: flex;
+  flex-direction: row;
+}
+
 .userprofile__transaction-item-name {
   padding: 0px;
   font-size: 24px;
   margin-bottom: 16px;
+}
+
+.userprofile__transaction-item-price {
+  font-size: 20px;
 }
 
 .userprofile__transaction-item-description {

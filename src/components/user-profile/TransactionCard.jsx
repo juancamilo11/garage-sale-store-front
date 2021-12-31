@@ -1,15 +1,15 @@
 import React from "react";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
-const fakeTransaction = {
-  name: "La tienda de Maria",
-  startingDate: "2021-10-22",
-  endingDate: "2021-10-27",
-  seller: "Pedro perez",
-  purchaseDate: "2021-12-28",
-  quantity: 3,
-};
+const TransactionCard = ({ transactionData }) => {
+  const navigate = useNavigate();
+  const auth = useSelector((state) => state.auth);
+  const handleGoToProduct = (e) => {
+    //Registrar la ruta con los query params
+    //navigate(`/transaction?uid=${auth.uid}&transactionId=${12345}`);
+  };
 
-const TransactionCard = () => {
   return (
     <div className="userprofile__transaction-item-container">
       <div
@@ -22,19 +22,31 @@ const TransactionCard = () => {
         }}
       ></div>
       <div className="userprofile__transaction-item-info">
-        <h3 className="userprofile__transaction-item-name">
-          {fakeTransaction.name}
-        </h3>
+        <div className="userprofile__transaction-main-container">
+          <h3 className="userprofile__transaction-item-name">
+            {transactionData.productName}
+          </h3>
+          <h3 className="userprofile__transaction-item-price">
+            {transactionData.price} {transactionData.currency}
+          </h3>
+        </div>
         <p className="userprofile__transaction-item-description">
-          Vendedor: {fakeTransaction.seller}
+          {transactionData.transactionType === "buy" ? "Vendedor" : "Comprador"}
+          :
+          {transactionData.transactionType === "buy"
+            ? `${transactionData.seller}`
+            : `${transactionData.buyer}`}
         </p>
         <p className="userprofile__transaction-item-description">
-          Cantidad: {fakeTransaction.quantity} unidades compradas
+          Cantidad: {transactionData.quantity} unidades compradas
         </p>
         <p className="userprofile__transaction-item-description">
-          Fecha de compra: {fakeTransaction.purchaseDate}
+          Fecha de compra: {transactionData.transactionDate}
         </p>
-        <button className="userprofile__transaction-item-button">
+        <button
+          className="userprofile__transaction-item-button"
+          onClick={handleGoToProduct}
+        >
           Ver más...
         </button>
       </div>
