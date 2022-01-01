@@ -59,26 +59,23 @@ const FormSection01 = ({ formChecking, setFormsChecking }) => {
         1. Parámetros descriptivos de la tienda
       </h2>
       <form onSubmit={handleFormSection_01Submit}>
-        <div className="user-form-data__form-container">
-          <div className="user-form-data__inputs-container">
-            <div className="user-form-data__input-container">
-              <label
-                htmlFor="storeName"
-                className="user-form-data__input-label"
-              >
+        <div className="store-setup__form-container">
+          <div className="store-setup__inputs-container">
+            <div className="store-setup__input-container">
+              <label htmlFor="storeName" className="store-setup__input-label">
                 Nombre de la tienda
               </label>
               <input
                 type="text"
                 name="storeName"
                 id="storeName"
-                className="user-form-data__input"
+                className="store-setup__input"
                 autoComplete="off"
                 value={storeName}
                 onChange={handleInputValidation}
               />
             </div>
-            <div className="user-form-data__error-flag">
+            <div className="store-setup__error-flag">
               {errorsState.storeName.hasErrors && (
                 <ErrorFlag
                   message={errorsState.storeName.message}
@@ -87,8 +84,8 @@ const FormSection01 = ({ formChecking, setFormsChecking }) => {
               )}
             </div>
 
-            <div className="user-form-data__input-container">
-              <label htmlFor="slogan" className="user-form-data__input-label">
+            <div className="store-setup__input-container">
+              <label htmlFor="slogan" className="store-setup__input-label">
                 Slogan
               </label>
               <textarea
@@ -98,20 +95,20 @@ const FormSection01 = ({ formChecking, setFormsChecking }) => {
                 id="slogan"
                 value={slogan}
                 onChange={handleInputValidation}
-                className="user-form-data__input user-form-data__textarea"
+                className="store-setup__input store-setup__textarea"
                 autoComplete="off"
               />
             </div>
-            <div className="user-form-data__error-flag">
+            <div className="store-setup__error-flag">
               {errorsState.slogan.hasErrors && (
                 <ErrorFlag message={errorsState.slogan.message} width="93%" />
               )}
             </div>
 
-            <div className="user-form-data__input-container">
+            <div className="store-setup__input-container">
               <label
                 htmlFor="storeProductTags"
-                className="user-form-data__input-label"
+                className="store-setup__input-label"
               >
                 ¿Qué venderás?
               </label>
@@ -121,11 +118,11 @@ const FormSection01 = ({ formChecking, setFormsChecking }) => {
                 id="storeProductTags"
                 value={storeProductTags}
                 onChange={handleInputValidation}
-                className="user-form-data__input"
+                className="store-setup__input"
                 autoComplete="off"
               />
             </div>
-            <div className="user-form-data__error-flag">
+            <div className="store-setup__error-flag">
               {errorsState.storeProductTags.hasErrors && (
                 <ErrorFlag
                   message={errorsState.storeProductTags.message}
@@ -134,12 +131,9 @@ const FormSection01 = ({ formChecking, setFormsChecking }) => {
               )}
             </div>
           </div>
-          <div className="user-form-data__inputs-container">
-            <div className="user-form-data__input-container">
-              <label
-                htmlFor="description"
-                className="user-form-data__input-label"
-              >
+          <div className="store-setup__inputs-container">
+            <div className="store-setup__input-container">
+              <label htmlFor="description" className="store-setup__input-label">
                 Descripción
               </label>
               <textarea
@@ -148,12 +142,12 @@ const FormSection01 = ({ formChecking, setFormsChecking }) => {
                 name="description"
                 id="description"
                 value={description}
-                className="user-form-data__input"
+                className="store-setup__input"
                 autoComplete="off"
                 onChange={handleInputValidation}
               />
             </div>
-            <div className="user-form-data__error-flag">
+            <div className="store-setup__error-flag">
               {errorsState.description.hasErrors && (
                 <ErrorFlag
                   message={errorsState.description.message}
@@ -162,10 +156,10 @@ const FormSection01 = ({ formChecking, setFormsChecking }) => {
               )}
             </div>
 
-            <div className="user-form-data__input-container">
+            <div className="store-setup__input-container">
               <label
                 htmlFor="startingDate"
-                className="user-form-data__input-label"
+                className="store-setup__input-label"
               >
                 Fecha de apertura
               </label>
@@ -175,12 +169,12 @@ const FormSection01 = ({ formChecking, setFormsChecking }) => {
                 id="startingDate"
                 value={startingDate}
                 onChange={handleInputValidation}
-                className="user-form-data__input"
+                className="store-setup__input store-setup__input-date"
                 autoComplete="off"
               />
               <label
                 htmlFor="endingDate"
-                className="user-form-data__input-label"
+                style={{ margin: "0px 5px 0px 10px", width: "7%" }}
               >
                 Hasta
               </label>
@@ -190,11 +184,11 @@ const FormSection01 = ({ formChecking, setFormsChecking }) => {
                 id="endingDate"
                 value={endingDate}
                 readOnly
-                className="user-form-data__input"
+                className="store-setup__input store-setup__input-date"
                 autoComplete="off"
               />
             </div>
-            <div className="user-form-data__error-flag">
+            <div className="store-setup__error-flag">
               {errorsState.startingDate.hasErrors && (
                 <ErrorFlag
                   message={errorsState.startingDate.message}
@@ -203,8 +197,8 @@ const FormSection01 = ({ formChecking, setFormsChecking }) => {
               )}
             </div>
 
-            <div className="user-form-data__input-container">
-              <label className="user-form-data__input-label">
+            <div className="store-setup__input-container">
+              <label className="store-setup__input-label">
                 Dirección física
               </label>
               <button
@@ -213,26 +207,26 @@ const FormSection01 = ({ formChecking, setFormsChecking }) => {
                 id="address"
                 value={address}
                 onChange={handleInputValidation}
-                className="user-form-data__input"
+                className="store-setup__input"
                 autoComplete="off"
               >
                 Obtener tu dirección actual
               </button>
             </div>
-            <div className="user-form-data__error-flag">
+            <div className="store-setup__error-flag">
               {errorsState.address.hasErrors && (
                 <ErrorFlag message={errorsState.address.message} width="93%" />
               )}
             </div>
           </div>
         </div>
-        <div className="user-form-data__centered-container">
-          <div className="user-form-data__buttons-container">
-            <button className="user-form-data__button-update" type="submit">
+        <div className="store-setup__centered-container">
+          <div className="store-setup__buttons-container">
+            <button className="store-setup__button-update" type="submit">
               Confirmar cambios
             </button>
             <button
-              className="user-form-data__button-update"
+              className="store-setup__button-update"
               onClick={handleResetForm}
             >
               Resetear los datos
