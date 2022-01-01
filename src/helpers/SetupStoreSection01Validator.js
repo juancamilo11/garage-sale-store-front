@@ -32,11 +32,11 @@ const section01Validator = (e, setErrorsState) => {
     case "slogan":
       handleSloganCodeValidation(value, setErrorsState);
       break;
-    case "storeProductTags":
-      handleStoreProductTagsValidation(value, setErrorsState);
-      break;
     case "description":
       handleDescriptionValidation(value, setErrorsState);
+      break;
+    case "storeProductTags":
+      handleStoreProductTagsValidation(value, setErrorsState);
       break;
     case "startingDate":
       handleStartingDateValidation(value, setErrorsState);
@@ -53,7 +53,10 @@ const section01Validator = (e, setErrorsState) => {
 };
 
 const handleStoreNameValidation = (value, setErrorsState) => {
-  if (value.trim().length >= 8 && value.trim().length <= 30) {
+  if (
+    (value.trim().length >= 8 && value.trim().length <= 30) ||
+    value.trim() === ""
+  ) {
     setErrorsState((state) => {
       return { ...state, ["storeName"]: { hasErrors: false, message: "" } };
     });
@@ -69,8 +72,12 @@ const handleStoreNameValidation = (value, setErrorsState) => {
     });
   }
 };
+
 const handleSloganCodeValidation = (value, setErrorsState) => {
-  if (value.trim().length >= 10 && value.trim().length <= 80) {
+  if (
+    (value.trim().length >= 10 && value.trim().length <= 100) ||
+    value.trim() === ""
+  ) {
     setErrorsState((state) => {
       return { ...state, ["slogan"]: { hasErrors: false, message: "" } };
     });
@@ -81,12 +88,35 @@ const handleSloganCodeValidation = (value, setErrorsState) => {
         ["slogan"]: {
           hasErrors: true,
           message:
-            "El slogan de la tienda debe tener entre 10 y 80 caracteres.",
+            "El slogan de la tienda debe tener entre 10 y 100 caracteres.",
         },
       };
     });
   }
 };
+
+const handleDescriptionValidation = (value, setErrorsState) => {
+  if (
+    (value.trim().length >= 20 && value.trim().length <= 200) ||
+    value.trim() === ""
+  ) {
+    setErrorsState((state) => {
+      return { ...state, ["description"]: { hasErrors: false, message: "" } };
+    });
+  } else {
+    setErrorsState((state) => {
+      return {
+        ...state,
+        ["description"]: {
+          hasErrors: true,
+          message:
+            "La descripción de la tienda debe tener entre 10 y 200 caracteres.",
+        },
+      };
+    });
+  }
+};
+
 const handleStoreProductTagsValidation = (value, setErrorsState) => {
   const cellphoneRegex = new RegExp(
     "^(\\+\\d{1,3}( )?)?((\\(\\d{3}\\))|\\d{3})[- .]?\\d{3}[- .]?\\d{4}$"
@@ -110,29 +140,7 @@ const handleStoreProductTagsValidation = (value, setErrorsState) => {
     });
   }
 };
-const handleDescriptionValidation = (value, setErrorsState) => {
-  const phoneRegex = new RegExp(
-    "^(\\+\\d{1,3}( )?)?((\\(\\d{3}\\))|\\d{3})[- .]?\\d{3}[- .]?\\d{4}$"
-  );
-  if (phoneRegex.test(value)) {
-    setErrorsState((state) => {
-      return { ...state, ["phone"]: { hasErrors: false, message: "" } };
-    });
-  } else {
-    setErrorsState((state) => {
-      return {
-        ...state,
-        ["phone"]: {
-          hasErrors: true,
-          message:
-            "El número telefónico '" +
-            value +
-            "' es inválido, intente con otro número.",
-        },
-      };
-    });
-  }
-};
+
 const handleStartingDateValidation = (value, setErrorsState) => {
   if (value.trim().length >= 10) {
     setErrorsState((state) => {
@@ -153,6 +161,7 @@ const handleStartingDateValidation = (value, setErrorsState) => {
     });
   }
 };
+
 const handleAddressValidation = (value, setErrorsState) => {
   console.log(value);
   const dateOfBirth = moment(value);
