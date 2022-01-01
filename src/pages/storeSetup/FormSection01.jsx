@@ -13,6 +13,7 @@ import { section_03ErrorState } from "./../../helpers/SetupStoreSection03Validat
 
 import storeSetupReducer from "./../../reducers/storeSetupReducer";
 import useForm from "../../hooks/useForm";
+import ProductTagList from "../../components/storeSetup/ProductTagList";
 
 const FormSection01 = ({ formChecking, setFormsChecking }) => {
   const [formValues, handleInputChange, resetForm] =
@@ -129,6 +130,7 @@ const FormSection01 = ({ formChecking, setFormsChecking }) => {
                   width="93%"
                 />
               )}
+              {<ProductTagList tags={storeProductTags} />}
             </div>
           </div>
           <div className="store-setup__inputs-container">

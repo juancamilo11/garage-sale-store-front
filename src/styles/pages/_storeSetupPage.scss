@@ -108,3 +108,26 @@
   justify-content: center;
   padding: 15px;
 }
+
+.store-setup__product-tags-list {
+  background-color: yellow;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.store-setup__tag-item {
+  min-width: 200px;
+  overflow-wrap: wrap;
+  margin-top: 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.store-setup__tag-name {
+  color: black;
+  font-weight: bold;
+}
