@@ -1,19 +1,26 @@
 import React, { useReducer, useState } from "react";
 import ErrorFlag from "../../components/ErrorFlag";
 import Section01Validator from "../../helpers/SetupStoreSection01Validator";
-import section_01InitialFormValues from "../../helpers/SetupStoreSection01Validator";
-import section_01ErrorState from "../../helpers/SetupStoreSection01Validator";
 
+import { section_01FormValues } from "./../../helpers/SetupStoreSection01Validator";
+import { section_01ErrorState } from "./../../helpers/SetupStoreSection01Validator";
+
+import { section_02FormValues } from "./../../helpers/SetupStoreSection02Validator";
+import { section_02ErrorState } from "./../../helpers/SetupStoreSection02Validator";
+
+import { section_03FormValues } from "./../../helpers/SetupStoreSection03Validator";
+import { section_03ErrorState } from "./../../helpers/SetupStoreSection03Validator";
+
+import storeSetupReducer from "./../../reducers/storeSetupReducer";
 import useForm from "../../hooks/useForm";
 
-const FormSection01 = ({ formStateSection01, setGlobalFormStates }) => {
-  const [formValues, handleInputChange, resetForm] = useForm(
-    section_01InitialFormValues
-  );
+const FormSection01 = ({ formChecking, setFormsChecking }) => {
+  const [formValues, handleInputChange, resetForm] =
+    useForm(section_01FormValues);
 
   const [errorsState, setErrorsState] = useState(section_01ErrorState);
 
-  //   const [state, dispatch] = useReducer(reducer, initialState, init);
+  const [storeSetupState, dispatch] = useReducer(storeSetupReducer);
 
   const {
     storeName,
@@ -42,7 +49,7 @@ const FormSection01 = ({ formStateSection01, setGlobalFormStates }) => {
 
   const handleResetForm = (e) => {
     e.preventDefault();
-    resetForm(section_01InitialFormValues);
+    resetForm(section_01FormValues);
     setErrorsState(section_01ErrorState);
   };
 

@@ -4,20 +4,19 @@ import { useSelector } from "react-redux";
 import ErrorFlag from "../../components/ErrorFlag";
 import NavBarFormUserData from "../../components/navbar/NavBarFormUserData";
 import SectionTitle from "../../components/SectionTitle";
-import section_01FormValues from "./../../helpers/SetupStoreSection01Validator";
-import section_02FormValues from "./../../helpers/SetupStoreSection02Validator";
-import section_03FormValues from "./../../helpers/SetupStoreSection03Validator";
 
 import FormSection01 from "./FormSection01";
 import FormSection02 from "./FormSection02";
 import FormSection03 from "./FormSection03";
 
 const StoreSetupPage = () => {
-  const [globalFormValues, setGlobalFormValues] = useState({
-    section_01FormValues,
-    section_02FormValues,
-    section_03FormValues,
+  const [formsChecking, setFormsChecking] = useState({
+    formSection01: { isValidated: false },
+    formSection02: { isValidated: false },
+    formSection03: { isValidated: false },
   });
+
+  const { formSection01, formSection02, formSection03 } = formsChecking;
 
   return (
     <div className="user-form-data__main-container">
@@ -28,19 +27,27 @@ const StoreSetupPage = () => {
       </div>
 
       <FormSection01
-        formStateSection01={globalFormValues.section_01FormValues}
-        setGlobalFormStates={setGlobalFormValues}
+        formChecking={formSection01}
+        setFormsChecking={setFormsChecking}
       />
 
-      <FormSection02
-        formStateSection02={globalFormValues.section_02FormValues}
-        setGlobalFormStates={setGlobalFormValues}
-      />
+      {formSection01.isValidated && (
+        <FormSection02
+          formChecking={formSection02}
+          setFormsChecking={setFormsChecking}
+        />
+      )}
 
-      <FormSection03
-        formStateSection03={globalFormValues.section_03FormValues}
-        setGlobalFormStates={setGlobalFormValues}
-      />
+      {formSection01.isValidated && formSection02.isValidated && (
+        <FormSection03
+          formChecking={formSection03}
+          setFormsChecking={setFormsChecking}
+        />
+      )}
+
+      {formSection01.isValidated &&
+        formSection02.isValidated &&
+        formSection03.isValidated && <button>Crear tienda</button>}
     </div>
   );
 };
