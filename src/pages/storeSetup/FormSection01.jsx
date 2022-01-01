@@ -14,6 +14,7 @@ import { section_03ErrorState } from "./../../helpers/SetupStoreSection03Validat
 import storeSetupReducer from "./../../reducers/storeSetupReducer";
 import useForm from "../../hooks/useForm";
 import ProductTagList from "../../components/storeSetup/ProductTagList";
+import Swal from "sweetalert2";
 
 const FormSection01 = ({ formChecking, setFormsChecking }) => {
   const [formValues, handleInputChange, resetForm] =
@@ -32,6 +33,26 @@ const FormSection01 = ({ formChecking, setFormsChecking }) => {
     endingDate,
     address,
   } = formValues;
+
+  const handleRequestLocation = () => {
+    navigator.geolocation.getCurrentPosition(
+      (res) => {
+        const event = { target: { name: "address", value: res } };
+        handleInputValidation(event);
+      },
+      (err) => {
+        const event = { target: { name: "address", value: err } };
+        handleInputValidation(event);
+        Swal.fire({
+          title: "Posición física denegada",
+          text: "Tenga presente que la nueva tienda no podrá ser ubicada mediante mapas.",
+          icon: "warning",
+          showConfirmButton: false,
+          timer: 3500,
+        });
+      }
+    );
+  };
 
   const handleInputValidation = (e) => {
     handleInputChange(e);
@@ -200,12 +221,12 @@ const FormSection01 = ({ formChecking, setFormsChecking }) => {
             </div>
 
             <div className="store-setup__input-container">
-              <label htmlFor="address" className="store-setup__input-label">
+              <label className="store-setup__input-label">
                 Dirección física
               </label>
               <button
-                id="address"
                 value={address}
+                onClick={handleRequestLocation}
                 className="store-setup__input btn btn-primary store-setup__input-address"
                 autoComplete="off"
               >
