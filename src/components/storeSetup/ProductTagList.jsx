@@ -1,11 +1,11 @@
 import React from "react";
 
 const fakeTags = [
-  // "ropa",
-  // "juguetes",
-  // "adornos",
-  // "productos de belleza",
-  // "libros",
+  "ropa",
+  "juguetes",
+  "adornos",
+  "productos de belleza",
+  "libros",
 ];
 
 const handleDeleteTag = () => {};

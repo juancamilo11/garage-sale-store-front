@@ -200,16 +200,13 @@ const FormSection01 = ({ formChecking, setFormsChecking }) => {
             </div>
 
             <div className="store-setup__input-container">
-              <label className="store-setup__input-label">
+              <label htmlFor="address" className="store-setup__input-label">
                 Dirección física
               </label>
               <button
-                type="select"
-                name="address"
                 id="address"
                 value={address}
-                onChange={handleInputValidation}
-                className="store-setup__input"
+                className="store-setup__input btn btn-primary store-setup__input-address"
                 autoComplete="off"
               >
                 Obtener tu dirección actual
