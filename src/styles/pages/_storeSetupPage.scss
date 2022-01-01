@@ -61,9 +61,26 @@
   //   background-color: #000;
 }
 
+.store-setup__textarea-slogan {
+  max-height: 100px;
+  min-height: 55px;
+}
+
+.store-setup__textarea-description {
+  min-height: 60px;
+  max-height: 200px;
+}
+
 .store-setup__input-date {
   width: 25%;
   font-size: 14px;
+}
+
+.store-setup__input-date-label {
+  margin: 0px 5px 0px 10px;
+  width: 7%;
+  font-size: 1.2rem;
+  font-weight: bold;
 }
 
 .store-setup__buttons-container {

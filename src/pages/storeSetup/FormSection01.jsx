@@ -89,13 +89,13 @@ const FormSection01 = ({ formChecking, setFormsChecking }) => {
                 Slogan
               </label>
               <textarea
-                style={{ resize: "none" }}
+                style={{ resize: "vertical" }}
                 type="text"
                 name="slogan"
                 id="slogan"
                 value={slogan}
                 onChange={handleInputValidation}
-                className="store-setup__input store-setup__textarea"
+                className="store-setup__input store-setup__textarea-slogan"
                 autoComplete="off"
               />
             </div>
@@ -137,12 +137,12 @@ const FormSection01 = ({ formChecking, setFormsChecking }) => {
                 Descripción
               </label>
               <textarea
-                style={{ resize: "none" }}
+                style={{ resize: "vertical" }}
                 type="text"
                 name="description"
                 id="description"
                 value={description}
-                className="store-setup__input"
+                className="store-setup__input store-setup__textarea-description"
                 autoComplete="off"
                 onChange={handleInputValidation}
               />
@@ -174,7 +174,7 @@ const FormSection01 = ({ formChecking, setFormsChecking }) => {
               />
               <label
                 htmlFor="endingDate"
-                style={{ margin: "0px 5px 0px 10px", width: "7%" }}
+                className="store-setup__input-date-label"
               >
                 Hasta
               </label>
