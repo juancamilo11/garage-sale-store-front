@@ -97,11 +97,11 @@ const FormSection01 = ({ formChecking, setFormsChecking }) => {
                 onChange={handleInputValidation}
               />
             </div>
-            <div className="store-setup__error-flag">
+            <div className="store-setup__error-flag mt-2 mb-4">
               {errorsState.storeName.hasErrors && (
                 <ErrorFlag
                   message={errorsState.storeName.message}
-                  width="93%"
+                  width="100%"
                 />
               )}
             </div>
@@ -123,7 +123,7 @@ const FormSection01 = ({ formChecking, setFormsChecking }) => {
             </div>
             <div className="store-setup__error-flag">
               {errorsState.slogan.hasErrors && (
-                <ErrorFlag message={errorsState.slogan.message} width="93%" />
+                <ErrorFlag message={errorsState.slogan.message} width="100%" />
               )}
             </div>
 
@@ -148,7 +148,7 @@ const FormSection01 = ({ formChecking, setFormsChecking }) => {
               {errorsState.storeProductTags.hasErrors && (
                 <ErrorFlag
                   message={errorsState.storeProductTags.message}
-                  width="93%"
+                  width="100%"
                 />
               )}
               {<ProductTagList tags={storeProductTags} />}
@@ -174,7 +174,7 @@ const FormSection01 = ({ formChecking, setFormsChecking }) => {
               {errorsState.description.hasErrors && (
                 <ErrorFlag
                   message={errorsState.description.message}
-                  width="93%"
+                  width="100%"
                 />
               )}
             </div>
@@ -215,7 +215,7 @@ const FormSection01 = ({ formChecking, setFormsChecking }) => {
               {errorsState.startingDate.hasErrors && (
                 <ErrorFlag
                   message={errorsState.startingDate.message}
-                  width="93%"
+                  width="100%"
                 />
               )}
             </div>
@@ -235,7 +235,7 @@ const FormSection01 = ({ formChecking, setFormsChecking }) => {
             </div>
             <div className="store-setup__error-flag">
               {errorsState.address.hasErrors && (
-                <ErrorFlag message={errorsState.address.message} width="93%" />
+                <ErrorFlag message={errorsState.address.message} width="100%" />
               )}
             </div>
           </div>

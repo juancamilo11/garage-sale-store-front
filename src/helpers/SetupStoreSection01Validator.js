@@ -29,11 +29,11 @@ const section01Validator = (e, setErrorsState) => {
     case "storeName":
       handleStoreNameValidation(value, setErrorsState);
       break;
-    case "storeProductTags":
-      handleStoreProductTagsValidation(value, setErrorsState);
-      break;
     case "slogan":
       handleSloganCodeValidation(value, setErrorsState);
+      break;
+    case "storeProductTags":
+      handleStoreProductTagsValidation(value, setErrorsState);
       break;
     case "description":
       handleDescriptionValidation(value, setErrorsState);
@@ -63,7 +63,25 @@ const handleStoreNameValidation = (value, setErrorsState) => {
         ...state,
         ["storeName"]: {
           hasErrors: true,
-          message: "El nombre de la tienda debe tener entre 8 y 30 caracteres",
+          message: "El nombre de la tienda debe tener entre 8 y 30 caracteres.",
+        },
+      };
+    });
+  }
+};
+const handleSloganCodeValidation = (value, setErrorsState) => {
+  if (value.trim().length >= 10 && value.trim().length <= 80) {
+    setErrorsState((state) => {
+      return { ...state, ["slogan"]: { hasErrors: false, message: "" } };
+    });
+  } else {
+    setErrorsState((state) => {
+      return {
+        ...state,
+        ["slogan"]: {
+          hasErrors: true,
+          message:
+            "El slogan de la tienda debe tener entre 10 y 80 caracteres.",
         },
       };
     });
@@ -87,26 +105,6 @@ const handleStoreProductTagsValidation = (value, setErrorsState) => {
             "El número telefónico '" +
             value +
             "' es inválido, intente con otro número.",
-        },
-      };
-    });
-  }
-};
-const handleSloganCodeValidation = (value, setErrorsState) => {
-  if (validator.isPostalCode(value, "any")) {
-    setErrorsState((state) => {
-      return { ...state, ["postalCode"]: { hasErrors: false, message: "" } };
-    });
-  } else {
-    setErrorsState((state) => {
-      return {
-        ...state,
-        ["postalCode"]: {
-          hasErrors: true,
-          message:
-            "El código postal '" +
-            value +
-            "' es inválido, intente con otro valor.",
         },
       };
     });
