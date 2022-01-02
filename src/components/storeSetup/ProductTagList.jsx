@@ -8,6 +8,14 @@ const ProductTagList = ({ tags, setTagsList }) => {
 
   return (
     <div className="store-setup__product-tags-list">
+      <div className="store-setup__left-counting-tags">
+        {tags.length > 0 && tags.length < 3 && (
+          <div className="alert alert-primary text-center mt-3">
+            Aún te faltan {3 - tags.length} etiquetas por ingresar (Mínimo tres)
+          </div>
+        )}
+      </div>
+
       {tags.length > 0 ? (
         tags.map((tag) => (
           <div key={tag} className="store-setup__tag-item">
