@@ -160,12 +160,12 @@ const FormSection01 = ({ formChecking, setFormsChecking }) => {
                 id="tag"
                 value={tag}
                 onChange={handleInputValidation}
-                className="store-setup__input"
+                className="store-setup__input store-setup__input-tag"
                 autoComplete="off"
               />
               <button
                 onClick={handleAddNewTag}
-                className="store-setup__input btn btn-primary"
+                className="store-setup__input store-setup__button-input-tag btn btn-primary"
               >
                 Ingresar
               </button>
@@ -174,7 +174,7 @@ const FormSection01 = ({ formChecking, setFormsChecking }) => {
               {errorsState.tag.hasErrors && (
                 <ErrorFlag message={errorsState.tag.message} width="100%" />
               )}
-              <ProductTagList tags={tagsList} />
+              <ProductTagList tags={tagsList} setTagsList={setTagsList} />
             </div>
           </div>
           <div className="store-setup__inputs-container">
