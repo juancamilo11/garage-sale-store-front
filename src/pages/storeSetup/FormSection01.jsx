@@ -57,10 +57,13 @@ const FormSection01 = ({ formChecking, setFormsChecking }) => {
   };
 
   const handleAddNewTag = (e) => {
-    const newTag = document.getElementById("tag").value;
+    const tagInput = document.getElementById("tag");
+    const newTag = tagInput.value;
+    const cleanEvent = { target: { name: "tag", value: "" } };
 
     if (!errorsState.tag.hasErrors && newTag.trim() !== "") {
       setTagsList([...tagsList, newTag]);
+      handleInputValidation(cleanEvent);
     } else {
       Swal.fire({
         icon: "error",
@@ -68,6 +71,8 @@ const FormSection01 = ({ formChecking, setFormsChecking }) => {
         text: `La etiqueta '${newTag}' no se ha podido ingresar, intenta con otro valor.`,
         showConfirmButton: false,
         timer: 3500,
+      }).then((res) => {
+        handleInputValidation(cleanEvent);
       });
     }
   };
