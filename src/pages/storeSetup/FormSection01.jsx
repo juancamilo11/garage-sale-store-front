@@ -20,13 +20,15 @@ const FormSection01 = ({ formChecking, setFormsChecking }) => {
   const [formValues, handleInputChange, resetForm] =
     useForm(section_01FormValues);
 
+  const [tagsList, setTagsList] = useState([]);
+
   const [errorsState, setErrorsState] = useState(section_01ErrorState);
 
   const [storeSetupState, dispatch] = useReducer(storeSetupReducer);
 
   const {
     storeName,
-    storeProductTags,
+    tag,
     slogan,
     description,
     startingDate,
@@ -52,6 +54,22 @@ const FormSection01 = ({ formChecking, setFormsChecking }) => {
         });
       }
     );
+  };
+
+  const handleAddNewTag = (e) => {
+    const newTag = document.getElementById("tag").value;
+
+    if (!errorsState.tag.hasErrors && newTag.trim() !== "") {
+      setTagsList([...tagsList, newTag]);
+    } else {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: `La etiqueta '${newTag}' no se ha podido ingresar, intenta con otro valor.`,
+        showConfirmButton: false,
+        timer: 3500,
+      });
+    }
   };
 
   const handleInputValidation = (e) => {
@@ -128,30 +146,30 @@ const FormSection01 = ({ formChecking, setFormsChecking }) => {
             </div>
 
             <div className="store-setup__input-container">
-              <label
-                htmlFor="storeProductTags"
-                className="store-setup__input-label"
-              >
+              <label htmlFor="tag" className="store-setup__input-label">
                 ¿Qué venderás?
               </label>
               <input
                 type="text"
-                name="storeProductTags"
-                id="storeProductTags"
-                value={storeProductTags}
+                name="tag"
+                id="tag"
+                value={tag}
                 onChange={handleInputValidation}
                 className="store-setup__input"
                 autoComplete="off"
               />
+              <button
+                onClick={handleAddNewTag}
+                className="store-setup__input btn btn-primary"
+              >
+                Ingresar
+              </button>
             </div>
             <div className="store-setup__error-flag">
-              {errorsState.storeProductTags.hasErrors && (
-                <ErrorFlag
-                  message={errorsState.storeProductTags.message}
-                  width="100%"
-                />
+              {errorsState.tag.hasErrors && (
+                <ErrorFlag message={errorsState.tag.message} width="100%" />
               )}
-              {<ProductTagList tags={storeProductTags} />}
+              <ProductTagList tags={tagsList} />
             </div>
           </div>
           <div className="store-setup__inputs-container">
@@ -225,10 +243,8 @@ const FormSection01 = ({ formChecking, setFormsChecking }) => {
                 Dirección física
               </label>
               <button
-                value={address}
                 onClick={handleRequestLocation}
                 className="store-setup__input btn btn-primary store-setup__input-address"
-                autoComplete="off"
               >
                 Obtener tu dirección actual
               </button>

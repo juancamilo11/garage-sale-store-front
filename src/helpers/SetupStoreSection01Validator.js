@@ -4,7 +4,7 @@ import validator from "validator";
 //Initial values for the section #1 form of the store setup's.
 export const section_01FormValues = {
   storeName: "",
-  storeProductTags: "",
+  tag: "",
   slogan: "",
   description: "",
   startingDate: "",
@@ -15,7 +15,7 @@ export const section_01FormValues = {
 //Initial values for the section #1 errors of the store setup's.
 export const section_01ErrorState = {
   storeName: { hasErrors: false, message: "" },
-  storeProductTags: { hasErrors: false, message: "" },
+  tag: { hasErrors: false, message: "" },
   slogan: { hasErrors: false, message: "" },
   description: { hasErrors: false, message: "" },
   startingDate: { hasErrors: false, message: "" },
@@ -35,8 +35,8 @@ const section01Validator = (e, setErrorsState) => {
     case "description":
       handleDescriptionValidation(value, setErrorsState);
       break;
-    case "storeProductTags":
-      handleStoreProductTagsValidation(value, setErrorsState);
+    case "tag":
+      handleTagValidation(value, setErrorsState);
       break;
     case "startingDate":
       handleStartingDateValidation(value, setErrorsState);
@@ -117,24 +117,25 @@ const handleDescriptionValidation = (value, setErrorsState) => {
   }
 };
 
-const handleStoreProductTagsValidation = (value, setErrorsState) => {
-  const cellphoneRegex = new RegExp(
-    "^(\\+\\d{1,3}( )?)?((\\(\\d{3}\\))|\\d{3})[- .]?\\d{3}[- .]?\\d{4}$"
-  );
-  if (cellphoneRegex.test(value)) {
+const handleTagValidation = (value, setErrorsState) => {
+  if (
+    (value.trim().length >= 3 && value.trim().length <= 20) ||
+    value.trim().length === 0
+  ) {
     setErrorsState((state) => {
-      return { ...state, ["cellphone"]: { hasErrors: false, message: "" } };
+      return {
+        ...state,
+        ["tag"]: { hasErrors: false, message: "" },
+      };
     });
   } else {
     setErrorsState((state) => {
       return {
         ...state,
-        ["cellphone"]: {
+        ["tag"]: {
           hasErrors: true,
           message:
-            "El número telefónico '" +
-            value +
-            "' es inválido, intente con otro número.",
+            "El nombre de la etiqueta de un producto debe tener entre 3 y 20 caracteres.",
         },
       };
     });

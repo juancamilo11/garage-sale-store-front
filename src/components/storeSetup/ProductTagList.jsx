@@ -1,24 +1,16 @@
 import React from "react";
 
-const fakeTags = [
-  "ropa",
-  "juguetes",
-  "adornos",
-  "productos de belleza",
-  "libros",
-];
-
 const handleDeleteTag = () => {};
 
 const ProductTagList = ({ tags }) => {
   return (
     <div className="store-setup__product-tags-list">
-      {fakeTags.length > 0 ? (
-        fakeTags.map((tag) => (
+      {tags.length > 0 ? (
+        tags.map((tag) => (
           <div key={tag.id} className="store-setup__tag-item">
             <span className="store-setup__tag-name mb-2">{tag}</span>
             <button
-              id={`${tag.id}_button_delete_tag`}
+              id={`${tag}_button_delete_tag`}
               className="btn btn-danger btn-delete-tag"
               onClick={() => handleDeleteTag()}
             >
