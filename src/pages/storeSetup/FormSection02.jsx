@@ -20,7 +20,7 @@ const FormSection02 = ({ formChecking, setFormsChecking }) => {
   const [errorsState, setErrorsState] = useState(section_02ErrorState);
 
   const [imagesState, setTmagesState] = useState({
-    portrait: null,
+    portraitUrl: null,
     prevImagesUrls: [],
     physicalStoreUrl: null,
   });
@@ -29,27 +29,41 @@ const FormSection02 = ({ formChecking, setFormsChecking }) => {
     e.preventDefault();
   };
 
+  const handleImageLoad = (e) => {
+    // window.alert("imagen cargada");
+  };
+  const handleInputChange = (e) => {
+    // window.alert(e.target.files[0].type.startsWith("image"));
+  };
+
+  const handleMultipleInputChange = (e) => {
+    // window.alert(e.target.files[0].type.startsWith("image"));
+  };
+
   const handleResetForm = () => {};
 
   return (
-    <div className="store-setup__images-container">
+    <div className="store-setup__images-main-container">
       <h2 className="store-setup__section-enum">
         2. Sube algunas imágenes representativas
       </h2>
       <form onSubmit={handleFormSection_02Submit}>
         <div className="store-setup__images-container">
-          <div className="store-setup__inputs-container">
+          <div className="store-setup__images-inputs-container">
             <div className="store-setup__input-container">
               <label htmlFor="portrait" className="store-setup__input-label">
                 Imágen de portada
               </label>
-              <input
-                type="file"
-                name="portrait"
-                id="portrait"
-                className="store-setup__input"
-                multiple="false"
-              />
+              <div className="store-setup__mult-images-container">
+                <button className="store-setup__mult-images-button">
+                  Carga un archivo
+                </button>
+                <input
+                  type="file"
+                  className="store-setup__input-images"
+                  onChange={handleInputChange}
+                />
+              </div>
             </div>
             <div className="store-setup__error-flag mt-2 mb-4">
               {errorsState.portraitUrl.hasErrors && (
@@ -64,13 +78,16 @@ const FormSection02 = ({ formChecking, setFormsChecking }) => {
               <label htmlFor="prevImages" className="store-setup__input-label">
                 Imágenes de Previsualización
               </label>
-              <input
-                type="file"
-                name="prevImages"
-                id="prevImages"
-                multiple="true"
-                className="store-setup__input store-setup__textarea-slogan"
-              />
+              <div className="store-setup__mult-images-container">
+                <button className="store-setup__mult-images-button">
+                  Carga un archivo
+                </button>
+                <input
+                  type="file"
+                  className="store-setup__input-images"
+                  onChange={handleMultipleInputChange}
+                />
+              </div>
             </div>
             <div className="store-setup__error-flag">
               {errorsState.prevImagesUrls.hasErrors && (
@@ -88,13 +105,16 @@ const FormSection02 = ({ formChecking, setFormsChecking }) => {
               >
                 Imágen de la venta de garaje física
               </label>
-              <input
-                type="file"
-                name="physicalStoreImg"
-                id="physicalStoreImg"
-                className="store-setup__input"
-                multiple="false"
-              />
+              <div className="store-setup__mult-images-container">
+                <button className="store-setup__mult-images-button">
+                  Carga un archivo
+                </button>
+                <input
+                  type="file"
+                  className="store-setup__input-images"
+                  onChange={handleInputChange}
+                />
+              </div>
             </div>
             <div className="store-setup__error-flag mt-2 mb-4">
               {errorsState.physicalStoreUrl.hasErrors && (
