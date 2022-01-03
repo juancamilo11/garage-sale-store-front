@@ -152,6 +152,7 @@
 .store-setup__buttons-container {
   width: 500px;
   margin-top: -40px;
+  margin-bottom: 40px;
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
@@ -159,6 +160,14 @@
 }
 
 //Form section #2
+
+.store-setup__form-container {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  background-color: red;
+  padding: 20px;
+}
 
 .store-setup__images-container {
   // display: flex;
@@ -173,7 +182,7 @@
   justify-content: space-evenly;
   background-color: blue;
   width: 60%;
-  border: 5px solid black;
+  border: 5px solid yellow;
 }
 
 .store-setup__input-label {

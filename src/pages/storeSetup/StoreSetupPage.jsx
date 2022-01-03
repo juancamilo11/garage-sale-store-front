@@ -26,10 +26,10 @@ const StoreSetupPage = () => {
         <SectionTitle sectionTitle="Creación de una nueva venta de garaje" />
       </div>
 
-      {/* <FormSection01
+      <FormSection01
         formChecking={formSection01}
         setFormsChecking={setFormsChecking}
-      /> */}
+      />
 
       {formSection01.isValidated && (
         <FormSection02

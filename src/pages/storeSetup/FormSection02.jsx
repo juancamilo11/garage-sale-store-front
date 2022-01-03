@@ -37,7 +37,7 @@ const FormSection02 = ({ formChecking, setFormsChecking }) => {
         2. Sube algunas imágenes representativas
       </h2>
       <form onSubmit={handleFormSection_02Submit}>
-        <div className="store-setup__form-container">
+        <div className="store-setup__images-container">
           <div className="store-setup__inputs-container">
             <div className="store-setup__input-container">
               <label htmlFor="portrait" className="store-setup__input-label">
