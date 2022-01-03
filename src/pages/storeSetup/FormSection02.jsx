@@ -64,8 +64,7 @@ const FormSection02 = ({ formChecking, setFormsChecking }) => {
               <label htmlFor="prevImages" className="store-setup__input-label">
                 Imágenes de Previsualización
               </label>
-              <textarea
-                style={{ resize: "vertical" }}
+              <input
                 type="file"
                 name="prevImages"
                 id="prevImages"
@@ -74,9 +73,9 @@ const FormSection02 = ({ formChecking, setFormsChecking }) => {
               />
             </div>
             <div className="store-setup__error-flag">
-              {errorsState.prevImages.hasErrors && (
+              {errorsState.prevImagesUrls.hasErrors && (
                 <ErrorFlag
-                  message={errorsState.prevImages.message}
+                  message={errorsState.prevImagesUrls.message}
                   width="100%"
                 />
               )}
@@ -98,9 +97,9 @@ const FormSection02 = ({ formChecking, setFormsChecking }) => {
               />
             </div>
             <div className="store-setup__error-flag mt-2 mb-4">
-              {errorsState.physicalStoreImg.hasErrors && (
+              {errorsState.physicalStoreUrl.hasErrors && (
                 <ErrorFlag
-                  message={errorsState.physicalStoreImg.message}
+                  message={errorsState.physicalStoreUrl.message}
                   width="100%"
                 />
               )}
