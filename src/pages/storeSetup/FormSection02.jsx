@@ -32,7 +32,7 @@ const FormSection02 = ({ formChecking, setFormsChecking }) => {
   const handleResetForm = () => {};
 
   return (
-    <div>
+    <div className="store-setup__images-container">
       <h2 className="store-setup__section-enum">
         2. Sube algunas imágenes representativas
       </h2>
