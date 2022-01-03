@@ -15,15 +15,18 @@ import storeSetupReducer from "./../../reducers/storeSetupReducer";
 import useForm from "../../hooks/useForm";
 import ProductTagList from "../../components/storeSetup/ProductTagList";
 import Swal from "sweetalert2";
+import ImagesTagList from "../../components/storeSetup/ImagesTagList";
 
 const FormSection02 = ({ formChecking, setFormsChecking }) => {
   const [errorsState, setErrorsState] = useState(section_02ErrorState);
 
-  const [imagesState, setTmagesState] = useState({
+  const [imagesState, setImagesState] = useState({
     portraitUrl: null,
     prevImagesUrls: [],
     physicalStoreUrl: null,
   });
+
+  const { portraitUrl, prevImagesUrls, physicalStoreUrl } = imagesState;
 
   const handleFormSection_02Submit = (e) => {
     e.preventDefault();
@@ -73,7 +76,6 @@ const FormSection02 = ({ formChecking, setFormsChecking }) => {
                 />
               )}
             </div>
-
             <div className="store-setup__input-container">
               <label htmlFor="prevImages" className="store-setup__input-label">
                 Imágenes de Previsualización
@@ -97,7 +99,10 @@ const FormSection02 = ({ formChecking, setFormsChecking }) => {
                 />
               )}
             </div>
-
+            <ImagesTagList
+              images={prevImagesUrls}
+              setImagesList={setImagesState}
+            />
             <div className="store-setup__input-container">
               <label
                 htmlFor="physicalStoreImg"
