@@ -25,12 +25,18 @@ const FormSection02 = ({ formChecking, setFormsChecking }) => {
     physicalStoreUrl: null,
   });
 
+  const handleFormSection_02Submit = (e) => {
+    e.preventDefault();
+  };
+
+  const handleResetForm = () => {};
+
   return (
     <div>
       <h2 className="store-setup__section-enum">
         2. Sube algunas imágenes representativas
       </h2>
-      <form onSubmit={handleFormSection_01Submit}>
+      <form onSubmit={handleFormSection_02Submit}>
         <div className="store-setup__form-container">
           <div className="store-setup__inputs-container">
             <div className="store-setup__input-container">
@@ -42,14 +48,13 @@ const FormSection02 = ({ formChecking, setFormsChecking }) => {
                 name="portrait"
                 id="portrait"
                 className="store-setup__input"
-                value={storeName}
-                onChange={handleInputValidation}
+                multiple="false"
               />
             </div>
             <div className="store-setup__error-flag mt-2 mb-4">
-              {errorsState.portrait.hasErrors && (
+              {errorsState.portraitUrl.hasErrors && (
                 <ErrorFlag
-                  message={errorsState.portrait.message}
+                  message={errorsState.portraitUrl.message}
                   width="100%"
                 />
               )}
@@ -65,8 +70,6 @@ const FormSection02 = ({ formChecking, setFormsChecking }) => {
                 name="prevImages"
                 id="prevImages"
                 multiple="true"
-                value={prevImages}
-                onChange={handleInputValidation}
                 className="store-setup__input store-setup__textarea-slogan"
               />
             </div>
@@ -91,8 +94,7 @@ const FormSection02 = ({ formChecking, setFormsChecking }) => {
                 name="physicalStoreImg"
                 id="physicalStoreImg"
                 className="store-setup__input"
-                value={physicalStoreImg}
-                onChange={handleInputValidation}
+                multiple="false"
               />
             </div>
             <div className="store-setup__error-flag mt-2 mb-4">

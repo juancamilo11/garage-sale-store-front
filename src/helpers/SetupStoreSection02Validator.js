@@ -2,15 +2,15 @@ import moment from "moment";
 import validator from "validator";
 
 //Initial values for the section #1 form of the store setup's.
-export const section_01FormValues = {
-  portrait: null,
+export const section_02FormValues = {
+  portraitUrl: null,
   prevImagesUrls: [],
   physicalStoreUrl: null,
 };
 
 //Initial values for the section #1 errors of the store setup's.
-export const section_01ErrorState = {
-  portrait: { hasErrors: false, message: "" },
+export const section_02ErrorState = {
+  portraitUrl: { hasErrors: false, message: "" },
   prevImagesUrls: { hasErrors: false, message: "" },
   physicalStoreUrl: { hasErrors: false, message: "" },
 };
