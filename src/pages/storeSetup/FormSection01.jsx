@@ -24,8 +24,6 @@ const FormSection01 = ({ formChecking, setFormsChecking }) => {
 
   const [errorsState, setErrorsState] = useState(section_01ErrorState);
 
-  const [storeSetupState, dispatch] = useReducer(storeSetupReducer);
-
   const {
     storeName,
     tag,
