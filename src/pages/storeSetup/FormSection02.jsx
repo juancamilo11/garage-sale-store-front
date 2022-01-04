@@ -108,9 +108,8 @@ const FormSection02 = ({ formChecking, setFormsChecking }) => {
                 />
               )}
               <img
-                src="./../../assets/img/store-setup/emptyImage.png"
+                src={process.env.PUBLIC_URL + "/assets/common/emptyImage.png"}
                 className="portrait-preview--no-content"
-                width="10%"
                 id="portrait-preview"
                 alt=" "
               />
