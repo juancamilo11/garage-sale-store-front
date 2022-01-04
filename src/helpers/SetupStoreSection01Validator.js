@@ -14,13 +14,13 @@ export const section_01FormValues = {
 
 //Initial values for the section #1 errors of the store setup's.
 export const section_01ErrorState = {
-  storeName: { hasErrors: false, message: "" },
-  tag: { hasErrors: false, message: "" },
-  slogan: { hasErrors: false, message: "" },
-  description: { hasErrors: false, message: "" },
-  startingDate: { hasErrors: false, message: "" },
-  endingDate: { hasErrors: false, message: "" },
-  address: { hasErrors: false, message: "" },
+  storeName: { hasErrors: false, message: "", hasContent: false },
+  tag: { hasErrors: false, message: "", hasContent: false },
+  slogan: { hasErrors: false, message: "", hasContent: false },
+  description: { hasErrors: false, message: "", hasContent: false },
+  startingDate: { hasErrors: false, message: "", hasContent: false },
+  endingDate: { hasErrors: false, message: "", hasContent: false },
+  address: { hasErrors: false, message: "", hasContent: false },
 };
 
 const section01Validator = (e, setErrorsState) => {

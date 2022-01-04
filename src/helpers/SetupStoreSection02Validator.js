@@ -16,24 +16,43 @@ export const section_02ErrorState = {
 };
 
 const section02Validator = (e, setErrorsState) => {
-  const { name: fieldName, value } = e.target;
+  const { name: fieldName, files } = e.target;
   switch (fieldName) {
     case "portraitUrl":
-      handlePortraitValidation(value, setErrorsState);
+      handlePortraitUrlValidation(files[0], setErrorsState);
       break;
     case "prevImagesUrls":
-      handlePrevImagesUrlsValidation(value, setErrorsState);
+      handlePrevImagesUrlsValidation(files, setErrorsState);
       break;
     case "physicalStoreUrl":
-      handlePhysicalStoreUrlValidation(value, setErrorsState);
+      handlePhysicalStoreUrlValidation(files[0], setErrorsState);
       break;
     default:
       break;
   }
 };
 
-const handlePortraitValidation = (value, setErrorsState) => {};
-const handlePrevImagesUrlsValidation = (value, setErrorsState) => {};
-const handlePhysicalStoreUrlValidation = (value, setErrorsState) => {};
+const sendImageToCloudinary = () => {};
+
+const handlePortraitUrlValidation = (file, setErrorsState) => {
+  if (!file.type.startsWith("image")) {
+    setErrorsState((state) => {
+      return {
+        ...state,
+        ["portraitUrl"]: {
+          hasErrors: true,
+          message:
+            "Error: El archivo ingresado no es una imágen, por favor suba un archivo con formato correcto.",
+        },
+      };
+    });
+    return;
+  }
+  const blah = document.getElementById("portrait-preview");
+  blah.src = URL.createObjectURL(file);
+  sendImageToCloudinary();
+};
+const handlePrevImagesUrlsValidation = (arrfiles, setErrorsState) => {};
+const handlePhysicalStoreUrlValidation = (file, setErrorsState) => {};
 
 export default section02Validator;

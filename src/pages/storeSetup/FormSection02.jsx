@@ -30,8 +30,6 @@ const FormSection02 = ({ formChecking, setFormsChecking }) => {
   const handleInputValidation = (e) => {
     handleInputChange(e);
     section02Validator(e, setErrorsState);
-
-    window.alert(e.target.files[0].type.startsWith("image"));
   };
 
   const handleSelectImageToLoad = (e) => {
@@ -94,6 +92,7 @@ const FormSection02 = ({ formChecking, setFormsChecking }) => {
                 </button>
                 <input
                   type="file"
+                  name="portraitUrl"
                   className="store-setup__input-images"
                   id="store-setup__input-portrait"
                   value={portraitUrl}
@@ -102,10 +101,19 @@ const FormSection02 = ({ formChecking, setFormsChecking }) => {
               </div>
             </div>
             <div className="store-setup__error-flag mt-2 mb-4">
-              {errorsState.portraitUrl.hasErrors && (
+              {errorsState.portraitUrl.hasErrors ? (
                 <ErrorFlag
                   message={errorsState.portraitUrl.message}
                   width="100%"
+                />
+              ) : (
+                <img
+                  id="portrait-preview"
+                  width="50%"
+                  height="32%"
+                  margin="auto auto"
+                  src="#"
+                  alt=" "
                 />
               )}
             </div>
@@ -126,6 +134,7 @@ const FormSection02 = ({ formChecking, setFormsChecking }) => {
                 </button>
                 <input
                   type="file"
+                  name="prevImagesUrls"
                   className="store-setup__input-images"
                   id="store-setup__input-previews"
                   value={prevImagesUrls}
@@ -162,6 +171,7 @@ const FormSection02 = ({ formChecking, setFormsChecking }) => {
                 </button>
                 <input
                   type="file"
+                  name="physicalStoreUrl"
                   className="store-setup__input-images"
                   id="store-setup__input-physic-img"
                   value={physicalStoreUrl}
