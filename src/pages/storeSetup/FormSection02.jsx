@@ -5,7 +5,9 @@ import Section01Validator from "../../helpers/SetupStoreSection01Validator";
 import { section_01FormValues } from "./../../helpers/SetupStoreSection01Validator";
 import { section_01ErrorState } from "./../../helpers/SetupStoreSection01Validator";
 
-import { section_02FormValues } from "./../../helpers/SetupStoreSection02Validator";
+import section02Validator, {
+  section_02FormValues,
+} from "./../../helpers/SetupStoreSection02Validator";
 import { section_02ErrorState } from "./../../helpers/SetupStoreSection02Validator";
 
 import { section_03FormValues } from "./../../helpers/SetupStoreSection03Validator";
@@ -26,6 +28,9 @@ const FormSection02 = ({ formChecking, setFormsChecking }) => {
   const { portraitUrl, prevImagesUrls, physicalStoreUrl } = formValues;
 
   const handleInputValidation = (e) => {
+    handleInputChange(e);
+    section02Validator(e, setErrorsState);
+
     window.alert(e.target.files[0].type.startsWith("image"));
   };
 
@@ -46,11 +51,19 @@ const FormSection02 = ({ formChecking, setFormsChecking }) => {
     }
   };
 
-  const handleMultipleInputChange = (e) => {
-    // window.alert(e.target.files[0].type.startsWith("image"));
+  const handleResetForm = (e) => {
+    Swal.fire({
+      title:
+        "¿Está seguro que desea resetear los valores del segundo formulario?",
+      text: "Los cambios aún no se han guardado",
+      icon: "warning",
+      showConfirmButton: true,
+      showCancelButton: true,
+      timer: 10000,
+    }).then((res) => {
+      res.isConfirmed && resetForm();
+    });
   };
-
-  const handleResetForm = () => {};
 
   const handleFormSection_02Submit = (e) => {
     e.preventDefault();

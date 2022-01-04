@@ -18,7 +18,7 @@ export const section_02ErrorState = {
 const section02Validator = (e, setErrorsState) => {
   const { name: fieldName, value } = e.target;
   switch (fieldName) {
-    case "portrait":
+    case "portraitUrl":
       handlePortraitValidation(value, setErrorsState);
       break;
     case "prevImagesUrls":

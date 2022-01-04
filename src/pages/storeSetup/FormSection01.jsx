@@ -1,6 +1,6 @@
 import React, { useReducer, useState } from "react";
 import ErrorFlag from "../../components/ErrorFlag";
-import Section01Validator from "../../helpers/SetupStoreSection01Validator";
+import section01Validator from "../../helpers/SetupStoreSection01Validator";
 
 import { section_01FormValues } from "./../../helpers/SetupStoreSection01Validator";
 import { section_01ErrorState } from "./../../helpers/SetupStoreSection01Validator";
@@ -77,7 +77,7 @@ const FormSection01 = ({ formChecking, setFormsChecking }) => {
 
   const handleInputValidation = (e) => {
     handleInputChange(e);
-    Section01Validator(e, setErrorsState);
+    section01Validator(e, setErrorsState);
   };
 
   const handleFormSection_01Submit = (e) => {
