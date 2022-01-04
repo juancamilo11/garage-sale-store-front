@@ -25,12 +25,25 @@ const FormSection02 = ({ formChecking, setFormsChecking }) => {
 
   const { portraitUrl, prevImagesUrls, physicalStoreUrl } = formValues;
 
-  const handleFormSection_02Submit = (e) => {
-    e.preventDefault();
+  const handleInputValidation = (e) => {
+    window.alert(e.target.files[0].type.startsWith("image"));
   };
 
-  const handleInputValidation = () => {
-    // window.alert(e.target.files[0].type.startsWith("image"));
+  const handleSelectImageToLoad = (e) => {
+    const { id } = e.target;
+    switch (id) {
+      case "portrait-button":
+        document.getElementById("store-setup__input-portrait").click();
+        break;
+      case "preview-button":
+        document.getElementById("store-setup__input-previews").click();
+        break;
+      case "physic-button":
+        document.getElementById("store-setup__input-physic-img").click();
+        break;
+      default:
+        break;
+    }
   };
 
   const handleMultipleInputChange = (e) => {
@@ -38,6 +51,10 @@ const FormSection02 = ({ formChecking, setFormsChecking }) => {
   };
 
   const handleResetForm = () => {};
+
+  const handleFormSection_02Submit = (e) => {
+    e.preventDefault();
+  };
 
   return (
     <div className="store-setup__images-main-container">
@@ -55,12 +72,18 @@ const FormSection02 = ({ formChecking, setFormsChecking }) => {
                 Imágen de portada
               </label>
               <div className="store-setup__mult-images-container">
-                <button className="store-setup__mult-images-button">
+                <button
+                  className="store-setup__mult-images-button"
+                  id="portrait-button"
+                  onClick={handleSelectImageToLoad}
+                >
                   Carga un archivo
                 </button>
                 <input
                   type="file"
                   className="store-setup__input-images"
+                  id="store-setup__input-portrait"
+                  value={portraitUrl}
                   onChange={handleInputValidation}
                 />
               </div>
@@ -81,12 +104,18 @@ const FormSection02 = ({ formChecking, setFormsChecking }) => {
                 Imágenes de Previsualización
               </label>
               <div className="store-setup__mult-images-container">
-                <button className="store-setup__mult-images-button">
+                <button
+                  className="store-setup__mult-images-button"
+                  id="preview-button"
+                  onClick={handleSelectImageToLoad}
+                >
                   Carga un archivo
                 </button>
                 <input
                   type="file"
                   className="store-setup__input-images"
+                  id="store-setup__input-previews"
+                  value={prevImagesUrls}
                   onChange={handleInputValidation}
                 />
               </div>
@@ -111,12 +140,18 @@ const FormSection02 = ({ formChecking, setFormsChecking }) => {
                 Imágen de la venta de garaje física
               </label>
               <div className="store-setup__mult-images-container">
-                <button className="store-setup__mult-images-button">
+                <button
+                  className="store-setup__mult-images-button"
+                  id="physic-button"
+                  onClick={handleSelectImageToLoad}
+                >
                   Carga un archivo
                 </button>
                 <input
                   type="file"
                   className="store-setup__input-images"
+                  id="store-setup__input-physic-img"
+                  value={physicalStoreUrl}
                   onChange={handleInputValidation}
                 />
               </div>
