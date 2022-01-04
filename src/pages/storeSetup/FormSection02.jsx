@@ -20,22 +20,16 @@ import ImagesTagList from "../../components/storeSetup/ImagesTagList";
 const FormSection02 = ({ formChecking, setFormsChecking }) => {
   const [errorsState, setErrorsState] = useState(section_02ErrorState);
 
-  const [imagesState, setImagesState] = useState({
-    portraitUrl: null,
-    prevImagesUrls: [],
-    physicalStoreUrl: null,
-  });
+  const [formValues, handleInputChange, resetForm] =
+    useForm(section_02FormValues);
 
-  const { portraitUrl, prevImagesUrls, physicalStoreUrl } = imagesState;
+  const { portraitUrl, prevImagesUrls, physicalStoreUrl } = formValues;
 
   const handleFormSection_02Submit = (e) => {
     e.preventDefault();
   };
 
-  const handleImageLoad = (e) => {
-    // window.alert("imagen cargada");
-  };
-  const handleInputChange = (e) => {
+  const handleInputValidation = () => {
     // window.alert(e.target.files[0].type.startsWith("image"));
   };
 
@@ -67,7 +61,7 @@ const FormSection02 = ({ formChecking, setFormsChecking }) => {
                 <input
                   type="file"
                   className="store-setup__input-images"
-                  onChange={handleInputChange}
+                  onChange={handleInputValidation}
                 />
               </div>
             </div>
@@ -93,7 +87,7 @@ const FormSection02 = ({ formChecking, setFormsChecking }) => {
                 <input
                   type="file"
                   className="store-setup__input-images"
-                  onChange={handleMultipleInputChange}
+                  onChange={handleInputValidation}
                 />
               </div>
             </div>
@@ -107,7 +101,7 @@ const FormSection02 = ({ formChecking, setFormsChecking }) => {
             </div>
             <ImagesTagList
               images={prevImagesUrls}
-              setImagesList={setImagesState}
+              setImagesList={handleInputChange}
             />
             <div className="store-setup__input-container">
               <label
@@ -123,7 +117,7 @@ const FormSection02 = ({ formChecking, setFormsChecking }) => {
                 <input
                   type="file"
                   className="store-setup__input-images"
-                  onChange={handleInputChange}
+                  onChange={handleInputValidation}
                 />
               </div>
             </div>

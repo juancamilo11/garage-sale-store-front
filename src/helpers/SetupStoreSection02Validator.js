@@ -3,9 +3,9 @@ import validator from "validator";
 
 //Initial values for the section #1 form of the store setup's.
 export const section_02FormValues = {
-  portraitUrl: null,
+  portraitUrl: "",
   prevImagesUrls: [],
-  physicalStoreUrl: null,
+  physicalStoreUrl: "",
 };
 
 //Initial values for the section #1 errors of the store setup's.
