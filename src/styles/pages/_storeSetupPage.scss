@@ -232,6 +232,12 @@
   background-color: rgb(245, 61, 58);
 }
 
-#portrait-preview {
-  margin: 20px 25%;
+.portrait-preview--no-content {
+  margin: 20px 45%;
+  width: 10%;
+}
+
+.portrait-preview--with-content {
+  margin: 20px 30%;
+  width: 40%;
 }

@@ -37,7 +37,7 @@ const sendImageToCloudinary = () => {
 };
 
 const handlePortraitUrlValidation = (file, setErrorsState) => {
-  if (!file.type.startsWith("image")) {
+  if (!file?.type.startsWith("image")) {
     setErrorsState((state) => {
       return {
         ...state,
@@ -49,18 +49,29 @@ const handlePortraitUrlValidation = (file, setErrorsState) => {
         },
       };
     });
+    const imagePreview = document.getElementById("portrait-preview");
+    imagePreview.src = "./../assets/img/store-setup/emptyImage.png";
+    imagePreview.classList.replace(
+      "portrait-preview--with-content",
+      "portrait-preview--no-content"
+    );
     return;
   }
+
   //Enviar la imagen a cloudinary y en base a la peticion hacer lo siguiente.
   sendImageToCloudinary();
+  const imagePreview = document.getElementById("portrait-preview");
+  imagePreview.src = URL.createObjectURL(file);
+  imagePreview.classList.replace(
+    "portrait-preview--no-content",
+    "portrait-preview--with-content"
+  );
   setErrorsState((state) => {
     return {
       ...state,
       ["portraitUrl"]: { hasErrors: false, message: "", hasContent: true },
     };
   });
-  const imagePreview = document.getElementById("portrait-preview");
-  imagePreview.src = URL.createObjectURL(file);
 };
 
 const handlePrevImagesUrlsValidation = (arrfiles, setErrorsState) => {};
