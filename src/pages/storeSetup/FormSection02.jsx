@@ -53,8 +53,11 @@ const FormSection02 = ({ formChecking, setFormsChecking }) => {
       <form onSubmit={handleFormSection_02Submit}>
         <div className="store-setup__images-container">
           <div className="store-setup__images-inputs-container">
-            <div className="store-setup__input-container">
-              <label htmlFor="portrait" className="store-setup__input-label">
+            <div className="store-setup__input-images-container">
+              <label
+                htmlFor="portrait"
+                className="store-setup__input-image-label"
+              >
                 Imágen de portada
               </label>
               <div className="store-setup__mult-images-container">
@@ -77,7 +80,10 @@ const FormSection02 = ({ formChecking, setFormsChecking }) => {
               )}
             </div>
             <div className="store-setup__input-container">
-              <label htmlFor="prevImages" className="store-setup__input-label">
+              <label
+                htmlFor="prevImages"
+                className="store-setup__input-image-label"
+              >
                 Imágenes de Previsualización
               </label>
               <div className="store-setup__mult-images-container">
@@ -106,7 +112,7 @@ const FormSection02 = ({ formChecking, setFormsChecking }) => {
             <div className="store-setup__input-container">
               <label
                 htmlFor="physicalStoreImg"
-                className="store-setup__input-label"
+                className="store-setup__input-image-label"
               >
                 Imágen de la venta de garaje física
               </label>
