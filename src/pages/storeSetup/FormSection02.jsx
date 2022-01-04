@@ -101,21 +101,19 @@ const FormSection02 = ({ formChecking, setFormsChecking }) => {
               </div>
             </div>
             <div className="store-setup__error-flag mt-2 mb-4">
-              {errorsState.portraitUrl.hasErrors ? (
+              {errorsState.portraitUrl.hasErrors && (
                 <ErrorFlag
                   message={errorsState.portraitUrl.message}
                   width="100%"
                 />
-              ) : (
-                <img
-                  id="portrait-preview"
-                  width="50%"
-                  height="32%"
-                  margin="auto auto"
-                  src="#"
-                  alt=" "
-                />
               )}
+              <img
+                id="portrait-preview"
+                width="50%"
+                margin="auto auto"
+                src="#"
+                alt=" "
+              />
             </div>
             <div className="store-setup__input-container">
               <label
