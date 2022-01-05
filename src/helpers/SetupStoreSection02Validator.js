@@ -76,6 +76,8 @@ const handlePortraitUrlValidation = (file, setErrorsState) => {
 
 const handlePrevImagesUrlsValidation = (arrfiles, setErrorsState) => {};
 
-const handlePhysicalStoreUrlValidation = (file, setErrorsState) => {};
+const handlePhysicalStoreUrlValidation = (file, setErrorsState) => {
+  //Continuar con esto basándome de lo que ya se hizo en la imágen de portada
+};
 
 export default section02Validator;
