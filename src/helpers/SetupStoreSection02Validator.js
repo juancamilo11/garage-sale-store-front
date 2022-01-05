@@ -91,48 +91,41 @@ const handlePrevImagesUrlsValidation = (arrFiles, setErrorsState) => {
     });
     return;
   }
-
+  //arrFiles es de tipo FileList, no deriva de Array (pero si es iterable), por ende
+  //se debe generar un array para poder recorrer este objeto
   if (
     !new Array(3)
       .fill(0)
       .every((num, index) => arrFiles.item(index).type.startsWith("image"))
   ) {
-    console.log("se ha subido un archivo diferente a una imágen");
+    new Array(3).fill(0).forEach((num, index) => {
+      const imagePreview = document.getElementById(
+        `${"previsualization-preview" + (index + 1)}`
+      );
+      imagePreview.setAttribute("src", "/assets/common/emptyImage.png");
+      imagePreview.classList.replace(
+        "portrait-preview--with-content",
+        "portrait-preview--no-content"
+      );
+    });
+    return;
   }
-  // if (!arrFiles?.type.startsWith("image")) {
-  //   const imagePreview = document.getElementById("previsualization-preview");
-  //   imagePreview.setAttribute("src", "/assets/common/emptyImage.png");
-  //   imagePreview.classList.replace(
-  //     "portrait-preview--with-content",
-  //     "portrait-preview--no-content"
-  //   );
-  //   setErrorsState((state) => {
-  //     return {
-  //       ...state,
-  //       ["prevImagesUrls"]: {
-  //         hasErrors: true,
-  //         message:
-  //           "Error: El archivo ingresado no es una imágen, por favor suba un archivo con formato correcto.",
-  //         hasContent: false,
-  //       },
-  //     };
-  //   });
-  //   return;
-  // }
-  // //Enviar la imagen a cloudinary y en base a la peticion hacer lo siguiente.
-  // sendImageToCloudinary();
-  // const imagePreview = document.getElementById("previsualization-preview");
-  // imagePreview.src = URL.createObjectURL(file);
-  // imagePreview.classList.replace(
-  //   "portrait-preview--no-content",
-  //   "portrait-preview--with-content"
-  // );
-  // setErrorsState((state) => {
-  //   return {
-  //     ...state,
-  //     ["prevImagesUrls"]: { hasErrors: false, message: "", hasContent: true },
-  //   };
-  // });
+
+  //En este punto ya todo está bien validado
+
+  //Enviar la imagen a cloudinary y en base a la peticion hacer lo siguiente.
+  sendImageToCloudinary();
+
+  new Array(3).fill(0).forEach((num, index) => {
+    const imagePreview = document.getElementById(
+      `${"previsualization-preview" + (index + 1)}`
+    );
+    imagePreview.src = URL.createObjectURL(arrFiles.item(index));
+    imagePreview.classList.replace(
+      "portrait-preview--no-content",
+      "portrait-preview--with-content"
+    );
+  });
 };
 
 const handlePhysicalStoreUrlValidation = (file, setErrorsState) => {
