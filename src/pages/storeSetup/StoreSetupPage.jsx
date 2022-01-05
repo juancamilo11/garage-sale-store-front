@@ -19,7 +19,7 @@ const StoreSetupPage = () => {
   const { formSection01, formSection02, formSection03 } = formsChecking;
 
   return (
-    <div className="user-form-data__main-container">
+    <div className="store-setup__main-container">
       <NavBarFormUserData />
 
       <div className="user-form-data__section-title">
