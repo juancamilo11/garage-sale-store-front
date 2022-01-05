@@ -131,6 +131,7 @@ const FormSection02 = ({ formChecking, setFormsChecking }) => {
                 </button>
                 <input
                   type="file"
+                  multiple="multiple"
                   name="prevImagesUrls"
                   className="store-setup__input-images"
                   id="store-setup__input-previews"
@@ -147,10 +148,14 @@ const FormSection02 = ({ formChecking, setFormsChecking }) => {
                 />
               )}
             </div>
-            <ImagesTagList
-              images={prevImagesUrls}
-              setImagesList={handleInputChange}
-            />
+            {new Array(3).fill(0).map((elem, index) => (
+              <img
+                src={process.env.PUBLIC_URL + "/assets/common/emptyImage.png"}
+                className="portrait-preview--no-content"
+                id={`${"previsualization-preview" + (index + 1)}`}
+                alt=" "
+              />
+            ))}
             <div className="store-setup__input-container">
               <label
                 htmlFor="physicalStoreImg"

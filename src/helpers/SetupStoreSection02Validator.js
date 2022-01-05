@@ -74,7 +74,66 @@ const handlePortraitUrlValidation = (file, setErrorsState) => {
   });
 };
 
-const handlePrevImagesUrlsValidation = (arrfiles, setErrorsState) => {};
+//Todos las imágenes se van a subir al mismo tiempo
+const handlePrevImagesUrlsValidation = (arrFiles, setErrorsState) => {
+  console.log(arrFiles);
+  if (arrFiles.length !== 3) {
+    setErrorsState((state) => {
+      return {
+        ...state,
+        ["prevImagesUrls"]: {
+          hasErrors: true,
+          message:
+            "Error: Ha ingresado una cantidad inválida de imágenes, se deben subir exactamente tres.",
+          hasContent: false,
+        },
+      };
+    });
+    return;
+  }
+
+  if (
+    !new Array(3)
+      .fill(0)
+      .every((num, index) => arrFiles.item(index).type.startsWith("image"))
+  ) {
+    console.log("se ha subido un archivo diferente a una imágen");
+  }
+  // if (!arrFiles?.type.startsWith("image")) {
+  //   const imagePreview = document.getElementById("previsualization-preview");
+  //   imagePreview.setAttribute("src", "/assets/common/emptyImage.png");
+  //   imagePreview.classList.replace(
+  //     "portrait-preview--with-content",
+  //     "portrait-preview--no-content"
+  //   );
+  //   setErrorsState((state) => {
+  //     return {
+  //       ...state,
+  //       ["prevImagesUrls"]: {
+  //         hasErrors: true,
+  //         message:
+  //           "Error: El archivo ingresado no es una imágen, por favor suba un archivo con formato correcto.",
+  //         hasContent: false,
+  //       },
+  //     };
+  //   });
+  //   return;
+  // }
+  // //Enviar la imagen a cloudinary y en base a la peticion hacer lo siguiente.
+  // sendImageToCloudinary();
+  // const imagePreview = document.getElementById("previsualization-preview");
+  // imagePreview.src = URL.createObjectURL(file);
+  // imagePreview.classList.replace(
+  //   "portrait-preview--no-content",
+  //   "portrait-preview--with-content"
+  // );
+  // setErrorsState((state) => {
+  //   return {
+  //     ...state,
+  //     ["prevImagesUrls"]: { hasErrors: false, message: "", hasContent: true },
+  //   };
+  // });
+};
 
 const handlePhysicalStoreUrlValidation = (file, setErrorsState) => {
   //Continuar con esto basándome de lo que ya se hizo en la imágen de portada
