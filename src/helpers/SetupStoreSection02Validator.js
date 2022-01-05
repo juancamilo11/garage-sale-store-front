@@ -78,6 +78,41 @@ const handlePrevImagesUrlsValidation = (arrfiles, setErrorsState) => {};
 
 const handlePhysicalStoreUrlValidation = (file, setErrorsState) => {
   //Continuar con esto basándome de lo que ya se hizo en la imágen de portada
+  if (!file?.type.startsWith("image")) {
+    const imagePreview = document.getElementById("physical-store-preview");
+    imagePreview.setAttribute("src", "/assets/common/emptyImage.png");
+    imagePreview.classList.replace(
+      "portrait-preview--with-content",
+      "portrait-preview--no-content"
+    );
+    setErrorsState((state) => {
+      return {
+        ...state,
+        ["physicalStoreUrl"]: {
+          hasErrors: true,
+          message:
+            "Error: El archivo ingresado no es una imágen, por favor suba un archivo con formato correcto.",
+          hasContent: false,
+        },
+      };
+    });
+    return;
+  }
+
+  //Enviar la imagen a cloudinary y en base a la peticion hacer lo siguiente.
+  sendImageToCloudinary();
+  const imagePreview = document.getElementById("physical-store-preview");
+  imagePreview.src = URL.createObjectURL(file);
+  imagePreview.classList.replace(
+    "portrait-preview--no-content",
+    "portrait-preview--with-content"
+  );
+  setErrorsState((state) => {
+    return {
+      ...state,
+      ["physicalStoreUrl"]: { hasErrors: false, message: "", hasContent: true },
+    };
+  });
 };
 
 export default section02Validator;
