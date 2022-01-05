@@ -6,6 +6,7 @@ import { section_01FormValues } from "./../../helpers/SetupStoreSection01Validat
 import { section_01ErrorState } from "./../../helpers/SetupStoreSection01Validator";
 
 import section02Validator, {
+  resetImagesFromView,
   section_02FormValues,
 } from "./../../helpers/SetupStoreSection02Validator";
 import { section_02ErrorState } from "./../../helpers/SetupStoreSection02Validator";
@@ -53,13 +54,16 @@ const FormSection02 = ({ formChecking, setFormsChecking }) => {
     Swal.fire({
       title:
         "¿Está seguro que desea resetear los valores del segundo formulario?",
-      text: "Los cambios aún no se han guardado",
+      text: "Los cambios de la sección de imágenes aún no se han guardado",
       icon: "warning",
       showConfirmButton: true,
       showCancelButton: true,
       timer: 10000,
     }).then((res) => {
-      res.isConfirmed && resetForm();
+      if (res.isConfirmed) {
+        resetForm(section_02FormValues);
+        resetImagesFromView(setErrorsState);
+      }
     });
   };
 

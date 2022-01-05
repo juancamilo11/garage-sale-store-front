@@ -36,6 +36,20 @@ const sendImageToCloudinary = () => {
   //Pendiente, conectar con la api de cloudinary.
 };
 
+export const resetImagesFromView = (setErrorsState) => {
+  new Array(3).fill(0).forEach((num, index) => {
+    const imagePreview = document.getElementById(
+      `${"previsualization-preview" + (index + 1)}`
+    );
+    imagePreview.setAttribute("src", "/assets/common/emptyImage.png");
+    imagePreview.classList.replace(
+      "portrait-preview--with-content",
+      "portrait-preview--no-content"
+    );
+  });
+  setErrorsState((state) => section_02ErrorState);
+};
+
 const handlePortraitUrlValidation = (file, setErrorsState) => {
   if (!file?.type.startsWith("image")) {
     const imagePreview = document.getElementById("portrait-preview");
@@ -107,6 +121,17 @@ const handlePrevImagesUrlsValidation = (arrFiles, setErrorsState) => {
         "portrait-preview--with-content",
         "portrait-preview--no-content"
       );
+    });
+    setErrorsState((state) => {
+      return {
+        ...state,
+        ["prevImagesUrls"]: {
+          hasErrors: true,
+          message:
+            "Error: Ha ingresado un archivo inválido, por favor ingrese solamente imágenes.",
+          hasContent: false,
+        },
+      };
     });
     return;
   }
