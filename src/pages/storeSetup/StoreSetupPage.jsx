@@ -12,7 +12,7 @@ import FormSection03 from "./FormSection03";
 const StoreSetupPage = () => {
   const [formsChecking, setFormsChecking] = useState({
     formSection01: { isValidated: true },
-    formSection02: { isValidated: false },
+    formSection02: { isValidated: true },
     formSection03: { isValidated: false },
   });
 
