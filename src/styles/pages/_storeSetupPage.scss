@@ -213,7 +213,6 @@
 }
 
 .store-setup__input-images {
-  font-size: 100px;
   position: absolute;
   left: 0;
   top: 0;
@@ -254,4 +253,44 @@
 .portrait-preview--with-content {
   margin: 20px 30%;
   width: 40%;
+}
+
+//Form section #3
+
+.store-setup__product-category-container {
+  width: 80%;
+  margin: 0px 10%;
+  padding: 40px;
+  background-color: red;
+}
+
+.store-input-image-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  height: 50px;
+  width: 100%;
+  background-color: purple;
+}
+
+.store-setup__category-img-button {
+  margin: 5px;
+  background-color: white;
+  color: rgb(0, 0, 0);
+  border-radius: 10px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  line-height: 15px;
+  border: 2px solid rgb(245, 61, 58);
+  transition: all 0.3s ease 0s;
+  width: 20%;
+  // min-width: 200px;
+  margin-right: 40%;
+
+  padding: 5px;
+}
+
+.store-setup__category-img-button:hover {
+  color: white;
+  background-color: rgb(245, 61, 58);
 }

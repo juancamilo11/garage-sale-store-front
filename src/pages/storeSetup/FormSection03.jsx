@@ -70,7 +70,7 @@ const FormSection03 = ({ formChecking, setFormsChecking }) => {
 
   return (
     <div>
-      <h2 className="store-setup__section-enum">
+      <h2 className="store-setup__section-enum mt-5">
         3. Creación de los productos para la venta
       </h2>
       <form onsubmit={handleSubmitNewCategory}>
@@ -87,10 +87,16 @@ const FormSection03 = ({ formChecking, setFormsChecking }) => {
             value={categoryName}
             onChange={handleInputValidation}
           />
-          <div className="store-setup__mult-images-container">
+          <div className="store-input-image-container mt-3">
+            <label
+              htmlFor="productCategory"
+              className="store-setup__input-label"
+            >
+              Imágen representativa
+            </label>
             <button
-              className="store-setup__mult-images-button"
-              id="physic-button"
+              className="store-setup__category-img-button"
+              id="category-button"
               onClick={handleSelectImageToLoad}
             >
               Carga un archivo
@@ -103,6 +109,11 @@ const FormSection03 = ({ formChecking, setFormsChecking }) => {
               value={categoryImage}
               onChange={handleInputValidation}
             />
+          </div>
+          <div className="store-setup__centered-container">
+            <button className="store-setup__button-update" type="submit">
+              Agregar nueva categoría
+            </button>
           </div>
         </div>
       </form>
