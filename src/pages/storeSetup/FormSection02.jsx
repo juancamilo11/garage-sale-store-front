@@ -118,7 +118,7 @@ const FormSection02 = ({ formChecking, setFormsChecking }) => {
                 alt=" "
               />
             </div>
-            <div className="store-setup__input-container">
+            <div className="store-setup__input-images-container">
               <label
                 htmlFor="prevImages"
                 className="store-setup__input-image-label"
@@ -160,7 +160,7 @@ const FormSection02 = ({ formChecking, setFormsChecking }) => {
                 alt=" "
               />
             ))}
-            <div className="store-setup__input-container">
+            <div className="store-setup__input-images-container">
               <label
                 htmlFor="physicalStoreImg"
                 className="store-setup__input-image-label"

@@ -179,14 +179,14 @@
   color: black;
   font-weight: bold;
   font-size: 1.2rem;
-  width: 60%;
+  width: 40%;
 }
 
 .store-setup__input-images-container {
   display: flex;
   border: 1px solid red;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: flex-start;
   align-items: center;
   margin-top: 15px;
 }
@@ -220,6 +220,11 @@
   opacity: 0;
 }
 
+.store-setup__mult-images-container {
+  width: 20%;
+  background-color: purple;
+}
+
 .store-setup__mult-images-button {
   margin: 5px;
   background-color: white;
@@ -230,7 +235,8 @@
   line-height: 15px;
   border: 2px solid rgb(245, 61, 58);
   transition: all 0.3s ease 0s;
-  width: 12em;
+  width: 80%;
+  margin: 0px 10%;
   padding: 10px;
 }
 
