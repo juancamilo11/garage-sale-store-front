@@ -27,42 +27,26 @@ const FormSection03 = ({ formChecking, setFormsChecking }) => {
   const [errorsState, setErrorsState] = useState(section_03ErrorState);
 
   const {
-    storeName,
-    tag,
-    slogan,
-    description,
-    startingDate,
-    endingDate,
-    address,
+    categoryName,
+    categoryImage,
+    productName,
+    category,
+    quantity,
+    price,
+    productState,
+    productTags,
+    freeShipping,
+    productImages,
   } = formValues;
 
-  const handleAddNewTag = (e) => {
-    const tagInput = document.getElementById("tag");
-    const newTag = tagInput.value;
-    const cleanEvent = { target: { name: "tag", value: "" } };
-
-    if (!errorsState.tag.hasErrors && newTag.trim() !== "") {
-      setTagsList([...tagsList, newTag]);
-      handleInputValidation(cleanEvent);
-    } else {
-      Swal.fire({
-        icon: "error",
-        title: "Oops...",
-        text: `La etiqueta '${newTag}' no se ha podido ingresar, intenta con otro valor.`,
-        showConfirmButton: false,
-        timer: 3500,
-      }).then((res) => {
-        handleInputValidation(cleanEvent);
-      });
-    }
-  };
+  const handleAddNewTag = (e) => {};
 
   const handleInputValidation = (e) => {
     handleInputChange(e);
     section03Validator(e, setErrorsState);
   };
 
-  const handleFormSection_01Submit = (e) => {
+  const handleFormSection_03Submit = (e) => {
     e.preventDefault();
     // const errorReport = Section01Validator(formValues);
     // if (!errorReport.hasErrors()) {
@@ -72,10 +56,16 @@ const FormSection03 = ({ formChecking, setFormsChecking }) => {
     // }
   };
 
+  const handleSelectImageToLoad = () => {};
+
   const handleResetForm = (e) => {
     e.preventDefault();
     resetForm(section_03FormValues);
     setErrorsState(section_03ErrorState);
+  };
+
+  const handleSubmitNewCategory = (e) => {
+    e.preventDefault();
   };
 
   return (
@@ -83,6 +73,39 @@ const FormSection03 = ({ formChecking, setFormsChecking }) => {
       <h2 className="store-setup__section-enum">
         3. Creación de los productos para la venta
       </h2>
+      <form onsubmit={handleSubmitNewCategory}>
+        <div className="store-setup__product-category-container">
+          <label htmlFor="productCategory" className="store-setup__input-label">
+            Nombre de la categoria
+          </label>
+          <input
+            type="text"
+            name="productCategory"
+            id="productCategoryName"
+            className="store-setup__input"
+            autoComplete="off"
+            value={categoryName}
+            onChange={handleInputValidation}
+          />
+          <div className="store-setup__mult-images-container">
+            <button
+              className="store-setup__mult-images-button"
+              id="physic-button"
+              onClick={handleSelectImageToLoad}
+            >
+              Carga un archivo
+            </button>
+            <input
+              type="file"
+              name="categoryImage"
+              className="store-setup__input-images"
+              id="store-setup__input-physic-img"
+              value={categoryImage}
+              onChange={handleInputValidation}
+            />
+          </div>
+        </div>
+      </form>
     </div>
   );
 };

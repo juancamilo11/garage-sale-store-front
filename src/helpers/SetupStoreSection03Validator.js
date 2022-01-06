@@ -1,5 +1,7 @@
 //Initial values for the section #3 form of the store setup's.
 export const section_03FormValues = {
+  categoryName: "",
+  categoryImage: "",
   productName: "",
   category: "",
   quantity: "",
@@ -12,6 +14,8 @@ export const section_03FormValues = {
 
 //Initial values for the section #3 errors of the store setup's.
 export const section_03ErrorState = {
+  categoryName: { hasErrors: false, message: "" },
+  categoryImage: { hasErrors: false, message: "" },
   productName: { hasErrors: false, message: "" },
   category: { hasErrors: false, message: "" },
   quantity: { hasErrors: false, message: "" },
