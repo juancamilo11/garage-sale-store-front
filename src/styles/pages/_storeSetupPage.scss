@@ -20,25 +20,28 @@
 
 .store-setup__form-container {
   display: flex;
-  width: 100%;
+  width: 98%;
+  margin: 0px 1%;
   justify-content: space-around;
   // overflow-wrap: wrap;
   flex-wrap: wrap;
-  background-color: red;
+  // background-color: red;
+  border: 1px solid darkgray;
+  border-radius: 10px;
   padding: 20px;
 }
 
 .store-setup__inputs-container {
   justify-content: space-evenly;
-  background-color: blue;
+  // background-color: blue;
   min-width: 650px;
   width: 45%;
   margin: 20px;
-  border: 5px solid black;
+  // border: 5px solid black;
 }
 
 .store-setup__input-label {
-  border: 1px solid green;
+  // border: 1px solid green;
   color: black;
   font-weight: bold;
   font-size: 1.2rem;
@@ -47,7 +50,7 @@
 
 .store-setup__input-container {
   display: flex;
-  border: 1px solid red;
+  // border: 1px solid red;
   flex-direction: row;
   justify-content: space-evenly;
   align-items: center;
@@ -112,7 +115,7 @@
 }
 
 .store-setup__product-tags-list {
-  background-color: yellow;
+  // background-color: yellow;
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
@@ -160,22 +163,25 @@
 
   width: 100%;
   justify-content: space-around;
-  background-color: red;
+  // background-color: red;
   padding: 20px;
   padding: 40px 0px;
 }
 
 .store-setup__images-inputs-container {
   justify-content: space-around;
-  background-color: blue;
+  // background-color: blue;
+  padding: 40px;
+  border: 1px solid darkgray;
+  border-radius: 10px;
   width: 80%;
   margin: auto;
-  border: 5px solid yellow;
+  // border: 5px solid yellow;
 }
 
 .store-setup__input-image-label {
-  border: 1px solid green;
-  background-color: green;
+  // border: 1px solid green;
+  // background-color: green;
   color: black;
   font-weight: bold;
   font-size: 1.2rem;
@@ -184,7 +190,7 @@
 
 .store-setup__input-images-container {
   display: flex;
-  border: 1px solid red;
+  // border: 1px solid red;
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
@@ -204,7 +210,7 @@
 
 .store-setup__centered-container {
   width: 100%;
-  background-color: blue;
+  // background-color: blue;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -221,7 +227,7 @@
 
 .store-setup__mult-images-container {
   width: 30%;
-  background-color: purple;
+  // background-color: purple;
 }
 
 .store-setup__mult-images-button {
@@ -261,7 +267,9 @@
   width: 80%;
   margin: 0px 10%;
   padding: 40px;
-  background-color: red;
+  // background-color: red;
+  border: 1px solid darkgray;
+  border-radius: 10px;
 }
 
 .store-input-image-container {
@@ -270,7 +278,7 @@
   justify-content: space-evenly;
   height: 50px;
   width: 100%;
-  background-color: purple;
+  // background-color: purple;
 }
 
 .store-setup__category-img-button {

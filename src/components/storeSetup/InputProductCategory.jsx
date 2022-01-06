@@ -26,9 +26,6 @@ const InputProductCategory = ({ handleInputChange, setErrorsState }) => {
 
   return (
     <div>
-      <h2 className="store-setup__section-enum mt-5">
-        3. Creación de los productos para la venta
-      </h2>
       <form onsubmit={handleSubmitNewCategory}>
         <div className="store-setup__product-category-container">
           <label htmlFor="categoryName" className="store-setup__input-label">

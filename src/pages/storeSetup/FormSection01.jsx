@@ -98,7 +98,7 @@ const FormSection01 = ({ formChecking, setFormsChecking }) => {
 
   return (
     <div>
-      <h2 className="store-setup__section-enum">
+      <h2 className="store-setup__section-enum mb-5 mt-1">
         1. Parámetros descriptivos de la tienda
       </h2>
       <form onSubmit={handleFormSection_01Submit}>
