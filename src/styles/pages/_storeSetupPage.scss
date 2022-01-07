@@ -307,11 +307,18 @@
   border-radius: 10px;
 }
 
-.store-setup__product-category-list {
+.store-setup__product-category-list-container {
   border: 1px solid blue;
-  height: 100%;
+  height: inherit;
+  overflow-y: scroll;
   width: 20%;
   // min-width: 200px;
+}
+
+.store-setup__product-category-list {
+  background-color: red;
+  width: 90%;
+  margin: 10px auto;
 }
 
 .store-input-image-container {

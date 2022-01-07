@@ -1,8 +1,9 @@
 import React from "react";
+import { useState } from "react";
 import section03Validator from "../../helpers/SetupStoreSection03Validator";
 import useForm from "../../hooks/useForm";
 
-const InputProductCategory = ({ handleInputChange, setErrorsState }) => {
+const InputProductCategory = ({ categoriesList, setCategoriesList }) => {
   const handleInputValidation = (e) => {
     handleCategoryInputChange(e);
     section03Validator(e, setErrorsState);
@@ -75,8 +76,9 @@ const InputProductCategory = ({ handleInputChange, setErrorsState }) => {
             </div>
           </div>
         </form>
-        <div className="store-setup__product-category-list">
-          <ul>
+        <div className="store-setup__product-category-list-container">
+          <h4>Lista Actual de etiquetas</h4>
+          <ul className="store-setup__product-category-list">
             <li className="store-setup__product-category-item">Camisas</li>
             <li className="store-setup__product-category-item">Accesorios</li>
             <li className="store-setup__product-category-item">Juguetes</li>

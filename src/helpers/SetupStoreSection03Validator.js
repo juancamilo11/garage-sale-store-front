@@ -1,7 +1,5 @@
 //Initial values for the section #3 form of the store setup's.
 export const section_03FormValues = {
-  categoryName: "",
-  categoryImage: "",
   productName: "",
   category: "",
   quantity: "",
