@@ -67,6 +67,7 @@ const FormSection03 = ({ formChecking, setFormsChecking }) => {
         handleInputChange={handleInputChange}
         setErrorsState={setErrorsState}
       />
+      {/* El form está en el escritorio */}
     </div>
   );
 };

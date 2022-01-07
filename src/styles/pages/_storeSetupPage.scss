@@ -158,6 +158,13 @@
 
 //Form section #2
 
+.store-setup__form-main-container {
+  border: 1px solid darkgray;
+  border-radius: 10px;
+  width: 98%;
+  margin: 0px auto;
+}
+
 .store-setup__images-container {
   // display: flex;
 
@@ -172,7 +179,6 @@
   justify-content: space-around;
   // background-color: blue;
   padding: 40px;
-  border: 1px solid darkgray;
   border-radius: 10px;
   width: 80%;
   margin: auto;
@@ -259,6 +265,11 @@
 .portrait-preview--with-content {
   margin: 20px 30%;
   width: 40%;
+}
+
+.store-setup__final-form-ind {
+  width: 60%;
+  margin: 0px auto;
 }
 
 //Form section #3
