@@ -73,7 +73,7 @@ const FormSection02 = ({ formChecking, setFormsChecking }) => {
 
   return (
     <div className="store-setup__images-main-container">
-      <h2 className="store-setup__section-enum mt-5">
+      <h2 className="store-setup__section-enum mb-3 mt-5">
         2. Sube algunas imágenes representativas
       </h2>
       <div className="store-setup__form-main-container">

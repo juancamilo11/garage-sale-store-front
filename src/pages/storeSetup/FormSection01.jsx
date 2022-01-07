@@ -98,182 +98,196 @@ const FormSection01 = ({ formChecking, setFormsChecking }) => {
 
   return (
     <div>
-      <h2 className="store-setup__section-enum mb-5 mt-1">
+      <h2 className="store-setup__section-enum mb-3 mt-1">
         1. Parámetros descriptivos de la tienda
       </h2>
-      <form onSubmit={handleFormSection_01Submit}>
-        <div className="store-setup__form-container">
-          <div className="store-setup__inputs-container">
-            <div className="store-setup__input-container">
-              <label htmlFor="storeName" className="store-setup__input-label">
-                Nombre de la tienda
-              </label>
-              <input
-                type="text"
-                autoFocus="true"
-                name="storeName"
-                id="storeName"
-                className="store-setup__input"
-                autoComplete="off"
-                value={storeName}
-                onChange={handleInputValidation}
-              />
-            </div>
-            <div className="store-setup__error-flag mt-2 mb-4">
-              {errorsState.storeName.hasErrors && (
-                <ErrorFlag
-                  message={errorsState.storeName.message}
-                  width="100%"
+      <div className="store-setup__form-main-container">
+        <form onSubmit={handleFormSection_01Submit}>
+          <div className="store-setup__form-container">
+            <div className="store-setup__inputs-container">
+              <div className="store-setup__input-container">
+                <label htmlFor="storeName" className="store-setup__input-label">
+                  Nombre de la tienda
+                </label>
+                <input
+                  type="text"
+                  autoFocus="true"
+                  name="storeName"
+                  id="storeName"
+                  className="store-setup__input"
+                  autoComplete="off"
+                  value={storeName}
+                  onChange={handleInputValidation}
                 />
-              )}
-            </div>
+              </div>
+              <div className="store-setup__error-flag mt-2 mb-4">
+                {errorsState.storeName.hasErrors && (
+                  <ErrorFlag
+                    message={errorsState.storeName.message}
+                    width="100%"
+                  />
+                )}
+              </div>
 
-            <div className="store-setup__input-container">
-              <label htmlFor="slogan" className="store-setup__input-label">
-                Slogan
-              </label>
-              <textarea
-                style={{ resize: "vertical" }}
-                type="text"
-                name="slogan"
-                id="slogan"
-                value={slogan}
-                onChange={handleInputValidation}
-                className="store-setup__input store-setup__textarea-slogan"
-                autoComplete="off"
-              />
-            </div>
-            <div className="store-setup__error-flag">
-              {errorsState.slogan.hasErrors && (
-                <ErrorFlag message={errorsState.slogan.message} width="100%" />
-              )}
-            </div>
+              <div className="store-setup__input-container">
+                <label htmlFor="slogan" className="store-setup__input-label">
+                  Slogan
+                </label>
+                <textarea
+                  style={{ resize: "vertical" }}
+                  type="text"
+                  name="slogan"
+                  id="slogan"
+                  value={slogan}
+                  onChange={handleInputValidation}
+                  className="store-setup__input store-setup__textarea-slogan"
+                  autoComplete="off"
+                />
+              </div>
+              <div className="store-setup__error-flag">
+                {errorsState.slogan.hasErrors && (
+                  <ErrorFlag
+                    message={errorsState.slogan.message}
+                    width="100%"
+                  />
+                )}
+              </div>
 
-            <div className="store-setup__input-container">
-              <label htmlFor="tag" className="store-setup__input-label">
-                ¿Qué venderás?
-              </label>
-              <input
-                type="text"
-                name="tag"
-                id="tag"
-                value={tag}
-                onChange={handleInputValidation}
-                className="store-setup__input store-setup__input-tag"
-                autoComplete="off"
-              />
+              <div className="store-setup__input-container">
+                <label htmlFor="tag" className="store-setup__input-label">
+                  ¿Qué venderás?
+                </label>
+                <input
+                  type="text"
+                  name="tag"
+                  id="tag"
+                  value={tag}
+                  onChange={handleInputValidation}
+                  className="store-setup__input store-setup__input-tag"
+                  autoComplete="off"
+                />
+                <button
+                  onClick={handleAddNewTag}
+                  className="store-setup__input store-setup__button-input-tag btn btn-primary"
+                >
+                  Ingresar
+                </button>
+              </div>
+              <div className="store-setup__error-flag">
+                {errorsState.tag.hasErrors && (
+                  <ErrorFlag message={errorsState.tag.message} width="100%" />
+                )}
+                <ProductTagList tags={tagsList} setTagsList={setTagsList} />
+              </div>
+            </div>
+            <div className="store-setup__inputs-container">
+              <div className="store-setup__input-container">
+                <label
+                  htmlFor="description"
+                  className="store-setup__input-label"
+                >
+                  Descripción
+                </label>
+                <textarea
+                  style={{ resize: "vertical" }}
+                  type="text"
+                  name="description"
+                  id="description"
+                  value={description}
+                  className="store-setup__input store-setup__textarea-description"
+                  autoComplete="off"
+                  onChange={handleInputValidation}
+                />
+              </div>
+              <div className="store-setup__error-flag">
+                {errorsState.description.hasErrors && (
+                  <ErrorFlag
+                    message={errorsState.description.message}
+                    width="100%"
+                  />
+                )}
+              </div>
+
+              <div className="store-setup__input-container">
+                <label
+                  htmlFor="startingDate"
+                  className="store-setup__input-label"
+                >
+                  Fecha de apertura
+                </label>
+                <input
+                  type="date"
+                  name="startingDate"
+                  id="startingDate"
+                  value={startingDate}
+                  onChange={handleInputValidation}
+                  className="store-setup__input store-setup__input-date"
+                  autoComplete="off"
+                />
+                <label
+                  htmlFor="endingDate"
+                  className="store-setup__input-date-label"
+                >
+                  Hasta
+                </label>
+                <input
+                  type="date"
+                  name="endingDate"
+                  id="endingDate"
+                  value={endingDate}
+                  readOnly
+                  className="store-setup__input store-setup__input-date"
+                  autoComplete="off"
+                />
+              </div>
+              <div className="store-setup__error-flag">
+                {errorsState.startingDate.hasErrors && (
+                  <ErrorFlag
+                    message={errorsState.startingDate.message}
+                    width="100%"
+                  />
+                )}
+              </div>
+
+              <div className="store-setup__input-container">
+                <label className="store-setup__input-label">
+                  Dirección física
+                </label>
+                <button
+                  onClick={handleRequestLocation}
+                  className="store-setup__input btn btn-primary store-setup__input-address"
+                >
+                  Obtener tu dirección actual
+                </button>
+              </div>
+              <div className="store-setup__error-flag">
+                {errorsState.address.hasErrors && (
+                  <ErrorFlag
+                    message={errorsState.address.message}
+                    width="100%"
+                  />
+                )}
+              </div>
+            </div>
+          </div>
+          <div className="store-setup__final-form-ind">
+            <hr />
+          </div>
+          <div className="store-setup__centered-container">
+            <div className="store-setup__buttons-container">
+              <button className="store-setup__button-update" type="submit">
+                Confirmar cambios
+              </button>
               <button
-                onClick={handleAddNewTag}
-                className="store-setup__input store-setup__button-input-tag btn btn-primary"
+                className="store-setup__button-update"
+                onClick={handleResetForm}
               >
-                Ingresar
+                Resetear los datos
               </button>
             </div>
-            <div className="store-setup__error-flag">
-              {errorsState.tag.hasErrors && (
-                <ErrorFlag message={errorsState.tag.message} width="100%" />
-              )}
-              <ProductTagList tags={tagsList} setTagsList={setTagsList} />
-            </div>
           </div>
-          <div className="store-setup__inputs-container">
-            <div className="store-setup__input-container">
-              <label htmlFor="description" className="store-setup__input-label">
-                Descripción
-              </label>
-              <textarea
-                style={{ resize: "vertical" }}
-                type="text"
-                name="description"
-                id="description"
-                value={description}
-                className="store-setup__input store-setup__textarea-description"
-                autoComplete="off"
-                onChange={handleInputValidation}
-              />
-            </div>
-            <div className="store-setup__error-flag">
-              {errorsState.description.hasErrors && (
-                <ErrorFlag
-                  message={errorsState.description.message}
-                  width="100%"
-                />
-              )}
-            </div>
-
-            <div className="store-setup__input-container">
-              <label
-                htmlFor="startingDate"
-                className="store-setup__input-label"
-              >
-                Fecha de apertura
-              </label>
-              <input
-                type="date"
-                name="startingDate"
-                id="startingDate"
-                value={startingDate}
-                onChange={handleInputValidation}
-                className="store-setup__input store-setup__input-date"
-                autoComplete="off"
-              />
-              <label
-                htmlFor="endingDate"
-                className="store-setup__input-date-label"
-              >
-                Hasta
-              </label>
-              <input
-                type="date"
-                name="endingDate"
-                id="endingDate"
-                value={endingDate}
-                readOnly
-                className="store-setup__input store-setup__input-date"
-                autoComplete="off"
-              />
-            </div>
-            <div className="store-setup__error-flag">
-              {errorsState.startingDate.hasErrors && (
-                <ErrorFlag
-                  message={errorsState.startingDate.message}
-                  width="100%"
-                />
-              )}
-            </div>
-
-            <div className="store-setup__input-container">
-              <label className="store-setup__input-label">
-                Dirección física
-              </label>
-              <button
-                onClick={handleRequestLocation}
-                className="store-setup__input btn btn-primary store-setup__input-address"
-              >
-                Obtener tu dirección actual
-              </button>
-            </div>
-            <div className="store-setup__error-flag">
-              {errorsState.address.hasErrors && (
-                <ErrorFlag message={errorsState.address.message} width="100%" />
-              )}
-            </div>
-          </div>
-        </div>
-        <div className="store-setup__centered-container">
-          <div className="store-setup__buttons-container">
-            <button className="store-setup__button-update" type="submit">
-              Confirmar cambios
-            </button>
-            <button
-              className="store-setup__button-update"
-              onClick={handleResetForm}
-            >
-              Resetear los datos
-            </button>
-          </div>
-        </div>
-      </form>
+        </form>
+      </div>
     </div>
   );
 };

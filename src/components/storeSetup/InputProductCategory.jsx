@@ -25,51 +25,68 @@ const InputProductCategory = ({ handleInputChange, setErrorsState }) => {
   };
 
   return (
-    <div>
-      <form onsubmit={handleSubmitNewCategory}>
-        <div className="store-setup__product-category-container">
-          <label htmlFor="categoryName" className="store-setup__input-label">
-            Nombre de la categoria
-          </label>
-          <input
-            type="text"
-            name="categoryName"
-            id="categoryName"
-            className="store-setup__input"
-            autoComplete="off"
-            value={categoryName}
-            onChange={handleInputValidation}
-          />
-          <div className="store-input-image-container mt-3">
-            <label
-              htmlFor="productCategory"
-              className="store-setup__input-label"
-            >
-              Imágen representativa
+    <div className="store-setup__product-category-main-container">
+      <div className="store-setup__product-category-content">
+        <form
+          onsubmit={handleSubmitNewCategory}
+          className="store-setup__product-category-form"
+        >
+          <div className="store-setup__product-category-container">
+            <label htmlFor="categoryName" className="store-setup__input-label">
+              Nombre de la categoria
             </label>
-            <button
-              className="store-setup__category-img-button"
-              id="category-button"
-              onClick={handleImageToLoad}
-            >
-              Carga un archivo
-            </button>
             <input
-              type="file"
-              name="categoryImage"
-              className="store-setup__input-images"
-              id="store-setup__input-category-img"
-              value={categoryImage}
+              type="text"
+              name="categoryName"
+              id="categoryName"
+              className="store-setup__input"
+              autoComplete="off"
+              value={categoryName}
               onChange={handleInputValidation}
             />
+            <div className="store-input-image-container mt-3">
+              <label
+                htmlFor="productCategory"
+                className="store-setup__input-label"
+              >
+                Imágen representativa
+              </label>
+              <button
+                className="store-setup__category-img-button"
+                id="category-button"
+                onClick={handleImageToLoad}
+              >
+                Carga un archivo
+              </button>
+              <input
+                type="file"
+                name="categoryImage"
+                className="store-setup__input-images"
+                id="store-setup__input-category-img"
+                value={categoryImage}
+                onChange={handleInputValidation}
+              />
+            </div>
+
+            <div className="store-setup__centered-container">
+              <button className="store-setup__button-update" type="submit">
+                Agregar nueva categoría
+              </button>
+            </div>
           </div>
-          <div className="store-setup__centered-container">
-            <button className="store-setup__button-update" type="submit">
-              Agregar nueva categoría
-            </button>
-          </div>
+        </form>
+        <div className="store-setup__product-category-list">
+          <ul>
+            <li className="store-setup__product-category-item">Camisas</li>
+            <li className="store-setup__product-category-item">Accesorios</li>
+            <li className="store-setup__product-category-item">Juguetes</li>
+            <li className="store-setup__product-category-item">A. Belleza</li>
+            <li className="store-setup__product-category-item">Zapatos</li>
+            <li className="store-setup__product-category-item">Libros</li>
+            <li className="store-setup__product-category-item">Miscelánea</li>
+          </ul>
         </div>
-      </form>
+      </div>
     </div>
   );
 };
