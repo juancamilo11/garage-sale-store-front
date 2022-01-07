@@ -3,7 +3,11 @@ import { useState } from "react";
 import section03Validator from "../../helpers/SetupStoreSection03Validator";
 import useForm from "../../hooks/useForm";
 
-const InputProductCategory = ({ categoriesList, setCategoriesList }) => {
+const InputProductCategory = ({
+  categoriesList,
+  setCategoriesList,
+  setErrorsState,
+}) => {
   const handleInputValidation = (e) => {
     handleCategoryInputChange(e);
     section03Validator(e, setErrorsState);

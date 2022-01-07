@@ -67,6 +67,7 @@ const FormSection03 = ({ formChecking, setFormsChecking }) => {
       <InputProductCategory
         categoriesList={categoriesList}
         setCategoriesList={setCategoriesList}
+        setErrorsState={setErrorsState}
       />
       {/* El form está en el escritorio */}
     </div>
