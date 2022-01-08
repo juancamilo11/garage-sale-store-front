@@ -96,18 +96,10 @@ const InputProductCategory = ({
                 />
               ) : (
                 <ErrorFlag
-                  message="Aún no hay etiquetas de productos agregadas, ingresa al menos 20."
-                  width="100%"
+                  message="Aún no hay etiquetas de productos agregadas, ingresa máximo treinta."
+                  width="90%"
                 />
               )}
-            </ul>
-            <ul className="store-setup__product-category-list">
-              <li className="store-setup__product-category-item">Camisas</li>
-              <li className="store-setup__product-category-item">Accesorios</li>
-              <li className="store-setup__product-category-item">Juguetes</li>
-              <li className="store-setup__product-category-item">A. Belleza</li>
-              <li className="store-setup__product-category-item">Zapatos</li>
-              <li className="store-setup__product-category-item">Libros</li>
             </ul>
           </div>
         </div>

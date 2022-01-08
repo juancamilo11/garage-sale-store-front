@@ -24,7 +24,16 @@ const FormSection03 = ({ formChecking, setFormsChecking }) => {
     useForm(section_03FormValues);
 
   const [arrProducts, setArrProducts] = useState([]);
-  const [categoriesList, setCategoriesList] = useState([]);
+  const [categoriesList, setCategoriesList] = useState([
+    "Ropa",
+    "Juguetes",
+    "Art. Belleza",
+    "Arte",
+    "Libros",
+    "Art. hogar",
+    "Miscelánea",
+    "hola",
+  ]);
 
   const [errorsState, setErrorsState] = useState(section_03FormValues);
 

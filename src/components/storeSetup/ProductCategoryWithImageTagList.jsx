@@ -10,19 +10,18 @@ const ProductCategoryWithImageTagList = ({
   };
 
   return (
-    <div className="store-setup__product-categoriesList-list">
+    <div className="store-setup__product-tags-list">
       <div className="store-setup__left-counting-categoriesList">
-        {categoriesList.length > 0 && categoriesList.length < 3 && (
+        {categoriesList.length > 0 && categoriesList.length < 30 && (
           <div className="alert alert-primary text-center mt-3">
-            Aún te faltan {3 - categoriesList.length} etiquetas por ingresar
-            (Mínimo tres)
+            Puedes ingresar {30 - categoriesList.length} más (Máximo treinta)
           </div>
         )}
       </div>
 
-      {categoriesList.length > 0 ? (
+      {categoriesList.length > 0 &&
         categoriesList.map((tag) => (
-          <div key={tag} className="store-setup__tag-item">
+          <div key={tag} className="store-setup__product-tag-item">
             <span className="store-setup__tag-name mb-2">{tag}</span>
             <button
               className="btn btn-danger btn-delete-tag"
@@ -31,13 +30,7 @@ const ProductCategoryWithImageTagList = ({
               <i className="fas fa-trash-alt"></i>
             </button>
           </div>
-        ))
-      ) : (
-        <div className="alert alert-primary text-center mt-3">
-          No hay etiquetas de productos para la nueva tienda, ingresa por lo
-          menos tres.
-        </div>
-      )}
+        ))}
     </div>
   );
 };
