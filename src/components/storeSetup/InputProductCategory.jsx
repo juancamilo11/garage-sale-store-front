@@ -2,6 +2,9 @@ import React from "react";
 import { useState } from "react";
 import section03Validator from "../../helpers/SetupStoreSection03Validator";
 import useForm from "../../hooks/useForm";
+import ErrorFlag from "../ErrorFlag";
+import ProductCategoryWithImageTagList from "./ProductCategoryWithImageTagList";
+import ProductWithImageTagList from "./ProductCategoryWithImageTagList";
 
 const InputProductCategory = ({
   categoriesList,
@@ -85,6 +88,19 @@ const InputProductCategory = ({
         <div className="store-setup__product-category-list-main-container">
           <div className="store-setup__product-category-border-container">
             <h4>Lista Actual de etiquetas</h4>
+            <ul>
+              {categoriesList.length > 0 ? (
+                <ProductCategoryWithImageTagList
+                  categoriesList={categoriesList}
+                  setCategoriesList={setCategoriesList}
+                />
+              ) : (
+                <ErrorFlag
+                  message="Aún no hay etiquetas de productos agregadas, ingresa al menos 20."
+                  width="100%"
+                />
+              )}
+            </ul>
             <ul className="store-setup__product-category-list">
               <li className="store-setup__product-category-item">Camisas</li>
               <li className="store-setup__product-category-item">Accesorios</li>
