@@ -72,7 +72,9 @@ const InputProductCategory = ({
                 onChange={handleInputValidation}
               />
             </div>
-
+            <div className="store-setup__final-form-ind store-setup__final-form-ind--product-category">
+              <hr />
+            </div>
             <div className="store-setup__centered-container">
               <button className="store-setup__button-update" type="submit">
                 Agregar nueva categoría
@@ -80,16 +82,18 @@ const InputProductCategory = ({
             </div>
           </div>
         </form>
-        <div className="store-setup__product-category-list-container">
-          <h4>Lista Actual de etiquetas</h4>
-          <ul className="store-setup__product-category-list">
-            <li className="store-setup__product-category-item">Camisas</li>
-            <li className="store-setup__product-category-item">Accesorios</li>
-            <li className="store-setup__product-category-item">Juguetes</li>
-            <li className="store-setup__product-category-item">A. Belleza</li>
-            <li className="store-setup__product-category-item">Zapatos</li>
-            <li className="store-setup__product-category-item">Libros</li>
-          </ul>
+        <div className="store-setup__product-category-list-main-container">
+          <div className="store-setup__product-category-border-container">
+            <h4>Lista Actual de etiquetas</h4>
+            <ul className="store-setup__product-category-list">
+              <li className="store-setup__product-category-item">Camisas</li>
+              <li className="store-setup__product-category-item">Accesorios</li>
+              <li className="store-setup__product-category-item">Juguetes</li>
+              <li className="store-setup__product-category-item">A. Belleza</li>
+              <li className="store-setup__product-category-item">Zapatos</li>
+              <li className="store-setup__product-category-item">Libros</li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
