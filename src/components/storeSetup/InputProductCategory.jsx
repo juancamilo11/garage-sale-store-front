@@ -89,7 +89,6 @@ const InputProductCategory = ({
             <li className="store-setup__product-category-item">A. Belleza</li>
             <li className="store-setup__product-category-item">Zapatos</li>
             <li className="store-setup__product-category-item">Libros</li>
-            <li className="store-setup__product-category-item">Miscelánea</li>
           </ul>
         </div>
       </div>

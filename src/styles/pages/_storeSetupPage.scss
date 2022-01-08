@@ -310,11 +310,11 @@
 .store-setup__product-category-list-container {
   border: 1px solid blue;
   height: inherit;
-  overflow-y: scroll;
   width: 20%;
   // min-width: 200px;
   padding-left: 15px;
   padding-top: 10px;
+  max-height: inherit;
 }
 
 .store-setup__product-category-list {
