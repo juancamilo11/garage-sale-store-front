@@ -71,9 +71,11 @@ export const isTheCategoryAlreadyDefined = (
 ) => {
   const arrFiltered = categoryList.filter(
     (category) =>
-      category.categoryName.trim().toLowerCase() ===
+      category.categoryName.trim().toLowerCase() !==
       categoryName.trim().toLowerCase()
   );
+  console.log(categoryList);
+  console.log(arrFiltered);
   if (arrFiltered.length !== categoryList.length) {
     setErrorsState((state) => {
       return {

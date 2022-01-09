@@ -33,7 +33,8 @@ const ProductCategoryWithImageTagList = ({
             <img
               src={`${category.categoryImage}`}
               alt=" "
-              width="50px"
+              width="70px"
+              height="70px"
               className="my-2"
             />
             <button

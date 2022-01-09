@@ -51,6 +51,14 @@ const InputProductCategory = ({
         ...categoriesList,
         { categoryName, categoryImage: URL.createObjectURL(imageFile) },
       ]);
+      resetForm({
+        categoryName: "",
+        categoryImage: "",
+      });
+      const categoryImage = document.getElementById(
+        "store-setup__input-category-img"
+      ).files[0];
+      categoryImage.src = "./../../assets/img/store-setup/emptyImage.png";
     }
   };
 
