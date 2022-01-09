@@ -44,7 +44,13 @@ const InputProductCategory = ({
       !errorsState.categoryName.hasErrors &&
       !errorsState.categoryImage.hasErrors
     ) {
-      setCategoriesList([...categoriesList, { categoryName, categoryImage }]);
+      const imageFile = document.getElementById(
+        "store-setup__input-category-img"
+      ).files[0];
+      setCategoriesList([
+        ...categoriesList,
+        { categoryName, categoryImage: URL.createObjectURL(imageFile) },
+      ]);
     }
   };
 

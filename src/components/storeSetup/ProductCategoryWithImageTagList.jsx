@@ -4,9 +4,11 @@ const ProductCategoryWithImageTagList = ({
   categoriesList,
   setCategoriesList,
 }) => {
-  const handleDeleteTag = (tagToDelete) => {
-    const newTagList = categoriesList.filter((tag) => tag !== tagToDelete);
-    setCategoriesList(newTagList);
+  const handleDeleteTag = (categoryToDelete) => {
+    const newCategoryList = categoriesList.filter(
+      (category) => category.categoryName !== categoryToDelete
+    );
+    setCategoriesList(newCategoryList);
   };
 
   return (
@@ -20,12 +22,23 @@ const ProductCategoryWithImageTagList = ({
       </div>
 
       {categoriesList.length > 0 &&
-        categoriesList.map((tag) => (
-          <div key={tag} className="store-setup__product-tag-item">
-            <span className="store-setup__tag-name mb-2">{tag}</span>
+        categoriesList.map((category) => (
+          <div
+            key={category.categoryName}
+            className="store-setup__product-tag-item"
+          >
+            <span className="store-setup__tag-name mb-2">
+              {category.categoryName}
+            </span>
+            <img
+              src={`${category.categoryImage}`}
+              alt=" "
+              width="50px"
+              className="my-2"
+            />
             <button
               className="btn btn-danger btn-delete-tag"
-              onClick={(e) => handleDeleteTag(tag)}
+              onClick={(e) => handleDeleteTag(category.categoryName)}
             >
               <i className="fas fa-trash-alt"></i>
             </button>
