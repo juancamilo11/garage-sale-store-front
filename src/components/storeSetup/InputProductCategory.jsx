@@ -1,6 +1,8 @@
 import React from "react";
 import { useState } from "react";
-import section03Validator from "../../helpers/SetupStoreSection03Validator";
+import section03Validator, {
+  isTheCategoryAlreadyDefined,
+} from "../../helpers/SetupStoreSection03Validator";
 import useForm from "../../hooks/useForm";
 import ErrorFlag from "../ErrorFlag";
 import ProductCategoryWithImageTagList from "./ProductCategoryWithImageTagList";
@@ -20,6 +22,14 @@ const InputProductCategory = ({
   const handleInputValidation = (e) => {
     handleCategoryInputChange(e);
     section03Validator(e, setErrorsState);
+
+    if (e.target.name === "categoryName") {
+      isTheCategoryAlreadyDefined(
+        e.target.value,
+        categoriesList,
+        setErrorsState
+      );
+    }
   };
 
   const handleImageToLoad = (e) => {

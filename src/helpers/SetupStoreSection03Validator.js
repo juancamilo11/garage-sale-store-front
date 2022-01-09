@@ -71,9 +71,20 @@ export const isTheCategoryAlreadyDefined = (
 ) => {
   const arrFiltered = categoryList.filter(
     (category) =>
-      category.categoryName.toLowerCase() === categoryName.toLowerCase()
+      category.categoryName.trim().toLowerCase() ===
+      categoryName.trim().toLowerCase()
   );
-  return arrFiltered.length !== categoryList.length;
+  if (arrFiltered.length !== categoryList.length) {
+    setErrorsState((state) => {
+      return {
+        ...state,
+        ["categoryName"]: {
+          hasErrors: true,
+          message: `El nombre de la categoría ${categoryName} ya ha sido ingresado, intente con otro`,
+        },
+      };
+    });
+  }
 };
 
 const handleCategoryNameValidation = (value, setErrorsState) => {
