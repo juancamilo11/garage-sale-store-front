@@ -40,13 +40,19 @@ const InputProductCategory = ({
 
   const handleSubmitNewCategory = (e) => {
     e.preventDefault();
+    if (
+      !errorsState.categoryName.hasErrors &&
+      !errorsState.categoryImage.hasErrors
+    ) {
+      setCategoriesList([...categoriesList, { categoryName, categoryImage }]);
+    }
   };
 
   return (
     <div className="store-setup__product-category-main-container">
       <div className="store-setup__product-category-content">
         <form
-          onsubmit={handleSubmitNewCategory}
+          onSubmit={handleSubmitNewCategory}
           className="store-setup__product-category-form"
         >
           <div className="store-setup__product-category-container">
@@ -91,6 +97,12 @@ const InputProductCategory = ({
                 onChange={handleInputValidation}
               />
             </div>
+            {errorsState.categoryImage.hasErrors && (
+              <ErrorFlag
+                message={errorsState.categoryImage.message}
+                width="100%"
+              />
+            )}
             <img
               src={process.env.PUBLIC_URL + "/assets/common/emptyImage.png"}
               className="portrait-preview--no-content"
