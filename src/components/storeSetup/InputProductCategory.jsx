@@ -11,17 +11,16 @@ const InputProductCategory = ({
   setCategoriesList,
   setErrorsState,
 }) => {
-  const handleInputValidation = (e) => {
-    handleCategoryInputChange(e);
-    section03Validator(e, setErrorsState);
-  };
-
   const [formValues, handleCategoryInputChange, resetForm] = useForm({
     categoryName: "",
     categoryImage: "",
   });
-
   const { categoryName, categoryImage } = formValues;
+
+  const handleInputValidation = (e) => {
+    handleCategoryInputChange(e);
+    section03Validator(e, setErrorsState);
+  };
 
   const handleImageToLoad = (e) => {
     e.preventDefault();
@@ -75,6 +74,12 @@ const InputProductCategory = ({
                 onChange={handleInputValidation}
               />
             </div>
+            <img
+              src={process.env.PUBLIC_URL + "/assets/common/emptyImage.png"}
+              className="portrait-preview--no-content"
+              id="product-category-preview"
+              alt=" "
+            />
             <div className="store-setup__final-form-ind store-setup__final-form-ind--product-category">
               <hr />
             </div>

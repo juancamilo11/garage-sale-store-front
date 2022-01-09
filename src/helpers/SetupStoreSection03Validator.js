@@ -62,11 +62,78 @@ const section03Validator = (e, setErrorsState) => {
   }
 };
 
-const handleCategoryNameValidation = (value, setErrorsState) => {
-  //toDo
+const sendImageToCloudinary = () => {};
+
+export const isTheCategoryAlreadyDefined = (
+  categoryName,
+  categoryList,
+  setErrorsState
+) => {
+  const arrFiltered = categoryList.filter(
+    (category) =>
+      category.categoryName.toLowerCase() === categoryName.toLowerCase()
+  );
+  return arrFiltered.length !== categoryList.length;
 };
-const handleCategoryImageValidation = (value, setErrorsState) => {
-  //toDo
+
+const handleCategoryNameValidation = (value, setErrorsState) => {
+  if (
+    (value.trim().length >= 3 && value.trim().length <= 20) ||
+    value.trim() === ""
+  ) {
+    setErrorsState((state) => {
+      return { ...state, ["categoryName"]: { hasErrors: false, message: "" } };
+    });
+  } else {
+    setErrorsState((state) => {
+      return {
+        ...state,
+        ["categoryName"]: {
+          hasErrors: true,
+          message:
+            "El nombre de la categoría debe tener entre 3 y 20 caracteres.",
+        },
+      };
+    });
+  }
+};
+
+const handleCategoryImageValidation = (file, setErrorsState) => {
+  if (!file?.type.startsWith("image")) {
+    const imagePreview = document.getElementById("product-category-preview");
+    imagePreview.setAttribute("src", "/assets/common/emptyImage.png");
+    imagePreview.classList.replace(
+      "portrait-preview--with-content",
+      "portrait-preview--no-content"
+    );
+    setErrorsState((state) => {
+      return {
+        ...state,
+        ["portraitUrl"]: {
+          hasErrors: true,
+          message:
+            "Error: El archivo ingresado no es una imágen, por favor suba un archivo con formato correcto.",
+          hasContent: false,
+        },
+      };
+    });
+    return;
+  }
+
+  //Enviar la imagen a cloudinary y en base a la peticion hacer lo siguiente.
+  sendImageToCloudinary();
+  const imagePreview = document.getElementById("portrait-preview");
+  imagePreview.src = URL.createObjectURL(file);
+  imagePreview.classList.replace(
+    "portrait-preview--no-content",
+    "portrait-preview--with-content"
+  );
+  setErrorsState((state) => {
+    return {
+      ...state,
+      ["portraitUrl"]: { hasErrors: false, message: "", hasContent: true },
+    };
+  });
 };
 
 const handleproductNameValidation = (value, setErrorsState) => {
