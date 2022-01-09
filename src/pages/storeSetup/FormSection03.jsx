@@ -26,7 +26,7 @@ const FormSection03 = ({ formChecking, setFormsChecking }) => {
   const [arrProducts, setArrProducts] = useState([]);
   const [categoriesList, setCategoriesList] = useState([]);
 
-  const [errorsState, setErrorsState] = useState(section_03FormValues);
+  const [errorsState, setErrorsState] = useState(section_03ErrorState);
 
   const {
     categoryName,
@@ -67,6 +67,7 @@ const FormSection03 = ({ formChecking, setFormsChecking }) => {
       <InputProductCategory
         categoriesList={categoriesList}
         setCategoriesList={setCategoriesList}
+        errorsState={errorsState}
         setErrorsState={setErrorsState}
       />
       {/* El form está en el escritorio */}

@@ -25,13 +25,13 @@ export const section_03ErrorState = {
 };
 
 const section03Validator = (e, setErrorsState) => {
-  const { name: fieldName, value } = e.target;
+  const { name: fieldName, value, files } = e.target;
   switch (fieldName) {
     case "categoryName":
       handleCategoryNameValidation(value, setErrorsState);
       break;
     case "categoryImage":
-      handleCategoryImageValidation(value, setErrorsState);
+      handleCategoryImageValidation(files[0], setErrorsState);
       break;
     case "productName":
       handleproductNameValidation(value, setErrorsState);
@@ -120,7 +120,7 @@ const handleCategoryImageValidation = (file, setErrorsState) => {
     setErrorsState((state) => {
       return {
         ...state,
-        ["portraitUrl"]: {
+        ["categoryImage"]: {
           hasErrors: true,
           message:
             "Error: El archivo ingresado no es una imágen, por favor suba un archivo con formato correcto.",
@@ -133,7 +133,7 @@ const handleCategoryImageValidation = (file, setErrorsState) => {
 
   //Enviar la imagen a cloudinary y en base a la peticion hacer lo siguiente.
   sendImageToCloudinary();
-  const imagePreview = document.getElementById("portrait-preview");
+  const imagePreview = document.getElementById("product-category-preview");
   imagePreview.src = URL.createObjectURL(file);
   imagePreview.classList.replace(
     "portrait-preview--no-content",
@@ -142,7 +142,7 @@ const handleCategoryImageValidation = (file, setErrorsState) => {
   setErrorsState((state) => {
     return {
       ...state,
-      ["portraitUrl"]: { hasErrors: false, message: "", hasContent: true },
+      ["categoryImage"]: { hasErrors: false, message: "", hasContent: true },
     };
   });
 };

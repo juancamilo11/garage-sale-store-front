@@ -11,6 +11,7 @@ import ProductWithImageTagList from "./ProductCategoryWithImageTagList";
 const InputProductCategory = ({
   categoriesList,
   setCategoriesList,
+  errorsState,
   setErrorsState,
 }) => {
   const [formValues, handleCategoryInputChange, resetForm] = useForm({
@@ -61,6 +62,12 @@ const InputProductCategory = ({
               value={categoryName}
               onChange={handleInputValidation}
             />
+            {errorsState.categoryName.hasErrors && (
+              <ErrorFlag
+                message={errorsState.categoryName.message}
+                width="100%"
+              />
+            )}
             <div className="store-input-image-container mt-3">
               <label
                 htmlFor="productCategory"
