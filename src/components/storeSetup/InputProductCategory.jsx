@@ -55,10 +55,13 @@ const InputProductCategory = ({
         categoryName: "",
         categoryImage: "",
       });
-      const categoryImage = document.getElementById(
-        "store-setup__input-category-img"
-      ).files[0];
-      categoryImage.src = "./../../assets/img/store-setup/emptyImage.png";
+      const categoryImage = document.getElementById("product-category-preview");
+      categoryImage.src =
+        process.env.PUBLIC_URL + "/assets/common/emptyImage.png";
+      categoryImage.classList.replace(
+        "portrait-preview--with-content",
+        "portrait-preview--no-content"
+      );
     }
   };
 
