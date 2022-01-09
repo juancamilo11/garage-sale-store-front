@@ -27,6 +27,12 @@ export const section_03ErrorState = {
 const section03Validator = (e, setErrorsState) => {
   const { name: fieldName, value } = e.target;
   switch (fieldName) {
+    case "categoryName":
+      handleCategoryNameValidation(value, setErrorsState);
+      break;
+    case "categoryImage":
+      handleCategoryImageValidation(value, setErrorsState);
+      break;
     case "productName":
       handleproductNameValidation(value, setErrorsState);
       break;
@@ -54,6 +60,13 @@ const section03Validator = (e, setErrorsState) => {
     default:
       break;
   }
+};
+
+const handleCategoryNameValidation = (value, setErrorsState) => {
+  //toDo
+};
+const handleCategoryImageValidation = (value, setErrorsState) => {
+  //toDo
 };
 
 const handleproductNameValidation = (value, setErrorsState) => {

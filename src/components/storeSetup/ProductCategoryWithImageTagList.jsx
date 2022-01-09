@@ -36,32 +36,3 @@ const ProductCategoryWithImageTagList = ({
 };
 
 export default ProductCategoryWithImageTagList;
-
-/*
-{categoriesList.length > 0 ? (
-              categoriesList.map((tag) => (
-                <div key={tag.id} className="training__tag-selected">
-                  <span className="text-center mb-3">{tag.name}</span>
-                  <button
-                    id={`${tag.id}_button_delete_tag`}
-                    className="btn btn-danger btn-delete-tag"
-                    onClick={() =>
-                      handleUnselecttag(
-                        tag.id,
-                        settagesList,
-                        handleInputChange,
-                        tagesList,
-                        tages
-                      )
-                    }
-                  >
-                    <i className="fas fa-trash-alt"></i>
-                  </button>
-                </div>
-              ))
-            ) : (
-              <div className="alert alert-primary text-center training__alert-primary mt-5 b-5">
-                No hay tages asignados para el training
-              </div>
-            )}
-*/
