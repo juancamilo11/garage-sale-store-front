@@ -1,5 +1,9 @@
 const productStates = [
   {
+    statusNumber: 0,
+    statusName: "Ingrese el estado del producto",
+  },
+  {
     statusNumber: 1,
     statusName: "Regular",
   },

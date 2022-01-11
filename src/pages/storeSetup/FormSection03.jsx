@@ -225,14 +225,15 @@ const FormSection03 = ({ formChecking, setFormsChecking }) => {
                   id="price"
                   value={price}
                   onChange={handleInputValidation}
-                  className="store-setup__input"
+                  className="store-setup__input store-setup__input--price"
+                  style={{ marginRight: "4%" }}
                   autoComplete="off"
                   min="1"
                 />
                 <select
                   name="currency"
                   id="currency"
-                  className="store-setup__input"
+                  className="store-setup__input store-setup__input--price"
                   value={currency}
                   onChange={handleInputValidation}
                 >
@@ -249,9 +250,14 @@ const FormSection03 = ({ formChecking, setFormsChecking }) => {
                 </select>
               </div>
               <div className="store-setup__error-flag">
-                {errorsState.quantity.hasErrors && (
+                {errorsState.price.hasErrors && (
+                  <ErrorFlag message={errorsState.price.message} width="100%" />
+                )}
+              </div>
+              <div className="store-setup__error-flag">
+                {errorsState.currency.hasErrors && (
                   <ErrorFlag
-                    message={errorsState.quantity.message}
+                    message={errorsState.currency.message}
                     width="100%"
                   />
                 )}
@@ -259,33 +265,46 @@ const FormSection03 = ({ formChecking, setFormsChecking }) => {
 
               <div className="store-setup__input-container">
                 <label
-                  htmlFor="startingDate"
+                  htmlFor="freeShipping"
                   className="store-setup__input-label"
                 >
-                  Fecha de apertura
+                  ¿Envío gratis?
                 </label>
-                <input
-                  type="date"
-                  name="startingDate"
-                  id="startingDate"
-                  onChange={handleInputValidation}
-                  className="store-setup__input store-setup__input-date"
-                  autoComplete="off"
-                />
-                <label
-                  htmlFor="endingDate"
-                  className="store-setup__input-date-label"
-                >
-                  Hasta
-                </label>
-                <input
-                  type="date"
-                  name="endingDate"
-                  id="endingDate"
-                  readOnly
-                  className="store-setup__input store-setup__input-date"
-                  autoComplete="off"
-                />
+                <div className="store-setup__input-ratio-container">
+                  <div className="store-setup__input-ratio-item">
+                    <input
+                      type="radio"
+                      name="freeShipping"
+                      className="store-setup__input"
+                      value="yes"
+                      id="freeShipping-yes"
+                      onChange={handleInputValidation}
+                    />
+                    <label
+                      htmlFor="freeShipping-yes"
+                      className="store-setup__input-label"
+                    >
+                      Si
+                    </label>
+                  </div>
+                  <div className="store-setup__input-ratio-item">
+                    <input
+                      type="radio"
+                      name="freeShipping"
+                      className="store-setup__input"
+                      value="no"
+                      id="freeShipping-no"
+                      onChange={handleInputValidation}
+                    />
+                    <label
+                      htmlFor="freeShipping-no"
+                      className="store-setup__input-label"
+                      style={{ marginRight: "7px" }}
+                    >
+                      No
+                    </label>
+                  </div>
+                </div>
               </div>
               <div className="store-setup__error-flag">
                 {errorsState.quantity.hasErrors && (

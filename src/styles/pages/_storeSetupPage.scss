@@ -389,3 +389,23 @@
   justify-content: center;
   align-items: center;
 }
+
+.store-setup__input--price {
+  width: 28%;
+}
+
+.store-setup__input-ratio-container {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.store-setup__input-ratio-item {
+  width: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
