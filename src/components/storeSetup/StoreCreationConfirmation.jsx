@@ -6,12 +6,18 @@ const StoreCreationConfirmation = ({ setFormsChecking }) => {
     console.log(confirmationSelection);
     if (confirmationSelection === "yes") {
       setFormsChecking((formsChecking) => {
-        return { ...formsChecking, formConfirmation: true };
+        return {
+          ...formsChecking,
+          creationConfirmation: { isConfirmed: true },
+        };
       });
     }
     if (confirmationSelection === "no") {
       setFormsChecking((formsChecking) => {
-        return { ...formsChecking, formConfirmation: false };
+        return {
+          ...formsChecking,
+          creationConfirmation: { isConfirmed: false },
+        };
       });
     }
   };

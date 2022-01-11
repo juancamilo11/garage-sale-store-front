@@ -15,10 +15,20 @@ const StoreSetupPage = () => {
     formSection01: { isValidated: true },
     formSection02: { isValidated: true },
     formSection03: { isValidated: true },
-    formConfirmation: { isConfirmed: false },
+    creationConfirmation: { isConfirmed: false },
   });
 
-  const { formSection01, formSection02, formSection03 } = formsChecking;
+  const { formSection01, formSection02, formSection03, creationConfirmation } =
+    formsChecking;
+
+  useEffect(() => {
+    const createStoreButton = document.querySelector(
+      ".store-setup__button-update"
+    );
+    if (createStoreButton) {
+      window.scrollTo(0, document.querySelector("body").scrollHeight);
+    }
+  }, [creationConfirmation]);
 
   return (
     <div className="store-setup__main-container">
@@ -48,6 +58,23 @@ const StoreSetupPage = () => {
       )}
       {formSection03.isValidated && (
         <StoreCreationConfirmation setFormsChecking={setFormsChecking} />
+      )}
+      {creationConfirmation.isConfirmed && (
+        <div>
+          <div className="store-setup__centered-container">
+            <h5>
+              ¡Todo está listo, haz click en Crear tienda y podrás empezar a
+              vender tus productos!
+            </h5>
+          </div>
+          <div className="store-setup__centered-container">
+            <div className="store-setup__buttons-container">
+              <button className="store-setup__button-update">
+                Crear tienda
+              </button>
+            </div>
+          </div>
+        </div>
       )}
     </div>
   );
