@@ -18,6 +18,7 @@ import useForm from "../../hooks/useForm";
 import ProductTagList from "../../components/storeSetup/ProductTagList";
 import Swal from "sweetalert2";
 import InputProductCategory from "../../components/storeSetup/InputProductCategory";
+import latamCountries from "../../helpers/latamCountries";
 
 const FormSection03 = ({ formChecking, setFormsChecking }) => {
   const [formValues, handleInputChange, resetForm] =
@@ -35,6 +36,7 @@ const FormSection03 = ({ formChecking, setFormsChecking }) => {
     category,
     quantity,
     price,
+    currency,
     productState,
     productTags,
     freeShipping,
@@ -183,11 +185,18 @@ const FormSection03 = ({ formChecking, setFormsChecking }) => {
                 autoComplete="off"
                 min="1"
               />
-              {/* <select name="currency" id="currency" value={currency} onChange={handleInputValidation}>
-                {currenciesList.map(currency => (
-                  <option value={currency.value}>{currency.name}</option>
+              <select
+                name="currency"
+                id="currency"
+                value={currency}
+                onChange={handleInputValidation}
+              >
+                {latamCountries.map((country) => (
+                  <option value={currency.currency}>
+                    [{currency.code}] {country.name} {"->"} {country.currency}
+                  </option>
                 ))}
-              </select> */}
+              </select>
             </div>
             <div className="store-setup__error-flag">
               {errorsState.quantity.hasErrors && (
