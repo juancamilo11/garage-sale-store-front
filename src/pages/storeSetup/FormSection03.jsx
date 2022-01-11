@@ -45,6 +45,11 @@ const FormSection03 = ({ formChecking, setFormsChecking }) => {
     productImages,
   } = formValues;
 
+  const handleLoadimage = (e) => {
+    const inputImage = document.getElementById("product-prev-images");
+    inputImage.click();
+  };
+
   const handleAddNewProductTag = (e) => {
     const tagInput = document.getElementById("productTag");
     const newTag = tagInput.value;
@@ -336,7 +341,10 @@ const FormSection03 = ({ formChecking, setFormsChecking }) => {
             </div>
             <div className="store-setup__inputs-container">
               <div className="store-setup__input-container">
-                <label htmlFor="tag" className="store-setup__input-label">
+                <label
+                  htmlFor="productTag"
+                  className="store-setup__input-label"
+                >
                   Etiquetas del producto
                 </label>
                 <input
@@ -362,12 +370,56 @@ const FormSection03 = ({ formChecking, setFormsChecking }) => {
                     width="100%"
                   />
                 )}
-                <ProductTagList
-                  tags={productTagList}
-                  setTagsList={setProductTagList}
+              </div>
+            </div>
+            <div className="store-setup__product-tags-list-container">
+              <ProductTagList
+                tags={productTagList}
+                setTagsList={setProductTagList}
+              />
+            </div>
+            <div className="store-setup__input-images-container">
+              <label
+                htmlFor="product-prev-images"
+                className="store-setup__input-image-label"
+              >
+                Imágenes del producto
+              </label>
+              <div className="store-setup__mult-images-container">
+                <button
+                  className="store-setup__mult-images-button"
+                  id="preview-button"
+                  onClick={handleLoadimage}
+                >
+                  Carga un archivo
+                </button>
+                <input
+                  type="file"
+                  multiple="multiple"
+                  name="productImages"
+                  className="store-setup__input-images"
+                  id="product-prev-images"
+                  value={productImages}
+                  onChange={handleInputValidation}
                 />
               </div>
             </div>
+            <div className="store-setup__error-flag">
+              {errorsState.productImages.hasErrors && (
+                <ErrorFlag
+                  message={errorsState.productImages.message}
+                  width="100%"
+                />
+              )}
+            </div>
+            {new Array(3).fill(0).map((elem, index) => (
+              <img
+                src={process.env.PUBLIC_URL + "/assets/common/emptyImage.png"}
+                className="portrait-preview--no-content"
+                id={`${"previsualization-preview" + (index + 1)}`}
+                alt=" "
+              />
+            ))}
           </div>
           <div className="store-setup__centered-container">
             <div className="store-setup__buttons-container">

@@ -4,7 +4,6 @@ import ButtonCreateNewStore from "../ButtonCreateNewStore";
 
 const HomeUserProfile = () => {
   const auth = useSelector((state) => state.auth);
-
   return (
     <div className="userprofile__main-container">
       <div
@@ -22,7 +21,7 @@ const HomeUserProfile = () => {
           <img
             className="userprofile__profile-picture"
             src={auth.photoUrl}
-            alt="uUer profile photo"
+            alt="User profile photo"
           />
         </picture>
         <div className="userprofile__home-description">
