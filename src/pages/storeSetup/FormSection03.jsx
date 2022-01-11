@@ -19,6 +19,7 @@ import ProductTagList from "../../components/storeSetup/ProductTagList";
 import Swal from "sweetalert2";
 import InputProductCategory from "../../components/storeSetup/InputProductCategory";
 import latamCountries from "../../helpers/latamCountries";
+import productStates from "./../../helpers/productStates";
 
 const FormSection03 = ({ formChecking, setFormsChecking }) => {
   const [formValues, handleInputChange, resetForm] =
@@ -139,6 +140,38 @@ const FormSection03 = ({ formChecking, setFormsChecking }) => {
                 />
               )}
             </div>
+
+            <div className="store-setup__input-container">
+              <label
+                htmlFor="productState"
+                className="store-setup__input-label"
+              >
+                Estado
+              </label>
+              <select
+                name="productState"
+                id="productState"
+                value={productState}
+                onChange={handleInputValidation}
+                className="store-setup__input"
+                autoComplete="off"
+              >
+                {productStates.map((state) => (
+                  <option value={state.statusNumber} key={state.statusNumber}>
+                    {`(${state.statusNumber}) `}
+                    {state.statusName}
+                  </option>
+                ))}
+              </select>
+            </div>
+            <div className="store-setup__error-flag">
+              {errorsState.quantity.hasErrors && (
+                <ErrorFlag
+                  message={errorsState.quantity.message}
+                  width="100%"
+                />
+              )}
+            </div>
           </div>
           <div className="store-setup__inputs-container">
             <div className="store-setup__input-container">
@@ -188,12 +221,18 @@ const FormSection03 = ({ formChecking, setFormsChecking }) => {
               <select
                 name="currency"
                 id="currency"
+                className="store-setup__input"
                 value={currency}
                 onChange={handleInputValidation}
               >
                 {latamCountries.map((country) => (
-                  <option value={currency.currency}>
-                    [{currency.code}] {country.name} {"->"} {country.currency}
+                  <option value={country.currencyCode}>
+                    {country.currencyCode
+                      ? "[" +
+                        `${country.currencyCode}` +
+                        "]" +
+                        ` \t ${country.currencyName}`
+                      : "Seleccione la moneda"}
                   </option>
                 ))}
               </select>
