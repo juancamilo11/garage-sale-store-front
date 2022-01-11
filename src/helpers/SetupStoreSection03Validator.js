@@ -4,6 +4,7 @@ export const section_03FormValues = {
   category: "",
   quantity: "",
   price: "",
+  currency: "",
   productState: "",
   productTags: "",
   freeShipping: "",
@@ -18,6 +19,7 @@ export const section_03ErrorState = {
   category: { hasErrors: false, message: "" },
   quantity: { hasErrors: false, message: "" },
   price: { hasErrors: false, message: "" },
+  currency: { hasErrors: false, message: "" },
   productState: { hasErrors: false, message: "" },
   productTags: { hasErrors: false, message: "" },
   freeShipping: { hasErrors: false, message: "" },
@@ -44,6 +46,9 @@ const section03Validator = (e, setErrorsState) => {
       break;
     case "price":
       handlepriceValidation(value, setErrorsState);
+      break;
+    case "currency":
+      handleCurrencyValidation(value, setErrorsState);
       break;
     case "productState":
       handleproductStateValidation(value, setErrorsState);
@@ -161,6 +166,11 @@ const handlequantityValidation = (value, setErrorsState) => {
 const handlepriceValidation = (value, setErrorsState) => {
   //toDo
 };
+
+const handleCurrencyValidation = (value, setErrorsState) => {
+  //toDo
+};
+
 const handleproductStateValidation = (value, setErrorsState) => {
   //toDo
 };

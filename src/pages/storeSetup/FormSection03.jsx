@@ -43,6 +43,11 @@ const FormSection03 = ({ formChecking, setFormsChecking }) => {
 
   const handleAddNewTag = (e) => {};
 
+  const handleInputValidation = (e) => {
+    handleInputChange(e);
+    section01Validator(e, setErrorsState);
+  };
+
   const handleFormSection_03Submit = (e) => {
     e.preventDefault();
     // const errorReport = Section01Validator(formValues);
@@ -59,6 +64,18 @@ const FormSection03 = ({ formChecking, setFormsChecking }) => {
     setErrorsState(section_03ErrorState);
   };
 
+  /*
+  
+  productName: "",
+  category: "",
+  quantity: "",
+  price: "",
+  productState: "",
+  productTags: "",
+  freeShipping: "",
+  productImages: [],
+  */
+
   return (
     <div>
       <h2 className="store-setup__section-enum mb-3 mt-5">
@@ -70,7 +87,206 @@ const FormSection03 = ({ formChecking, setFormsChecking }) => {
         errorsState={errorsState}
         setErrorsState={setErrorsState}
       />
-      {/* El form está en el escritorio */}
+      <form onSubmit={handleFormSection_03Submit}>
+        <div className="store-setup__form-container">
+          <div className="store-setup__inputs-container">
+            <div className="store-setup__input-container">
+              <label htmlFor="productName" className="store-setup__input-label">
+                Nombre del producto
+              </label>
+              <input
+                type="text"
+                autoFocus="true"
+                name="productName"
+                id="productName"
+                className="store-setup__input"
+                autoComplete="off"
+                value={productName}
+                onChange={handleInputValidation}
+              />
+            </div>
+            <div className="store-setup__error-flag mt-2 mb-4">
+              {errorsState.productName.hasErrors && (
+                <ErrorFlag
+                  message={errorsState.productName.message}
+                  width="100%"
+                />
+              )}
+            </div>
+
+            <div className="store-setup__input-container">
+              <label htmlFor="quantity" className="store-setup__input-label">
+                Cantidad disponible
+              </label>
+              <input
+                type="number"
+                name="quantity"
+                id="quantity"
+                value={quantity}
+                onChange={handleInputValidation}
+                className="store-setup__input"
+                autoComplete="off"
+                min="1"
+              />
+            </div>
+            <div className="store-setup__error-flag">
+              {errorsState.quantity.hasErrors && (
+                <ErrorFlag
+                  message={errorsState.quantity.message}
+                  width="100%"
+                />
+              )}
+            </div>
+          </div>
+          <div className="store-setup__inputs-container">
+            <div className="store-setup__input-container">
+              <label htmlFor="category" className="store-setup__input-label">
+                Categoría
+              </label>
+              <select
+                name="category"
+                id="category"
+                value={category}
+                onChange={handleInputValidation}
+                className="store-setup__input"
+              >
+                {categoriesList.map((category) => (
+                  <option
+                    value={category.categoryName}
+                    className="store-setup__category-option"
+                  >
+                    {category.categoryName}
+                  </option>
+                ))}
+              </select>
+            </div>
+            <div className="store-setup__error-flag">
+              {errorsState.category.hasErrors && (
+                <ErrorFlag
+                  message={errorsState.category.message}
+                  width="100%"
+                />
+              )}
+            </div>
+
+            <div className="store-setup__input-container">
+              <label htmlFor="price" className="store-setup__input-label">
+                Precio unitario
+              </label>
+              <input
+                type="number"
+                name="price"
+                id="price"
+                value={price}
+                onChange={handleInputValidation}
+                className="store-setup__input"
+                autoComplete="off"
+                min="1"
+              />
+              {/* <select name="currency" id="currency" value={currency} onChange={handleInputValidation}>
+                {currenciesList.map(currency => (
+                  <option value={currency.value}>{currency.name}</option>
+                ))}
+              </select> */}
+            </div>
+            <div className="store-setup__error-flag">
+              {errorsState.quantity.hasErrors && (
+                <ErrorFlag
+                  message={errorsState.quantity.message}
+                  width="100%"
+                />
+              )}
+            </div>
+
+            <div className="store-setup__input-container">
+              <label
+                htmlFor="startingDate"
+                className="store-setup__input-label"
+              >
+                Fecha de apertura
+              </label>
+              <input
+                type="date"
+                name="startingDate"
+                id="startingDate"
+                onChange={handleInputValidation}
+                className="store-setup__input store-setup__input-date"
+                autoComplete="off"
+              />
+              <label
+                htmlFor="endingDate"
+                className="store-setup__input-date-label"
+              >
+                Hasta
+              </label>
+              <input
+                type="date"
+                name="endingDate"
+                id="endingDate"
+                readOnly
+                className="store-setup__input store-setup__input-date"
+                autoComplete="off"
+              />
+            </div>
+            <div className="store-setup__error-flag">
+              {errorsState.quantity.hasErrors && (
+                <ErrorFlag
+                  message={errorsState.quantity.message}
+                  width="100%"
+                />
+              )}
+            </div>
+          </div>
+          <div className="store-setup__inputs-container">
+            <div className="store-setup__input-container">
+              <label className="store-setup__input-label">
+                Dirección física
+              </label>
+              <button className="store-setup__input btn btn-primary store-setup__input-address">
+                Obtener tu dirección actual
+              </button>
+            </div>
+            <div className="store-setup__error-flag">
+              {errorsState.quantity.hasErrors && (
+                <ErrorFlag
+                  message={errorsState.quantity.message}
+                  width="100%"
+                />
+              )}
+            </div>
+
+            <div className="store-setup__input-container">
+              <label className="store-setup__input-label">
+                Dirección física
+              </label>
+              <button className="store-setup__input btn btn-primary store-setup__input-address">
+                Obtener tu dirección actual
+              </button>
+            </div>
+            <div className="store-setup__error-flag">
+              {errorsState.quantity.hasErrors && (
+                <ErrorFlag
+                  message={errorsState.quantity.message}
+                  width="100%"
+                />
+              )}
+            </div>
+          </div>
+        </div>
+        <div className="store-setup__centered-container">
+          <div className="store-setup__buttons-container">
+            <button className="store-setup__button-update" type="submit">
+              Confirmar cambios
+            </button>
+            <button
+              className="store-setup__button-update"
+              onClick={handleResetForm}
+            >
+              Resetear los datos
+            </button>
+          </div>
+        </div>
+      </form>
     </div>
   );
 };
