@@ -20,7 +20,6 @@ const ProductCategoryWithImageTagList = ({
           </div>
         )}
       </div>
-
       {categoriesList.length > 0 &&
         categoriesList.map((category) => (
           <div
