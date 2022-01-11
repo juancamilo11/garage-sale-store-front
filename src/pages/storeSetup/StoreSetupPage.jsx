@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import ErrorFlag from "../../components/ErrorFlag";
 import NavBarFormUserData from "../../components/navbar/NavBarFormUserData";
 import SectionTitle from "../../components/SectionTitle";
+import StoreCreationConfirmation from "../../components/storeSetup/StoreCreationConfirmation";
 
 import FormSection01 from "./FormSection01";
 import FormSection02 from "./FormSection02";
@@ -13,7 +14,8 @@ const StoreSetupPage = () => {
   const [formsChecking, setFormsChecking] = useState({
     formSection01: { isValidated: true },
     formSection02: { isValidated: true },
-    formSection03: { isValidated: false },
+    formSection03: { isValidated: true },
+    formConfirmation: { isConfirmed: false },
   });
 
   const { formSection01, formSection02, formSection03 } = formsChecking;
@@ -38,16 +40,15 @@ const StoreSetupPage = () => {
         />
       )}
 
-      {formSection01.isValidated && formSection02.isValidated && (
+      {formSection02.isValidated && (
         <FormSection03
           formChecking={formSection03}
           setFormsChecking={setFormsChecking}
         />
       )}
-
-      {formSection01.isValidated &&
-        formSection02.isValidated &&
-        formSection03.isValidated && <button>Crear tienda</button>}
+      {formSection03.isValidated && (
+        <StoreCreationConfirmation setFormsChecking={setFormsChecking} />
+      )}
     </div>
   );
 };
