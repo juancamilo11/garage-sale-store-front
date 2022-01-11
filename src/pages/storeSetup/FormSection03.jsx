@@ -27,6 +27,7 @@ const FormSection03 = ({ formChecking, setFormsChecking }) => {
 
   const [arrProducts, setArrProducts] = useState([]);
   const [categoriesList, setCategoriesList] = useState([]);
+  const [productTagList, setProductTagList] = useState([]);
 
   const [errorsState, setErrorsState] = useState(section_03ErrorState);
 
@@ -39,12 +40,31 @@ const FormSection03 = ({ formChecking, setFormsChecking }) => {
     price,
     currency,
     productState,
-    productTags,
+    productTag,
     freeShipping,
     productImages,
   } = formValues;
 
-  const handleAddNewTag = (e) => {};
+  const handleAddNewProductTag = (e) => {
+    const tagInput = document.getElementById("productTag");
+    const newTag = tagInput.value;
+    const cleanEvent = { target: { name: "productTag", value: "" } };
+
+    if (!errorsState.productTag.hasErrors && newTag.trim() !== "") {
+      setProductTagList([...productTagList, newTag]);
+      handleInputValidation(cleanEvent);
+    } else {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: `La etiqueta de producto '${newTag}' no se ha podido ingresar, intenta con otro valor.`,
+        showConfirmButton: false,
+        timer: 3500,
+      }).then((res) => {
+        handleInputValidation(cleanEvent);
+      });
+    }
+  };
 
   const handleInputValidation = (e) => {
     handleInputChange(e);
@@ -282,7 +302,7 @@ const FormSection03 = ({ formChecking, setFormsChecking }) => {
                     />
                     <label
                       htmlFor="freeShipping-yes"
-                      className="store-setup__input-label"
+                      className="store-setup__input-label store-setup__input-ratio-label"
                     >
                       Si
                     </label>
@@ -298,8 +318,7 @@ const FormSection03 = ({ formChecking, setFormsChecking }) => {
                     />
                     <label
                       htmlFor="freeShipping-no"
-                      className="store-setup__input-label"
-                      style={{ marginRight: "7px" }}
+                      className="store-setup__input-label store-setup__input-ratio-label"
                     >
                       No
                     </label>
@@ -317,37 +336,36 @@ const FormSection03 = ({ formChecking, setFormsChecking }) => {
             </div>
             <div className="store-setup__inputs-container">
               <div className="store-setup__input-container">
-                <label className="store-setup__input-label">
-                  Dirección física
+                <label htmlFor="tag" className="store-setup__input-label">
+                  Etiquetas del producto
                 </label>
-                <button className="store-setup__input btn btn-primary store-setup__input-address">
-                  Obtener tu dirección actual
+                <input
+                  type="text"
+                  name="productTag"
+                  id="productTag"
+                  value={productTag}
+                  onChange={handleInputValidation}
+                  className="store-setup__input store-setup__input-tag"
+                  autoComplete="off"
+                />
+                <button
+                  onClick={handleAddNewProductTag}
+                  className="store-setup__input store-setup__button-input-tag btn btn-primary"
+                >
+                  Ingresar
                 </button>
               </div>
               <div className="store-setup__error-flag">
-                {errorsState.quantity.hasErrors && (
+                {errorsState.productTag.hasErrors && (
                   <ErrorFlag
-                    message={errorsState.quantity.message}
+                    message={errorsState.productTag.message}
                     width="100%"
                   />
                 )}
-              </div>
-
-              <div className="store-setup__input-container">
-                <label className="store-setup__input-label">
-                  Dirección física
-                </label>
-                <button className="store-setup__input btn btn-primary store-setup__input-address">
-                  Obtener tu dirección actual
-                </button>
-              </div>
-              <div className="store-setup__error-flag">
-                {errorsState.quantity.hasErrors && (
-                  <ErrorFlag
-                    message={errorsState.quantity.message}
-                    width="100%"
-                  />
-                )}
+                <ProductTagList
+                  tags={productTagList}
+                  setTagsList={setProductTagList}
+                />
               </div>
             </div>
           </div>

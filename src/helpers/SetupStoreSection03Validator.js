@@ -6,7 +6,7 @@ export const section_03FormValues = {
   price: "",
   currency: "",
   productState: "",
-  productTags: "",
+  productTag: "",
   freeShipping: "",
   productImages: [],
 };
@@ -21,7 +21,7 @@ export const section_03ErrorState = {
   price: { hasErrors: false, message: "" },
   currency: { hasErrors: false, message: "" },
   productState: { hasErrors: false, message: "" },
-  productTags: { hasErrors: false, message: "" },
+  productTag: { hasErrors: false, message: "" },
   freeShipping: { hasErrors: false, message: "" },
   productImages: { hasErrors: false, message: "" },
 };
@@ -53,8 +53,8 @@ const section03Validator = (e, setErrorsState) => {
     case "productState":
       handleproductStateValidation(value, setErrorsState);
       break;
-    case "productTags":
-      handleproductTagsValidation(value, setErrorsState);
+    case "productTag":
+      handleproductTagValidation(value, setErrorsState);
       break;
     case "freeShipping":
       handlefreeShippingValidation(value, setErrorsState);
@@ -174,8 +174,29 @@ const handleCurrencyValidation = (value, setErrorsState) => {
 const handleproductStateValidation = (value, setErrorsState) => {
   //toDo
 };
-const handleproductTagsValidation = (value, setErrorsState) => {
-  //toDo
+const handleproductTagValidation = (value, setErrorsState) => {
+  if (
+    (value.trim().length >= 3 && value.trim().length <= 20) ||
+    value.trim().length === 0
+  ) {
+    setErrorsState((state) => {
+      return {
+        ...state,
+        ["productTag"]: { hasErrors: false, message: "" },
+      };
+    });
+  } else {
+    setErrorsState((state) => {
+      return {
+        ...state,
+        ["productTag"]: {
+          hasErrors: true,
+          message:
+            "El nombre de la etiqueta de un producto debe tener entre 3 y 20 caracteres.",
+        },
+      };
+    });
+  }
 };
 const handlefreeShippingValidation = (value, setErrorsState) => {
   //toDo

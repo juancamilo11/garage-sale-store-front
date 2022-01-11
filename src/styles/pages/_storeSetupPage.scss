@@ -396,16 +396,23 @@
 
 .store-setup__input-ratio-container {
   display: flex;
-  width: 100%;
+  width: 60%;
   flex-direction: row;
   align-items: center;
   justify-content: space-evenly;
 }
 
+.store-setup__input-ratio-label {
+  padding-left: 10px;
+  padding-top: 10px;
+  width: 40%;
+  // background-color: blue;
+}
+
 .store-setup__input-ratio-item {
   width: 40px;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
 }
