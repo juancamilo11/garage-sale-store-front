@@ -36,31 +36,31 @@ const section03Validator = (e, setErrorsState) => {
       handleCategoryImageValidation(files[0], setErrorsState);
       break;
     case "productName":
-      handleproductNameValidation(value, setErrorsState);
+      handleProductNameValidation(value, setErrorsState);
       break;
     case "category":
-      handlecategoryValidation(value, setErrorsState);
+      handleCategoryValidation(value, setErrorsState);
       break;
     case "quantity":
-      handlequantityValidation(value, setErrorsState);
+      handleQuantityValidation(value, setErrorsState);
       break;
     case "price":
-      handlepriceValidation(value, setErrorsState);
+      handlePriceValidation(value, setErrorsState);
       break;
     case "currency":
       handleCurrencyValidation(value, setErrorsState);
       break;
     case "productState":
-      handleproductStateValidation(value, setErrorsState);
+      handleProductStateValidation(value, setErrorsState);
       break;
     case "productTag":
-      handleproductTagValidation(value, setErrorsState);
+      handleProductTagValidation(value, setErrorsState);
       break;
     case "freeShipping":
-      handlefreeShippingValidation(value, setErrorsState);
+      handleFreeShippingValidation(value, setErrorsState);
       break;
     case "productImages":
-      handleproductImagesValidation(value, setErrorsState);
+      handleProductImagesValidation(files, setErrorsState);
       break;
     default:
       break;
@@ -154,16 +154,52 @@ const handleCategoryImageValidation = (file, setErrorsState) => {
   });
 };
 
-const handleproductNameValidation = (value, setErrorsState) => {
+const handleProductNameValidation = (value, setErrorsState) => {
+  if (
+    (value.trim().length >= 8 && value.trim().length <= 30) ||
+    value.trim() === ""
+  ) {
+    setErrorsState((state) => {
+      return { ...state, ["productName"]: { hasErrors: false, message: "" } };
+    });
+  } else {
+    setErrorsState((state) => {
+      return {
+        ...state,
+        ["productName"]: {
+          hasErrors: true,
+          message: "El nombre del producto debe tener entre 8 y 30 caracteres.",
+        },
+      };
+    });
+  }
+};
+
+const handleCategoryValidation = (value, setErrorsState) => {
+  console.log("//////////////////" + value);
+  // if (
+  //   (value.trim().length >= 8 && value.trim().length <= 30) ||
+  //   value.trim() === ""
+  // ) {
+  //   setErrorsState((state) => {
+  //     return { ...state, ["category"]: { hasErrors: false, message: "" } };
+  //   });
+  // } else {
+  //   setErrorsState((state) => {
+  //     return {
+  //       ...state,
+  //       ["category"]: {
+  //         hasErrors: true,
+  //         message: "El nombre del producto debe tener entre 8 y 30 caracteres.",
+  //       },
+  //     };
+  //   });
+  // }
+};
+const handleQuantityValidation = (value, setErrorsState) => {
   //toDo
 };
-const handlecategoryValidation = (value, setErrorsState) => {
-  //toDo
-};
-const handlequantityValidation = (value, setErrorsState) => {
-  //toDo
-};
-const handlepriceValidation = (value, setErrorsState) => {
+const handlePriceValidation = (value, setErrorsState) => {
   //toDo
 };
 
@@ -171,10 +207,10 @@ const handleCurrencyValidation = (value, setErrorsState) => {
   //toDo
 };
 
-const handleproductStateValidation = (value, setErrorsState) => {
+const handleProductStateValidation = (value, setErrorsState) => {
   //toDo
 };
-const handleproductTagValidation = (value, setErrorsState) => {
+const handleProductTagValidation = (value, setErrorsState) => {
   if (
     (value.trim().length >= 3 && value.trim().length <= 20) ||
     value.trim().length === 0
@@ -198,11 +234,70 @@ const handleproductTagValidation = (value, setErrorsState) => {
     });
   }
 };
-const handlefreeShippingValidation = (value, setErrorsState) => {
+const handleFreeShippingValidation = (value, setErrorsState) => {
   //toDo
 };
-const handleproductImagesValidation = (value, setErrorsState) => {
-  //toDo
+const handleProductImagesValidation = (arrFiles, setErrorsState) => {
+  if (arrFiles.length < 3 || arrFiles.length > 5) {
+    setErrorsState((state) => {
+      return {
+        ...state,
+        ["productImages"]: {
+          hasErrors: true,
+          message:
+            "Error: Ha ingresado una cantidad inválida de imágenes del producto, se deben subir entre tres y cinco imágenes.",
+          hasContent: false,
+        },
+      };
+    });
+    return;
+  }
+  //arrFiles es de tipo FileList, no deriva de Array (pero si es iterable), por ende
+  //se debe generar un array para poder recorrer este objeto
+  if (
+    !new Array(arrFiles.length)
+      .fill(0)
+      .every((num, index) => arrFiles.item(index).type.startsWith("image"))
+  ) {
+    new Array(arrFiles.length).fill(0).forEach((num, index) => {
+      const imagePreview = document.getElementById(
+        `${"product-previsualization-preview" + (index + 1)}`
+      );
+      imagePreview.setAttribute("src", "/assets/common/emptyImage.png");
+      imagePreview.classList.replace(
+        "product-preview--with-content",
+        "product-preview--no-content"
+      );
+    });
+    setErrorsState((state) => {
+      return {
+        ...state,
+        ["productImages"]: {
+          hasErrors: true,
+          message:
+            "Error: Ha ingresado un archivo inválido, por favor ingrese solamente imágenes.",
+          hasContent: false,
+        },
+      };
+    });
+    return;
+  }
+
+  //En este punto ya todo está bien validado
+
+  //Enviar la imagen a cloudinary y en base a la peticion hacer lo siguiente.
+  sendImageToCloudinary();
+
+  new Array(arrFiles.length).fill(0).forEach((num, index) => {
+    const imagePreview = document.getElementById(
+      `${"product-previsualization-preview" + (index + 1)}`
+    );
+    imagePreview.src = URL.createObjectURL(arrFiles.item(index));
+    imagePreview.classList.replace(
+      "product-preview--no-content",
+      "product-preview--with-content"
+    );
+  });
 };
 
 export default section03Validator;

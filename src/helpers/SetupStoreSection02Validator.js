@@ -90,7 +90,6 @@ const handlePortraitUrlValidation = (file, setErrorsState) => {
 
 //Todos las imágenes se van a subir al mismo tiempo
 const handlePrevImagesUrlsValidation = (arrFiles, setErrorsState) => {
-  console.log(arrFiles);
   if (arrFiles.length !== 3) {
     setErrorsState((state) => {
       return {

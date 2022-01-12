@@ -73,7 +73,7 @@ const FormSection03 = ({ formChecking, setFormsChecking }) => {
 
   const handleInputValidation = (e) => {
     handleInputChange(e);
-    section01Validator(e, setErrorsState);
+    section03Validator(e, setErrorsState);
   };
 
   const handleFormSection_03Submit = (e) => {
@@ -221,6 +221,9 @@ const FormSection03 = ({ formChecking, setFormsChecking }) => {
                   onChange={handleInputValidation}
                   className="store-setup__input"
                 >
+                  <option value="no-category-selected" selected="true">
+                    Seleccione una categoría para el producto
+                  </option>
                   {categoriesList.map((category) => (
                     <option
                       value={category.categoryName}
@@ -269,7 +272,7 @@ const FormSection03 = ({ formChecking, setFormsChecking }) => {
                           `${country.currencyCode}` +
                           "]" +
                           ` \t ${country.currencyName}`
-                        : "Seleccione la moneda"}
+                        : "Moneda"}
                     </option>
                   ))}
                 </select>
@@ -412,11 +415,11 @@ const FormSection03 = ({ formChecking, setFormsChecking }) => {
                 />
               )}
             </div>
-            {new Array(3).fill(0).map((elem, index) => (
+            {new Array(5).fill(0).map((elem, index) => (
               <img
                 src={process.env.PUBLIC_URL + "/assets/common/emptyImage.png"}
                 className="portrait-preview--no-content"
-                id={`${"previsualization-preview" + (index + 1)}`}
+                id={`${"product-previsualization-preview" + (index + 1)}`}
                 alt=" "
               />
             ))}
