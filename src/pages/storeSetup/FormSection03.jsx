@@ -334,9 +334,9 @@ const FormSection03 = ({ formChecking, setFormsChecking }) => {
                 </div>
               </div>
               <div className="store-setup__error-flag">
-                {errorsState.quantity.hasErrors && (
+                {errorsState.freeShipping.hasErrors && (
                   <ErrorFlag
-                    message={errorsState.quantity.message}
+                    message={errorsState.freeShipping.message}
                     width="100%"
                   />
                 )}
@@ -366,7 +366,7 @@ const FormSection03 = ({ formChecking, setFormsChecking }) => {
                   Ingresar
                 </button>
               </div>
-              <div className="store-setup__error-flag">
+              <div className="store-setup__error-flag mb-4">
                 {errorsState.productTag.hasErrors && (
                   <ErrorFlag
                     message={errorsState.productTag.message}
@@ -375,54 +375,56 @@ const FormSection03 = ({ formChecking, setFormsChecking }) => {
                 )}
               </div>
             </div>
-            <div className="store-setup__product-tags-list-container">
+            <div className="store-setup__product-tags-list-container--produts">
               <ProductTagList
                 tags={productTagList}
                 setTagsList={setProductTagList}
               />
             </div>
-            <div className="store-setup__input-images-container">
-              <label
-                htmlFor="product-prev-images"
-                className="store-setup__input-image-label"
-              >
-                Imágenes del producto
-              </label>
-              <div className="store-setup__mult-images-container">
-                <button
-                  className="store-setup__mult-images-button"
-                  id="preview-button"
-                  onClick={handleLoadimage}
+            <div className="mt-5">
+              <div className="store-setup__product-images-container">
+                <label
+                  htmlFor="product-prev-images"
+                  className="store-setup__input-image-label"
                 >
-                  Carga un archivo
-                </button>
-                <input
-                  type="file"
-                  multiple="multiple"
-                  name="productImages"
-                  className="store-setup__input-images"
-                  id="product-prev-images"
-                  value={productImages}
-                  onChange={handleInputValidation}
-                />
+                  Imágenes del producto
+                </label>
+                <div className="store-setup__mult-images-container">
+                  <button
+                    className="store-setup__mult-images-button"
+                    id="preview-button"
+                    onClick={handleLoadimage}
+                  >
+                    Carga un archivo
+                  </button>
+                  <input
+                    type="file"
+                    multiple="multiple"
+                    name="productImages"
+                    className="store-setup__input-images"
+                    id="product-prev-images"
+                    value={productImages}
+                    onChange={handleInputValidation}
+                  />
+                </div>
               </div>
-            </div>
-            <div className="store-setup__error-flag">
-              {errorsState.productImages.hasErrors && (
-                <ErrorFlag
-                  message={errorsState.productImages.message}
-                  width="100%"
+              <div className="store-setup__error-flag">
+                {errorsState.productImages.hasErrors && (
+                  <ErrorFlag
+                    message={errorsState.productImages.message}
+                    width="100%"
+                  />
+                )}
+              </div>
+              {new Array(5).fill(0).map((elem, index) => (
+                <img
+                  src={process.env.PUBLIC_URL + "/assets/common/emptyImage.png"}
+                  className="portrait-preview--no-content"
+                  id={`${"product-previsualization-preview" + (index + 1)}`}
+                  alt=" "
                 />
-              )}
+              ))}
             </div>
-            {new Array(5).fill(0).map((elem, index) => (
-              <img
-                src={process.env.PUBLIC_URL + "/assets/common/emptyImage.png"}
-                className="portrait-preview--no-content"
-                id={`${"product-previsualization-preview" + (index + 1)}`}
-                alt=" "
-              />
-            ))}
           </div>
           <div className="store-setup__centered-container">
             <div className="store-setup__buttons-container">
