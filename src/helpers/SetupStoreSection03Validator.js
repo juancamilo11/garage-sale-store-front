@@ -67,7 +67,9 @@ const section03Validator = (e, setErrorsState) => {
   }
 };
 
-const sendImageToCloudinary = () => {};
+const sendImageToCloudinary = () => {
+  //no impl yet
+};
 
 export const isTheCategoryAlreadyDefined = (
   categoryName,
@@ -176,39 +178,58 @@ const handleProductNameValidation = (value, setErrorsState) => {
 };
 
 const handleCategoryValidation = (value, setErrorsState) => {
-  console.log("//////////////////" + value);
-  // if (
-  //   (value.trim().length >= 8 && value.trim().length <= 30) ||
-  //   value.trim() === ""
-  // ) {
-  //   setErrorsState((state) => {
-  //     return { ...state, ["category"]: { hasErrors: false, message: "" } };
-  //   });
-  // } else {
-  //   setErrorsState((state) => {
-  //     return {
-  //       ...state,
-  //       ["category"]: {
-  //         hasErrors: true,
-  //         message: "El nombre del producto debe tener entre 8 y 30 caracteres.",
-  //       },
-  //     };
-  //   });
-  // }
+  //no impl yet
 };
 const handleQuantityValidation = (value, setErrorsState) => {
-  //toDo
+  const quantity = parseInt(value);
+  if (value.trim().length === 0) {
+    setErrorsState((state) => {
+      return { ...state, ["quantity"]: { hasErrors: false, message: "" } };
+    });
+    return;
+  }
+  if (quantity <= 0) {
+    setErrorsState((state) => {
+      return {
+        ...state,
+        ["quantity"]: {
+          hasErrors: true,
+          message:
+            "La cantidad de productos en venta de este producto debe ser mayor que 0.",
+        },
+      };
+    });
+  }
 };
+
 const handlePriceValidation = (value, setErrorsState) => {
-  //toDo
+  const price = parseInt(value);
+  if (value.trim().length === 0) {
+    setErrorsState((state) => {
+      return { ...state, ["price"]: { hasErrors: false, message: "" } };
+    });
+    return;
+  }
+  if (price <= 0.0) {
+    setErrorsState((state) => {
+      return {
+        ...state,
+        ["price"]: {
+          hasErrors: true,
+          message:
+            "El precio unitario de venta de este producto debe ser mayor que 0.",
+        },
+      };
+    });
+  }
 };
 
 const handleCurrencyValidation = (value, setErrorsState) => {
-  //toDo
+  //no impl yet
 };
 
 const handleProductStateValidation = (value, setErrorsState) => {
-  //toDo
+  //no impl yet
 };
 const handleProductTagValidation = (value, setErrorsState) => {
   if (
