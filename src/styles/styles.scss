@@ -8,12 +8,12 @@
 @import "./components/error-flag";
 @import "./components/navbars";
 @import "./components/footer";
+@import "./components/loadingPage";
 
 //Styles for pages
-@import "./pages/garageSalePage";
-@import "./pages/loginPage";
-@import "./pages/storeCatalogPage";
-@import "./pages/storeSetupPage";
-@import "./pages/userProfilePage";
-@import "./pages/loadingPage";
-@import "./pages/userFormData";
+@import "./pages/garageSalePage/garageSalePage";
+@import "./pages/loginPage/loginPage";
+@import "./pages/storeCatalogPage/storeCatalogPage";
+@import "./pages/storeSetupPage/storeSetupPage";
+@import "./pages/userProfilePage/userProfilePage";
+@import "./pages/userFormData/userFormData";
