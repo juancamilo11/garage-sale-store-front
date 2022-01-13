@@ -2,22 +2,21 @@ import React from "react";
 import { useState } from "react";
 import section03Validator, {
   isTheCategoryAlreadyDefined,
+  section_03ErrorState,
 } from "../../helpers/SetupStoreSection03Validator";
 import useForm from "../../hooks/useForm";
 import ErrorFlag from "../ErrorFlag";
 import ProductCategoryWithImageTagList from "./ProductCategoryWithImageTagList";
 import ProductWithImageTagList from "./ProductCategoryWithImageTagList";
 
-const InputProductCategory = ({
-  categoriesList,
-  setCategoriesList,
-  errorsState,
-  setErrorsState,
-}) => {
+const InputProductCategory = ({ categoriesList, setCategoriesList }) => {
   const [formValues, handleCategoryInputChange, resetForm] = useForm({
     categoryName: "",
     categoryImage: "",
   });
+
+  const [errorsState, setErrorsState] = useState(section_03ErrorState);
+
   const { categoryName, categoryImage } = formValues;
 
   const handleInputValidation = (e) => {
@@ -135,7 +134,11 @@ const InputProductCategory = ({
               <hr />
             </div>
             <div className="store-setup__centered-container">
-              <button className="store-setup__button-update" type="submit">
+              <button
+                className="store-setup__button-update"
+                type="submit"
+                disabled={errorsState.categoryName.hasErrors}
+              >
                 Agregar nueva categoría
               </button>
             </div>

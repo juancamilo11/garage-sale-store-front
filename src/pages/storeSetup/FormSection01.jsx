@@ -189,6 +189,7 @@ const FormSection01 = ({ formChecking, setFormsChecking }) => {
                 <button
                   onClick={handleAddNewTag}
                   className="store-setup__input store-setup__button-input-tag btn btn-primary"
+                  disabled={errorsState.tag.hasErrors}
                 >
                   Ingresar
                 </button>
