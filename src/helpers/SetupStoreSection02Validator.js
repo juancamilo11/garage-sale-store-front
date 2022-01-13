@@ -36,6 +36,26 @@ const sendImageToCloudinary = () => {
   //Pendiente, conectar con la api de cloudinary.
 };
 
+const setErrorStateForField = (
+  setErrorsState,
+  fieldName,
+  hasErrors,
+  message,
+  hasContent
+) => {
+  setErrorStateForField(setErrorsState);
+  setErrorsState((state) => {
+    return {
+      ...state,
+      [`${fieldName}`]: {
+        hasErrors,
+        message,
+        hasContent,
+      },
+    };
+  });
+};
+
 export const resetImagesFromView = (setErrorsState) => {
   new Array(3).fill(0).forEach((num, index) => {
     const imagePreview = document.getElementById(
@@ -58,17 +78,13 @@ const handlePortraitUrlValidation = (file, setErrorsState) => {
       "portrait-preview--with-content",
       "portrait-preview--no-content"
     );
-    setErrorsState((state) => {
-      return {
-        ...state,
-        ["portraitUrl"]: {
-          hasErrors: true,
-          message:
-            "Error: El archivo ingresado no es una imágen, por favor suba un archivo con formato correcto.",
-          hasContent: false,
-        },
-      };
-    });
+    setErrorStateForField(
+      setErrorsState,
+      "portraitUrl",
+      true,
+      "Error: El archivo ingresado no es una imágen, por favor suba un archivo con formato correcto.",
+      false
+    );
     return;
   }
 
@@ -80,28 +96,19 @@ const handlePortraitUrlValidation = (file, setErrorsState) => {
     "portrait-preview--no-content",
     "portrait-preview--with-content"
   );
-  setErrorsState((state) => {
-    return {
-      ...state,
-      ["portraitUrl"]: { hasErrors: false, message: "", hasContent: true },
-    };
-  });
+  setErrorStateForField(setErrorsState, "portraitUrl", false, "", true);
 };
 
 //Todos las imágenes se van a subir al mismo tiempo
 const handlePrevImagesUrlsValidation = (arrFiles, setErrorsState) => {
   if (arrFiles.length !== 3) {
-    setErrorsState((state) => {
-      return {
-        ...state,
-        ["prevImagesUrls"]: {
-          hasErrors: true,
-          message:
-            "Error: Ha ingresado una cantidad inválida de imágenes, se deben subir exactamente tres.",
-          hasContent: false,
-        },
-      };
-    });
+    setErrorStateForField(
+      setErrorsState,
+      "prevImagesUrls",
+      true,
+      "Error: Ha ingresado una cantidad inválida de imágenes, se deben subir exactamente tres.",
+      false
+    );
     return;
   }
   //arrFiles es de tipo FileList, no deriva de Array (pero si es iterable), por ende
@@ -121,17 +128,13 @@ const handlePrevImagesUrlsValidation = (arrFiles, setErrorsState) => {
         "portrait-preview--no-content"
       );
     });
-    setErrorsState((state) => {
-      return {
-        ...state,
-        ["prevImagesUrls"]: {
-          hasErrors: true,
-          message:
-            "Error: Ha ingresado un archivo inválido, por favor ingrese solamente imágenes.",
-          hasContent: false,
-        },
-      };
-    });
+    setErrorStateForField(
+      setErrorsState,
+      "prevImagesUrls",
+      true,
+      "Error: Ha ingresado un archivo inválido, por favor ingrese solamente imágenes.",
+      false
+    );
     return;
   }
 
@@ -161,17 +164,13 @@ const handlePhysicalStoreUrlValidation = (file, setErrorsState) => {
       "portrait-preview--with-content",
       "portrait-preview--no-content"
     );
-    setErrorsState((state) => {
-      return {
-        ...state,
-        ["physicalStoreUrl"]: {
-          hasErrors: true,
-          message:
-            "Error: El archivo ingresado no es una imágen, por favor suba un archivo con formato correcto.",
-          hasContent: false,
-        },
-      };
-    });
+    setErrorStateForField(
+      setErrorsState,
+      "physicalStoreUrl",
+      true,
+      "Error: El archivo ingresado no es una imágen, por favor suba un archivo con formato correcto.",
+      false
+    );
     return;
   }
 
@@ -183,12 +182,7 @@ const handlePhysicalStoreUrlValidation = (file, setErrorsState) => {
     "portrait-preview--no-content",
     "portrait-preview--with-content"
   );
-  setErrorsState((state) => {
-    return {
-      ...state,
-      ["physicalStoreUrl"]: { hasErrors: false, message: "", hasContent: true },
-    };
-  });
+  setErrorStateForField(setErrorsState, "physicalStoreUrl", false, "", true);
 };
 
 export default section02Validator;
