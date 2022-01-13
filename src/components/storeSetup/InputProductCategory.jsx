@@ -86,10 +86,15 @@ const InputProductCategory = ({
               onChange={handleInputValidation}
             />
             {errorsState.categoryName.hasErrors && (
-              <ErrorFlag
-                message={errorsState.categoryName.message}
-                width="100%"
-              />
+              <div
+                className="store-setup__product-categories-error-flag"
+                className={{ marginTop: "50px", backgroundColor: "blue" }}
+              >
+                <ErrorFlag
+                  message={errorsState.categoryName.message}
+                  width="100%"
+                />
+              </div>
             )}
             <div className="store-input-image-container mt-3">
               <label

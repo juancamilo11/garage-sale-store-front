@@ -125,6 +125,7 @@ const FormSection01 = ({ formChecking, setFormsChecking }) => {
                   <ErrorFlag
                     message={errorsState.storeName.message}
                     width="100%"
+                    marginTop="-25px"
                   />
                 )}
               </div>
@@ -149,6 +150,7 @@ const FormSection01 = ({ formChecking, setFormsChecking }) => {
                   <ErrorFlag
                     message={errorsState.slogan.message}
                     width="100%"
+                    marginTop="-25px"
                   />
                 )}
               </div>
@@ -175,7 +177,11 @@ const FormSection01 = ({ formChecking, setFormsChecking }) => {
               </div>
               <div className="store-setup__error-flag">
                 {errorsState.tag.hasErrors && (
-                  <ErrorFlag message={errorsState.tag.message} width="100%" />
+                  <ErrorFlag
+                    message={errorsState.tag.message}
+                    width="100%"
+                    marginTop="-25px"
+                  />
                 )}
                 <ProductTagList tags={tagsList} setTagsList={setTagsList} />
               </div>
@@ -204,6 +210,7 @@ const FormSection01 = ({ formChecking, setFormsChecking }) => {
                   <ErrorFlag
                     message={errorsState.description.message}
                     width="100%"
+                    marginTop="-25px"
                   />
                 )}
               </div>
@@ -245,6 +252,7 @@ const FormSection01 = ({ formChecking, setFormsChecking }) => {
                   <ErrorFlag
                     message={errorsState.startingDate.message}
                     width="100%"
+                    marginTop="-25px"
                   />
                 )}
               </div>
@@ -265,6 +273,7 @@ const FormSection01 = ({ formChecking, setFormsChecking }) => {
                   <ErrorFlag
                     message={errorsState.address.message}
                     width="100%"
+                    marginTop="-25px"
                   />
                 )}
               </div>

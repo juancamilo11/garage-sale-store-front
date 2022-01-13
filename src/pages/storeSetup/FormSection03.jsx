@@ -1,19 +1,10 @@
-import React, { useReducer, useState } from "react";
+import React, { useState } from "react";
 import ErrorFlag from "../../components/ErrorFlag";
-import section01Validator from "../../helpers/SetupStoreSection01Validator";
-
-import { section_01FormValues } from "./../../helpers/SetupStoreSection01Validator";
-import { section_01ErrorState } from "./../../helpers/SetupStoreSection01Validator";
-
-import { section_02FormValues } from "./../../helpers/SetupStoreSection02Validator";
-import { section_02ErrorState } from "./../../helpers/SetupStoreSection02Validator";
 
 import section03Validator, {
   section_03FormValues,
 } from "./../../helpers/SetupStoreSection03Validator";
 import { section_03ErrorState } from "./../../helpers/SetupStoreSection03Validator";
-
-import storeSetupReducer from "./../../reducers/storeSetupReducer";
 import useForm from "../../hooks/useForm";
 import ProductTagList from "../../components/storeSetup/ProductTagList";
 import Swal from "sweetalert2";
@@ -92,18 +83,6 @@ const FormSection03 = ({ formChecking, setFormsChecking }) => {
     setErrorsState(section_03ErrorState);
   };
 
-  /*
-  
-  productName: "",
-  category: "",
-  quantity: "",
-  price: "",
-  productState: "",
-  productTags: "",
-  freeShipping: "",
-  productImages: [],
-  */
-
   return (
     <div>
       <h2 className="store-setup__section-enum mb-3 mt-5">
@@ -149,6 +128,7 @@ const FormSection03 = ({ formChecking, setFormsChecking }) => {
                   <ErrorFlag
                     message={errorsState.productName.message}
                     width="100%"
+                    marginTop="-25px"
                   />
                 )}
               </div>
@@ -173,6 +153,7 @@ const FormSection03 = ({ formChecking, setFormsChecking }) => {
                   <ErrorFlag
                     message={errorsState.quantity.message}
                     width="100%"
+                    marginTop="-25px"
                   />
                 )}
               </div>
@@ -205,10 +186,12 @@ const FormSection03 = ({ formChecking, setFormsChecking }) => {
                   <ErrorFlag
                     message={errorsState.productState.message}
                     width="100%"
+                    marginTop="-25px"
                   />
                 )}
               </div>
             </div>
+
             <div className="store-setup__inputs-container">
               <div className="store-setup__input-container">
                 <label htmlFor="category" className="store-setup__input-label">
@@ -239,6 +222,7 @@ const FormSection03 = ({ formChecking, setFormsChecking }) => {
                   <ErrorFlag
                     message={errorsState.category.message}
                     width="100%"
+                    marginTop="-25px"
                   />
                 )}
               </div>
@@ -279,7 +263,11 @@ const FormSection03 = ({ formChecking, setFormsChecking }) => {
               </div>
               <div className="store-setup__error-flag">
                 {errorsState.price.hasErrors && (
-                  <ErrorFlag message={errorsState.price.message} width="100%" />
+                  <ErrorFlag
+                    message={errorsState.price.message}
+                    width="100%"
+                    marginTop="-25px"
+                  />
                 )}
               </div>
               <div className="store-setup__error-flag">
@@ -287,6 +275,7 @@ const FormSection03 = ({ formChecking, setFormsChecking }) => {
                   <ErrorFlag
                     message={errorsState.currency.message}
                     width="100%"
+                    marginTop="-25px"
                   />
                 )}
               </div>
@@ -333,11 +322,15 @@ const FormSection03 = ({ formChecking, setFormsChecking }) => {
                   </div>
                 </div>
               </div>
-              <div className="store-setup__error-flag">
+              <div
+                className="store-setup__error-flag"
+                style={{ marginTop: "-30px" }}
+              >
                 {errorsState.freeShipping.hasErrors && (
                   <ErrorFlag
                     message={errorsState.freeShipping.message}
                     width="100%"
+                    marginTop="-25px"
                   />
                 )}
               </div>
@@ -366,11 +359,12 @@ const FormSection03 = ({ formChecking, setFormsChecking }) => {
                   Ingresar
                 </button>
               </div>
-              <div className="store-setup__error-flag mb-4">
+              <div className="store-setup__error-flag mb-3">
                 {errorsState.productTag.hasErrors && (
                   <ErrorFlag
                     message={errorsState.productTag.message}
                     width="100%"
+                    marginTop="-25px"
                   />
                 )}
               </div>
@@ -413,6 +407,7 @@ const FormSection03 = ({ formChecking, setFormsChecking }) => {
                   <ErrorFlag
                     message={errorsState.productImages.message}
                     width="100%"
+                    marginTop="-25px"
                   />
                 )}
               </div>
