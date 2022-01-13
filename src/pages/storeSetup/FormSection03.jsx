@@ -91,8 +91,6 @@ const FormSection03 = ({ formChecking, setFormsChecking }) => {
       <InputProductCategory
         categoriesList={categoriesList}
         setCategoriesList={setCategoriesList}
-        errorsState={errorsState}
-        setErrorsState={setErrorsState}
       />
 
       <div style={{ margin: "10px 1%" }}>

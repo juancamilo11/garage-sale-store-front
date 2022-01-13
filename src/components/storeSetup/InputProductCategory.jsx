@@ -46,9 +46,15 @@ const InputProductCategory = ({ categoriesList, setCategoriesList }) => {
       const imageFile = document.getElementById(
         "store-setup__input-category-img"
       ).files[0];
+      console.log(imageFile);
       setCategoriesList([
         ...categoriesList,
-        { categoryName, categoryImage: URL.createObjectURL(imageFile) },
+        {
+          categoryName,
+          categoryImage: imageFile?.type.startsWith("image/")
+            ? URL.createObjectURL(imageFile)
+            : process.env.PUBLIC_URL + "/assets/common/emptyImage.png",
+        },
       ]);
       resetForm({
         categoryName: "",
@@ -137,7 +143,9 @@ const InputProductCategory = ({ categoriesList, setCategoriesList }) => {
               <button
                 className="store-setup__button-update"
                 type="submit"
-                disabled={errorsState.categoryName.hasErrors}
+                disabled={
+                  errorsState.categoryName.hasErrors || categoryName === ""
+                }
               >
                 Agregar nueva categoría
               </button>
