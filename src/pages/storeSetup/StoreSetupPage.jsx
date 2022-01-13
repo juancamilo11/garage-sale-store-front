@@ -56,9 +56,11 @@ const StoreSetupPage = () => {
           setFormsChecking={setFormsChecking}
         />
       )}
+
       {formSection03.isValidated && (
         <StoreCreationConfirmation setFormsChecking={setFormsChecking} />
       )}
+
       {creationConfirmation.isConfirmed && (
         <div>
           <div className="store-setup__centered-container">
