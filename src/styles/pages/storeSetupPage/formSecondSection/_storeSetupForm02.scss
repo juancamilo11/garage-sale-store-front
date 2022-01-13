@@ -1,0 +1,113 @@
+.store-setup__form-main-container {
+  border: 2px solid lightgray;
+  border-radius: 10px;
+  width: 98%;
+  margin: 0px auto;
+}
+
+.store-setup__images-container {
+  // display: flex;
+
+  width: 100%;
+  justify-content: space-around;
+  // background-color: red;
+  padding: 20px;
+  padding: 40px 0px;
+}
+
+.store-setup__images-inputs-container {
+  justify-content: space-around;
+  // background-color: blue;
+  padding: 40px;
+  border-radius: 10px;
+  width: 80%;
+  margin: auto;
+  // border: 5px solid yellow;
+}
+
+.store-setup__input-image-label {
+  // border: 1px solid green;
+  // background-color: green;
+  color: black;
+  font-weight: bold;
+  font-size: 1.2rem;
+  width: 35%;
+}
+
+.store-setup__input-images-container {
+  display: flex;
+  // border: 1px solid red;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: 15px;
+}
+
+.store-setup__image-input {
+  font-size: 1.2em;
+  color: black;
+  text-indent: 5px;
+  border: 2px solid lightgray;
+  width: 100%;
+  height: 45px;
+  border-radius: 5px;
+  background-color: #000;
+}
+
+.store-setup__centered-container {
+  width: 100%;
+  // background-color: blue;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding: 15px;
+  margin-bottom: 20px;
+}
+
+.store-setup__input-images {
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+}
+
+.store-setup__mult-images-container {
+  width: 30%;
+  // background-color: purple;
+}
+
+.store-setup__mult-images-button {
+  margin: 5px;
+  background-color: white;
+  color: rgb(0, 0, 0);
+  border-radius: 10px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  line-height: 15px;
+  border: 2px solid rgb(245, 61, 58);
+  transition: all 0.3s ease 0s;
+  width: 70%;
+  // min-width: 200px;
+  margin: 0px 15%;
+  padding: 10px;
+}
+
+.store-setup__mult-images-button:hover {
+  color: white;
+  background-color: rgb(245, 61, 58);
+}
+
+.portrait-preview--no-content {
+  margin: 20px 45%;
+  width: 10% !important;
+}
+
+.portrait-preview--with-content {
+  margin: 20px 30%;
+  width: 40%;
+}
+
+.store-setup__final-form-ind {
+  width: 60%;
+  margin: 0px auto;
+}
