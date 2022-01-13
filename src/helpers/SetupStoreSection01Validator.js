@@ -143,58 +143,71 @@ const handleTagValidation = (value, setErrorsState) => {
 };
 
 const handleStartingDateValidation = (value, setErrorsState) => {
-  if (value.trim().length >= 10) {
-    setErrorsState((state) => {
-      return { ...state, ["address"]: { hasErrors: false, message: "" } };
-    });
-  } else {
+  console.log(value);
+  const startingDate = moment(value);
+  const now = moment();
+
+  if (startingDate.isBefore(now)) {
     setErrorsState((state) => {
       return {
         ...state,
-        ["address"]: {
+        ["startingDate"]: {
           hasErrors: true,
           message:
-            "La ocupación '" +
-            value +
-            "' es inválida, intente con otra ocupación.",
+            "La fecha ingresada para el inicio de la tienda está en el pasado, por favor ingresa una fecha válida.",
         },
       };
+    });
+  } else if (startingDate.isAfter(now.add(3, "month"))) {
+    setErrorsState((state) => {
+      return {
+        ...state,
+        ["startingDate"]: {
+          hasErrors: true,
+          message:
+            "Sólo se pueden ingresar ventas de garaje dentro de los próximos 90 días",
+        },
+      };
+    });
+  } else {
+    setErrorsState((state) => {
+      return { ...state, ["startingDate"]: { hasErrors: false, message: "" } };
     });
   }
 };
 
 const handleAddressValidation = (value, setErrorsState) => {
   console.log(value);
-  const dateOfBirth = moment(value);
+  const startingDate = moment(value);
   const now = moment();
-  const yearsDiff = now.toObject().years - dateOfBirth.toObject().years;
-  if (dateOfBirth.isAfter(now)) {
+  const monthsDiff = now.toObject().years - startingDate.toObject().years;
+  if (startingDate.isAfter(now)) {
     setErrorsState((state) => {
       return {
         ...state,
-        ["dateOfBirth"]: {
+        ["startingDate"]: {
           hasErrors: true,
           message:
             "La fecha ingresada está en el futuro, por favor ingresa una fecha válida.",
         },
       };
     });
-  } else if (yearsDiff > 120) {
+  } else if (monthsDiff > 120) {
     setErrorsState((state) => {
       return {
         ...state,
-        ["dateOfBirth"]: {
+        ["startingDate"]: {
           hasErrors: true,
           message:
             "La fecha ingresada corresponde a una persona de más de 120 años, por favor ingresa una fecha válida.",
         },
       };
     });
-  } else if (yearsDiff < 14 && yearsDiff < 14 && yearsDiff >= 0) {
+  } else if (monthsDiff < 14 && monthsDiff < 14 && monthsDiff >= 0) {
     setErrorsState((state) => {
       return {
         ...state,
-        ["dateOfBirth"]: {
+        ["startingDate"]: {
           hasErrors: true,
           message:
             "Error: Lo sentimos, debes ser mayor de 14 años para poder tener una cuenta, al continuar aceptas estar bajo la supervisión de un adulto.",
@@ -203,7 +216,7 @@ const handleAddressValidation = (value, setErrorsState) => {
     });
   } else {
     setErrorsState((state) => {
-      return { ...state, ["dateOfBirth"]: { hasErrors: false, message: "" } };
+      return { ...state, ["startingDate"]: { hasErrors: false, message: "" } };
     });
   }
 };
