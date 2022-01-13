@@ -1,7 +1,7 @@
 import moment from "moment";
 import validator from "validator";
 
-//Initial values for the section #1 form of the store setup's.
+//Initial values for the section #1 form of the store setup.
 export const section_01FormValues = {
   storeName: "",
   tag: "",
@@ -12,7 +12,7 @@ export const section_01FormValues = {
   address: "",
 };
 
-//Initial values for the section #1 errors of the store setup's.
+//Initial values for the section #1 errors of the store setup.
 export const section_01ErrorState = {
   storeName: { hasErrors: false, message: "" },
   tag: { hasErrors: false, message: "" },
@@ -44,12 +44,29 @@ const section01Validator = (e, setErrorsState) => {
     // case "endingDate":
     //   handleEndingDateValidation(value, setErrorsState);
     //   break;
-    case "address":
-      handleAddressValidation(value, setErrorsState);
-      break;
+    // case "address":
+    //   handleAddressValidation(value, setErrorsState);
+    //   break;
     default:
       break;
   }
+};
+
+const setErrorStateForField = (
+  setErrorsState,
+  fieldName,
+  hasErrors,
+  message
+) => {
+  setErrorsState((state) => {
+    return {
+      ...state,
+      [`${fieldName}`]: {
+        hasErrors,
+        message,
+      },
+    };
+  });
 };
 
 const handleStoreNameValidation = (value, setErrorsState) => {
@@ -57,20 +74,15 @@ const handleStoreNameValidation = (value, setErrorsState) => {
     (value.trim().length >= 8 && value.trim().length <= 30) ||
     value.trim() === ""
   ) {
-    setErrorsState((state) => {
-      return { ...state, ["storeName"]: { hasErrors: false, message: "" } };
-    });
-  } else {
-    setErrorsState((state) => {
-      return {
-        ...state,
-        ["storeName"]: {
-          hasErrors: true,
-          message: "El nombre de la tienda debe tener entre 8 y 30 caracteres.",
-        },
-      };
-    });
+    setErrorStateForField(setErrorsState, "storeName", false, "");
+    return;
   }
+  setErrorStateForField(
+    setErrorsState,
+    "storeName",
+    true,
+    "El nombre de la tienda debe tener entre 8 y 30 caracteres."
+  );
 };
 
 const handleSloganCodeValidation = (value, setErrorsState) => {
@@ -78,21 +90,15 @@ const handleSloganCodeValidation = (value, setErrorsState) => {
     (value.trim().length >= 10 && value.trim().length <= 100) ||
     value.trim() === ""
   ) {
-    setErrorsState((state) => {
-      return { ...state, ["slogan"]: { hasErrors: false, message: "" } };
-    });
-  } else {
-    setErrorsState((state) => {
-      return {
-        ...state,
-        ["slogan"]: {
-          hasErrors: true,
-          message:
-            "El slogan de la tienda debe tener entre 10 y 100 caracteres.",
-        },
-      };
-    });
+    setErrorStateForField(setErrorsState, "slogan", false, "");
+    return;
   }
+  setErrorStateForField(
+    setErrorsState,
+    "slogan",
+    true,
+    "El slogan de la tienda debe tener entre 10 y 100 caracteres."
+  );
 };
 
 const handleDescriptionValidation = (value, setErrorsState) => {
@@ -100,21 +106,15 @@ const handleDescriptionValidation = (value, setErrorsState) => {
     (value.trim().length >= 20 && value.trim().length <= 200) ||
     value.trim() === ""
   ) {
-    setErrorsState((state) => {
-      return { ...state, ["description"]: { hasErrors: false, message: "" } };
-    });
-  } else {
-    setErrorsState((state) => {
-      return {
-        ...state,
-        ["description"]: {
-          hasErrors: true,
-          message:
-            "La descripción de la tienda debe tener entre 10 y 200 caracteres.",
-        },
-      };
-    });
+    setErrorStateForField(setErrorsState, "description", false, "");
+    return;
   }
+  setErrorStateForField(
+    setErrorsState,
+    "description",
+    true,
+    "La descripción de la tienda debe tener entre 10 y 200 caracteres."
+  );
 };
 
 const handleTagValidation = (value, setErrorsState) => {
@@ -122,24 +122,15 @@ const handleTagValidation = (value, setErrorsState) => {
     (value.trim().length >= 3 && value.trim().length <= 20) ||
     value.trim().length === 0
   ) {
-    setErrorsState((state) => {
-      return {
-        ...state,
-        ["tag"]: { hasErrors: false, message: "" },
-      };
-    });
-  } else {
-    setErrorsState((state) => {
-      return {
-        ...state,
-        ["tag"]: {
-          hasErrors: true,
-          message:
-            "El nombre de la etiqueta de un producto debe tener entre 3 y 20 caracteres.",
-        },
-      };
-    });
+    setErrorStateForField(setErrorsState, "tag", false, "");
+    return;
   }
+  setErrorStateForField(
+    setErrorsState,
+    "tag",
+    true,
+    "El nombre de la etiqueta de un producto debe tener entre 3 y 20 caracteres."
+  );
 };
 
 const handleStartingDateValidation = (value, setErrorsState) => {
@@ -148,77 +139,24 @@ const handleStartingDateValidation = (value, setErrorsState) => {
   const now = moment();
 
   if (startingDate.isBefore(now)) {
-    setErrorsState((state) => {
-      return {
-        ...state,
-        ["startingDate"]: {
-          hasErrors: true,
-          message:
-            "La fecha ingresada para el inicio de la tienda está en el pasado, por favor ingresa una fecha válida.",
-        },
-      };
-    });
-  } else if (startingDate.isAfter(now.add(3, "month"))) {
-    setErrorsState((state) => {
-      return {
-        ...state,
-        ["startingDate"]: {
-          hasErrors: true,
-          message:
-            "Sólo se pueden ingresar ventas de garaje dentro de los próximos 90 días",
-        },
-      };
-    });
-  } else {
-    setErrorsState((state) => {
-      return { ...state, ["startingDate"]: { hasErrors: false, message: "" } };
-    });
+    setErrorStateForField(
+      setErrorsState,
+      "startingDate",
+      true,
+      "La fecha ingresada para el inicio de la tienda está en el pasado, por favor ingresa una fecha válida."
+    );
+    return;
   }
-};
-
-const handleAddressValidation = (value, setErrorsState) => {
-  console.log(value);
-  const startingDate = moment(value);
-  const now = moment();
-  const monthsDiff = now.toObject().years - startingDate.toObject().years;
-  if (startingDate.isAfter(now)) {
-    setErrorsState((state) => {
-      return {
-        ...state,
-        ["startingDate"]: {
-          hasErrors: true,
-          message:
-            "La fecha ingresada está en el futuro, por favor ingresa una fecha válida.",
-        },
-      };
-    });
-  } else if (monthsDiff > 120) {
-    setErrorsState((state) => {
-      return {
-        ...state,
-        ["startingDate"]: {
-          hasErrors: true,
-          message:
-            "La fecha ingresada corresponde a una persona de más de 120 años, por favor ingresa una fecha válida.",
-        },
-      };
-    });
-  } else if (monthsDiff < 14 && monthsDiff < 14 && monthsDiff >= 0) {
-    setErrorsState((state) => {
-      return {
-        ...state,
-        ["startingDate"]: {
-          hasErrors: true,
-          message:
-            "Error: Lo sentimos, debes ser mayor de 14 años para poder tener una cuenta, al continuar aceptas estar bajo la supervisión de un adulto.",
-        },
-      };
-    });
-  } else {
-    setErrorsState((state) => {
-      return { ...state, ["startingDate"]: { hasErrors: false, message: "" } };
-    });
+  if (startingDate.isAfter(now.add(3, "month"))) {
+    setErrorStateForField(
+      setErrorsState,
+      "startingDate",
+      true,
+      "Sólo se pueden ingresar ventas de garaje dentro de los próximos 90 días"
+    );
+    return;
   }
+  setErrorStateForField(setErrorsState, "startingDate", false, "");
 };
 
 export default section01Validator;
