@@ -52,6 +52,26 @@ const section01Validator = (e, setErrorsState) => {
   }
 };
 
+export const isTheTagAlreadyDefined = (tagName, tagsList, setErrorsState) => {
+  const arrFiltered = tagsList.filter(
+    (tag) => tag.trim().toLowerCase() !== tagName.trim().toLowerCase()
+  );
+  console.log(arrFiltered);
+  console.log(tagsList);
+  if (arrFiltered.length !== tagsList.length) {
+    setErrorsState((state) => {
+      return {
+        ...state,
+        ["tag"]: {
+          hasErrors: true,
+          message: `El nombre de la etiqueta '${tagName}' ya ha sido ingresado, intente con otro.`,
+        },
+      };
+    });
+    return true;
+  }
+};
+
 const setErrorStateForField = (
   setErrorsState,
   fieldName,

@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import ErrorFlag from "../../components/ErrorFlag";
-import section01Validator from "../../helpers/SetupStoreSection01Validator";
+import section01Validator, {
+  isTheTagAlreadyDefined,
+} from "../../helpers/SetupStoreSection01Validator";
 
 import { section_01FormValues } from "./../../helpers/SetupStoreSection01Validator";
 import { section_01ErrorState } from "./../../helpers/SetupStoreSection01Validator";
@@ -61,13 +63,11 @@ const FormSection01 = ({ formChecking, setFormsChecking }) => {
 
   const handleAddNewTag = (e) => {
     const tagInput = document.getElementById("tag");
-    const newTag = tagInput.value;
+    const newTag = tagInput.value.trim();
     const cleanEvent = { target: { name: "tag", value: "" } };
 
-    if (!errorsState.tag.hasErrors && newTag.trim() !== "") {
-      setTagsList([...tagsList, newTag]);
-      handleInputValidation(cleanEvent);
-    } else {
+    if (newTag === "") return;
+    if (errorsState.tag.hasErrors) {
       Swal.fire({
         icon: "error",
         title: "Oops...",
@@ -77,7 +77,20 @@ const FormSection01 = ({ formChecking, setFormsChecking }) => {
       }).then((res) => {
         handleInputValidation(cleanEvent);
       });
+      return;
     }
+    if (isTheTagAlreadyDefined(newTag, tagsList, setErrorsState)) {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: `La etiqueta '${newTag}' ya ha sido ingresada, intenta con otro valor.`,
+        showConfirmButton: false,
+        timer: 3500,
+      });
+      return;
+    }
+    setTagsList([...tagsList, newTag]);
+    handleInputValidation(cleanEvent);
   };
 
   const handleInputValidation = (e) => {
