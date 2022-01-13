@@ -112,7 +112,6 @@ const FormSection03 = ({ formChecking, setFormsChecking }) => {
                 </label>
                 <input
                   type="text"
-                  autoFocus="true"
                   name="productName"
                   id="productName"
                   className="store-setup__input"

@@ -11,6 +11,9 @@ const StoreCreationConfirmation = ({ setFormsChecking }) => {
           creationConfirmation: { isConfirmed: true },
         };
       });
+      setTimeout(() => {
+        window.scrollTo(0, document.querySelector("body").scrollHeight);
+      }, 100);
     }
     if (confirmationSelection === "no") {
       setFormsChecking((formsChecking) => {

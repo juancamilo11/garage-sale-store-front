@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import ErrorFlag from "../../components/ErrorFlag";
 import NavBarFormUserData from "../../components/navbar/NavBarFormUserData";
 import SectionTitle from "../../components/SectionTitle";
+import FinalSectionStoreSetup from "../../components/storeSetup/FinalSectionStoreSetup";
 import StoreCreationConfirmation from "../../components/storeSetup/StoreCreationConfirmation";
 
 import FormSection01 from "./FormSection01";
@@ -20,15 +21,6 @@ const StoreSetupPage = () => {
 
   const { formSection01, formSection02, formSection03, creationConfirmation } =
     formsChecking;
-
-  useEffect(() => {
-    const createStoreButton = document.querySelector(
-      ".store-setup__button-update"
-    );
-    if (createStoreButton) {
-      window.scrollTo(0, document.querySelector("body").scrollHeight);
-    }
-  }, [creationConfirmation]);
 
   return (
     <div className="store-setup__main-container">
@@ -61,23 +53,7 @@ const StoreSetupPage = () => {
         <StoreCreationConfirmation setFormsChecking={setFormsChecking} />
       )}
 
-      {creationConfirmation.isConfirmed && (
-        <div>
-          <div className="store-setup__centered-container">
-            <h5>
-              ¡Todo está listo, haz click en Crear tienda y podrás empezar a
-              vender tus productos!
-            </h5>
-          </div>
-          <div className="store-setup__centered-container">
-            <div className="store-setup__buttons-container">
-              <button className="store-setup__button-update">
-                Crear tienda
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
+      {creationConfirmation.isConfirmed && <FinalSectionStoreSetup />}
     </div>
   );
 };
