@@ -3,7 +3,7 @@ import { useState } from "react";
 import section03Validator, {
   isTheCategoryAlreadyDefined,
   section_03ErrorState,
-} from "../../helpers/SetupStoreSection03Validator";
+} from "../../helpers/storeSetupHelpers/SetupStoreSection03Validator";
 import useForm from "../../hooks/useForm";
 import ErrorFlag from "../ErrorFlag";
 import ProductCategoryWithImageTagList from "./ProductCategoryWithImageTagList";

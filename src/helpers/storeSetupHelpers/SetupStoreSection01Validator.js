@@ -1,5 +1,4 @@
 import moment from "moment";
-import validator from "validator";
 
 //Initial values for the section #1 form of the store setup.
 export const section_01FormValues = {

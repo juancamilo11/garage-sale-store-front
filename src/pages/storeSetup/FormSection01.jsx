@@ -1,31 +1,32 @@
-import React, { useState } from "react";
+import React, { useReducer, useState } from "react";
 import ErrorFlag from "../../components/ErrorFlag";
 import section01Validator, {
   form01SubmitValidation,
   isTheTagAlreadyDefined,
-} from "../../helpers/SetupStoreSection01Validator";
+} from "../../helpers/storeSetupHelpers/SetupStoreSection01Validator";
 
-import { section_01FormValues } from "./../../helpers/SetupStoreSection01Validator";
-import { section_01ErrorState } from "./../../helpers/SetupStoreSection01Validator";
+import { section_01FormValues } from "../../helpers/storeSetupHelpers/SetupStoreSection01Validator";
+import { section_01ErrorState } from "../../helpers/storeSetupHelpers/SetupStoreSection01Validator";
 
 import useForm from "../../hooks/useForm";
 import ProductTagList from "../../components/storeSetup/ProductTagList";
-import Swal from "sweetalert2";
-import moment from "moment";
 import {
   sweetalertForErrorsReportForm01StoreSetupBuilder,
   sweetalertForInputCurrentLocationForStoreSetupBuilder,
   sweetalertForInputTagAlreadyDefinedBuilder,
   sweetalertForInputTagErrorBuilder,
 } from "../../helpers/SweetalertBuilder";
+import storeSetupReducer from "../../reducers/storeSetupReducer";
 
-const FormSection01 = ({ formChecking, setFormsChecking }) => {
+const FormSection01 = ({ setFormsChecking }) => {
   const [formValues, handleInputChange, resetForm] =
     useForm(section_01FormValues);
 
   const [tagsList, setTagsList] = useState([]);
 
   const [errorsState, setErrorsState] = useState(section_01ErrorState);
+
+  const [storeSetupState, dispatch] = useReducer(storeSetupReducer);
 
   const {
     storeName,
@@ -81,11 +82,13 @@ const FormSection01 = ({ formChecking, setFormsChecking }) => {
     if (errorsReport.hasErrors) {
       window.alert("datos incorrectos!");
       sweetalertForErrorsReportForm01StoreSetupBuilder(errorsReport);
-
-      console.log(errorsReport);
       return;
     }
-    // window.alert(");
+    const form01Info = form01StoreSetupObjectBuilder(formValues);
+
+    setFormsChecking((values) => {
+      return { ...values, formCheckSection01IsValidated: true };
+    });
   };
 
   const handleResetForm = (e) => {

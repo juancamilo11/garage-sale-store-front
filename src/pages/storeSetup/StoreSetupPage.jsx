@@ -13,14 +13,18 @@ import FormSection03 from "./FormSection03";
 
 const StoreSetupPage = () => {
   const [formsChecking, setFormsChecking] = useState({
-    formSection01: { isValidated: true },
-    formSection02: { isValidated: true },
-    formSection03: { isValidated: true },
-    creationConfirmation: { isConfirmed: false },
+    formCheckSection01IsValidated: false,
+    formCheckSection02IsValidated: false,
+    formCheckSection03IsValidated: false,
+    creationConfirmationIsConfirmed: false,
   });
 
-  const { formSection01, formSection02, formSection03, creationConfirmation } =
-    formsChecking;
+  const {
+    formCheckSection01IsValidated,
+    formCheckSection02IsValidated,
+    formCheckSection03IsValidated,
+    creationConfirmationIsConfirmed,
+  } = formsChecking;
 
   return (
     <div className="store-setup__main-container">
@@ -30,30 +34,23 @@ const StoreSetupPage = () => {
         <SectionTitle sectionTitle="Creación de una nueva venta de garaje" />
       </div>
 
-      <FormSection01
-        formChecking={formSection01}
+      <FormSection01 setFormsChecking={setFormsChecking} />
+
+      <FormSection02
+        formChecking={formCheckSection01IsValidated}
         setFormsChecking={setFormsChecking}
       />
 
-      {formSection01.isValidated && (
-        <FormSection02
-          formChecking={formSection02}
-          setFormsChecking={setFormsChecking}
-        />
-      )}
+      <FormSection03
+        formChecking={formCheckSection02IsValidated}
+        setFormsChecking={setFormsChecking}
+      />
 
-      {formSection02.isValidated && (
-        <FormSection03
-          formChecking={formSection03}
-          setFormsChecking={setFormsChecking}
-        />
-      )}
-
-      {formSection03.isValidated && (
+      {formCheckSection03IsValidated && (
         <StoreCreationConfirmation setFormsChecking={setFormsChecking} />
       )}
 
-      {creationConfirmation.isConfirmed && <FinalSectionStoreSetup />}
+      {creationConfirmationIsConfirmed && <FinalSectionStoreSetup />}
     </div>
   );
 };

@@ -4,8 +4,8 @@ import ErrorFlag from "../../components/ErrorFlag";
 import section02Validator, {
   resetImagesFromView,
   section_02FormValues,
-} from "./../../helpers/SetupStoreSection02Validator";
-import { section_02ErrorState } from "./../../helpers/SetupStoreSection02Validator";
+} from "./../../helpers/storeSetupHelpers/SetupStoreSection02Validator";
+import { section_02ErrorState } from "./../../helpers/storeSetupHelpers/SetupStoreSection02Validator";
 
 import useForm from "../../hooks/useForm";
 import Swal from "sweetalert2";
@@ -66,7 +66,10 @@ const FormSection02 = ({ formChecking, setFormsChecking }) => {
       <h2 className="store-setup__section-enum mb-3 mt-5">
         2. Sube algunas imágenes representativas
       </h2>
-      <div className="store-setup__form-main-container">
+      <div
+        className="store-setup__form-main-container"
+        aria-disabled={formChecking}
+      >
         <form onSubmit={handleFormSection_02Submit}>
           <div className="store-setup__images-container">
             <div className="store-setup__images-inputs-container">

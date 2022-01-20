@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import ErrorFlag from "../../components/ErrorFlag";
-
 import section03Validator, {
   section_03FormValues,
-} from "./../../helpers/SetupStoreSection03Validator";
-import { section_03ErrorState } from "./../../helpers/SetupStoreSection03Validator";
+} from "./../../helpers/storeSetupHelpers/SetupStoreSection03Validator";
+import { section_03ErrorState } from "./../../helpers/storeSetupHelpers/SetupStoreSection03Validator";
 import useForm from "../../hooks/useForm";
 import ProductTagList from "../../components/storeSetup/ProductTagList";
 import Swal from "sweetalert2";
