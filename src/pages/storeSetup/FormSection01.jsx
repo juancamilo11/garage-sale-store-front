@@ -10,6 +10,7 @@ import { section_01ErrorState } from "./../../helpers/SetupStoreSection01Validat
 import useForm from "../../hooks/useForm";
 import ProductTagList from "../../components/storeSetup/ProductTagList";
 import Swal from "sweetalert2";
+import moment from "moment";
 
 const FormSection01 = ({ formChecking, setFormsChecking }) => {
   const [formValues, handleInputChange, resetForm] =
@@ -96,6 +97,17 @@ const FormSection01 = ({ formChecking, setFormsChecking }) => {
   const handleInputValidation = (e) => {
     handleInputChange(e);
     section01Validator(e, setErrorsState);
+
+    if (
+      e.target.name === "startingDate" &&
+      !errorsState.startingDate.hasErrors
+    ) {
+      const event = {
+        target: "endingDate",
+        value: moment(startingDate),
+      };
+      handleInputChange(event);
+    }
   };
 
   const handleFormSection_01Submit = (e) => {
@@ -257,7 +269,7 @@ const FormSection01 = ({ formChecking, setFormsChecking }) => {
                   Hasta
                 </label>
                 <input
-                  type="date"
+                  type="text"
                   name="endingDate"
                   id="endingDate"
                   value={endingDate}

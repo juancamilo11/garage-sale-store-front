@@ -177,6 +177,13 @@ const handleStartingDateValidation = (value, setErrorsState) => {
     return;
   }
   setErrorStateForField(setErrorsState, "startingDate", false, "");
+  // const endingDate = document.getElementsByName("endingDate");
+  // endingDate.value = moment( "").add("15", "days");
+  // console.log(endingDate);
+  // console.log(moment(value, "YYYY-MM-DD").add(15, "days").toArray());
+  const newDate = moment(value).add(15, "days").toObject();
+  document.getElementById("endingDate").value =
+    newDate.years + "-" + (newDate.months + 1) + "-" + newDate.days;
 };
 
 export default section01Validator;
