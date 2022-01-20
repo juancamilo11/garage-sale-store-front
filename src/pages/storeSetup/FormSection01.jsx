@@ -17,6 +17,7 @@ import {
   sweetalertForInputTagErrorBuilder,
 } from "../../helpers/SweetalertBuilder";
 import storeSetupReducer from "../../reducers/storeSetupReducer";
+import form01ReadyObjectBuilder from "../../helpers/storeSetupHelpers/formValuesToObjectBuilder/form01ReadyObjectBuilder";
 
 const FormSection01 = ({ setFormsChecking }) => {
   const [formValues, handleInputChange, resetForm] =
@@ -45,6 +46,7 @@ const FormSection01 = ({ setFormsChecking }) => {
   };
 
   const handleAddNewTag = (e) => {
+    e.preventDefault();
     const tagInput = document.getElementById("tag");
     const newTag = tagInput.value.trim();
     const cleanEvent = { target: { name: "tag", value: "" } };
@@ -74,6 +76,7 @@ const FormSection01 = ({ setFormsChecking }) => {
 
   const handleFormSection_01Submit = (e) => {
     e.preventDefault();
+    window.alert(e.target.id);
     const errorsReport = form01SubmitValidation(
       formValues,
       tagsList,
@@ -84,7 +87,8 @@ const FormSection01 = ({ setFormsChecking }) => {
       sweetalertForErrorsReportForm01StoreSetupBuilder(errorsReport);
       return;
     }
-    const form01Info = form01StoreSetupObjectBuilder(formValues);
+
+    form01ReadyObjectBuilder(formValues);
 
     setFormsChecking((values) => {
       return { ...values, formCheckSection01IsValidated: true };
@@ -103,7 +107,7 @@ const FormSection01 = ({ setFormsChecking }) => {
         1. Parámetros descriptivos de la tienda
       </h2>
       <div className="store-setup__form-main-container">
-        <form onSubmit={handleFormSection_01Submit}>
+        <form onSubmit={handleFormSection_01Submit} id="form01-store-setup">
           <div className="store-setup__form-container">
             <div className="store-setup__inputs-container">
               <div className="store-setup__input-container">
@@ -173,6 +177,7 @@ const FormSection01 = ({ setFormsChecking }) => {
                   onClick={handleAddNewTag}
                   className="store-setup__input store-setup__button-input-tag btn btn-primary"
                   disabled={errorsState.tag.hasErrors}
+                  type="button"
                 >
                   Ingresar
                 </button>
