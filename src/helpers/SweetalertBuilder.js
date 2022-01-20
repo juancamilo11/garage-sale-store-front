@@ -14,6 +14,48 @@ export const sweetalertForInputTagErrorBuilder = (
     handleInputValidation(cleanEvent);
   });
 
+export const sweetalertForInputTagAlreadyDefinedBuilder = (newTag) =>
+  Swal.fire({
+    icon: "error",
+    title: "Oops...",
+    text: `La etiqueta '${newTag}' ya ha sido ingresada, intenta con otro valor.`,
+    showConfirmButton: false,
+    timer: 3500,
+  });
+
+export const sweetalertForInputCurrentLocationForStoreSetupBuilder = (
+  handleInputValidation
+) =>
+  Swal.fire({
+    icon: "info",
+    title: "Ubicación de la tienda",
+    text: "A continuación se le solicitará su dirección actual para localizar la tienda físicamente.",
+    footer:
+      "<small>En caso de no dar su ubicación la tienda no podrá ser ubicada físicamente.</small>",
+    showConfirmButton: true,
+    showDenyButton: false,
+    showCancelButton: true,
+    cancelButtonText: "No quiero dar mi ubicación",
+    cancelButtonColor: "red",
+    allowEscapeKey: false,
+    allowOutsideClick: false,
+  }).then((result) => {
+    if (result.isConfirmed) {
+      navigator.geolocation.getCurrentPosition((res) => {
+        const event = { target: { name: "address", value: res } };
+        handleInputValidation(event);
+      });
+    } else {
+      Swal.fire({
+        title: "Posición física denegada",
+        text: "Tenga presente que la nueva tienda no podrá ser ubicada mediante mapas.",
+        icon: "warning",
+        showConfirmButton: false,
+        timer: 3500,
+      });
+    }
+  });
+
 export const sweetalertForErrorsReportForm01StoreSetupBuilder = (
   errorsReport
 ) =>

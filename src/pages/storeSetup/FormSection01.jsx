@@ -14,6 +14,8 @@ import Swal from "sweetalert2";
 import moment from "moment";
 import {
   sweetalertForErrorsReportForm01StoreSetupBuilder,
+  sweetalertForInputCurrentLocationForStoreSetupBuilder,
+  sweetalertForInputTagAlreadyDefinedBuilder,
   sweetalertForInputTagErrorBuilder,
 } from "../../helpers/SweetalertBuilder";
 
@@ -36,35 +38,9 @@ const FormSection01 = ({ formChecking, setFormsChecking }) => {
   } = formValues;
 
   const handleRequestLocation = () => {
-    Swal.fire({
-      icon: "info",
-      title: "Ubicación de la tienda",
-      text: "A continuación se le solicitará su dirección actual para localizar la tienda físicamente.",
-      footer:
-        "<small>En caso de no dar su ubicación la tienda no podrá ser ubicada físicamente.</small>",
-      showConfirmButton: true,
-      showDenyButton: false,
-      showCancelButton: true,
-      cancelButtonText: "No quiero dar mi ubicación",
-      cancelButtonColor: "red",
-      allowEscapeKey: false,
-      allowOutsideClick: false,
-    }).then((result) => {
-      if (result.isConfirmed) {
-        navigator.geolocation.getCurrentPosition((res) => {
-          const event = { target: { name: "address", value: res } };
-          handleInputValidation(event);
-        });
-      } else {
-        Swal.fire({
-          title: "Posición física denegada",
-          text: "Tenga presente que la nueva tienda no podrá ser ubicada mediante mapas.",
-          icon: "warning",
-          showConfirmButton: false,
-          timer: 3500,
-        });
-      }
-    });
+    sweetalertForInputCurrentLocationForStoreSetupBuilder(
+      handleInputValidation
+    );
   };
 
   const handleAddNewTag = (e) => {
@@ -73,27 +49,17 @@ const FormSection01 = ({ formChecking, setFormsChecking }) => {
     const cleanEvent = { target: { name: "tag", value: "" } };
 
     if (newTag === "") return;
+
     if (errorsState.tag.hasErrors) {
-      //CAMBIAR POR EL DE SWEETALERT BUILDERRrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr
-      Swal.fire({
-        icon: "error",
-        title: "Oops...",
-        text: `La etiqueta '${newTag}' no se ha podido ingresar, intenta con otro valor.`,
-        showConfirmButton: false,
-        timer: 3500,
-      }).then((res) => {
-        handleInputValidation(cleanEvent);
-      });
+      sweetalertForInputTagErrorBuilder(
+        newTag,
+        handleInputValidation,
+        cleanEvent
+      );
       return;
     }
     if (isTheTagAlreadyDefined(newTag, tagsList, setErrorsState)) {
-      Swal.fire({
-        icon: "error",
-        title: "Oops...",
-        text: `La etiqueta '${newTag}' ya ha sido ingresada, intenta con otro valor.`,
-        showConfirmButton: false,
-        timer: 3500,
-      });
+      sweetalertForInputTagAlreadyDefinedBuilder(newTag);
       return;
     }
     setTagsList([...tagsList, newTag]);
@@ -309,6 +275,7 @@ const FormSection01 = ({ formChecking, setFormsChecking }) => {
                 <button
                   onClick={handleRequestLocation}
                   className="store-setup__input btn btn-primary store-setup__input-address"
+                  type="button"
                 >
                   Obtener tu dirección actual
                 </button>
