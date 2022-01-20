@@ -205,11 +205,69 @@ const handleEndingDateValidation = (value, setErrorsState) => {
       setErrorsState,
       "endingDate",
       true,
-      "Una venta de garaje sólo puede durar 30 días."
+      "Una venta de garaje sólo puede durar como máximo 30 días."
     );
     return;
   }
   setErrorStateForField(setErrorsState, "endingDate", false, "");
+};
+
+export const form01SubmitValidation = (formValues, tagsList, errorsState) => {
+  const { storeName, slogan, description, startingDate, endingDate } =
+    formValues;
+
+  let errorsReport = { hasErrors: false };
+
+  if (storeName === "" || errorsState.storeName.hasErrors) {
+    errorsReport = {
+      ...errorsReport,
+      storeName: "Has dejado el nombre de la tienda vacío",
+      hasErrors: true,
+    };
+  }
+  if (slogan === "" || errorsState.slogan.hasErrors) {
+    errorsReport = {
+      ...errorsReport,
+      slogan: "Has dejado el slogan de la tienda vacío",
+      hasErrors: true,
+    };
+  }
+  if (errorsState.tag.hasErrors) {
+    errorsReport = {
+      ...errorsReport,
+      tag: "La etiqueta que estás ingresando es inválida",
+      hasErrors: true,
+    };
+  }
+  if (description === "" || errorsState.description.hasErrors) {
+    errorsReport = {
+      ...errorsReport,
+      description: "La etiqueta que estás ingresando es inválida",
+      hasErrors: true,
+    };
+  }
+  if (!moment(startingDate).isValid() || errorsState.startingDate.hasErrors) {
+    errorsReport = {
+      ...errorsReport,
+      startingDate: "La fecha de apertura de la tienda es inválida",
+      hasErrors: true,
+    };
+  }
+  if (!moment(endingDate).isValid() || errorsState.endingDate.hasErrors) {
+    errorsReport = {
+      ...errorsReport,
+      endingDate: "La fecha de cierre de la tienda es inválida",
+      hasErrors: true,
+    };
+  }
+  if (tagsList.length < 3) {
+    errorsReport = {
+      ...errorsReport,
+      tagsList: "Debes ingresar como mínimo 3 etiquetas para la tienda",
+      hasErrors: true,
+    };
+  }
+  return errorsReport;
 };
 
 export default section01Validator;

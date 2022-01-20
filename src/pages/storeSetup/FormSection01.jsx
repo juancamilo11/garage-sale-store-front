@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import ErrorFlag from "../../components/ErrorFlag";
 import section01Validator, {
+  form01SubmitValidation,
   isTheTagAlreadyDefined,
 } from "../../helpers/SetupStoreSection01Validator";
 
@@ -11,6 +12,10 @@ import useForm from "../../hooks/useForm";
 import ProductTagList from "../../components/storeSetup/ProductTagList";
 import Swal from "sweetalert2";
 import moment from "moment";
+import {
+  sweetalertForErrorsReportForm01StoreSetupBuilder,
+  sweetalertForInputTagErrorBuilder,
+} from "../../helpers/SweetalertBuilder";
 
 const FormSection01 = ({ formChecking, setFormsChecking }) => {
   const [formValues, handleInputChange, resetForm] =
@@ -69,6 +74,7 @@ const FormSection01 = ({ formChecking, setFormsChecking }) => {
 
     if (newTag === "") return;
     if (errorsState.tag.hasErrors) {
+      //CAMBIAR POR EL DE SWEETALERT BUILDERRrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr
       Swal.fire({
         icon: "error",
         title: "Oops...",
@@ -101,12 +107,19 @@ const FormSection01 = ({ formChecking, setFormsChecking }) => {
 
   const handleFormSection_01Submit = (e) => {
     e.preventDefault();
-    // const errorReport = Section01Validator(formValues);
-    // if (!errorReport.hasErrors()) {
-    //   console.log("Los datos han sido actualizados exitosamente.");
-    // } else {
-    //   //Se muestra un mensaje de error con sweetalert o con toastify
-    // }
+    const errorsReport = form01SubmitValidation(
+      formValues,
+      tagsList,
+      errorsState
+    );
+    if (errorsReport.hasErrors) {
+      window.alert("datos incorrectos!");
+      sweetalertForErrorsReportForm01StoreSetupBuilder(errorsReport);
+
+      console.log(errorsReport);
+      return;
+    }
+    // window.alert(");
   };
 
   const handleResetForm = (e) => {
