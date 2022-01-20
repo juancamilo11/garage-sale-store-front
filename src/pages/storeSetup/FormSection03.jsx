@@ -83,13 +83,14 @@ const FormSection03 = ({ formChecking, setFormsChecking }) => {
   };
 
   return (
-    <div>
+    <div aria-disabled={formChecking}>
       <h2 className="store-setup__section-enum mb-3 mt-5">
         3. Creación de los productos para la venta
       </h2>
       <InputProductCategory
         categoriesList={categoriesList}
         setCategoriesList={setCategoriesList}
+        disabled={!formChecking}
       />
 
       <div style={{ margin: "10px 1%" }}>

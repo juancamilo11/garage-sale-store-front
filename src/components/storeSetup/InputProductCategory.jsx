@@ -9,7 +9,11 @@ import ErrorFlag from "../ErrorFlag";
 import ProductCategoryWithImageTagList from "./ProductCategoryWithImageTagList";
 import ProductWithImageTagList from "./ProductCategoryWithImageTagList";
 
-const InputProductCategory = ({ categoriesList, setCategoriesList }) => {
+const InputProductCategory = ({
+  categoriesList,
+  setCategoriesList,
+  formChecking,
+}) => {
   const [formValues, handleCategoryInputChange, resetForm] = useForm({
     categoryName: "",
     categoryImage: "",
@@ -112,6 +116,7 @@ const InputProductCategory = ({ categoriesList, setCategoriesList }) => {
                 className="store-setup__category-img-button"
                 id="category-button"
                 onClick={handleImageToLoad}
+                disabled={!formChecking}
               >
                 Carga un archivo
               </button>
@@ -144,7 +149,9 @@ const InputProductCategory = ({ categoriesList, setCategoriesList }) => {
                 className="store-setup__button-update"
                 type="submit"
                 disabled={
-                  errorsState.categoryName.hasErrors || categoryName === ""
+                  errorsState.categoryName.hasErrors ||
+                  categoryName === "" ||
+                  !formChecking
                 }
               >
                 Agregar nueva categoría

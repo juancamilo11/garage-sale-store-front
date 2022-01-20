@@ -76,7 +76,6 @@ const FormSection01 = ({ setFormsChecking }) => {
 
   const handleFormSection_01Submit = (e) => {
     e.preventDefault();
-    window.alert(e.target.id);
     const errorsReport = form01SubmitValidation(
       formValues,
       tagsList,
@@ -88,6 +87,7 @@ const FormSection01 = ({ setFormsChecking }) => {
       return;
     }
 
+    //Enviar este objeto al reducer
     form01ReadyObjectBuilder(formValues);
 
     setFormsChecking((values) => {

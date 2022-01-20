@@ -66,10 +66,7 @@ const FormSection02 = ({ formChecking, setFormsChecking }) => {
       <h2 className="store-setup__section-enum mb-3 mt-5">
         2. Sube algunas imágenes representativas
       </h2>
-      <div
-        className="store-setup__form-main-container"
-        aria-disabled={formChecking}
-      >
+      <div className="store-setup__form-main-container">
         <form onSubmit={handleFormSection_02Submit}>
           <div className="store-setup__images-container">
             <div className="store-setup__images-inputs-container">
@@ -85,6 +82,7 @@ const FormSection02 = ({ formChecking, setFormsChecking }) => {
                     className="store-setup__mult-images-button"
                     id="portrait-button"
                     onClick={handleSelectImageToLoad}
+                    disabled={!formChecking}
                   >
                     Carga un archivo
                   </button>
@@ -124,6 +122,7 @@ const FormSection02 = ({ formChecking, setFormsChecking }) => {
                     className="store-setup__mult-images-button"
                     id="preview-button"
                     onClick={handleSelectImageToLoad}
+                    disabled={!formChecking}
                   >
                     Carga un archivo
                   </button>
@@ -166,6 +165,7 @@ const FormSection02 = ({ formChecking, setFormsChecking }) => {
                     className="store-setup__mult-images-button"
                     id="physic-button"
                     onClick={handleSelectImageToLoad}
+                    disabled={!formChecking}
                   >
                     Carga un archivo
                   </button>
@@ -200,12 +200,17 @@ const FormSection02 = ({ formChecking, setFormsChecking }) => {
           </div>
           <div className="store-setup__centered-container mb-">
             <div className="store-setup__buttons-container">
-              <button className="store-setup__button-update" type="submit">
+              <button
+                className="store-setup__button-update"
+                type="submit"
+                disabled={!formChecking}
+              >
                 Confirmar cambios
               </button>
               <button
                 className="store-setup__button-update"
                 onClick={handleResetForm}
+                disabled={!formChecking}
               >
                 Resetear los datos
               </button>
