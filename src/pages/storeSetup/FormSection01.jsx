@@ -97,17 +97,6 @@ const FormSection01 = ({ formChecking, setFormsChecking }) => {
   const handleInputValidation = (e) => {
     handleInputChange(e);
     section01Validator(e, setErrorsState);
-
-    if (
-      e.target.name === "startingDate" &&
-      !errorsState.startingDate.hasErrors
-    ) {
-      const event = {
-        target: "endingDate",
-        value: moment(startingDate),
-      };
-      handleInputChange(event);
-    }
   };
 
   const handleFormSection_01Submit = (e) => {
@@ -269,11 +258,11 @@ const FormSection01 = ({ formChecking, setFormsChecking }) => {
                   Hasta
                 </label>
                 <input
-                  type="text"
+                  type="date"
                   name="endingDate"
                   id="endingDate"
                   value={endingDate}
-                  readOnly
+                  onChange={handleInputValidation}
                   className="store-setup__input store-setup__input-date"
                   autoComplete="off"
                 />
@@ -282,6 +271,18 @@ const FormSection01 = ({ formChecking, setFormsChecking }) => {
                 {errorsState.startingDate.hasErrors && (
                   <ErrorFlag
                     message={errorsState.startingDate.message}
+                    width="100%"
+                    marginTop="-25px"
+                  />
+                )}
+              </div>
+              <div
+                className="store-setup__error-flag"
+                style={{ marginTop: "33px" }}
+              >
+                {errorsState.endingDate.hasErrors && (
+                  <ErrorFlag
+                    message={errorsState.endingDate.message}
                     width="100%"
                     marginTop="-25px"
                   />

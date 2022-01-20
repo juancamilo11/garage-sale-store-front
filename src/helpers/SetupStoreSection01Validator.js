@@ -41,9 +41,9 @@ const section01Validator = (e, setErrorsState) => {
     case "startingDate":
       handleStartingDateValidation(value, setErrorsState);
       break;
-    // case "endingDate":
-    //   handleEndingDateValidation(value, setErrorsState);
-    //   break;
+    case "endingDate":
+      handleEndingDateValidation(value, setErrorsState);
+      break;
     // case "address":
     //   handleAddressValidation(value, setErrorsState);
     //   break;
@@ -184,6 +184,32 @@ const handleStartingDateValidation = (value, setErrorsState) => {
   const newDate = moment(value).add(15, "days").toObject();
   document.getElementById("endingDate").value =
     newDate.years + "-" + (newDate.months + 1) + "-" + newDate.days;
+};
+
+const handleEndingDateValidation = (value, setErrorsState) => {
+  console.log(value);
+  const endingDate = moment(value);
+  const startingDate = moment(document.getElementById("startingDate").value);
+
+  if (endingDate.isBefore(startingDate)) {
+    setErrorStateForField(
+      setErrorsState,
+      "endingDate",
+      true,
+      "La fecha ingresada para el cierre de la tienda es inválida, por favor ingresa una fecha válida."
+    );
+    return;
+  }
+  if (endingDate.isAfter(startingDate.add(1, "month"))) {
+    setErrorStateForField(
+      setErrorsState,
+      "endingDate",
+      true,
+      "Una venta de garaje sólo puede durar 30 días."
+    );
+    return;
+  }
+  setErrorStateForField(setErrorsState, "endingDate", false, "");
 };
 
 export default section01Validator;
