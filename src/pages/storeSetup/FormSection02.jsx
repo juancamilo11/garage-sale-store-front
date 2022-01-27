@@ -96,6 +96,7 @@ const FormSection02 = ({ formChecking, setFormsChecking }) => {
                   />
                 </div>
               </div>
+              <label id="url-portrait-img"></label>
               <div className="store-setup__error-flag mt-2 mb-4">
                 {errorsState.portraitUrl.hasErrors && (
                   <ErrorFlag

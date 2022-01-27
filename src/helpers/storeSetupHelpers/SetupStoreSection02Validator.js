@@ -151,9 +151,7 @@ const handlePrevImagesUrlsValidation = (arrFiles, setErrorsState) => {
     return;
   }
 
-  //En este punto ya todo está bien validado
-
-  //Enviar la imagen a cloudinary y en base a la peticion hacer lo siguiente.
+  //From now on the process is validated
 
   new Array(3).fill(0).forEach((num, index) => {
     const imagePreview = document.getElementById(
