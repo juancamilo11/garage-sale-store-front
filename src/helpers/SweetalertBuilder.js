@@ -1,4 +1,29 @@
 import Swal from "sweetalert2";
+
+export const sweetalertForGenericSuccessBuilder = (message) =>
+  Swal.fire({
+    icon: "success",
+    title: "Operación exitosa",
+    text: `${message}`,
+    showConfirmButton: false,
+    allowOutsideClick: false,
+    allowEscapeKey: false,
+    allowEnterKey: false,
+    timer: 3500,
+  });
+
+export const sweetalertForGenericErrorBuilder = (message) =>
+  Swal.fire({
+    icon: "error",
+    title: "Oops...",
+    text: `${message}`,
+    showConfirmButton: false,
+    allowOutsideClick: false,
+    allowEscapeKey: false,
+    allowEnterKey: false,
+    timer: 3500,
+  });
+
 export const sweetalertForInputTagErrorBuilder = (
   newTag,
   handleInputValidation,

@@ -1,4 +1,8 @@
 import { uploadFileToCloudinary } from "../../actions/cloudinaryActions";
+import {
+  sweetalertForGenericErrorBuilder,
+  sweetalertForGenericSuccessBuilder,
+} from "../SweetalertBuilder";
 
 //Initial values for the section #1 form of the store setup's.
 export const section_02FormValues = {
@@ -31,10 +35,19 @@ const section02Validator = (e, setErrorsState) => {
   }
 };
 
-const sendImageToCloudinary = (file) => {
-  uploadFileToCloudinary(file).then((responseUrl) => {
-    console.log("Enlace a la imágen: " + responseUrl);
-  });
+const sendImageToCloudinary = async (file) => {
+  const response = await uploadFileToCloudinary(file);
+
+  console.log(response);
+
+  // .then((responseUrl) => {
+  //     sweetalertForGenericSuccessBuilder("Enlace a la imágen: " + responseUrl);
+  //   })
+  //   .catch((err) =>
+  //     sweetalertForGenericErrorBuilder(
+  //       "Error al subir la imágen a cloudinary, intenta con otra."
+  //     )
+  //   );
 };
 
 const setErrorStateForField = (
@@ -44,7 +57,6 @@ const setErrorStateForField = (
   message,
   hasContent
 ) => {
-  setErrorStateForField(setErrorsState);
   setErrorsState((state) => {
     return {
       ...state,
@@ -142,13 +154,13 @@ const handlePrevImagesUrlsValidation = (arrFiles, setErrorsState) => {
   //En este punto ya todo está bien validado
 
   //Enviar la imagen a cloudinary y en base a la peticion hacer lo siguiente.
-  arrFiles.forEach((file) => sendImageToCloudinary(file));
 
   new Array(3).fill(0).forEach((num, index) => {
     const imagePreview = document.getElementById(
       `${"previsualization-preview" + (index + 1)}`
     );
     imagePreview.src = URL.createObjectURL(arrFiles.item(index));
+    sendImageToCloudinary(arrFiles.item(index));
     imagePreview.classList.replace(
       "portrait-preview--no-content",
       "portrait-preview--with-content"
