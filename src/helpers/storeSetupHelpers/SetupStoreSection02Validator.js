@@ -1,3 +1,5 @@
+import { uploadFileToCloudinary } from "../../actions/cloudinaryActions";
+
 //Initial values for the section #1 form of the store setup's.
 export const section_02FormValues = {
   portraitUrl: "",
@@ -29,8 +31,10 @@ const section02Validator = (e, setErrorsState) => {
   }
 };
 
-const sendImageToCloudinary = () => {
-  //Pendiente, conectar con la api de cloudinary.
+const sendImageToCloudinary = (file) => {
+  uploadFileToCloudinary(file).then((responseUrl) => {
+    console.log("Enlace a la imágen: " + responseUrl);
+  });
 };
 
 const setErrorStateForField = (
@@ -86,7 +90,7 @@ const handlePortraitUrlValidation = (file, setErrorsState) => {
   }
 
   //Enviar la imagen a cloudinary y en base a la peticion hacer lo siguiente.
-  sendImageToCloudinary();
+  sendImageToCloudinary(file);
   const imagePreview = document.getElementById("portrait-preview");
   imagePreview.src = URL.createObjectURL(file);
   imagePreview.classList.replace(
@@ -138,7 +142,7 @@ const handlePrevImagesUrlsValidation = (arrFiles, setErrorsState) => {
   //En este punto ya todo está bien validado
 
   //Enviar la imagen a cloudinary y en base a la peticion hacer lo siguiente.
-  sendImageToCloudinary();
+  arrFiles.forEach((file) => sendImageToCloudinary(file));
 
   new Array(3).fill(0).forEach((num, index) => {
     const imagePreview = document.getElementById(
@@ -172,7 +176,7 @@ const handlePhysicalStoreUrlValidation = (file, setErrorsState) => {
   }
 
   //Enviar la imagen a cloudinary y en base a la peticion hacer lo siguiente.
-  sendImageToCloudinary();
+  sendImageToCloudinary(file);
   const imagePreview = document.getElementById("physical-store-preview");
   imagePreview.src = URL.createObjectURL(file);
   imagePreview.classList.replace(
