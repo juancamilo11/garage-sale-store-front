@@ -90,7 +90,7 @@ const FormSection03 = ({ formChecking, setFormsChecking }) => {
       <InputProductCategory
         categoriesList={categoriesList}
         setCategoriesList={setCategoriesList}
-        disabled={!formChecking}
+        formChecking={formChecking}
       />
 
       <div style={{ margin: "10px 1%" }}>

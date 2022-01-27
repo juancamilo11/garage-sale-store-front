@@ -61,7 +61,7 @@ export const sweetalertForErrorsReportForm01StoreSetupBuilder = (
 ) =>
   Swal.fire({
     icon: "error",
-    title: "El formulario tiene los siguientes errores",
+    title: "El formulario tiene errores",
     html: `
         <ul>
     ${

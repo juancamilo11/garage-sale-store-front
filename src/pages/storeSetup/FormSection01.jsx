@@ -82,7 +82,6 @@ const FormSection01 = ({ setFormsChecking }) => {
       errorsState
     );
     if (errorsReport.hasErrors) {
-      window.alert("datos incorrectos!");
       sweetalertForErrorsReportForm01StoreSetupBuilder(errorsReport);
       return;
     }
