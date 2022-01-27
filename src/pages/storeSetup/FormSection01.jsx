@@ -86,7 +86,7 @@ const FormSection01 = ({ setFormsChecking }) => {
       return;
     }
 
-    //Enviar este objeto al reducer
+    //Enviar este objeto al reducer de la construccion de la tienda
     form01ReadyObjectBuilder(formValues);
 
     setFormsChecking((values) => {
@@ -97,6 +97,7 @@ const FormSection01 = ({ setFormsChecking }) => {
   const handleResetForm = (e) => {
     e.preventDefault();
     resetForm(section_01FormValues);
+    setTagsList([]);
     setErrorsState(section_01ErrorState);
   };
 
