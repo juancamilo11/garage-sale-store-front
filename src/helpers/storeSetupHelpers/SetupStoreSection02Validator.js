@@ -176,6 +176,7 @@ const handlePrevImagesUrlsValidation = (arrFiles, setErrorsState) => {
       "portrait-preview--with-content"
     );
   });
+  setErrorStateForField(setErrorsState, "prevImagesUrls", false, "", true);
 };
 
 const handlePhysicalStoreUrlValidation = (file, setErrorsState) => {

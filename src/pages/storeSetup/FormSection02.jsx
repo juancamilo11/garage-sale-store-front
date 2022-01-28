@@ -63,9 +63,32 @@ const FormSection02 = ({ formChecking, setFormsChecking }) => {
     }).then((res) => {
       if (res.isConfirmed) {
         resetForm(section_02FormValues);
+        resetTags();
         resetImagesFromView(setErrorsState);
       }
     });
+  };
+
+  const resetTags = () => {
+    const portraitImageUrl = document.getElementById("portrait-preview-url");
+    portraitImageUrl.setAttribute("href", "#");
+    portraitImageUrl.textContent = "";
+
+    Array(3)
+      .fill("")
+      .map((value, index) => {
+        const prevImageUrl = document.getElementById(
+          `previsualization-preview${index + 1}-url`
+        );
+        prevImageUrl.setAttribute("href", "#");
+        prevImageUrl.textContent = "";
+      });
+
+    const physicalStoreImageUrl = document.getElementById(
+      "physical-store-preview-url"
+    );
+    physicalStoreImageUrl.setAttribute("href", "#");
+    physicalStoreImageUrl.textContent = "";
   };
 
   const handleFormSection_02Submit = (e) => {
@@ -81,8 +104,6 @@ const FormSection02 = ({ formChecking, setFormsChecking }) => {
           .getElementById(`previsualization-preview${index + 1}-url`)
           .getAttribute("href")
       );
-
-    console.log(prevImagesList);
 
     const physicalStoreImageUrl = document
       .getElementById("physical-store-preview-url")
