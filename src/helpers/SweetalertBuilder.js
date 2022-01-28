@@ -121,3 +121,44 @@ export const sweetalertForErrorsReportForm01StoreSetupBuilder = (
     showConfirmButton: true,
     timer: 20000,
   });
+
+export const sweetalertForErrorsReportForm02StoreSetupBuilder = (
+  errorsReport
+) =>
+  Swal.fire({
+    icon: "error",
+    title: "El formulario tiene errores",
+    html: `
+        <ul>
+    ${
+      errorsReport.storeName === undefined
+        ? ""
+        : "<li>" + errorsReport.storeName + "</li>"
+    }
+    ${
+      errorsReport.slogan === undefined
+        ? ""
+        : "<li>" + errorsReport.slogan + "</li>"
+    }
+    ${
+      errorsReport.description === undefined
+        ? ""
+        : "<li>" + errorsReport.description + "</li>"
+    }
+    ${
+      errorsReport.startingDate === undefined
+        ? ""
+        : "<li>" + errorsReport.startingDate + "</li>"
+    }
+    ${
+      errorsReport.endingDate === undefined
+        ? ""
+        : "<li>" + errorsReport.endingDate + "</li>"
+    } 
+    </ul>
+    <br/>
+    <strong>Por favor verifique los cambios e intente nuevamente.</strong>
+    `,
+    showConfirmButton: true,
+    timer: 20000,
+  });

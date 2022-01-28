@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import ErrorFlag from "../../components/ErrorFlag";
 
 import section02Validator, {
+  form02SubmitValidation,
   resetImagesFromView,
   section_02FormValues,
 } from "./../../helpers/storeSetupHelpers/SetupStoreSection02Validator";
@@ -9,6 +10,11 @@ import { section_02ErrorState } from "./../../helpers/storeSetupHelpers/SetupSto
 
 import useForm from "../../hooks/useForm";
 import Swal from "sweetalert2";
+import {
+  sweetalertForErrorsReportForm02StoreSetupBuilder,
+  sweetalertForGenericSuccessBuilder,
+} from "../../helpers/SweetalertBuilder";
+import form02ReadyObjectBuilder from "../../helpers/storeSetupHelpers/formValuesToObjectBuilder/form02ReadyObjectBuilder";
 
 const FormSection02 = ({ formChecking, setFormsChecking }) => {
   const [errorsState, setErrorsState] = useState(section_02ErrorState);
@@ -62,6 +68,44 @@ const FormSection02 = ({ formChecking, setFormsChecking }) => {
 
   const handleFormSection_02Submit = (e) => {
     e.preventDefault();
+    const portraitUrl = document
+      .getElementById("portrait-preview-url")
+      .getAttribute("href");
+
+    const prevImagesList = new Array(3);
+    prevImagesList.map((value, index) =>
+      document
+        .getElementById(`previsualization-preview${index + 1}-url`)
+        .getAttribute("href")
+    );
+
+    const physicalStoreImageUrl = document
+      .getElementById("physical-store-preview-url")
+      .getAttribute("href");
+
+    console.log(portraitUrl);
+    console.log(prevImagesList);
+    console.log(physicalStoreImageUrl);
+
+    // const errorsReport = form02SubmitValidation(
+    //   portraitUrl,
+    //   prevImagesList,
+    //   physicalStoreImageUrl,
+    //   errorsState
+    // );
+    // if (errorsReport.hasErrors) {
+    //   sweetalertForErrorsReportForm02StoreSetupBuilder(errorsReport);
+    //   return;
+    // }
+    // sweetalertForGenericSuccessBuilder(
+    //   "Segunda parte completada exitosamente, vamos por la última parte!"
+    // );
+    // //Enviar este objeto al reducer de la construccion de la tienda
+    // form02ReadyObjectBuilder(formValues);
+
+    // setFormsChecking((values) => {
+    //   return { ...values, formCheckSection02IsValidated: true };
+    // });
   };
 
   return (
@@ -162,14 +206,14 @@ const FormSection02 = ({ formChecking, setFormsChecking }) => {
                       process.env.PUBLIC_URL + "/assets/common/emptyImage.png"
                     }
                     className="portrait-preview--no-content"
-                    id={`${"previsualization-preview" + (index + 1)}`}
+                    id={"previsualization-preview" + `${index + 1}`}
                     alt=" "
                   />
                   <a
                     href="#"
                     target="_blank"
                     className="store-setup__url-image-label"
-                    id={`${"previsualization-preview" + (index + 1)}-url`}
+                    id={"previsualization-preview" + `${index + 1}-url`}
                   ></a>
                 </>
               ))}

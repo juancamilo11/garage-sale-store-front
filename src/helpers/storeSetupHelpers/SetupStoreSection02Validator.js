@@ -208,4 +208,51 @@ const handlePhysicalStoreUrlValidation = (file, setErrorsState) => {
   setErrorStateForField(setErrorsState, "physicalStoreUrl", false, "", true);
 };
 
+export const form02SubmitValidation = (
+  portraitUrl,
+  prevImagesList,
+  physicalStoreImageUrl,
+  errorsState
+) => {
+  let errorsReport = { hasErrors: false };
+  if (portraitUrl === "" || errorsState.portraitUrl.hasErrors) {
+    errorsReport = {
+      ...errorsReport,
+      portraitUrl: "Falta por ingresar la imágen de portada de la tienda",
+      hasErrors: true,
+    };
+  }
+
+  prevImagesList.forEach((url, index) => {
+    if (url === "") {
+      errorsReport = {
+        ...errorsReport,
+        prevImagesUrls: `Falta por ingresar la ${index}° imágen de previsualización de la tienda`,
+        hasErrors: true,
+      };
+    }
+  });
+
+  if (errorsState.prevImagesUrls.hasErrors) {
+    errorsReport = {
+      ...errorsReport,
+      prevImagesUrls: `Hay errores en las imágenes de previsualización de la tienda`,
+      hasErrors: true,
+    };
+  }
+
+  if (
+    physicalStoreImageUrl === "" ||
+    errorsState.physicalStoreImageUrl.hasErrors
+  ) {
+    errorsReport = {
+      ...errorsReport,
+      physicalStoreImageUrl: "La etiqueta que estás ingresando es inválida",
+      hasErrors: true,
+    };
+  }
+
+  return errorsReport;
+};
+
 export default section02Validator;
