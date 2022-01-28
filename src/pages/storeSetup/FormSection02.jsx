@@ -30,6 +30,7 @@ const FormSection02 = ({ formChecking, setFormsChecking }) => {
   };
 
   const handleSelectImageToLoad = (e) => {
+    e.preventDefault();
     const { id } = e.target;
     switch (id) {
       case "portrait-button":
@@ -47,6 +48,7 @@ const FormSection02 = ({ formChecking, setFormsChecking }) => {
   };
 
   const handleResetForm = (e) => {
+    e.preventDefault();
     Swal.fire({
       title:
         "¿Está seguro que desea resetear los valores del segundo formulario?",
@@ -72,40 +74,46 @@ const FormSection02 = ({ formChecking, setFormsChecking }) => {
       .getElementById("portrait-preview-url")
       .getAttribute("href");
 
-    const prevImagesList = new Array(3);
-    prevImagesList.map((value, index) =>
-      document
-        .getElementById(`previsualization-preview${index + 1}-url`)
-        .getAttribute("href")
-    );
+    const prevImagesList = new Array(3)
+      .fill("")
+      .map((value, index) =>
+        document
+          .getElementById(`previsualization-preview${index + 1}-url`)
+          .getAttribute("href")
+      );
+
+    console.log(prevImagesList);
 
     const physicalStoreImageUrl = document
       .getElementById("physical-store-preview-url")
       .getAttribute("href");
 
-    console.log(portraitUrl);
-    console.log(prevImagesList);
-    console.log(physicalStoreImageUrl);
+    const errorsReport = form02SubmitValidation(
+      portraitUrl,
+      prevImagesList,
+      physicalStoreImageUrl,
+      errorsState
+    );
+    if (errorsReport.hasErrors) {
+      sweetalertForErrorsReportForm02StoreSetupBuilder(errorsReport);
+      return;
+    }
+    sweetalertForGenericSuccessBuilder(
+      "Segunda parte completada exitosamente, vamos por la última parte!"
+    );
 
-    // const errorsReport = form02SubmitValidation(
-    //   portraitUrl,
-    //   prevImagesList,
-    //   physicalStoreImageUrl,
-    //   errorsState
-    // );
-    // if (errorsReport.hasErrors) {
-    //   sweetalertForErrorsReportForm02StoreSetupBuilder(errorsReport);
-    //   return;
-    // }
-    // sweetalertForGenericSuccessBuilder(
-    //   "Segunda parte completada exitosamente, vamos por la última parte!"
-    // );
-    // //Enviar este objeto al reducer de la construccion de la tienda
-    // form02ReadyObjectBuilder(formValues);
+    //Enviar este objeto al reducer de la construccion de la tienda
+    const JSONform02 = form02ReadyObjectBuilder({
+      portraitUrl,
+      prevImagesList,
+      physicalStoreImageUrl,
+    });
 
-    // setFormsChecking((values) => {
-    //   return { ...values, formCheckSection02IsValidated: true };
-    // });
+    //console.log(JSONform02);
+
+    setFormsChecking((values) => {
+      return { ...values, formCheckSection02IsValidated: true };
+    });
   };
 
   return (

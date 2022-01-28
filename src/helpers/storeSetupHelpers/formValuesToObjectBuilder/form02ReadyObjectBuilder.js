@@ -1,5 +1,9 @@
-const form02ReadyObjectBuilder = (formValues) => {
-  return null;
+const form02ReadyObjectBuilder = (
+  portraitUrl,
+  prevImagesList,
+  physicalStoreImageUrl
+) => {
+  return JSON.stringify(portraitUrl, prevImagesList, physicalStoreImageUrl);
 };
 
 export default form02ReadyObjectBuilder;

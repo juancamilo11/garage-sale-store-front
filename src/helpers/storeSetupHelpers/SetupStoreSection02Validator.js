@@ -215,7 +215,7 @@ export const form02SubmitValidation = (
   errorsState
 ) => {
   let errorsReport = { hasErrors: false };
-  if (portraitUrl === "" || errorsState.portraitUrl.hasErrors) {
+  if (portraitUrl === "#" || errorsState.portraitUrl.hasErrors) {
     errorsReport = {
       ...errorsReport,
       portraitUrl: "Falta por ingresar la imágen de portada de la tienda",
@@ -224,10 +224,10 @@ export const form02SubmitValidation = (
   }
 
   prevImagesList.forEach((url, index) => {
-    if (url === "") {
+    if (url === "#") {
       errorsReport = {
         ...errorsReport,
-        prevImagesUrls: `Falta por ingresar la ${index}° imágen de previsualización de la tienda`,
+        prevImagesUrls: `Falta por ingresar las imágenes de previsualización de la tienda`,
         hasErrors: true,
       };
     }
@@ -241,13 +241,10 @@ export const form02SubmitValidation = (
     };
   }
 
-  if (
-    physicalStoreImageUrl === "" ||
-    errorsState.physicalStoreImageUrl.hasErrors
-  ) {
+  if (physicalStoreImageUrl === "#" || errorsState.physicalStoreUrl.hasErrors) {
     errorsReport = {
       ...errorsReport,
-      physicalStoreImageUrl: "La etiqueta que estás ingresando es inválida",
+      physicalStoreUrl: "Falta por ingresar la imágen física de la tienda",
       hasErrors: true,
     };
   }

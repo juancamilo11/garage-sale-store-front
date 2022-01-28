@@ -131,29 +131,19 @@ export const sweetalertForErrorsReportForm02StoreSetupBuilder = (
     html: `
         <ul>
     ${
-      errorsReport.storeName === undefined
+      errorsReport.portraitUrl === undefined
         ? ""
-        : "<li>" + errorsReport.storeName + "</li>"
+        : "<li>" + errorsReport.portraitUrl + "</li>"
     }
     ${
-      errorsReport.slogan === undefined
+      errorsReport.prevImagesUrls === undefined
         ? ""
-        : "<li>" + errorsReport.slogan + "</li>"
+        : "<li>" + errorsReport.prevImagesUrls + "</li>"
     }
     ${
-      errorsReport.description === undefined
+      errorsReport.physicalStoreUrl === undefined
         ? ""
-        : "<li>" + errorsReport.description + "</li>"
-    }
-    ${
-      errorsReport.startingDate === undefined
-        ? ""
-        : "<li>" + errorsReport.startingDate + "</li>"
-    }
-    ${
-      errorsReport.endingDate === undefined
-        ? ""
-        : "<li>" + errorsReport.endingDate + "</li>"
+        : "<li>" + errorsReport.physicalStoreUrl + "</li>"
     } 
     </ul>
     <br/>
