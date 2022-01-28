@@ -48,6 +48,9 @@ const FormSection02 = ({ formChecking, setFormsChecking }) => {
       icon: "warning",
       showConfirmButton: true,
       showCancelButton: true,
+      allowEnterKey: false,
+      allowOutsideClick: false,
+      allowEscapeKey: false,
       timer: 10000,
     }).then((res) => {
       if (res.isConfirmed) {

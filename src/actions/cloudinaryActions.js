@@ -22,3 +22,7 @@ export const uploadFileToCloudinary = async (file) => {
     throw error;
   }
 };
+
+export const deleteImageFromCloudinary = async (urlImageToDelete) => {
+  //toDo -> Delete image from cloudinary
+};

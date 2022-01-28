@@ -2,7 +2,7 @@ const form01ReadyObjectBuilder = (formValues) => {
   //console.log(formValues);
 
   formValues.address = getLatitudeAndLongitude(formValues);
-  console.log(JSON.stringify(formValues));
+  // console.log(JSON.stringify(formValues));
   return JSON.stringify(formValues); // Return the form values ready to send to backend
 };
 

@@ -69,16 +69,21 @@ const setErrorStateForField = (
   });
 };
 
+const handleResetImagesFromView = (imageId) => {
+  const image = document.getElementById(imageId);
+  image.setAttribute("src", "/assets/common/emptyImage.png");
+  image.classList.replace(
+    "portrait-preview--with-content",
+    "portrait-preview--no-content"
+  );
+};
+
 export const resetImagesFromView = (setErrorsState) => {
+  handleResetImagesFromView("portrait-preview");
+  handleResetImagesFromView("physical-store-preview");
+
   new Array(3).fill(0).forEach((num, index) => {
-    const imagePreview = document.getElementById(
-      `${"previsualization-preview" + (index + 1)}`
-    );
-    imagePreview.setAttribute("src", "/assets/common/emptyImage.png");
-    imagePreview.classList.replace(
-      "portrait-preview--with-content",
-      "portrait-preview--no-content"
-    );
+    handleResetImagesFromView(`${"previsualization-preview" + (index + 1)}`);
   });
   setErrorsState((state) => section_02ErrorState);
 };

@@ -12,6 +12,7 @@ import useForm from "../../hooks/useForm";
 import ProductTagList from "../../components/storeSetup/ProductTagList";
 import {
   sweetalertForErrorsReportForm01StoreSetupBuilder,
+  sweetalertForGenericSuccessBuilder,
   sweetalertForInputCurrentLocationForStoreSetupBuilder,
   sweetalertForInputTagAlreadyDefinedBuilder,
   sweetalertForInputTagErrorBuilder,
@@ -85,7 +86,9 @@ const FormSection01 = ({ setFormsChecking }) => {
       sweetalertForErrorsReportForm01StoreSetupBuilder(errorsReport);
       return;
     }
-
+    sweetalertForGenericSuccessBuilder(
+      "Primera parte completada exitosamente, vamos por la segunda parte!"
+    );
     //Enviar este objeto al reducer de la construccion de la tienda
     form01ReadyObjectBuilder(formValues);
 
