@@ -112,7 +112,13 @@ const FormSection02 = ({ formChecking, setFormsChecking }) => {
                   className="portrait-preview--no-content"
                   id="portrait-preview"
                   alt=" "
-                />
+                />{" "}
+                <a
+                  href="#"
+                  target="_blank"
+                  className="store-setup__url-image-label"
+                  id="portrait-preview-url"
+                ></a>
               </div>
               <div className="store-setup__input-images-container">
                 <label
@@ -150,12 +156,22 @@ const FormSection02 = ({ formChecking, setFormsChecking }) => {
                 )}
               </div>
               {new Array(3).fill(0).map((elem, index) => (
-                <img
-                  src={process.env.PUBLIC_URL + "/assets/common/emptyImage.png"}
-                  className="portrait-preview--no-content"
-                  id={`${"previsualization-preview" + (index + 1)}`}
-                  alt=" "
-                />
+                <>
+                  <img
+                    src={
+                      process.env.PUBLIC_URL + "/assets/common/emptyImage.png"
+                    }
+                    className="portrait-preview--no-content"
+                    id={`${"previsualization-preview" + (index + 1)}`}
+                    alt=" "
+                  />
+                  <a
+                    href="#"
+                    target="_blank"
+                    className="store-setup__url-image-label"
+                    id={`${"previsualization-preview" + (index + 1)}-url`}
+                  ></a>
+                </>
               ))}
               <div className="store-setup__input-images-container">
                 <label
@@ -195,7 +211,13 @@ const FormSection02 = ({ formChecking, setFormsChecking }) => {
                   className="portrait-preview--no-content"
                   id="physical-store-preview"
                   alt=" "
-                />
+                />{" "}
+                <a
+                  href="#"
+                  target="_blank"
+                  className="store-setup__url-image-label"
+                  id="physical-store-preview-url"
+                ></a>
               </div>
             </div>
           </div>

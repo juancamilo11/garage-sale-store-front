@@ -35,10 +35,14 @@ const section02Validator = (e, setErrorsState) => {
   }
 };
 
-const sendImageToCloudinary = async (file) => {
+const sendImageToCloudinary = async (file, idTargetImage) => {
   const response = await uploadFileToCloudinary(file);
 
   console.log(response);
+
+  const imageUrl = document.getElementById(`${idTargetImage}-url`);
+  imageUrl.setAttribute("href", response);
+  imageUrl.textContent = "Haz click aquí para ver la imágen en tamaño grande";
 
   // .then((responseUrl) => {
   //     sweetalertForGenericSuccessBuilder("Enlace a la imágen: " + responseUrl);
@@ -107,7 +111,7 @@ const handlePortraitUrlValidation = (file, setErrorsState) => {
   }
 
   //Enviar la imagen a cloudinary y en base a la peticion hacer lo siguiente.
-  sendImageToCloudinary(file);
+  sendImageToCloudinary(file, "portrait-preview");
   const imagePreview = document.getElementById("portrait-preview");
   imagePreview.src = URL.createObjectURL(file);
   imagePreview.classList.replace(
@@ -163,7 +167,10 @@ const handlePrevImagesUrlsValidation = (arrFiles, setErrorsState) => {
       `${"previsualization-preview" + (index + 1)}`
     );
     imagePreview.src = URL.createObjectURL(arrFiles.item(index));
-    sendImageToCloudinary(arrFiles.item(index));
+    sendImageToCloudinary(
+      arrFiles.item(index),
+      `${"previsualization-preview" + (index + 1)}`
+    );
     imagePreview.classList.replace(
       "portrait-preview--no-content",
       "portrait-preview--with-content"
@@ -191,7 +198,7 @@ const handlePhysicalStoreUrlValidation = (file, setErrorsState) => {
   }
 
   //Enviar la imagen a cloudinary y en base a la peticion hacer lo siguiente.
-  sendImageToCloudinary(file);
+  sendImageToCloudinary(file, "physical-store-preview");
   const imagePreview = document.getElementById("physical-store-preview");
   imagePreview.src = URL.createObjectURL(file);
   imagePreview.classList.replace(
