@@ -9,9 +9,18 @@ const ProductTagList = ({ tags, setTagsList }) => {
   return (
     <div className="store-setup__product-tags-list">
       <div className="store-setup__left-counting-tags">
-        {tags.length > 0 && tags.length < 3 && (
+        {tags.length > 0 && tags.length < 10 && (
           <div className="alert alert-primary text-center mt-3">
-            Aún te faltan {3 - tags.length} etiquetas por ingresar (Mínimo tres)
+            Debes tener entre <b>tres</b> y <b>diez</b> etiquetas para cada
+            producto, aún puedes ingresar {10 - tags.length} etiquetas (Máximo
+            diez).
+          </div>
+        )}
+      </div>
+      <div className="store-setup__left-counting-tags">
+        {tags.length === 10 && (
+          <div className="alert alert-primary text-center mt-3">
+            Número máximo de etiquetas para este producto alcanzado.
           </div>
         )}
       </div>

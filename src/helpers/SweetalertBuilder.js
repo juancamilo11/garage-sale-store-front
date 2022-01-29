@@ -188,44 +188,49 @@ export const sweetalertForErrorsReportForm03StoreSetupBuilder = (
     html: `
         <ul>
     ${
-      errorsReport.portraitUrl === undefined
+      errorsReport.productName === undefined
         ? ""
-        : "<li>" + errorsReport.portraitUrl + "</li>"
+        : "<li>" + errorsReport.productName + "</li>"
     }
     ${
-      errorsReport.prevImagesUrls === undefined
+      errorsReport.category === undefined
         ? ""
-        : "<li>" + errorsReport.prevImagesUrls + "</li>"
+        : "<li>" + errorsReport.category + "</li>"
     }
     ${
-      errorsReport.physicalStoreUrl === undefined
+      errorsReport.currency === undefined
         ? ""
-        : "<li>" + errorsReport.physicalStoreUrl + "</li>"
+        : "<li>" + errorsReport.currency + "</li>"
     } 
     ${
-      errorsReport.physicalStoreUrl === undefined
+      errorsReport.quantity === undefined
         ? ""
-        : "<li>" + errorsReport.physicalStoreUrl + "</li>"
+        : "<li>" + errorsReport.quantity + "</li>"
     } 
     ${
-      errorsReport.physicalStoreUrl === undefined
+      errorsReport.price === undefined
         ? ""
-        : "<li>" + errorsReport.physicalStoreUrl + "</li>"
+        : "<li>" + errorsReport.price + "</li>"
     } 
     ${
-      errorsReport.physicalStoreUrl === undefined
+      errorsReport.productState === undefined
         ? ""
-        : "<li>" + errorsReport.physicalStoreUrl + "</li>"
+        : "<li>" + errorsReport.productState + "</li>"
     } 
     ${
-      errorsReport.physicalStoreUrl === undefined
+      errorsReport.freeShipping === undefined
         ? ""
-        : "<li>" + errorsReport.physicalStoreUrl + "</li>"
+        : "<li>" + errorsReport.freeShipping + "</li>"
     } 
     ${
-      errorsReport.physicalStoreUrl === undefined
+      errorsReport.productTag === undefined
         ? ""
-        : "<li>" + errorsReport.physicalStoreUrl + "</li>"
+        : "<li>" + errorsReport.productTag + "</li>"
+    } 
+    ${
+      errorsReport.productImages === undefined
+        ? ""
+        : "<li>" + errorsReport.productImages + "</li>"
     } 
     </ul>
     <br/>
@@ -256,4 +261,31 @@ export const sweetalertForCategoryDeleteConfirmationForm03StoreSetupBuilder = (
     cancelButtonColor: "red",
     allowEscapeKey: false,
     allowOutsideClick: false,
+  });
+
+export const sweetalertForProductTagAlreadyDefinedBuilder = (newTag) =>
+  Swal.fire({
+    icon: "error",
+    title: "Oops...",
+    text: `La etiqueta de producto '${newTag}' no se ha podido ingresar, intenta con otro valor.`,
+    showConfirmButton: false,
+    timer: 3500,
+  });
+
+export const sweetalertForFinalizeInputProductsBuilder = (arrProducts) =>
+  Swal.fire({
+    icon: "info",
+    title: "Finalizar Ingreso de Productos",
+    html: `Hasta el momento se han ingresado <b>${arrProducts.length}</b> producto(s) para la nueva tienda.`,
+    footer:
+      "<b>Al aceptar se procederá con la creación de la venta de garaje</b>",
+    showConfirmButton: true,
+    showDenyButton: false,
+    showCancelButton: true,
+    confirmButtonText: "Continuar",
+    cancelButtonText: "Cancelar",
+    cancelButtonColor: "red",
+    allowEscapeKey: false,
+    allowOutsideClick: false,
+    allowEnterKey: false,
   });

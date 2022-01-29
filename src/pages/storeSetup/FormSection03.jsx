@@ -13,7 +13,9 @@ import latamCountries from "../../helpers/latamCountries";
 import productStates from "./../../helpers/productStates";
 import {
   sweetalertForErrorsReportForm03StoreSetupBuilder,
+  sweetalertForFinalizeInputProductsBuilder,
   sweetalertForGenericSuccessBuilder,
+  sweetalertForProductTagAlreadyDefinedBuilder,
 } from "../../helpers/SweetalertBuilder";
 import form03ReadyObjectBuilder from "../../helpers/storeSetupHelpers/formValuesToObjectBuilder/form03ReadyObjectBuilder";
 
@@ -46,7 +48,26 @@ const FormSection03 = ({ formChecking, setFormsChecking }) => {
     inputImage.click();
   };
 
+  const handleFinalizeInputProducts = (e) => {
+    e.preventDefault();
+    sweetalertForFinalizeInputProductsBuilder(arrProducts).then((res) => {
+      if (res.isConfirmed) {
+        sweetalertForGenericSuccessBuilder(
+          "Última parte completada exitosamente,sólo falta un paso más y todo estará listo!"
+        );
+        //Enviar este objeto al reducer de la construccion de la tienda
+        form03ReadyObjectBuilder(formValues);
+
+        setFormsChecking((values) => {
+          return { ...values, formCheckSection03IsValidated: true };
+        });
+      }
+    });
+  };
+
   const handleAddNewProductTag = (e) => {
+    // toDo -> Verify whether the new tag has already been added
+    e.preventDefault();
     const tagInput = document.getElementById("productTag");
     const newTag = tagInput.value;
     const cleanEvent = { target: { name: "productTag", value: "" } };
@@ -55,13 +76,7 @@ const FormSection03 = ({ formChecking, setFormsChecking }) => {
       setProductTagList([...productTagList, newTag]);
       handleInputValidation(cleanEvent);
     } else {
-      Swal.fire({
-        icon: "error",
-        title: "Oops...",
-        text: `La etiqueta de producto '${newTag}' no se ha podido ingresar, intenta con otro valor.`,
-        showConfirmButton: false,
-        timer: 3500,
-      }).then((res) => {
+      sweetalertForProductTagAlreadyDefinedBuilder(newTag).then((res) => {
         handleInputValidation(cleanEvent);
       });
     }
@@ -77,19 +92,14 @@ const FormSection03 = ({ formChecking, setFormsChecking }) => {
     const errorsReport = form03SubmitValidation(
       formValues,
       errorsState,
-      setErrorsState
+      setErrorsState,
+      productTagList
     );
     if (errorsReport.hasErrors) {
       sweetalertForErrorsReportForm03StoreSetupBuilder(errorsReport);
       return;
     }
     sweetalertForGenericSuccessBuilder("¡Producto ingresado correctamente!");
-    //Enviar este objeto al reducer de la construccion de la tienda
-    form03ReadyObjectBuilder(formValues);
-
-    setFormsChecking((values) => {
-      return { ...values, formCheckSection03IsValidated: true };
-    });
   };
 
   const handleResetForm = (e) => {
@@ -108,10 +118,6 @@ const FormSection03 = ({ formChecking, setFormsChecking }) => {
         setCategoryList={setCategoryList}
         formChecking={formChecking}
       />
-
-      <div style={{ margin: "10px 1%" }}>
-        <hr />
-      </div>
       {categoryList.length > 0 ? (
         <form
           onSubmit={handleFormSection_03Submit}
@@ -370,6 +376,7 @@ const FormSection03 = ({ formChecking, setFormsChecking }) => {
                   autoComplete="off"
                 />
                 <button
+                  disabled={productTagList.length >= 10}
                   onClick={handleAddNewProductTag}
                   className="store-setup__input store-setup__button-input-tag btn btn-primary"
                 >
@@ -457,7 +464,10 @@ const FormSection03 = ({ formChecking, setFormsChecking }) => {
                 <hr />
               </div>
               <div className="store-setup__centered-container">
-                <button className="store-setup__button-end-input-products">
+                <button
+                  onClick={handleFinalizeInputProducts}
+                  className="store-setup__button-end-input-products"
+                >
                   Finalizar Ingreso de Productos y Continuar
                 </button>
               </div>

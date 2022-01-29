@@ -357,7 +357,8 @@ export const formInputCategorySubmitValidation = (formValues, errorsState) => {
 export const form03SubmitValidation = (
   formValues,
   errorsState,
-  setErrorsState
+  setErrorsState,
+  productTagList
 ) => {
   const {
     productName,
@@ -433,8 +434,7 @@ export const form03SubmitValidation = (
   if (price === "" || errorsState.price.hasErrors) {
     errorsReport = {
       ...errorsReport,
-      price:
-        "Has dejado la cantidad existente del producto vacía o con errores",
+      price: "Has dejado el precio del producto vacío o con errores",
       hasErrors: true,
     };
   }
@@ -446,7 +446,7 @@ export const form03SubmitValidation = (
         ...state,
         ["productState"]: {
           hasErrors: true,
-          message: "No ha seleccionado el estado actual del producto",
+          message: "No has seleccionado el estado actual del producto",
         },
       };
     });
@@ -455,7 +455,7 @@ export const form03SubmitValidation = (
   if (errorsState.productState.hasErrors) {
     errorsReport = {
       ...errorsReport,
-      productState: "No ha seleccionado el estado actual del producto",
+      productState: "No has seleccionado el estado actual del producto",
       hasErrors: true,
     };
   }
@@ -467,7 +467,7 @@ export const form03SubmitValidation = (
         ["freeShipping"]: {
           hasErrors: true,
           message:
-            "No ha seleccionado una opción para el tipo de envío del producto",
+            "No has seleccionado una opción para el tipo de envío del producto",
         },
       };
     });
@@ -477,7 +477,7 @@ export const form03SubmitValidation = (
     errorsReport = {
       ...errorsReport,
       freeShipping:
-        "No ha seleccionado una opción para el tipo de envío del producto",
+        "No has seleccionado una opción para el tipo de envío del producto",
       hasErrors: true,
     };
   }
@@ -486,6 +486,14 @@ export const form03SubmitValidation = (
     errorsReport = {
       ...errorsReport,
       productTag: "La etiqueta del producto que estás ingresando es inválida",
+      hasErrors: true,
+    };
+  }
+
+  if (productTagList.length < 3 || productTagList.length > 10) {
+    errorsReport = {
+      ...errorsReport,
+      productTag: "Debes ingresar entre 3 y 10 etiquetas por producto",
       hasErrors: true,
     };
   }
