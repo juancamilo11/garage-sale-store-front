@@ -2,17 +2,22 @@ import React from "react";
 import { useState } from "react";
 import { uploadFileToCloudinary } from "../../actions/cloudinaryActions";
 import section03Validator, {
+  formInputCategorySubmitValidation,
   isTheCategoryAlreadyDefined,
   section_03ErrorState,
 } from "../../helpers/storeSetupHelpers/SetupStoreSection03Validator";
+import {
+  sweetalertForErrorsReportForm03StoreSetupBuilder,
+  sweetalertForErrorsReportInputCategoryForm03StoreSetupBuilder,
+} from "../../helpers/SweetalertBuilder";
 import useForm from "../../hooks/useForm";
 import ErrorFlag from "../ErrorFlag";
 import ProductCategoryWithImageTagList from "./ProductCategoryWithImageTagList";
 import ProductWithImageTagList from "./ProductCategoryWithImageTagList";
 
 const InputProductCategory = ({
-  categoriesList,
-  setCategoriesList,
+  categoryList,
+  setCategoryList,
   formChecking,
 }) => {
   const [formValues, handleCategoryInputChange, resetForm] = useForm({
@@ -23,18 +28,14 @@ const InputProductCategory = ({
 
   const [errorsState, setErrorsState] = useState(section_03ErrorState);
 
-  const { categoryName, categoryImage } = formValues;
+  const { categoryName, categoryImage, imageUrl } = formValues;
 
   const handleInputValidation = (e) => {
     handleCategoryInputChange(e);
     section03Validator(e, setErrorsState);
 
     if (e.target.name === "categoryName") {
-      isTheCategoryAlreadyDefined(
-        e.target.value,
-        categoriesList,
-        setErrorsState
-      );
+      isTheCategoryAlreadyDefined(e.target.value, categoryList, setErrorsState);
     }
   };
 
@@ -45,38 +46,40 @@ const InputProductCategory = ({
 
   const handleSubmitNewCategory = (e) => {
     e.preventDefault();
-    if (
-      !errorsState.categoryName.hasErrors &&
-      !errorsState.categoryImage.hasErrors
-    ) {
-      const imageFile = document.getElementById(
-        "store-setup__input-category-img"
-      ).files[0];
-      console.log(imageFile);
-      uploadFileToCloudinary(imageFile).then((responseImageUrl) => {
-        console.log(responseImageUrl);
-        setCategoriesList([
-          ...categoriesList,
-          {
-            categoryName,
-            categoryImage: URL.createObjectURL(imageFile),
-            imageUrl: responseImageUrl,
-          },
-        ]);
-      });
-      resetForm({
-        categoryName: "",
-        categoryImage: "",
-        imageUrl: "",
-      });
-      const categoryImage = document.getElementById("product-category-preview");
-      categoryImage.src =
-        process.env.PUBLIC_URL + "/assets/common/emptyImage.png";
-      categoryImage.classList.replace(
-        "portrait-preview--with-content",
-        "portrait-preview--no-content"
+    const errorsReport = formInputCategorySubmitValidation(
+      formValues,
+      errorsState
+    );
+    if (errorsReport.hasErrors) {
+      sweetalertForErrorsReportInputCategoryForm03StoreSetupBuilder(
+        errorsReport
       );
+      return;
     }
+    const imageFile = document.getElementById("store-setup__input-category-img")
+      .files[0];
+    uploadFileToCloudinary(imageFile).then((responseImageUrl) => {
+      setCategoryList([
+        ...categoryList,
+        {
+          categoryName,
+          categoryImage: URL.createObjectURL(imageFile),
+          imageUrl: responseImageUrl,
+        },
+      ]);
+    });
+    resetForm({
+      categoryName: "",
+      categoryImage: "",
+      imageUrl: "",
+    });
+    const categoryImage = document.getElementById("product-category-preview");
+    categoryImage.src =
+      process.env.PUBLIC_URL + "/assets/common/emptyImage.png";
+    categoryImage.classList.replace(
+      "portrait-preview--with-content",
+      "portrait-preview--no-content"
+    );
   };
 
   return (
@@ -146,7 +149,6 @@ const InputProductCategory = ({
               id="product-category-preview"
               alt=" "
             />
-            <a href="#" id="store-setup__category-image-url"></a>
             <div className="store-setup__final-form-ind store-setup__final-form-ind--product-category">
               <hr />
             </div>
@@ -169,10 +171,10 @@ const InputProductCategory = ({
           <div className="store-setup__product-category-border-container">
             <h4>Lista Actual de etiquetas</h4>
             <ul>
-              {categoriesList.length > 0 ? (
+              {categoryList.length > 0 ? (
                 <ProductCategoryWithImageTagList
-                  categoriesList={categoriesList}
-                  setCategoriesList={setCategoriesList}
+                  categoryList={categoryList}
+                  setCategoryList={setCategoryList}
                 />
               ) : (
                 <ErrorFlag

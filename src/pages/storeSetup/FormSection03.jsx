@@ -16,7 +16,7 @@ const FormSection03 = ({ formChecking, setFormsChecking }) => {
     useForm(section_03FormValues);
 
   const [arrProducts, setArrProducts] = useState([]);
-  const [categoriesList, setCategoriesList] = useState([]);
+  const [categoryList, setCategoryList] = useState([]);
   const [productTagList, setProductTagList] = useState([]);
 
   const [errorsState, setErrorsState] = useState(section_03ErrorState);
@@ -88,15 +88,15 @@ const FormSection03 = ({ formChecking, setFormsChecking }) => {
         3. Creación de los productos para la venta
       </h2>
       <InputProductCategory
-        categoriesList={categoriesList}
-        setCategoriesList={setCategoriesList}
+        categoryList={categoryList}
+        setCategoryList={setCategoryList}
         formChecking={formChecking}
       />
 
       <div style={{ margin: "10px 1%" }}>
         <hr />
       </div>
-      {categoriesList.length > 0 ? (
+      {categoryList.length > 0 ? (
         <form
           onSubmit={handleFormSection_03Submit}
           className="store-setup__form-main-container my-3"
@@ -204,7 +204,7 @@ const FormSection03 = ({ formChecking, setFormsChecking }) => {
                   <option value="no-category-selected" selected="true">
                     Seleccione una categoría para el producto
                   </option>
-                  {categoriesList.map((category) => (
+                  {categoryList.map((category) => (
                     <option
                       value={category.categoryName}
                       className="store-setup__category-option"

@@ -152,3 +152,60 @@ export const sweetalertForErrorsReportForm02StoreSetupBuilder = (
     showConfirmButton: true,
     timer: 20000,
   });
+
+export const sweetalertForErrorsReportInputCategoryForm03StoreSetupBuilder = (
+  errorsReport
+) =>
+  Swal.fire({
+    icon: "error",
+    title: "El formulario tiene errores",
+    html: `
+        <ul>
+    ${
+      errorsReport.categoryName === undefined
+        ? ""
+        : "<li>" + errorsReport.categoryName + "</li>"
+    }
+    ${
+      errorsReport.categoryImage === undefined
+        ? ""
+        : "<li>" + errorsReport.categoryImage + "</li>"
+    }
+    </ul>
+    <br/>
+    <strong>Por favor verifique los cambios e intente nuevamente.</strong>
+    `,
+    showConfirmButton: true,
+    timer: 20000,
+  });
+
+export const sweetalertForErrorsReportForm03StoreSetupBuilder = (
+  errorsReport
+) =>
+  Swal.fire({
+    icon: "error",
+    title: "El formulario tiene errores",
+    html: `
+        <ul>
+    ${
+      errorsReport.portraitUrl === undefined
+        ? ""
+        : "<li>" + errorsReport.portraitUrl + "</li>"
+    }
+    ${
+      errorsReport.prevImagesUrls === undefined
+        ? ""
+        : "<li>" + errorsReport.prevImagesUrls + "</li>"
+    }
+    ${
+      errorsReport.physicalStoreUrl === undefined
+        ? ""
+        : "<li>" + errorsReport.physicalStoreUrl + "</li>"
+    } 
+    </ul>
+    <br/>
+    <strong>Por favor verifique los cambios e intente nuevamente.</strong>
+    `,
+    showConfirmButton: true,
+    timer: 20000,
+  });

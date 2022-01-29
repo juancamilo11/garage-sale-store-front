@@ -120,6 +120,7 @@ const handleCategoryNameValidation = (value, setErrorsState) => {
 
 const handleCategoryImageValidation = (file, setErrorsState) => {
   if (!file?.type.startsWith("image")) {
+    console.log(file);
     const imagePreview = document.getElementById("product-category-preview");
     imagePreview.setAttribute("src", "/assets/common/emptyImage.png");
     imagePreview.classList.replace(
@@ -140,8 +141,6 @@ const handleCategoryImageValidation = (file, setErrorsState) => {
     return;
   }
 
-  //Enviar la imagen a cloudinary y en base a la peticion hacer lo siguiente.
-  sendImageToCloudinary();
   const imagePreview = document.getElementById("product-category-preview");
   imagePreview.src = URL.createObjectURL(file);
   imagePreview.classList.replace(
@@ -320,5 +319,29 @@ const handleProductImagesValidation = (arrFiles, setErrorsState) => {
     );
   });
 };
+
+export const formInputCategorySubmitValidation = (formValues, errorsState) => {
+  let errorsReport = { hasErrors: false };
+
+  const { categoryName } = formValues;
+
+  if (categoryName === "" || errorsState.categoryName.hasErrors) {
+    errorsReport = {
+      ...errorsReport,
+      categoryName: "Has dejado el nombre de la categoría vacío o con errores",
+      hasErrors: true,
+    };
+  }
+  if (errorsState.categoryImage.hasErrors) {
+    errorsReport = {
+      ...errorsReport,
+      categoryImage: "La imágen representativa de la categoría tiene errores",
+      hasErrors: true,
+    };
+  }
+  return errorsReport;
+};
+
+export const form03SubmitValidation = () => {};
 
 export default section03Validator;

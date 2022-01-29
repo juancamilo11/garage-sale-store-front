@@ -1,28 +1,25 @@
 import React from "react";
 
-const ProductCategoryWithImageTagList = ({
-  categoriesList,
-  setCategoriesList,
-}) => {
+const ProductCategoryWithImageTagList = ({ categoryList, setCategoryList }) => {
   const handleDeleteTag = (categoryToDelete) => {
-    const newCategoryList = categoriesList.filter(
+    const newCategoryList = categoryList.filter(
       (category) => category.categoryName !== categoryToDelete
     );
-    setCategoriesList(newCategoryList);
+    setCategoryList(newCategoryList);
     //toDo -> Delete category image from cloudinary
   };
 
   return (
     <div className="store-setup__product-tags-list">
-      <div className="store-setup__left-counting-categoriesList">
-        {categoriesList.length > 0 && categoriesList.length < 30 && (
+      <div className="store-setup__left-counting-categoryList">
+        {categoryList.length > 0 && categoryList.length < 30 && (
           <div className="alert alert-primary text-center mt-3">
-            Puedes ingresar {30 - categoriesList.length} más (Máximo treinta)
+            Puedes ingresar {30 - categoryList.length} más (Máximo treinta)
           </div>
         )}
       </div>
-      {categoriesList.length > 0 &&
-        categoriesList.map((category) => (
+      {categoryList.length > 0 &&
+        categoryList.map((category) => (
           <div
             key={category.categoryName}
             className="store-setup__product-tag-item"
