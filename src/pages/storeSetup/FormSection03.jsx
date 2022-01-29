@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import ErrorFlag from "../../components/ErrorFlag";
 import section03Validator, {
+  form03SubmitValidation,
   section_03FormValues,
 } from "./../../helpers/storeSetupHelpers/SetupStoreSection03Validator";
 import { section_03ErrorState } from "./../../helpers/storeSetupHelpers/SetupStoreSection03Validator";
@@ -10,12 +11,17 @@ import Swal from "sweetalert2";
 import InputProductCategory from "../../components/storeSetup/InputProductCategory";
 import latamCountries from "../../helpers/latamCountries";
 import productStates from "./../../helpers/productStates";
+import {
+  sweetalertForErrorsReportForm03StoreSetupBuilder,
+  sweetalertForGenericSuccessBuilder,
+} from "../../helpers/SweetalertBuilder";
+import form03ReadyObjectBuilder from "../../helpers/storeSetupHelpers/formValuesToObjectBuilder/form03ReadyObjectBuilder";
 
 const FormSection03 = ({ formChecking, setFormsChecking }) => {
   const [formValues, handleInputChange, resetForm] =
     useForm(section_03FormValues);
 
-  const [arrProducts, setArrProducts] = useState([]);
+  const [arrProducts, setArrProducts] = useState(["prueba"]);
   const [categoryList, setCategoryList] = useState([]);
   const [productTagList, setProductTagList] = useState([]);
 
@@ -68,12 +74,22 @@ const FormSection03 = ({ formChecking, setFormsChecking }) => {
 
   const handleFormSection_03Submit = (e) => {
     e.preventDefault();
-    // const errorReport = Section01Validator(formValues);
-    // if (!errorReport.hasErrors()) {
-    //   console.log("Los datos han sido actualizados exitosamente.");
-    // } else {
-    //   //Se muestra un mensaje de error con sweetalert o con toastify
-    // }
+    const errorsReport = form03SubmitValidation(
+      formValues,
+      errorsState,
+      setErrorsState
+    );
+    if (errorsReport.hasErrors) {
+      sweetalertForErrorsReportForm03StoreSetupBuilder(errorsReport);
+      return;
+    }
+    sweetalertForGenericSuccessBuilder("¡Producto ingresado correctamente!");
+    //Enviar este objeto al reducer de la construccion de la tienda
+    form03ReadyObjectBuilder(formValues);
+
+    setFormsChecking((values) => {
+      return { ...values, formCheckSection03IsValidated: true };
+    });
   };
 
   const handleResetForm = (e) => {
@@ -435,6 +451,18 @@ const FormSection03 = ({ formChecking, setFormsChecking }) => {
               </button>
             </div>
           </div>
+          {arrProducts.length > 0 && (
+            <>
+              <div className="store-setup__final-form-ind store-setup__final-form-ind--product-category">
+                <hr />
+              </div>
+              <div className="store-setup__centered-container">
+                <button className="store-setup__button-end-input-products">
+                  Finalizar Ingreso de Productos y Continuar
+                </button>
+              </div>
+            </>
+          )}
         </form>
       ) : (
         <div style={{ margin: "10px 1%" }}>

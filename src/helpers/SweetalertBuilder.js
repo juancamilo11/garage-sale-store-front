@@ -202,6 +202,31 @@ export const sweetalertForErrorsReportForm03StoreSetupBuilder = (
         ? ""
         : "<li>" + errorsReport.physicalStoreUrl + "</li>"
     } 
+    ${
+      errorsReport.physicalStoreUrl === undefined
+        ? ""
+        : "<li>" + errorsReport.physicalStoreUrl + "</li>"
+    } 
+    ${
+      errorsReport.physicalStoreUrl === undefined
+        ? ""
+        : "<li>" + errorsReport.physicalStoreUrl + "</li>"
+    } 
+    ${
+      errorsReport.physicalStoreUrl === undefined
+        ? ""
+        : "<li>" + errorsReport.physicalStoreUrl + "</li>"
+    } 
+    ${
+      errorsReport.physicalStoreUrl === undefined
+        ? ""
+        : "<li>" + errorsReport.physicalStoreUrl + "</li>"
+    } 
+    ${
+      errorsReport.physicalStoreUrl === undefined
+        ? ""
+        : "<li>" + errorsReport.physicalStoreUrl + "</li>"
+    } 
     </ul>
     <br/>
     <strong>Por favor verifique los cambios e intente nuevamente.</strong>

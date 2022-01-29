@@ -356,7 +356,6 @@ export const formInputCategorySubmitValidation = (formValues, errorsState) => {
 
 export const form03SubmitValidation = (
   formValues,
-  tagsList,
   errorsState,
   setErrorsState
 ) => {
@@ -368,7 +367,7 @@ export const form03SubmitValidation = (
     price,
     productState,
     freeShipping,
-    productTag,
+    // productTag,
     productImages,
   } = formValues;
 
@@ -491,10 +490,10 @@ export const form03SubmitValidation = (
     };
   }
 
-  if (productImages.length < 3) {
+  if (errorsState.productImages.hasErrors) {
     errorsReport = {
       ...errorsReport,
-      tagsList: "Debes ingresar como mínimo 3 etiquetas para la tienda",
+      productImages: "Debes ingresar como entre 3 y 5 imágenes del producto",
       hasErrors: true,
     };
   }
