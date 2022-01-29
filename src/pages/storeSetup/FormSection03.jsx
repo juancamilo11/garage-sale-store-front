@@ -44,6 +44,7 @@ const FormSection03 = ({ formChecking, setFormsChecking }) => {
   } = formValues;
 
   const handleLoadimage = (e) => {
+    e.preventDefault();
     const inputImage = document.getElementById("product-prev-images");
     inputImage.click();
   };
@@ -223,7 +224,7 @@ const FormSection03 = ({ formChecking, setFormsChecking }) => {
                   onChange={handleInputValidation}
                   className="store-setup__input"
                 >
-                  <option value="no-category-selected" selected="true">
+                  <option value="no-category-selected" selected>
                     Seleccione una categoría para el producto
                   </option>
                   {categoryList.map((category) => (

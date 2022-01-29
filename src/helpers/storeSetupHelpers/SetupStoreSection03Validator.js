@@ -382,13 +382,13 @@ export const form03SubmitValidation = (
     };
   }
 
-  if (category === "no-category-selected") {
+  if (!category) {
     setErrorsState((state) => {
       return {
         ...state,
         ["category"]: {
           hasErrors: true,
-          message: "No ha seleccionado categoría para el producto",
+          message: "No has seleccionado categoría para el producto",
         },
       };
     });
@@ -402,7 +402,7 @@ export const form03SubmitValidation = (
     };
   }
 
-  if (currency === "no-currency-selected") {
+  if (!currency) {
     setErrorsState((state) => {
       return {
         ...state,
