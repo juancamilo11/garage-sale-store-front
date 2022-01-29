@@ -4,8 +4,8 @@ const latamCountries = [
     name: "País de Nacimiento",
     code: "NN",
     flag: "NN",
-    currencyCode: "",
-    currencyName: "",
+    currencyCode: "no-currency-selected",
+    currencyName: "no-currency-selected",
   },
   {
     region: "North America",

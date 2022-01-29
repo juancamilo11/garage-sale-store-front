@@ -244,11 +244,15 @@ const FormSection03 = ({ formChecking, setFormsChecking }) => {
                   id="currency"
                   className="store-setup__input store-setup__input--price"
                   value={currency}
+                  title={currency}
                   onChange={handleInputValidation}
                 >
                   {latamCountries.map((country) => (
-                    <option value={country.currencyCode}>
-                      {country.currencyCode
+                    <option
+                      value={country.currencyCode}
+                      title={country.currencyName}
+                    >
+                      {country.currencyCode !== "no-currency-selected"
                         ? "[" +
                           `${country.currencyCode}` +
                           "]" +

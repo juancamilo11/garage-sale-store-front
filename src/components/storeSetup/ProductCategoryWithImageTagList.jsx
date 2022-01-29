@@ -12,6 +12,7 @@ const ProductCategoryWithImageTagList = ({ categoryList, setCategoryList }) => {
         );
         setCategoryList(newCategoryList);
         //toDo -> Delete category image from cloudinary
+        //toDo -> Dispatch action to reducer to delete products with the deleted category
       }
     });
   };

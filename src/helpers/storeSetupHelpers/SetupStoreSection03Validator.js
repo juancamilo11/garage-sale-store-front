@@ -254,9 +254,11 @@ const handleProductTagValidation = (value, setErrorsState) => {
     });
   }
 };
+
 const handleFreeShippingValidation = (value, setErrorsState) => {
   //toDo
 };
+
 const handleProductImagesValidation = (arrFiles, setErrorsState) => {
   if (arrFiles.length < 3 || arrFiles.length > 5) {
     setErrorsState((state) => {
@@ -318,6 +320,16 @@ const handleProductImagesValidation = (arrFiles, setErrorsState) => {
       "product-preview--with-content"
     );
   });
+  setErrorsState((state) => {
+    return {
+      ...state,
+      ["productImages"]: {
+        hasErrors: false,
+        message: "",
+        hasContent: true,
+      },
+    };
+  });
 };
 
 export const formInputCategorySubmitValidation = (formValues, errorsState) => {
@@ -342,6 +354,152 @@ export const formInputCategorySubmitValidation = (formValues, errorsState) => {
   return errorsReport;
 };
 
-export const form03SubmitValidation = () => {};
+export const form03SubmitValidation = (
+  formValues,
+  tagsList,
+  errorsState,
+  setErrorsState
+) => {
+  const {
+    productName,
+    category,
+    currency,
+    quantity,
+    price,
+    productState,
+    freeShipping,
+    productTag,
+    productImages,
+  } = formValues;
+
+  let errorsReport = { hasErrors: false };
+
+  if (productName === "" || errorsState.productName.hasErrors) {
+    errorsReport = {
+      ...errorsReport,
+      productName: "Has dejado el nombre del producto vacío o con errores",
+      hasErrors: true,
+    };
+  }
+
+  if (category === "no-category-selected") {
+    setErrorsState((state) => {
+      return {
+        ...state,
+        ["category"]: {
+          hasErrors: true,
+          message: "No ha seleccionado categoría para el producto",
+        },
+      };
+    });
+  }
+
+  if (errorsState.category.hasErrors) {
+    errorsReport = {
+      ...errorsReport,
+      category: "No ha seleccionado categoría para el producto",
+      hasErrors: true,
+    };
+  }
+
+  if (currency === "no-currency-selected") {
+    setErrorsState((state) => {
+      return {
+        ...state,
+        ["currency"]: {
+          hasErrors: true,
+          message: "No ha seleccionado la moneda para el precio del producto",
+        },
+      };
+    });
+  }
+
+  if (errorsState.currency.hasErrors) {
+    errorsReport = {
+      ...errorsReport,
+      currency: "No ha seleccionado la moneda base para el precio del producto",
+      hasErrors: true,
+    };
+  }
+
+  if (quantity === "" || errorsState.quantity.hasErrors) {
+    errorsReport = {
+      ...errorsReport,
+      quantity:
+        "Has dejado la cantidad existente del producto vacía o con errores",
+      hasErrors: true,
+    };
+  }
+
+  if (price === "" || errorsState.price.hasErrors) {
+    errorsReport = {
+      ...errorsReport,
+      price:
+        "Has dejado la cantidad existente del producto vacía o con errores",
+      hasErrors: true,
+    };
+  }
+
+  if (productState === 0) {
+    //0 === no product state selected
+    setErrorsState((state) => {
+      return {
+        ...state,
+        ["productState"]: {
+          hasErrors: true,
+          message: "No ha seleccionado el estado actual del producto",
+        },
+      };
+    });
+  }
+
+  if (errorsState.productState.hasErrors) {
+    errorsReport = {
+      ...errorsReport,
+      productState: "No ha seleccionado el estado actual del producto",
+      hasErrors: true,
+    };
+  }
+
+  if (freeShipping === "") {
+    setErrorsState((state) => {
+      return {
+        ...state,
+        ["freeShipping"]: {
+          hasErrors: true,
+          message:
+            "No ha seleccionado una opción para el tipo de envío del producto",
+        },
+      };
+    });
+  }
+
+  if (errorsState.freeShipping.hasErrors) {
+    errorsReport = {
+      ...errorsReport,
+      freeShipping:
+        "No ha seleccionado una opción para el tipo de envío del producto",
+      hasErrors: true,
+    };
+  }
+
+  if (errorsState.productTag.hasErrors) {
+    errorsReport = {
+      ...errorsReport,
+      productTag: "La etiqueta del producto que estás ingresando es inválida",
+      hasErrors: true,
+    };
+  }
+
+  if (productImages.length < 3) {
+    errorsReport = {
+      ...errorsReport,
+      tagsList: "Debes ingresar como mínimo 3 etiquetas para la tienda",
+      hasErrors: true,
+    };
+  }
+
+  return errorsReport;
+};
 
 export default section03Validator;
