@@ -9,6 +9,7 @@ const ProductCategoryWithImageTagList = ({
       (category) => category.categoryName !== categoryToDelete
     );
     setCategoriesList(newCategoryList);
+    //toDo -> Delete category image from cloudinary
   };
 
   return (
@@ -36,6 +37,12 @@ const ProductCategoryWithImageTagList = ({
               height="70px"
               className="my-2"
             />
+            <a href={category.imageUrl} target="_blank">
+              <i
+                class="fas fa-external-link-alt"
+                title="Ver imágen en tamaño grande"
+              ></i>
+            </a>
             <button
               className="btn btn-danger btn-delete-tag"
               onClick={(e) => handleDeleteTag(category.categoryName)}

@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import { uploadFileToCloudinary } from "../../actions/cloudinaryActions";
 import section03Validator, {
   isTheCategoryAlreadyDefined,
   section_03ErrorState,
@@ -17,6 +18,7 @@ const InputProductCategory = ({
   const [formValues, handleCategoryInputChange, resetForm] = useForm({
     categoryName: "",
     categoryImage: "",
+    imageUrl: "",
   });
 
   const [errorsState, setErrorsState] = useState(section_03ErrorState);
@@ -51,18 +53,21 @@ const InputProductCategory = ({
         "store-setup__input-category-img"
       ).files[0];
       console.log(imageFile);
-      setCategoriesList([
-        ...categoriesList,
-        {
-          categoryName,
-          categoryImage: imageFile?.type.startsWith("image/")
-            ? URL.createObjectURL(imageFile)
-            : process.env.PUBLIC_URL + "/assets/common/emptyImage.png",
-        },
-      ]);
+      uploadFileToCloudinary(imageFile).then((responseImageUrl) => {
+        console.log(responseImageUrl);
+        setCategoriesList([
+          ...categoriesList,
+          {
+            categoryName,
+            categoryImage: URL.createObjectURL(imageFile),
+            imageUrl: responseImageUrl,
+          },
+        ]);
+      });
       resetForm({
         categoryName: "",
         categoryImage: "",
+        imageUrl: "",
       });
       const categoryImage = document.getElementById("product-category-preview");
       categoryImage.src =
@@ -141,6 +146,7 @@ const InputProductCategory = ({
               id="product-category-preview"
               alt=" "
             />
+            <a href="#" id="store-setup__category-image-url"></a>
             <div className="store-setup__final-form-ind store-setup__final-form-ind--product-category">
               <hr />
             </div>
