@@ -209,3 +209,26 @@ export const sweetalertForErrorsReportForm03StoreSetupBuilder = (
     showConfirmButton: true,
     timer: 20000,
   });
+
+export const sweetalertForCategoryDeleteConfirmationForm03StoreSetupBuilder = (
+  categoryToDelete
+) =>
+  Swal.fire({
+    icon: "info",
+    title: "Eliminación de categoría de productos",
+    html: `Al eliminar la categoría con nombre <b>${categoryToDelete.categoryName}</b> se eliminarán también todos los productos con esta categoría?`,
+    imageUrl: `${categoryToDelete.imageUrl}`,
+    imageHeight: "180",
+    imageAlt: `${categoryToDelete.categoryName}`,
+    footer: `<b>Esta acción no se puede deshacer</b> 
+      <br/>
+      <small></small>`,
+    showConfirmButton: true,
+    showDenyButton: false,
+    showCancelButton: true,
+    confirmButtonText: "Continuar",
+    cancelButtonText: "Cancelar",
+    cancelButtonColor: "red",
+    allowEscapeKey: false,
+    allowOutsideClick: false,
+  });

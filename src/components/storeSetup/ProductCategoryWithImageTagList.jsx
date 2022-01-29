@@ -1,12 +1,19 @@
 import React from "react";
+import { sweetalertForCategoryDeleteConfirmationForm03StoreSetupBuilder } from "../../helpers/SweetalertBuilder";
 
 const ProductCategoryWithImageTagList = ({ categoryList, setCategoryList }) => {
   const handleDeleteTag = (categoryToDelete) => {
-    const newCategoryList = categoryList.filter(
-      (category) => category.categoryName !== categoryToDelete
-    );
-    setCategoryList(newCategoryList);
-    //toDo -> Delete category image from cloudinary
+    sweetalertForCategoryDeleteConfirmationForm03StoreSetupBuilder(
+      categoryToDelete
+    ).then((response) => {
+      if (response.isConfirmed) {
+        const newCategoryList = categoryList.filter(
+          (category) => category.categoryName !== categoryToDelete.categoryName
+        );
+        setCategoryList(newCategoryList);
+        //toDo -> Delete category image from cloudinary
+      }
+    });
   };
 
   return (
@@ -42,7 +49,7 @@ const ProductCategoryWithImageTagList = ({ categoryList, setCategoryList }) => {
             </a>
             <button
               className="btn btn-danger btn-delete-tag"
-              onClick={(e) => handleDeleteTag(category.categoryName)}
+              onClick={(e) => handleDeleteTag(category)}
             >
               <i className="fas fa-trash-alt"></i>
             </button>
