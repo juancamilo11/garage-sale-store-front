@@ -17,8 +17,13 @@ import {
 import { form02ReadyObjectBuilder } from "../../helpers/storeSetupHelpers/formValuesToObjectBuilder/ObjectBuilderForCompletedForm";
 import types from "../../types/types";
 import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import {
+  addSecondFormInfoToCreateStore,
+  resetSecondFormInfoToCreateStore,
+} from "../../actions/storeSetupActions";
 
-const FormSection02 = ({ setFormsChecking, storeSetupDispatch }) => {
+const FormSection02 = () => {
   const [errorsState, setErrorsState] = useState(section_02ErrorState);
 
   const [formValues, handleInputChange, resetForm] =
@@ -26,8 +31,9 @@ const FormSection02 = ({ setFormsChecking, storeSetupDispatch }) => {
 
   const { portraitUrl, prevImagesUrls, physicalStoreUrl } = formValues;
 
-  const storeSetupStatus = useSelector((state) => state.storeSetup);
-  const { formCheckSection01IsValidated } = storeSetupStatus;
+  const storeSetupState = useSelector((state) => state.storeSetup);
+  const { formCheckSection01IsValidated } = storeSetupState;
+  const dispatch = useDispatch();
 
   const handleInputValidation = (e) => {
     handleInputChange(e);
@@ -70,9 +76,7 @@ const FormSection02 = ({ setFormsChecking, storeSetupDispatch }) => {
         resetForm(section_02FormValues);
         resetTags();
         resetImagesFromView(setErrorsState);
-        storeSetupDispatch({
-          action: { type: types.resetSecondFormInfoToCreateStore },
-        });
+        dispatch(resetSecondFormInfoToCreateStore());
       }
     });
   };
@@ -131,20 +135,15 @@ const FormSection02 = ({ setFormsChecking, storeSetupDispatch }) => {
       "Segunda parte completada exitosamente, vamos por la última parte!"
     );
 
-    storeSetupDispatch({
-      action: {
-        type: types.addSecondFormInfoToCreateStore,
-        payload: form02ReadyObjectBuilder({
+    dispatch(
+      addSecondFormInfoToCreateStore(
+        form02ReadyObjectBuilder({
           portraitUrl,
           prevImagesList,
           physicalStoreImageUrl,
-        }),
-      },
-    });
-
-    setFormsChecking((values) => {
-      return { ...values, formCheckSection02IsValidated: true };
-    });
+        })
+      )
+    );
   };
 
   return (
@@ -217,7 +216,7 @@ const FormSection02 = ({ setFormsChecking, storeSetupDispatch }) => {
                     onClick={handleSelectImageToLoad}
                     disabled={!formCheckSection01IsValidated}
                   >
-                    Carga un archivo
+                    Carga varios archivo
                   </button>
                   <input
                     type="file"

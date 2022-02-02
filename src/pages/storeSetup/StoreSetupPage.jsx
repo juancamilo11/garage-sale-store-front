@@ -15,7 +15,14 @@ import FormSection02 from "./FormSection02";
 import FormSection03 from "./FormSection03";
 
 const StoreSetupPage = () => {
-  const state = useSelector((state) => state.storeSetup);
+  const storeSetupState = useSelector((state) => state.storeSetup);
+
+  const {
+    formCheckSection01IsValidated,
+    formCheckSection02IsValidated,
+    formCheckSection03IsValidated,
+    creationConfirmationIsConfirmed,
+  } = storeSetupState;
 
   return (
     <div className="store-setup__main-container">
@@ -27,17 +34,13 @@ const StoreSetupPage = () => {
 
       <FormSection01 />
 
-      <FormSection02 />
+      {formCheckSection01IsValidated && <FormSection02 />}
 
-      <FormSection03 />
+      {formCheckSection02IsValidated && <FormSection03 />}
 
-      {formCheckSection03IsValidated && (
-        <StoreCreationConfirmation setFormsChecking={setFormsChecking} />
-      )}
+      {formCheckSection03IsValidated && <StoreCreationConfirmation />}
 
-      {creationConfirmationIsConfirmed && (
-        <FinalSectionStoreSetup newStoreDataState={newStoreDataState} />
-      )}
+      {creationConfirmationIsConfirmed && <FinalSectionStoreSetup />}
     </div>
   );
 };

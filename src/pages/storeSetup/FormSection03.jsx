@@ -18,12 +18,11 @@ import {
 } from "../../helpers/SweetalertBuilder";
 import { form03ReadyObjectBuilder } from "../../helpers/storeSetupHelpers/formValuesToObjectBuilder/ObjectBuilderForCompletedForm";
 import types from "../../types/types";
+import { useDispatch } from "react-redux";
+import { addThirdFormInfoToCreateStore } from "../../actions/storeSetupActions";
+import { useSelector } from "react-redux";
 
-const FormSection03 = ({
-  formChecking,
-  setFormsChecking,
-  storeSetupDispatch,
-}) => {
+const FormSection03 = () => {
   const [formValues, handleInputChange, resetForm] =
     useForm(section_03FormValues);
 
@@ -32,6 +31,10 @@ const FormSection03 = ({
   const [productTagList, setProductTagList] = useState([]);
 
   const [errorsState, setErrorsState] = useState(section_03ErrorState);
+
+  const dispatch = useDispatch();
+  const storeSetupState = useSelector((state) => state.storeSetup);
+  const { formCheckSection02IsValidated } = storeSetupState;
 
   const {
     categoryName,
@@ -61,15 +64,11 @@ const FormSection03 = ({
           "Última parte completada exitosamente,sólo falta un paso más y todo estará listo!"
         );
         //Enviar este objeto al reducer de la construccion de la tienda
-        storeSetupDispatch({
-          action: {
-            type: types.addSecondFormInfoToCreateStore,
-            payload: form03ReadyObjectBuilder(categoryList, arrProducts),
-          },
-        });
-        setFormsChecking((values) => {
-          return { ...values, formCheckSection03IsValidated: true };
-        });
+        dispatch(
+          addThirdFormInfoToCreateStore(
+            form03ReadyObjectBuilder(categoryList, arrProducts)
+          )
+        );
       }
     });
   };
@@ -109,7 +108,10 @@ const FormSection03 = ({
       sweetalertForErrorsReportForm03StoreSetupBuilder(errorsReport);
       return;
     }
-    setArrProducts((arrProducts) => [...arrProducts, arrProducts]);
+    setArrProducts((arrProducts) => [
+      ...arrProducts,
+      { ...formValues, productTagList },
+    ]);
     sweetalertForGenericSuccessBuilder("¡Producto ingresado correctamente!");
   };
 
@@ -120,14 +122,14 @@ const FormSection03 = ({
   };
 
   return (
-    <div aria-disabled={formChecking}>
+    <div aria-disabled={formCheckSection02IsValidated}>
       <h2 className="store-setup__section-enum mb-3 mt-5">
         3. Creación de los productos para la venta
       </h2>
       <InputProductCategory
         categoryList={categoryList}
         setCategoryList={setCategoryList}
-        formChecking={formChecking}
+        formChecking={formCheckSection02IsValidated}
       />
       {categoryList.length > 0 ? (
         <form
@@ -447,12 +449,22 @@ const FormSection03 = ({
                 )}
               </div>
               {new Array(5).fill(0).map((elem, index) => (
-                <img
-                  src={process.env.PUBLIC_URL + "/assets/common/emptyImage.png"}
-                  className="portrait-preview--no-content"
-                  id={`${"product-previsualization-preview" + (index + 1)}`}
-                  alt=" "
-                />
+                <>
+                  <img
+                    src={
+                      process.env.PUBLIC_URL + "/assets/common/emptyImage.png"
+                    }
+                    className="portrait-preview--no-content"
+                    id={`${"product-previsualization-preview" + (index + 1)}`}
+                    alt=" "
+                  />
+                  <a
+                    href="#"
+                    target="_blank"
+                    className="store-setup__url-image-label"
+                    id={"product-previsualization-preview" + `${index + 1}-url`}
+                  ></a>
+                </>
               ))}
             </div>
           </div>

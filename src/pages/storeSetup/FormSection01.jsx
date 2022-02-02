@@ -30,7 +30,12 @@ const FormSection01 = () => {
   const [formValues, handleInputChange, resetForm] =
     useForm(section_01FormValues);
 
-  const [tagsList, setTagsList] = useState([]);
+  const [tagsList, setTagsList] = useState([
+    "T. Etiqueta 1",
+    "T. Etiqueta 2",
+    "T. Etiqueta 3",
+    "T. Etiqueta 4",
+  ]);
   const [errorsState, setErrorsState] = useState(section_01ErrorState);
 
   const dispatch = useDispatch();
@@ -91,13 +96,13 @@ const FormSection01 = () => {
       sweetalertForErrorsReportForm01StoreSetupBuilder(errorsReport);
       return;
     }
-    sweetalertForGenericSuccessBuilder(
-      "Primera parte completada exitosamente, vamos por la segunda parte!"
-    );
     dispatch(
       addFirstFormInfoToCreateStore(
         form01ReadyObjectBuilder(formValues, tagsList)
       )
+    );
+    sweetalertForGenericSuccessBuilder(
+      "Primera parte completada exitosamente, vamos por la segunda parte!"
     );
   };
 

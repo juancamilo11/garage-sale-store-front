@@ -2,12 +2,12 @@ import moment from "moment";
 
 //Initial values for the section #1 form of the store setup.
 export const section_01FormValues = {
-  storeName: "",
+  storeName: "nombre de la tienda",
   tag: "",
-  slogan: "",
-  description: "",
-  startingDate: "",
-  endingDate: "",
+  slogan: "Slogan de la tienda nueva",
+  description: "Descripcion de la tienda nueva, prueba",
+  startingDate: "03-02-2022",
+  endingDate: "04-02-2022",
   address: "",
 };
 
