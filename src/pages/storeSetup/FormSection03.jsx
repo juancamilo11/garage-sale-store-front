@@ -7,7 +7,6 @@ import section03Validator, {
 import { section_03ErrorState } from "./../../helpers/storeSetupHelpers/SetupStoreSection03Validator";
 import useForm from "../../hooks/useForm";
 import ProductTagList from "../../components/storeSetup/ProductTagList";
-import Swal from "sweetalert2";
 import InputProductCategory from "../../components/storeSetup/InputProductCategory";
 import latamCountries from "../../helpers/latamCountries";
 import productStates from "./../../helpers/productStates";
@@ -17,7 +16,8 @@ import {
   sweetalertForGenericSuccessBuilder,
   sweetalertForProductTagAlreadyDefinedBuilder,
 } from "../../helpers/SweetalertBuilder";
-import form03ReadyObjectBuilder from "../../helpers/storeSetupHelpers/formValuesToObjectBuilder/form03ReadyObjectBuilder";
+import { form03ReadyObjectBuilder } from "../../helpers/storeSetupHelpers/formValuesToObjectBuilder/ObjectBuilderForCompletedForm";
+import types from "../../types/types";
 
 const FormSection03 = ({
   formChecking,
@@ -61,7 +61,12 @@ const FormSection03 = ({
           "Última parte completada exitosamente,sólo falta un paso más y todo estará listo!"
         );
         //Enviar este objeto al reducer de la construccion de la tienda
-        form03ReadyObjectBuilder(formValues);
+        storeSetupDispatch({
+          action: {
+            type: types.addSecondFormInfoToCreateStore,
+            payload: form03ReadyObjectBuilder(arrProducts, categoryList),
+          },
+        });
 
         setFormsChecking((values) => {
           return { ...values, formCheckSection03IsValidated: true };
@@ -93,6 +98,7 @@ const FormSection03 = ({
   };
 
   const handleFormSection_03Submit = (e) => {
+    //Submit del formulario para el ingreso de un nuevo producto
     e.preventDefault();
     const errorsReport = form03SubmitValidation(
       formValues,
@@ -105,6 +111,13 @@ const FormSection03 = ({
       return;
     }
     sweetalertForGenericSuccessBuilder("¡Producto ingresado correctamente!");
+
+    storeSetupDispatch({
+      action: {
+        type: types.addSecondFormInfoToCreateStore,
+        payload: form03ReadyObjectBuilder(categoryList, arrProducts),
+      },
+    });
   };
 
   const handleResetForm = (e) => {

@@ -18,7 +18,7 @@ import {
   sweetalertForInputTagErrorBuilder,
 } from "../../helpers/SweetalertBuilder";
 import storeSetupReducer from "../../reducers/storeSetupReducer";
-import form01ReadyObjectBuilder from "../../helpers/storeSetupHelpers/formValuesToObjectBuilder/form01ReadyObjectBuilder";
+import { form01ReadyObjectBuilder } from "../../helpers/storeSetupHelpers/formValuesToObjectBuilder/ObjectBuilderForCompletedForm";
 import types from "../../types/types";
 
 const FormSection01 = ({ setFormsChecking, storeSetupDispatch }) => {
@@ -91,7 +91,7 @@ const FormSection01 = ({ setFormsChecking, storeSetupDispatch }) => {
     storeSetupDispatch({
       action: {
         type: types.addFirstFormInfoToCreateStore,
-        payload: form01ReadyObjectBuilder(formValues),
+        payload: form01ReadyObjectBuilder(formValues, tagsList),
       },
     });
 

@@ -14,7 +14,8 @@ import {
   sweetalertForErrorsReportForm02StoreSetupBuilder,
   sweetalertForGenericSuccessBuilder,
 } from "../../helpers/SweetalertBuilder";
-import form02ReadyObjectBuilder from "../../helpers/storeSetupHelpers/formValuesToObjectBuilder/form02ReadyObjectBuilder";
+import { form02ReadyObjectBuilder } from "../../helpers/storeSetupHelpers/formValuesToObjectBuilder/ObjectBuilderForCompletedForm";
+import types from "../../types/types";
 
 const FormSection02 = ({
   formChecking,
@@ -69,6 +70,9 @@ const FormSection02 = ({
         resetForm(section_02FormValues);
         resetTags();
         resetImagesFromView(setErrorsState);
+        storeSetupDispatch({
+          action: { type: types.resetSecondFormInfoToCreateStore },
+        });
       }
     });
   };
@@ -127,14 +131,16 @@ const FormSection02 = ({
       "Segunda parte completada exitosamente, vamos por la última parte!"
     );
 
-    //Enviar este objeto al reducer de la construccion de la tienda
-    const JSONform02 = form02ReadyObjectBuilder({
-      portraitUrl,
-      prevImagesList,
-      physicalStoreImageUrl,
+    storeSetupDispatch({
+      action: {
+        type: types.addSecondFormInfoToCreateStore,
+        payload: form02ReadyObjectBuilder({
+          portraitUrl,
+          prevImagesList,
+          physicalStoreImageUrl,
+        }),
+      },
     });
-
-    //console.log(JSONform02);
 
     setFormsChecking((values) => {
       return { ...values, formCheckSection02IsValidated: true };
