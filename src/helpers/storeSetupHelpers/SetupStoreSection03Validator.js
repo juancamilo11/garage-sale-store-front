@@ -272,6 +272,16 @@ const handleProductImagesValidation = (arrFiles, setErrorsState) => {
         },
       };
     });
+    new Array(5).fill(0).forEach((num, index) => {
+      const imagePreview = document.getElementById(
+        `${"product-previsualization-preview" + (index + 1)}`
+      );
+      imagePreview.setAttribute("src", "/assets/common/emptyImage.png");
+      imagePreview.classList.replace(
+        "portrait-preview--with-content",
+        "portrait-preview--no-content"
+      );
+    });
     return;
   }
   //arrFiles es de tipo FileList, no deriva de Array (pero si es iterable), por ende
@@ -316,8 +326,8 @@ const handleProductImagesValidation = (arrFiles, setErrorsState) => {
     );
     imagePreview.src = URL.createObjectURL(arrFiles.item(index));
     imagePreview.classList.replace(
-      "product-preview--no-content",
-      "product-preview--with-content"
+      "portrait-preview--no-content",
+      "portrait-preview--with-content"
     );
   });
   setErrorsState((state) => {

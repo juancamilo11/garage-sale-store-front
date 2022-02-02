@@ -427,7 +427,7 @@ const FormSection03 = ({ formChecking, setFormsChecking }) => {
                   />
                 </div>
               </div>
-              <div className="store-setup__error-flag">
+              <div className="store-setup__error-flag mt-5">
                 {errorsState.productImages.hasErrors && (
                   <ErrorFlag
                     message={errorsState.productImages.message}
