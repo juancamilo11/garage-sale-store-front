@@ -19,11 +19,15 @@ import {
 } from "../../helpers/SweetalertBuilder";
 import form03ReadyObjectBuilder from "../../helpers/storeSetupHelpers/formValuesToObjectBuilder/form03ReadyObjectBuilder";
 
-const FormSection03 = ({ formChecking, setFormsChecking }) => {
+const FormSection03 = ({
+  formChecking,
+  setFormsChecking,
+  storeSetupDispatch,
+}) => {
   const [formValues, handleInputChange, resetForm] =
     useForm(section_03FormValues);
 
-  const [arrProducts, setArrProducts] = useState(["prueba"]);
+  const [arrProducts, setArrProducts] = useState([]);
   const [categoryList, setCategoryList] = useState([]);
   const [productTagList, setProductTagList] = useState([]);
 

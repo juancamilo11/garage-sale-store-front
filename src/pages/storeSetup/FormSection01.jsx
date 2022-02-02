@@ -19,16 +19,14 @@ import {
 } from "../../helpers/SweetalertBuilder";
 import storeSetupReducer from "../../reducers/storeSetupReducer";
 import form01ReadyObjectBuilder from "../../helpers/storeSetupHelpers/formValuesToObjectBuilder/form01ReadyObjectBuilder";
+import types from "../../types/types";
 
-const FormSection01 = ({ setFormsChecking }) => {
+const FormSection01 = ({ setFormsChecking, storeSetupDispatch }) => {
   const [formValues, handleInputChange, resetForm] =
     useForm(section_01FormValues);
 
   const [tagsList, setTagsList] = useState([]);
-
   const [errorsState, setErrorsState] = useState(section_01ErrorState);
-
-  const [storeSetupState, dispatch] = useReducer(storeSetupReducer);
 
   const {
     storeName,
@@ -90,7 +88,12 @@ const FormSection01 = ({ setFormsChecking }) => {
       "Primera parte completada exitosamente, vamos por la segunda parte!"
     );
     //Enviar este objeto al reducer de la construccion de la tienda
-    form01ReadyObjectBuilder(formValues);
+    storeSetupDispatch({
+      action: {
+        type: types.addFirstFormInfoToCreateStore,
+        payload: form01ReadyObjectBuilder(formValues),
+      },
+    });
 
     setFormsChecking((values) => {
       return { ...values, formCheckSection01IsValidated: true };
@@ -102,6 +105,9 @@ const FormSection01 = ({ setFormsChecking }) => {
     resetForm(section_01FormValues);
     setTagsList([]);
     setErrorsState(section_01ErrorState);
+    storeSetupDispatch({
+      action: { type: types.resetFirstFormInfoToCreateStore },
+    });
   };
 
   return (

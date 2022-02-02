@@ -16,7 +16,11 @@ import {
 } from "../../helpers/SweetalertBuilder";
 import form02ReadyObjectBuilder from "../../helpers/storeSetupHelpers/formValuesToObjectBuilder/form02ReadyObjectBuilder";
 
-const FormSection02 = ({ formChecking, setFormsChecking }) => {
+const FormSection02 = ({
+  formChecking,
+  setFormsChecking,
+  storeSetupDispatch,
+}) => {
   const [errorsState, setErrorsState] = useState(section_02ErrorState);
 
   const [formValues, handleInputChange, resetForm] =
