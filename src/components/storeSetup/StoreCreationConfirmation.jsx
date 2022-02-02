@@ -1,6 +1,6 @@
 import React from "react";
 
-const StoreCreationConfirmation = ({ setFormsChecking }) => {
+const StoreCreationConfirmation = ({ setFormsChecking, newStoreDataState }) => {
   const handleConfirmationChange = (e) => {
     const confirmationSelection = e.target.id.split("-")[1];
     console.log(confirmationSelection);

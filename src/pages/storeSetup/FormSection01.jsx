@@ -20,13 +20,20 @@ import {
 import storeSetupReducer from "../../reducers/storeSetupReducer";
 import { form01ReadyObjectBuilder } from "../../helpers/storeSetupHelpers/formValuesToObjectBuilder/ObjectBuilderForCompletedForm";
 import types from "../../types/types";
+import { useDispatch } from "react-redux";
+import {
+  addFirstFormInfoToCreateStore,
+  resetFirstFormInfoToCreateStore,
+} from "../../actions/storeSetupActions";
 
-const FormSection01 = ({ setFormsChecking, storeSetupDispatch }) => {
+const FormSection01 = () => {
   const [formValues, handleInputChange, resetForm] =
     useForm(section_01FormValues);
 
   const [tagsList, setTagsList] = useState([]);
   const [errorsState, setErrorsState] = useState(section_01ErrorState);
+
+  const dispatch = useDispatch();
 
   const {
     storeName,
@@ -87,17 +94,11 @@ const FormSection01 = ({ setFormsChecking, storeSetupDispatch }) => {
     sweetalertForGenericSuccessBuilder(
       "Primera parte completada exitosamente, vamos por la segunda parte!"
     );
-    //Enviar este objeto al reducer de la construccion de la tienda
-    storeSetupDispatch({
-      action: {
-        type: types.addFirstFormInfoToCreateStore,
-        payload: form01ReadyObjectBuilder(formValues, tagsList),
-      },
-    });
-
-    setFormsChecking((values) => {
-      return { ...values, formCheckSection01IsValidated: true };
-    });
+    dispatch(
+      addFirstFormInfoToCreateStore(
+        form01ReadyObjectBuilder(formValues, tagsList)
+      )
+    );
   };
 
   const handleResetForm = (e) => {
@@ -105,9 +106,7 @@ const FormSection01 = ({ setFormsChecking, storeSetupDispatch }) => {
     resetForm(section_01FormValues);
     setTagsList([]);
     setErrorsState(section_01ErrorState);
-    storeSetupDispatch({
-      action: { type: types.resetFirstFormInfoToCreateStore },
-    });
+    dispatch(resetFirstFormInfoToCreateStore());
   };
 
   return (

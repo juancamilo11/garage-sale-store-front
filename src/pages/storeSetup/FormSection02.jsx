@@ -16,18 +16,18 @@ import {
 } from "../../helpers/SweetalertBuilder";
 import { form02ReadyObjectBuilder } from "../../helpers/storeSetupHelpers/formValuesToObjectBuilder/ObjectBuilderForCompletedForm";
 import types from "../../types/types";
+import { useSelector } from "react-redux";
 
-const FormSection02 = ({
-  formChecking,
-  setFormsChecking,
-  storeSetupDispatch,
-}) => {
+const FormSection02 = ({ setFormsChecking, storeSetupDispatch }) => {
   const [errorsState, setErrorsState] = useState(section_02ErrorState);
 
   const [formValues, handleInputChange, resetForm] =
     useForm(section_02FormValues);
 
   const { portraitUrl, prevImagesUrls, physicalStoreUrl } = formValues;
+
+  const storeSetupStatus = useSelector((state) => state.storeSetup);
+  const { formCheckSection01IsValidated } = storeSetupStatus;
 
   const handleInputValidation = (e) => {
     handleInputChange(e);
@@ -168,7 +168,7 @@ const FormSection02 = ({
                     className="store-setup__mult-images-button"
                     id="portrait-button"
                     onClick={handleSelectImageToLoad}
-                    disabled={!formChecking}
+                    disabled={!formCheckSection01IsValidated}
                   >
                     Carga un archivo
                   </button>
@@ -215,7 +215,7 @@ const FormSection02 = ({
                     className="store-setup__mult-images-button"
                     id="preview-button"
                     onClick={handleSelectImageToLoad}
-                    disabled={!formChecking}
+                    disabled={!formCheckSection01IsValidated}
                   >
                     Carga un archivo
                   </button>
@@ -268,7 +268,7 @@ const FormSection02 = ({
                     className="store-setup__mult-images-button"
                     id="physic-button"
                     onClick={handleSelectImageToLoad}
-                    disabled={!formChecking}
+                    disabled={!formCheckSection01IsValidated}
                   >
                     Carga un archivo
                   </button>
@@ -312,14 +312,14 @@ const FormSection02 = ({
               <button
                 className="store-setup__button-update"
                 type="submit"
-                disabled={!formChecking}
+                disabled={!formCheckSection01IsValidated}
               >
                 Confirmar cambios
               </button>
               <button
                 className="store-setup__button-update"
                 onClick={handleResetForm}
-                disabled={!formChecking}
+                disabled={!formCheckSection01IsValidated}
               >
                 Resetear los datos
               </button>

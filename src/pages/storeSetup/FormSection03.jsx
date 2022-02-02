@@ -64,10 +64,9 @@ const FormSection03 = ({
         storeSetupDispatch({
           action: {
             type: types.addSecondFormInfoToCreateStore,
-            payload: form03ReadyObjectBuilder(arrProducts, categoryList),
+            payload: form03ReadyObjectBuilder(categoryList, arrProducts),
           },
         });
-
         setFormsChecking((values) => {
           return { ...values, formCheckSection03IsValidated: true };
         });
@@ -110,14 +109,8 @@ const FormSection03 = ({
       sweetalertForErrorsReportForm03StoreSetupBuilder(errorsReport);
       return;
     }
+    setArrProducts((arrProducts) => [...arrProducts, arrProducts]);
     sweetalertForGenericSuccessBuilder("¡Producto ingresado correctamente!");
-
-    storeSetupDispatch({
-      action: {
-        type: types.addSecondFormInfoToCreateStore,
-        payload: form03ReadyObjectBuilder(categoryList, arrProducts),
-      },
-    });
   };
 
   const handleResetForm = (e) => {

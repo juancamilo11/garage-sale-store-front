@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useReducer } from "react";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import ErrorFlag from "../../components/ErrorFlag";
 import NavBarFormUserData from "../../components/navbar/NavBarFormUserData";
@@ -14,21 +15,7 @@ import FormSection02 from "./FormSection02";
 import FormSection03 from "./FormSection03";
 
 const StoreSetupPage = () => {
-  const [formsChecking, setFormsChecking] = useState({
-    formCheckSection01IsValidated: true,
-    formCheckSection02IsValidated: true,
-    formCheckSection03IsValidated: false,
-    creationConfirmationIsConfirmed: false,
-  });
-
-  const {
-    formCheckSection01IsValidated,
-    formCheckSection02IsValidated,
-    formCheckSection03IsValidated,
-    creationConfirmationIsConfirmed,
-  } = formsChecking;
-
-  const [state, dispatch] = useReducer(storeSetupReducer, {});
+  const state = useSelector((state) => state.storeSetup);
 
   return (
     <div className="store-setup__main-container">
@@ -38,28 +25,19 @@ const StoreSetupPage = () => {
         <SectionTitle sectionTitle="Creación de una nueva venta de garaje" />
       </div>
 
-      <FormSection01
-        setFormsChecking={setFormsChecking}
-        storeSetupDispatch={dispatch}
-      />
+      <FormSection01 />
 
-      <FormSection02
-        formChecking={formCheckSection01IsValidated}
-        setFormsChecking={setFormsChecking}
-        storeSetupDispatch={dispatch}
-      />
+      <FormSection02 />
 
-      <FormSection03
-        formChecking={formCheckSection02IsValidated}
-        setFormsChecking={setFormsChecking}
-        storeSetupDispatch={dispatch}
-      />
+      <FormSection03 />
 
       {formCheckSection03IsValidated && (
         <StoreCreationConfirmation setFormsChecking={setFormsChecking} />
       )}
 
-      {creationConfirmationIsConfirmed && <FinalSectionStoreSetup />}
+      {creationConfirmationIsConfirmed && (
+        <FinalSectionStoreSetup newStoreDataState={newStoreDataState} />
+      )}
     </div>
   );
 };
