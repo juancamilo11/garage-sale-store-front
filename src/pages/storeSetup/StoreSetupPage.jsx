@@ -1,14 +1,10 @@
 import React, { useEffect } from "react";
-import { useReducer } from "react";
-import { useState } from "react";
-import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
-import ErrorFlag from "../../components/ErrorFlag";
+import Footer from "../../components/Footer";
 import NavBarFormUserData from "../../components/navbar/NavBarFormUserData";
 import SectionTitle from "../../components/SectionTitle";
 import FinalSectionStoreSetup from "../../components/storeSetup/FinalSectionStoreSetup";
 import StoreCreationConfirmation from "../../components/storeSetup/StoreCreationConfirmation";
-import storeSetupReducer from "../../reducers/storeSetupReducer";
 
 import FormSection01 from "./FormSection01";
 import FormSection02 from "./FormSection02";
@@ -41,6 +37,7 @@ const StoreSetupPage = () => {
       {formCheckSection03IsValidated && <StoreCreationConfirmation />}
 
       {creationConfirmationIsConfirmed && <FinalSectionStoreSetup />}
+      <Footer />
     </div>
   );
 };

@@ -17,6 +17,10 @@ const types = {
   resetThirdFormInfoToCreateStore: "[storeSetup] Reset Third Form Info",
 
   ConfirmStoreCreation: "[storeSetup] Confirm Store Creation",
+
+  setActiveStore: "[StoreCatalog] Set Active Store",
+  loadStores: "[StoreCatalog] Load Stores",
+  storesLogoutCleaning: "[StoreCatalog] Stores Logout Cleaning",
 };
 
 export default types;
