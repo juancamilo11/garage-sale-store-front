@@ -4,8 +4,8 @@ const initialState = {
   firstFormInfo: {},
   secondFormInfo: {},
   thirdfirstFormInfo: {},
-  formCheckSection01IsValidated: false,
-  formCheckSection02IsValidated: false,
+  formCheckSection01IsValidated: true,
+  formCheckSection02IsValidated: true,
   formCheckSection03IsValidated: false,
   creationConfirmationIsConfirmed: false,
 };

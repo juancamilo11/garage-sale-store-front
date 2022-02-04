@@ -67,8 +67,23 @@ const section03Validator = (e, setErrorsState) => {
   }
 };
 
-const sendImageToCloudinary = () => {
-  //no impl yet
+const sendImageToCloudinary = async (file, idTargetImage) => {
+  const response = await sendImageToCloudinary(file);
+
+  console.log(response);
+
+  const imageUrl = document.getElementById(`${idTargetImage}-url`);
+  imageUrl.setAttribute("href", response);
+  imageUrl.textContent = "Haz click aquí para ver la imágen en tamaño grande";
+
+  // .then((responseUrl) => {
+  //     sweetalertForGenericSuccessBuilder("Enlace a la imágen: " + responseUrl);
+  //   })
+  //   .catch((err) =>
+  //     sweetalertForGenericErrorBuilder(
+  //       "Error al subir la imágen a cloudinary, intenta con otra."
+  //     )
+  //   );
 };
 
 export const isTheCategoryAlreadyDefined = (
@@ -318,13 +333,16 @@ const handleProductImagesValidation = (arrFiles, setErrorsState) => {
   //En este punto ya todo está bien validado
 
   //Enviar la imagen a cloudinary y en base a la peticion hacer lo siguiente.
-  sendImageToCloudinary();
 
   new Array(arrFiles.length).fill(0).forEach((num, index) => {
     const imagePreview = document.getElementById(
       `${"product-previsualization-preview" + (index + 1)}`
     );
     imagePreview.src = URL.createObjectURL(arrFiles.item(index));
+    sendImageToCloudinary(
+      arrFiles.item(index),
+      `${"product-previsualization-preview" + (index + 1)}`
+    );
     imagePreview.classList.replace(
       "portrait-preview--no-content",
       "portrait-preview--with-content"
