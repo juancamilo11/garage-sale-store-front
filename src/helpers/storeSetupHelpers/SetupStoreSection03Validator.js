@@ -1,3 +1,5 @@
+import { uploadFileToCloudinary } from "../../actions/cloudinaryActions";
+
 //Initial values for the section #3 form of the store setup's.
 export const section_03FormValues = {
   productName: "",
@@ -68,7 +70,7 @@ const section03Validator = (e, setErrorsState) => {
 };
 
 const sendImageToCloudinary = async (file, idTargetImage) => {
-  const response = await sendImageToCloudinary(file);
+  const response = await uploadFileToCloudinary(file);
 
   console.log(response);
 
