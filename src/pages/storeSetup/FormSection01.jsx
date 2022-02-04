@@ -16,6 +16,7 @@ import {
   sweetalertForInputCurrentLocationForStoreSetupBuilder,
   sweetalertForInputTagAlreadyDefinedBuilder,
   sweetalertForInputTagErrorBuilder,
+  sweetalertForInputCurrentLocationDenyBuilder,
 } from "../../helpers/SweetalertBuilder";
 import storeSetupReducer from "../../reducers/storeSetupReducer";
 import { form01ReadyObjectBuilder } from "../../helpers/storeSetupHelpers/formValuesToObjectBuilder/ObjectBuilderForCompletedForm";
@@ -25,6 +26,7 @@ import {
   addFirstFormInfoToCreateStore,
   resetFirstFormInfoToCreateStore,
 } from "../../actions/storeSetupActions";
+import MapBuilderByStoreSetupLocation from "../../components/storeSetup/maps/MapBuilderByStoreSetupLocation";
 
 const FormSection01 = () => {
   const [formValues, handleInputChange, resetForm] =
@@ -51,9 +53,20 @@ const FormSection01 = () => {
   } = formValues;
 
   const handleRequestLocation = () => {
-    sweetalertForInputCurrentLocationForStoreSetupBuilder(
-      handleInputValidation
-    );
+    sweetalertForInputCurrentLocationForStoreSetupBuilder().then((result) => {
+      if (result.isConfirmed) {
+        navigator.geolocation.getCurrentPosition((res) => {
+          const coords = {
+            latitude: res.coords.latitude,
+            longitude: res.coords.longitude,
+          };
+          const event = { target: { name: "address", value: coords } };
+          handleInputValidation(event);
+        });
+      } else {
+        sweetalertForInputCurrentLocationDenyBuilder();
+      }
+    });
   };
 
   const handleAddNewTag = (e) => {
@@ -301,6 +314,14 @@ const FormSection01 = () => {
                   Obtener tu dirección actual
                 </button>
               </div>
+
+              <div
+                className="store-setup__error-flag"
+                style={{ height: "100", width: "500" }}
+              >
+                <MapBuilderByStoreSetupLocation address={address} />
+              </div>
+
               <div className="store-setup__error-flag">
                 {errorsState.address.hasErrors && (
                   <ErrorFlag

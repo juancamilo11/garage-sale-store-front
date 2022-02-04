@@ -48,9 +48,7 @@ export const sweetalertForInputTagAlreadyDefinedBuilder = (newTag) =>
     timer: 3500,
   });
 
-export const sweetalertForInputCurrentLocationForStoreSetupBuilder = (
-  handleInputValidation
-) =>
+export const sweetalertForInputCurrentLocationForStoreSetupBuilder = () =>
   Swal.fire({
     icon: "info",
     title: "Ubicación de la tienda",
@@ -64,21 +62,15 @@ export const sweetalertForInputCurrentLocationForStoreSetupBuilder = (
     cancelButtonColor: "red",
     allowEscapeKey: false,
     allowOutsideClick: false,
-  }).then((result) => {
-    if (result.isConfirmed) {
-      navigator.geolocation.getCurrentPosition((res) => {
-        const event = { target: { name: "address", value: res } };
-        handleInputValidation(event);
-      });
-    } else {
-      Swal.fire({
-        title: "Posición física denegada",
-        text: "Tenga presente que la nueva tienda no podrá ser ubicada mediante mapas.",
-        icon: "warning",
-        showConfirmButton: false,
-        timer: 3500,
-      });
-    }
+  });
+
+export const sweetalertForInputCurrentLocationDenyBuilder = () =>
+  Swal.fire({
+    title: "Posición física denegada",
+    text: "Tenga presente que la nueva tienda no podrá ser ubicada mediante mapas.",
+    icon: "warning",
+    showConfirmButton: false,
+    timer: 3500,
   });
 
 export const sweetalertForErrorsReportForm01StoreSetupBuilder = (

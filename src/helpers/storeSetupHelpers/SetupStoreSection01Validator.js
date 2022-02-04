@@ -8,7 +8,7 @@ export const section_01FormValues = {
   description: "Descripcion de la tienda nueva, prueba",
   startingDate: "03-02-2022",
   endingDate: "04-02-2022",
-  address: "",
+  address: { latitude: 0, longitude: 0 },
 };
 
 //Initial values for the section #1 errors of the store setup.
