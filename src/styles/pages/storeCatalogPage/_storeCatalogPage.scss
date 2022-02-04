@@ -1,0 +1,16 @@
+.nothing-selected__main-container {
+  background-color: red;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.nothing-selected__welcome-img {
+  width: 15%;
+  min-width: 200px;
+}
+
+.nothing-selected__welcome-message {
+  text-align: center;
+}
