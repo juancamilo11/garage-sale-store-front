@@ -1,14 +1,13 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import StoreEntry from "./StoreEntry";
-import JournalEntry from "./StoreEntry";
 
 const StoreEntries = () => {
-  const { notes } = useSelector((state) => state.notes);
+  const { stores } = useSelector((state) => state);
   return (
-    <div className="jorunal__entries">
-      {notes
-        .sort((note1, note2) => note2.date - note1.date)
+    <div className="journal__entries">
+      {stores
+        .sort((store1, store2) => store2.date - store1.date)
         .map((note) => (
           <StoreEntry key={note.id} {...note} />
         ))}

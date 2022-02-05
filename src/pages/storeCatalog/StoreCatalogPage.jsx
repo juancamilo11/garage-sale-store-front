@@ -13,15 +13,14 @@ const StoreCatalogPage = () => {
     return () => {};
   }, []);
 
-  // return (
-  //   <div className="home__main-container">
-  //     <Sidebar />
-  //     <main>
-  //       {stores.active ? <StoreGatewayScreen /> : <NothingSelected />}
-  //     </main>
-  //   </div>
-  // );
-  return <NothingSelected />;
+  return (
+    <div className="home__main-container">
+      <Sidebar />
+      <main>
+        {stores.active ? <StoreGatewayScreen /> : <NothingSelected />}
+      </main>
+    </div>
+  );
 };
 
 export default StoreCatalogPage;
