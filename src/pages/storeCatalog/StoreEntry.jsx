@@ -3,63 +3,89 @@ import moment from "moment";
 import { useDispatch } from "react-redux";
 import { activeStore } from "../../actions/storeCatalogActions";
 
-const StoreEntry = ({ id, title, country, price, body, date, url }) => {
-  const noteDate = moment(date);
+const MAX_NUM_TAGS_DISPLAYED = 10;
 
+const StoreEntry = ({
+  id,
+  nombre,
+  slogan,
+  fechaCierre,
+  ubicación,
+  etiquetas,
+  urlTienda,
+  estaEnFavorito,
+  numeroVistas,
+  urlImagenPortadaTienda,
+}) => {
   const dispatch = useDispatch();
 
   const handleSelectStore = () => {
-    dispatch(activeStore(id, { title, country, price, body, date, url }));
+    dispatch(
+      activeStore(id, {
+        nombre,
+        slogan,
+        fechaCierre,
+        ubicación,
+        etiquetas,
+        urlTienda,
+        estaEnFavorito,
+        numeroVistas,
+        urlImagenPortadaTienda,
+      })
+    );
   };
 
   return (
     <div className="store-catalog__store-entry" onClick={handleSelectStore}>
-      {url ? (
+      {
         <div
           className="store-catalog__store-entry-picture"
           style={{
             backgroundSize: "cover",
-            backgroundImage: `url(${url})`,
+            backgroundImage: `url(${urlImagenPortadaTienda})`,
           }}
         ></div>
-      ) : (
-        <div
-          className="store-catalog__store-entry-picture"
-          style={{
-            backgroundSize: "cover",
-            backgroundImage:
-              "url(https://st4.depositphotos.com/14953852/22772/v/600/depositphotos_227725020-stock-illustration-no-image-available-icon-flat.jpg)",
-          }}
-        ></div>
-      )}
+      }
 
       <div className="store-catalog__store-entry-body">
-        <h3 className="store-catalog__store-entry-title">{title}</h3>
-        <p className="store-catalog__store-entry-content">{price + " USD"}</p>
-        <span className="store-catalog__store-entry-description">
-          {body.length < 21 ? (
-            <>
-              {body}{" "}
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            </>
-          ) : (
-            body
-          )}
-        </span>
+        <h3 className="store-catalog__store-entry-title">{nombre}</h3>
+        <p className="store-catalog__store-entry-content">{slogan}</p>
+        <p className="store-catalog__store-entry-content">
+          Abierta hasta el {fechaCierre}
+        </p>
+        <p className="store-catalog__store-entry-content">ubicación</p>
+
+        <p>
+          {etiquetas
+            .slice(0, MAX_NUM_TAGS_DISPLAYED)
+            .forEach((storeTag, index) => (
+              <>
+                {index === MAX_NUM_TAGS_DISPLAYED - 1 ? (
+                  <span>{storeTag + ", "} </span>
+                ) : (
+                  <span>{storeTag + "."} </span>
+                )}
+              </>
+            ))}
+        </p>
       </div>
 
       <div className="store-catalog__store-date-container">
         <div className="store-catalog__store-entry-date-box">
-          <h5 className="store-catalog__store-entry-country mt-1">
-            {country || "Colombia"}
-            <hr />
-          </h5>
-          <span>{noteDate.format("Do")}</span>
-          <h6>{noteDate.format("MMMM")}</h6>
-          <h4>{noteDate.format("YYYY")}</h4>
+          <button className="store-catalog__store-entry-country mt-1">
+            Ver más...
+          </button>
+          <h6>
+            {estaEnFavorito ? (
+              <i class="fas fa-heart"></i>
+            ) : (
+              <i class="far fa-heart"></i>
+            )}
+          </h6>
+          <h4>
+            <i class="fas fa-eye"></i>
+          </h4>
+          <h6>{numeroVistas}</h6>
         </div>
       </div>
     </div>
