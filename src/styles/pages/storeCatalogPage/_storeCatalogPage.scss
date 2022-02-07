@@ -1,6 +1,5 @@
 .store-catalog__main-content {
   display: flex;
-  background-color: red;
 }
 
 //Nothing selected
@@ -106,18 +105,19 @@
 }
 
 .store-catalog__store-entry-body {
+  position: relative;
   padding-left: 7px;
   padding-top: 7px;
   display: flex;
   flex-direction: column;
   width: 50%;
   padding-right: 0px;
-  background-color: red;
   overflow-wrap: break-word;
 }
 
 .store-catalog__store-entry-description {
   margin-right: 0px;
+  font-size: 20px;
   width: 100%;
   overflow-x: hidden;
   overflow-y: unset;
@@ -146,20 +146,41 @@
   margin-right: 10px;
 }
 
+.store-catalog__icon-entry-value {
+  font-size: 20px;
+  margin-right: 10px;
+}
+
 .store-catalog__store-entry-slogan {
   font-weight: 600;
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
   text-align: center;
+  margin-top: -10px;
 }
 
 .store-catalog__store-entry-date-box {
+  position: absolute;
+  bottom: 0px;
   align-items: center;
   display: flex;
   flex-direction: row;
-  justify-content: center;
-  padding: 5px;
+  justify-content: space-evenly;
   font-size: 10px;
+  width: 100%;
+}
+
+.store-catalog__visit-store {
+  background-color: $primary;
+  padding: 7px 10px;
+  border-radius: 5px;
+  font-weight: 600;
+  font-size: 0.8rem;
+}
+
+.store-catalog__icon-fav-store {
+  font-size: 30px;
+  color: red;
 }
 
 .store-catalog__sidebar-user-info {
@@ -210,7 +231,6 @@
   flex-direction: column;
   height: 100%;
   width: 100%;
-  background-color: red;
 }
 
 .store__appbar {

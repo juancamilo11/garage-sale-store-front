@@ -7,30 +7,30 @@ const MAX_NUM_TAGS_DISPLAYED = 10;
 
 const StoreEntry = ({
   id,
-  nombre,
+  name,
   slogan,
-  fechaCierre,
-  ubicación,
-  etiquetas,
-  urlTienda,
-  estaEnFavorito,
-  numeroVistas,
-  urlImagenPortadaTienda,
+  endingDate,
+  location,
+  storeTags,
+  urlStore,
+  isAFavorite,
+  viewsCount,
+  portraitImageUrl,
 }) => {
   const dispatch = useDispatch();
 
   const handleSelectStore = () => {
     dispatch(
       activeStore(id, {
-        nombre,
+        name,
         slogan,
-        fechaCierre,
-        ubicación,
-        etiquetas,
-        urlTienda,
-        estaEnFavorito,
-        numeroVistas,
-        urlImagenPortadaTienda,
+        endingDate,
+        location,
+        storeTags,
+        urlStore,
+        isAFavorite,
+        viewsCount,
+        portraitImageUrl,
       })
     );
   };
@@ -48,7 +48,7 @@ const StoreEntry = ({
       }
 
       <div className="store-catalog__store-entry-body">
-        <h2 className="store-catalog__store-entry-title">{nombre}</h2>
+        <h2 className="store-catalog__store-entry-title">{name}</h2>
         <div className="store-catalog__decoration-line">
           <hr />
         </div>
@@ -56,33 +56,38 @@ const StoreEntry = ({
           {slogan}
         </p>
         <p className="store-catalog__store-entry-content">
-          Abierta hasta el {fechaCierre}
+          <i class="fas fa-calendar-alt store-catalog__icon-entry-value"></i>
+          Abierta hasta el <span className="bold-text">{endingDate}</span>
         </p>
-        <p className="store-catalog__store-entry-content">ubicación</p>
+        <p className="store-catalog__store-entry-content">
+          <i class="fas fa-map-marker-alt store-catalog__icon-entry-value"></i>
+          {location}
+        </p>
         <p>
-          {etiquetas
+          <i class="fas fa-tags store-catalog__icon-entry-value"></i>
+          {storeTags
             .slice(0, MAX_NUM_TAGS_DISPLAYED)
             .toString()
             .replaceAll(",", ", ")}
         </p>
         <div className="store-catalog__store-entry-date-box">
           <button
-            className="store-catalog__store-entry-country mt-1"
+            className="store-catalog__visit-store mt-1"
             onClick={handleSelectStore}
           >
             Visitar tienda
           </button>
 
-          {estaEnFavorito ? (
-            <i class="fas fa-heart"></i>
+          {isAFavorite ? (
+            <i class="fas fa-heart store-catalog__icon-fav-store"></i>
           ) : (
-            <i class="far fa-heart"></i>
+            <i class="far fa-heart store-catalog__icon-fav-store"></i>
           )}
-          <div>
-            <h4>
-              <i class="fas fa-eye"></i>
-            </h4>
-            <h6>{numeroVistas} visitas</h6>
+          <div className="store-catalog__store-view-count text-center">
+            <h6>
+              <i class="fas fa-eye store-catalog__icon-views-count"></i>
+              {viewsCount} visitas
+            </h6>
           </div>
         </div>
       </div>
