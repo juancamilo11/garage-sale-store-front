@@ -79,7 +79,7 @@ export const getCatalogStoreFakeData = [
     urlTienda: "#",
     estaEnFavorito: true,
     numeroVistas: 10,
-    urlImagenPortadaTienda: "",
+    urlImagenPortadaTienda: "./../../public/assets/common/emptyImage.png",
   },
   {
     id: "6",

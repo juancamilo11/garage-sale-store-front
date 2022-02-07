@@ -42,7 +42,7 @@ const StoreEntry = ({
           className="store-catalog__store-entry-picture"
           style={{
             backgroundSize: "cover",
-            backgroundImage: `url(${urlImagenPortadaTienda})`,
+            backgroundImage: `url(https://cdn.blacksoft.ca/assets/blacksoft/img/empty.png)`,
           }}
         ></div>
       }
@@ -61,26 +61,27 @@ const StoreEntry = ({
             .toString()
             .replaceAll(",", ", ")}
         </p>
-      </div>
-
-      <div className="store-catalog__store-date-container">
         <div className="store-catalog__store-entry-date-box">
           <button className="store-catalog__store-entry-country mt-1">
             Ver más...
           </button>
-          <h6>
-            {estaEnFavorito ? (
-              <i class="fas fa-heart"></i>
-            ) : (
-              <i class="far fa-heart"></i>
-            )}
-          </h6>
-          <h4>
-            <i class="fas fa-eye"></i>
-          </h4>
-          <h6>{numeroVistas} visitas</h6>
+
+          {estaEnFavorito ? (
+            <i class="fas fa-heart"></i>
+          ) : (
+            <i class="far fa-heart"></i>
+          )}
+
+          <div>
+            <h4>
+              <i class="fas fa-eye"></i>
+            </h4>
+            <h6>{numeroVistas} visitas</h6>
+          </div>
         </div>
       </div>
+
+      {/* <div className="store-catalog__store-date-container"></div> */}
     </div>
   );
 };
