@@ -11,7 +11,6 @@ const StoreEntries = () => {
         .map((note) => (
           <StoreEntry key={note.id} {...note} />
         ))}
-      {JSON.stringify(stores)}
     </div>
   );
 };

@@ -1,21 +1,22 @@
 import React from "react";
 import moment from "moment";
 import { useDispatch } from "react-redux";
+import { activeStore } from "../../actions/storeCatalogActions";
 
 const StoreEntry = ({ id, title, country, price, body, date, url }) => {
   const noteDate = moment(date);
 
   const dispatch = useDispatch();
 
-  const handleSelectNote = () => {
-    //dispatch(activeNote(id, { title, country, price, body, date, url }));
+  const handleSelectStore = () => {
+    dispatch(activeStore(id, { title, country, price, body, date, url }));
   };
 
   return (
-    <div className="journal__entry pointer" onClick={handleSelectNote}>
+    <div className="store-catalog__store-entry" onClick={handleSelectStore}>
       {url ? (
         <div
-          className="journal__entry-picture"
+          className="store-catalog__store-entry-picture"
           style={{
             backgroundSize: "cover",
             backgroundImage: `url(${url})`,
@@ -23,7 +24,7 @@ const StoreEntry = ({ id, title, country, price, body, date, url }) => {
         ></div>
       ) : (
         <div
-          className="journal__entry-picture"
+          className="store-catalog__store-entry-picture"
           style={{
             backgroundSize: "cover",
             backgroundImage:
@@ -32,10 +33,10 @@ const StoreEntry = ({ id, title, country, price, body, date, url }) => {
         ></div>
       )}
 
-      <div className="journal__entry-body">
-        <h3 className="journal__entry-title">{title}</h3>
-        <p className="journal__entry-content">{price + " USD"}</p>
-        <span className="journal__entry-description">
+      <div className="store-catalog__store-entry-body">
+        <h3 className="store-catalog__store-entry-title">{title}</h3>
+        <p className="store-catalog__store-entry-content">{price + " USD"}</p>
+        <span className="store-catalog__store-entry-description">
           {body.length < 21 ? (
             <>
               {body}{" "}
@@ -50,9 +51,9 @@ const StoreEntry = ({ id, title, country, price, body, date, url }) => {
         </span>
       </div>
 
-      <div className="journal__date-container">
-        <div className="journal__entry-date-box">
-          <h5 className="journal__entry-country mt-1">
+      <div className="store-catalog__store-date-container">
+        <div className="store-catalog__store-entry-date-box">
+          <h5 className="store-catalog__store-entry-country mt-1">
             {country || "Colombia"}
             <hr />
           </h5>

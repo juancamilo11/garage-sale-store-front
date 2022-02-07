@@ -11,11 +11,13 @@ export const NothingSelected = () => {
         src="https://res.cloudinary.com/dahwtwzdl/image/upload/v1643961997/store-catalog/welcome_x41vlw.png"
         alt="welcome"
       />
-      <p className="nothing-selected__welcome-message">
-        ¡Bienvenid@ {auth.name}!
+      <div className="nothing-selected__welcome-message text-center">
+        <h1 className="text-center">¡Bienvenid@ {auth.name}!</h1>
         <br />
-        No has seleccionado aún ninguna venta de garaje
-      </p>
+        <h5 className="text-center">
+          No has seleccionado aún ninguna venta de garaje
+        </h5>
+      </div>
     </div>
   );
 };
