@@ -93,7 +93,6 @@
   color: $dark-gray;
   display: flex;
   margin-bottom: 10px;
-  overflow: hidden;
   margin-right: 10px;
   height: 300px;
 }
@@ -114,7 +113,7 @@
   width: 50%;
   padding-right: 0px;
   overflow-x: hidden;
-  overflow-y: scroll;
+  background-color: red;
 }
 
 .store-catalog__store-entry-description {
@@ -126,8 +125,17 @@
 
 .store-catalog__store-entry-title {
   font-size: 20px;
+  background-color: blue;
+  margin-right: 7px;
+  text-align: center;
   font-weight: bold;
-  padding-left: 3px;
+}
+
+.store-catalog__decoration-line {
+  margin-top: -15px;
+  width: 80%;
+  margin-left: 9%;
+  margin-right: 11%;
 }
 
 .store-catalog__store-entry-content {
@@ -157,6 +165,7 @@
 
 .store-catalog__sidebar-user-info:hover {
   background-color: rgb(56, 56, 56);
+  transition: all 0.2s ease-in;
 }
 
 .store-catalog__img-profile {

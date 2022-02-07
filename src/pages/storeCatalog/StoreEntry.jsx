@@ -36,7 +36,7 @@ const StoreEntry = ({
   };
 
   return (
-    <div className="store-catalog__store-entry" onClick={handleSelectStore}>
+    <div className="store-catalog__store-entry">
       {
         <div
           className="store-catalog__store-entry-picture"
@@ -48,13 +48,16 @@ const StoreEntry = ({
       }
 
       <div className="store-catalog__store-entry-body">
-        <h3 className="store-catalog__store-entry-title">{nombre}</h3>
+        <h2 className="store-catalog__store-entry-title">{nombre}</h2>
+        <div className="store-catalog__decoration-line">
+          <hr />
+        </div>
+
         <p className="store-catalog__store-entry-content">{slogan}</p>
         <p className="store-catalog__store-entry-content">
           Abierta hasta el {fechaCierre}
         </p>
         <p className="store-catalog__store-entry-content">ubicación</p>
-
         <p>
           {etiquetas
             .slice(0, MAX_NUM_TAGS_DISPLAYED)
@@ -62,8 +65,11 @@ const StoreEntry = ({
             .replaceAll(",", ", ")}
         </p>
         <div className="store-catalog__store-entry-date-box">
-          <button className="store-catalog__store-entry-country mt-1">
-            Ver más...
+          <button
+            className="store-catalog__store-entry-country mt-1"
+            onClick={handleSelectStore}
+          >
+            Visitar tienda
           </button>
 
           {estaEnFavorito ? (
@@ -71,7 +77,6 @@ const StoreEntry = ({
           ) : (
             <i class="far fa-heart"></i>
           )}
-
           <div>
             <h4>
               <i class="fas fa-eye"></i>
