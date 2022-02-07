@@ -8,8 +8,6 @@ const StoreGatewayScreen = () => {
   const [formValues, handleInputChange, reset] = useForm(activedNote);
   const activeIdRef = useRef(activedNote.id);
 
-  const { title, body, price, country, date } = formValues;
-
   useEffect(() => {
     if (activedNote.id !== activeIdRef.current) {
       reset(activedNote);

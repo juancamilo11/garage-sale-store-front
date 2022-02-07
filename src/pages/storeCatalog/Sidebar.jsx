@@ -9,7 +9,7 @@ const Sidebar = () => {
   return (
     <aside className="store-catalog__sidebar">
       <div className="store-catalog__sidebar-navbar">
-        <h3 className="mt-1 mb-1">
+        <div className="store-catalog__sidebar-user-info">
           {auth?.photoUrl ? (
             <img
               src={auth.photoUrl}
@@ -20,7 +20,7 @@ const Sidebar = () => {
             <i className="fas fa fa-user-circle store-catalog__logo-profile"></i>
           )}
           <span className="store-catalog__display-name"> {auth.name}</span>
-        </h3>
+        </div>
       </div>
       <StoreEntries />
     </aside>

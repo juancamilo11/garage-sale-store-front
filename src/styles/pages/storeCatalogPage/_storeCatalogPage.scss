@@ -1,6 +1,6 @@
 .store-catalog__main-content {
   display: flex;
-  background-color: white;
+  background-color: red;
 }
 
 //Nothing selected
@@ -124,37 +124,47 @@
   font-size: 10px;
 }
 
-.store-catalog__logo-profile {
-  font-size: 25px;
-  padding: 10px;
+.store-catalog__sidebar-user-info {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
 }
 
 .store-catalog__img-profile {
-  width: 60px;
+  width: 70px;
   padding: 10px;
+  margin: -5px;
   border-radius: 50%;
 }
 
+.store-catalog__logo-profile {
+  font-size: 50px;
+}
+
 .store-catalog__display-name {
-  font-size: 1rem;
+  font-size: 1.1rem;
+  margin-left: 15px;
 }
 
-.store-catalog__date-container {
-  margin-left: auto;
-  width: 150px;
-  outline: 1px solid black;
-}
+// .store-catalog__date-container {
+//   margin-left: auto;
+//   width: 150px;
+//   outline: 1px solid black;
+// }
 
-.store-catalog__store-entry-country {
-  width: 100%;
-  text-align: center;
-}
+// .store-catalog__store-entry-country {
+//   width: 100%;
+//   text-align: center;
+// }
 
 .store__main-container {
   display: flex;
   flex-direction: column;
   height: 100%;
   width: 100%;
+  background-color: red;
 }
 
 .store__appbar {
