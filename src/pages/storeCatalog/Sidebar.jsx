@@ -7,7 +7,7 @@ const Sidebar = () => {
   const dispatch = useDispatch();
   const { auth } = useSelector((state) => state);
   return (
-    <aside className="store-catalog__main-container">
+    <aside className="store-catalog__sidebar">
       <div className="store-catalog__sidebar-navbar">
         <h3 className="mt-1 mb-1">
           {auth?.photoUrl ? (
