@@ -52,8 +52,9 @@ const StoreEntry = ({
         <div className="store-catalog__decoration-line">
           <hr />
         </div>
-
-        <p className="store-catalog__store-entry-content">{slogan}</p>
+        <p className="store-catalog__store-entry-content store-catalog__store-entry-slogan">
+          {slogan}
+        </p>
         <p className="store-catalog__store-entry-content">
           Abierta hasta el {fechaCierre}
         </p>

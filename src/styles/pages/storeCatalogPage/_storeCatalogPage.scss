@@ -112,8 +112,8 @@
   flex-direction: column;
   width: 50%;
   padding-right: 0px;
-  overflow-x: hidden;
   background-color: red;
+  overflow-wrap: break-word;
 }
 
 .store-catalog__store-entry-description {
@@ -127,6 +127,7 @@
   font-size: 20px;
   background-color: blue;
   margin-right: 7px;
+  margin-top: -3px;
   text-align: center;
   font-weight: bold;
 }
@@ -139,8 +140,17 @@
 }
 
 .store-catalog__store-entry-content {
-  font-size: 12px;
+  font-size: 14px;
+  margin-top: -5px;
   padding-left: 3px;
+  margin-right: 10px;
+}
+
+.store-catalog__store-entry-slogan {
+  font-weight: 600;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  text-align: center;
 }
 
 .store-catalog__store-entry-date-box {
