@@ -19,7 +19,7 @@ export const getCatalogStoreFakeData = [
     ],
     urlStore: "#",
     isAFavorite: false,
-    viewsCount: 10,
+    viewsCount: 10000,
     portraitImageUrl: "./../assets/img/store-setup/emptyImage.png",
   },
   {
@@ -31,7 +31,7 @@ export const getCatalogStoreFakeData = [
     storeTags: ["juguetes", "Ropa", "Accesorios", "Libros", "Tecnología"],
     urlStore: "#",
     isAFavorite: true,
-    viewsCount: 10,
+    viewsCount: 100,
     portraitImageUrl: "",
   },
   {
@@ -43,7 +43,7 @@ export const getCatalogStoreFakeData = [
     storeTags: ["juguetes", "Ropa", "Accesorios", "Libros", "Tecnología"],
     urlStore: "#",
     isAFavorite: true,
-    viewsCount: 10,
+    viewsCount: 100,
     portraitImageUrl: "",
   },
   {

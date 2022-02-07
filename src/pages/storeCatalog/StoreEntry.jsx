@@ -84,8 +84,8 @@ const StoreEntry = ({
             <i class="far fa-heart store-catalog__icon-fav-store"></i>
           )}
           <div className="store-catalog__store-view-count text-center">
-            <h6>
-              <i class="fas fa-eye store-catalog__icon-views-count"></i>
+            <h6 className="mt-2">
+              <i class="fas fa-eye store-catalog__icon-entry-value"></i>
               {viewsCount} visitas
             </h6>
           </div>

@@ -79,10 +79,9 @@
 }
 
 .store-catalog__entries {
-  margin-top: 30px;
+  margin-top: 10px;
   flex: 1 1 auto;
   overflow-y: scroll;
-  background-color: green;
   border-radius: 5px;
 }
 
@@ -125,7 +124,6 @@
 
 .store-catalog__store-entry-title {
   font-size: 20px;
-  background-color: blue;
   margin-right: 7px;
   margin-top: -3px;
   text-align: center;
@@ -161,7 +159,7 @@
 
 .store-catalog__store-entry-date-box {
   position: absolute;
-  bottom: 0px;
+  bottom: 10px;
   align-items: center;
   display: flex;
   flex-direction: row;
@@ -173,9 +171,10 @@
 .store-catalog__visit-store {
   background-color: $primary;
   padding: 7px 10px;
-  border-radius: 5px;
+  border-radius: 4px;
   font-weight: 600;
   font-size: 0.8rem;
+  color: #ddd;
 }
 
 .store-catalog__icon-fav-store {
@@ -365,7 +364,6 @@
 }
 
 .store__img-item {
-  background-color: green;
   border: 1px solid black;
   display: flex;
   flex-direction: column;

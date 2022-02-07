@@ -2,14 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import StoreEntry from "./StoreEntry";
-import { getCatalogStoreFakeData } from "../../helpers/catalogStoreFakeData";
-const StoreEntries = () => {
-  //const { stores } = useSelector((state) => state);
-
-  //Aquí es donde se llevan a cabo los procesos de filtrado y búsqueda y ordenamiento
-
-  const [stores, setStores] = useState(getCatalogStoreFakeData);
-
+const StoreEntries = ({ stores }) => {
   return (
     <div className="store-catalog__entries">
       {/* {stores.garageSaleStores */}

@@ -281,3 +281,37 @@ export const sweetalertForFinalizeInputProductsBuilder = (arrProducts) =>
     allowOutsideClick: false,
     allowEnterKey: false,
   });
+
+export const sweetalertForSearchAndFilterStoresBuilder = () =>
+  Swal.fire({
+    title: "Búsqueda y filtro de ventas de garaje",
+    text: "Busca por Id, nombre, etiqueta o categoría de un producto",
+    input: "text",
+    inputAttributes: {
+      autocapitalize: "off",
+    },
+    showCancelButton: true,
+    confirmButtonText: "Look up",
+    showLoaderOnConfirm: true,
+    allowEscapeKey: false,
+    allowOutsideClick: () => !Swal.isLoading(),
+    preConfirm: async (searchValue) => {
+      try {
+        // const response = await fetch(`//api.github.com/users/${searchValue}`);
+        const response = await fetch(
+          `//jsonplaceholder.typicode.com/todos/${searchValue}`
+        );
+        if (!response.ok) throw new Error("response.statusText");
+
+        return await response.json();
+      } catch (error) {
+        Swal.showValidationMessage(`Request failed: ${error}`);
+      }
+    },
+  }).then((result) => {
+    if (result.isConfirmed) {
+      Swal.fire({
+        text: `${JSON.stringify(result.value)}`,
+      });
+    }
+  });
