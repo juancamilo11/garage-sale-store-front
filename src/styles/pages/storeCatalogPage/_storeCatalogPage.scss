@@ -38,10 +38,28 @@
 .store-catalog__sidebar-navbar {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .store-catalog__sidebar-navbar h3 {
   font-weight: lighter;
+}
+
+.store-catalog__search-button {
+  margin-right: 10px;
+  padding: 7px 10px;
+  border-radius: 3px;
+  margin-top: 10px;
+  outline: none;
+  border: 1px solid darkgray;
+  color: #fff;
+  height: 40px;
+  background-color: transparent;
+}
+
+.store-catalog__search-button:hover {
+  background-color: rgb(78, 77, 77);
+  transition: all 0.2s ease-in;
 }
 
 //new entry
@@ -132,6 +150,13 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
+  padding-right: 5px;
+  border-radius: 5px;
+}
+
+.store-catalog__sidebar-user-info:hover {
+  background-color: rgb(56, 56, 56);
 }
 
 .store-catalog__img-profile {
