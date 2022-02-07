@@ -1,3 +1,8 @@
+.store-catalog__main-content {
+  display: flex;
+  background-color: white;
+}
+
 .nothing-selected__main-container {
   align-items: center;
   background-color: $primary;
@@ -12,11 +17,6 @@
   width: 10%;
   min-width: 100px;
   margin-top: -200px;
-}
-
-.store-catalog__main-content {
-  display: flex;
-  background-color: white;
 }
 
 .store-catalog__sidebar {

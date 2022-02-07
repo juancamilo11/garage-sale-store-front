@@ -58,15 +58,8 @@ const StoreEntry = ({
         <p>
           {etiquetas
             .slice(0, MAX_NUM_TAGS_DISPLAYED)
-            .forEach((storeTag, index) => (
-              <>
-                {index === MAX_NUM_TAGS_DISPLAYED - 1 ? (
-                  <span>{storeTag + ", "} </span>
-                ) : (
-                  <span>{storeTag + "."} </span>
-                )}
-              </>
-            ))}
+            .toString()
+            .replaceAll(",", ", ")}
         </p>
       </div>
 
@@ -85,7 +78,7 @@ const StoreEntry = ({
           <h4>
             <i class="fas fa-eye"></i>
           </h4>
-          <h6>{numeroVistas}</h6>
+          <h6>{numeroVistas} visitas</h6>
         </div>
       </div>
     </div>

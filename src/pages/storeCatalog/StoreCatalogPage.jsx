@@ -14,7 +14,7 @@ const StoreCatalogPage = () => {
   }, []);
 
   return (
-    <div className="home__main-container">
+    <div className="store-catalog__main-content">
       <Sidebar />
       <main>
         {stores.active ? <StoreGatewayScreen /> : <NothingSelected />}
