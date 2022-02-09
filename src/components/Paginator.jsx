@@ -11,31 +11,36 @@ const Paginator = (skip, limit, url, setterFunction) => {
 
   const handleChangeNumberOfDisplayedStores = (e) => {
     e.preventDefault();
+    window.alert(
+      "se ha cambiado el número de resultados mostrados a " +
+        e.target.value +
+        " tiendas"
+    );
   };
 
   return (
     <div className="paginator__main-container">
-      <button
-        className="paginator__pagination-button"
-        onClick={handleFetchNextRecords}
-        disabled={skip <= 0}
-      >
-        <i class="fas fa-arrow-circle-left store-catalog__icon-pagination"></i>
-        Anterior
-      </button>
-      <button
-        className="paginator__pagination-button"
-        onClick={handleFetchPrevRecords}
-      >
-        Siguiente
-        <i class="fas fa-arrow-circle-right store-catalog__icon-pagination"></i>
-      </button>
-      <div className="paginator__pagination-items">
-        <label htmlFor="pagination-quantity-items">
-          Número de tiendas mostradas
-        </label>
+      <div className="paginator__buttons-container">
+        <button
+          className="paginator__pagination-button"
+          onClick={handleFetchNextRecords}
+          disabled={skip <= 0}
+        >
+          <i class="fas fa-arrow-circle-left store-catalog__icon-pagination"></i>
+          Anterior
+        </button>
+        <button
+          className="paginator__pagination-button"
+          onClick={handleFetchPrevRecords}
+        >
+          Siguiente
+          <i class="fas fa-arrow-circle-right store-catalog__icon-pagination"></i>
+        </button>
+      </div>
+
+      <div className="paginator__pagination-items-container">
+        <label htmlFor="pagination-quantity-items">Número de resultados</label>
         <select
-          name=""
           id="pagination-quantity-items"
           onChange={handleChangeNumberOfDisplayedStores}
         >

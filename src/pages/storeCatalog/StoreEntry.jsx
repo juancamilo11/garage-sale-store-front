@@ -1,5 +1,4 @@
 import React from "react";
-import moment from "moment";
 import { useDispatch, useSelector } from "react-redux";
 import { activeStore } from "../../actions/storeCatalogActions";
 
@@ -39,7 +38,7 @@ const StoreEntry = ({
   return (
     <div
       className="store-catalog__store-entry"
-      style={{ backgroundColor: activedStore.id === id && "#94DAFF" }}
+      style={{ backgroundColor: activedStore?.id === id && "#94DAFF" }}
     >
       {
         <div
@@ -95,8 +94,6 @@ const StoreEntry = ({
           </div>
         </div>
       </div>
-
-      {/* <div className="store-catalog__store-date-container"></div> */}
     </div>
   );
 };

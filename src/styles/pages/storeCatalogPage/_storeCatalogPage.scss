@@ -11,7 +11,7 @@
   flex-direction: column;
   justify-content: center;
   height: 100vh;
-  width: 50%;
+  width: 55%;
 }
 
 .nothing-selected__welcome-img {
@@ -29,8 +29,8 @@
   height: 100%;
   padding-left: 10px;
   padding-right: 10px;
-  width: 500px;
-  width: 50%;
+  // min-width: 700px;
+  width: 45%;
   height: 100vh;
 }
 
@@ -408,4 +408,29 @@
 
 .store-catalog__icon-pagination {
   margin: 5px;
+}
+.paginator__buttons-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.paginator__pagination-items-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  vertical-align: auto;
+  margin-left: 30px;
+}
+
+#pagination-quantity-items {
+  margin-left: 20px;
+  width: 70px;
+  height: 30px;
+  font-weight: bold;
+  background-color: #ccc;
+  border-radius: 5px;
+}
+
+.paginator__pagination-items-container label {
+  margin-top: 5px;
 }
