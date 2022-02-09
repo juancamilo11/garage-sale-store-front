@@ -385,7 +385,6 @@
 }
 
 .paginator__main-container {
-  background-color: red;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -397,10 +396,10 @@
   justify-content: space-evenly;
   justify-content: center;
   align-items: center;
-  margin: 10px 10px;
+  margin: 5px 10px;
   padding: 7px 15px;
   background-color: $primary;
-  padding: 7px 10px;
+  padding: 5px 10px;
   border-radius: 4px;
   font-weight: 600;
   font-size: 0.8rem;

@@ -1,6 +1,6 @@
 import React from "react";
 import moment from "moment";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { activeStore } from "../../actions/storeCatalogActions";
 
 const MAX_NUM_TAGS_DISPLAYED = 10;
@@ -18,6 +18,7 @@ const StoreEntry = ({
   portraitImageUrl,
 }) => {
   const dispatch = useDispatch();
+  const { activeStore: active } = useSelector((state) => state.stores);
 
   const handleSelectStore = () => {
     dispatch(
@@ -36,7 +37,10 @@ const StoreEntry = ({
   };
 
   return (
-    <div className="store-catalog__store-entry">
+    <div
+      className="store-catalog__store-entry"
+      style={{ backgroundColor: active.id === id && "#94DAFF" }}
+    >
       {
         <div
           className="store-catalog__store-entry-picture"
@@ -75,7 +79,7 @@ const StoreEntry = ({
             className="store-catalog__visit-store mt-1"
             onClick={handleSelectStore}
           >
-            Visitar tienda
+            Ver tienda
           </button>
 
           {isAFavorite ? (
