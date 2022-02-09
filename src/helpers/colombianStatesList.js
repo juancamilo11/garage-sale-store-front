@@ -1,54 +1,59 @@
 const colombianStatesList = [
   {
     id: 1,
+    name: "Departamento de Residencia",
+    urlFlag: "",
+  },
+  {
+    id: 2,
     name: "Amazonas",
     urlFlag:
       "https://res.cloudinary.com/dahwtwzdl/image/upload/v1644296513/garage-sale-store/assets/user-profile/state-flags/amazonas_fdptc1.png",
   },
   {
-    id: 2,
+    id: 3,
     name: "Antioquia",
     urlFlag:
       "https://res.cloudinary.com/dahwtwzdl/image/upload/v1644296500/garage-sale-store/assets/user-profile/state-flags/antioquia_kbgxoe.png",
   },
   {
-    id: 3,
+    id: 4,
     name: "Arauca",
     urlFlag:
       "https://res.cloudinary.com/dahwtwzdl/image/upload/v1644296500/garage-sale-store/assets/user-profile/state-flags/arauca_nfq0zq.png",
   },
   {
-    id: 4,
+    id: 5,
     name: "San Andrés y Providencia",
     urlFlag:
       "https://res.cloudinary.com/dahwtwzdl/image/upload/v1644296509/garage-sale-store/assets/user-profile/state-flags/san_andres_y_providencia_nyerev.png",
   },
   {
-    id: 5,
+    id: 6,
     name: "Atlántico",
     urlFlag:
       "https://res.cloudinary.com/dahwtwzdl/image/upload/v1644296500/garage-sale-store/assets/user-profile/state-flags/atlantico_cz3kww.png",
   },
   {
-    id: 6,
+    id: 7,
     name: "Bolívar",
     urlFlag:
       "https://res.cloudinary.com/dahwtwzdl/image/upload/v1644296500/garage-sale-store/assets/user-profile/state-flags/bolivar_cqqwj6.png",
   },
   {
-    id: 7,
+    id: 8,
     name: "Boyacá",
     urlFlag:
       "https://res.cloudinary.com/dahwtwzdl/image/upload/v1644296500/garage-sale-store/assets/user-profile/state-flags/boyaca_nufjvp.png",
   },
   {
-    id: 8,
+    id: 9,
     name: "Caldas",
     urlFlag:
       "https://res.cloudinary.com/dahwtwzdl/image/upload/v1644296500/garage-sale-store/assets/user-profile/state-flags/caldas_k5kmkv.png",
   },
   {
-    id: 9,
+    id: 1,
     name: "Caquetá",
     urlFlag:
       "https://res.cloudinary.com/dahwtwzdl/image/upload/v1644296501/garage-sale-store/assets/user-profile/state-flags/caqueta_eingh7.png",
@@ -108,7 +113,7 @@ const colombianStatesList = [
       "https://res.cloudinary.com/dahwtwzdl/image/upload/v1644296501/garage-sale-store/assets/user-profile/state-flags/huila_drgcyo.png",
   },
   {
-    id: 19,
+    id: 29,
     name: "La Guajira",
     urlFlag:
       "https://res.cloudinary.com/dahwtwzdl/image/upload/v1644296501/garage-sale-store/assets/user-profile/state-flags/la_guajira_rdedqm.png",
@@ -168,7 +173,7 @@ const colombianStatesList = [
       "https://res.cloudinary.com/dahwtwzdl/image/upload/v1644296511/garage-sale-store/assets/user-profile/state-flags/sucre_uvsrbs.png",
   },
   {
-    id: 29,
+    id: 39,
     name: "Tolima",
     urlFlag:
       "https://res.cloudinary.com/dahwtwzdl/image/upload/v1644296512/garage-sale-store/assets/user-profile/state-flags/tolima_tzwz4f.png",
@@ -186,7 +191,7 @@ const colombianStatesList = [
       "https://res.cloudinary.com/dahwtwzdl/image/upload/v1644296513/garage-sale-store/assets/user-profile/state-flags/vaupes_fvs67w.png",
   },
   {
-    id: 32,
+    id: 2,
     name: "Vichada",
     urlFlag:
       "https://res.cloudinary.com/dahwtwzdl/image/upload/v1644296513/garage-sale-store/assets/user-profile/state-flags/vichada_rznzo2.png",

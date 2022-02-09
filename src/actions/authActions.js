@@ -37,7 +37,7 @@ export const startGoogleLogin = () => {
             user.metadata.lastSignInTime
           )
         );
-        console.log(user);
+        console.warn(user);
         dispatch(finishLoading());
       })
       .catch((err) => {
