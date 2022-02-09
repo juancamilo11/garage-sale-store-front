@@ -9,6 +9,10 @@ const Paginator = (skip, limit, url, setterFunction) => {
     e.preventDefault();
   };
 
+  const handleChangeNumberOfDisplayedStores = (e) => {
+    e.preventDefault();
+  };
+
   return (
     <div className="paginator__main-container">
       <button
@@ -26,6 +30,29 @@ const Paginator = (skip, limit, url, setterFunction) => {
         Siguiente
         <i class="fas fa-arrow-circle-right store-catalog__icon-pagination"></i>
       </button>
+      <div className="paginator__pagination-items">
+        <label htmlFor="pagination-quantity-items">
+          Número de tiendas mostradas
+        </label>
+        <select
+          name=""
+          id="pagination-quantity-items"
+          onChange={handleChangeNumberOfDisplayedStores}
+        >
+          <option value="10" className="paginator__pagination-item">
+            10
+          </option>
+          <option value="30" className="paginator__pagination-item">
+            30
+          </option>
+          <option value="50" className="paginator__pagination-item">
+            50
+          </option>
+          <option value="100" className="paginator__pagination-item">
+            100
+          </option>
+        </select>
+      </div>
     </div>
   );
 };

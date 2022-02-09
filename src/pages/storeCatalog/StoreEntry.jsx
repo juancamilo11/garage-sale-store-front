@@ -18,8 +18,8 @@ const StoreEntry = ({
   portraitImageUrl,
 }) => {
   const dispatch = useDispatch();
-  const { activeStore: active } = useSelector((state) => state.stores);
-
+  const stores = useSelector((state) => state.stores);
+  const activedStore = stores.activeStore;
   const handleSelectStore = () => {
     dispatch(
       activeStore(id, {
@@ -39,7 +39,7 @@ const StoreEntry = ({
   return (
     <div
       className="store-catalog__store-entry"
-      style={{ backgroundColor: active.id === id && "#94DAFF" }}
+      style={{ backgroundColor: activedStore.id === id && "#94DAFF" }}
     >
       {
         <div
