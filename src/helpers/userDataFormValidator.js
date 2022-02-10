@@ -224,10 +224,10 @@ const handleDateOfBirthValidation = (value, setErrorsState) => {
   }
 };
 
-export const UserDataFormSubmitValidation = (formValues, errorsState) => {
+export const userDataFormSubmitValidation = (formValues, errorsState) => {
   const {
-    occupation, //Optional
-    cellphone, //Optional
+    // occupation, //Optional
+    // cellphone, //Optional
     postalCode,
     colombianState,
     phone,
@@ -279,7 +279,7 @@ export const UserDataFormSubmitValidation = (formValues, errorsState) => {
       hasErrors: true,
     };
   }
-  if (!moment(dateOfBirth).isValid() || errorsState.startingDate.hasErrors) {
+  if (!moment(dateOfBirth).isValid() || errorsState.dateOfBirth.hasErrors) {
     errorsReport = {
       ...errorsReport,
       startingDate: "La fecha de apertura de la tienda es inválida",

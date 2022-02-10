@@ -315,3 +315,52 @@ export const sweetalertForSearchAndFilterStoresBuilder = () =>
       });
     }
   });
+
+export const sweetalertForErrorsReportUserDataFormBuilder = (errorsReport) =>
+  Swal.fire({
+    icon: "error",
+    title: "El formulario de datos del usuario tiene errores",
+    html: `
+        <ul>
+    ${
+      errorsReport.occupation === undefined
+        ? ""
+        : "<li>" + errorsReport.occupation + "</li>"
+    }
+    ${
+      errorsReport.cellphone === undefined
+        ? ""
+        : "<li>" + errorsReport.cellphone + "</li>"
+    }
+    ${
+      errorsReport.postalCode === undefined
+        ? ""
+        : "<li>" + errorsReport.postalCode + "</li>"
+    } 
+    ${
+      errorsReport.colombianState === undefined
+        ? ""
+        : "<li>" + errorsReport.colombianState + "</li>"
+    } 
+    ${
+      errorsReport.phone === undefined
+        ? ""
+        : "<li>" + errorsReport.phone + "</li>"
+    } 
+    ${
+      errorsReport.address === undefined
+        ? ""
+        : "<li>" + errorsReport.address + "</li>"
+    } 
+    ${
+      errorsReport.dateOfBirth === undefined
+        ? ""
+        : "<li>" + errorsReport.dateOfBirth + "</li>"
+    } 
+    </ul>
+    <br/>
+    <strong>Por favor verifique los cambios e intente nuevamente.</strong>
+    `,
+    showConfirmButton: true,
+    timer: 20000,
+  });

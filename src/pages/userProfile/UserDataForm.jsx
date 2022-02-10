@@ -1,11 +1,18 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
+import { updateUserInformation } from "../../actions/usersActions";
 import ErrorFlag from "../../components/ErrorFlag";
 import NavBarFormUserData from "../../components/navbar/NavBarFormUserData";
 import SectionTitle from "../../components/SectionTitle";
 import { colombianStatesList } from "../../helpers/colombianStatesList";
+import {
+  sweetalertForErrorsReportUserDataFormBuilder,
+  sweetalertForGenericSuccessBuilder,
+} from "../../helpers/SweetalertBuilder";
 import userDataFormValidator, {
+  userDataFormSubmitValidation,
   userFormDataInitialErrorsState,
   userFormDataInitialFormValues,
 } from "../../helpers/userDataFormValidator";
@@ -13,7 +20,7 @@ import useForm from "../../hooks/useForm";
 
 const UserDataForm = () => {
   const auth = useSelector((state) => state.auth);
-
+  const dispatch = useDispatch();
   useEffect(() => {
     window.alert(
       "falta setear los valores cuando se carga este componente form."
@@ -21,7 +28,7 @@ const UserDataForm = () => {
   }, []);
 
   const [formValues, handleInputChange, resetForm] = useForm(
-    userFormDataInitialFormValues
+    userFormDataInitialFormValues(auth)
   );
 
   const {
@@ -48,12 +55,19 @@ const UserDataForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // const errorReport = userDataFormValidator(formValues);
-    // if (!errorReport.hasErrors()) {
-    //   console.log("Los datos han sido actualizados exitosamente.");
-    // } else {
-    //   //Se muestra un mensaje de error con sweetalert o con toastify
-    // }
+    const errorsReport = userDataFormSubmitValidation(formValues, errorsState);
+    if (errorsReport.hasErrors) {
+      sweetalertForErrorsReportUserDataFormBuilder(errorsReport);
+      return;
+    }
+    updateUserInformation(
+      auth.uid,
+      auth.displayName,
+      auth.email,
+      formValues
+    ).then((res) => {
+      sweetalertForGenericSuccessBuilder("Actualización de datos exitosa.");
+    });
   };
 
   const handleResetForm = (e) => {
