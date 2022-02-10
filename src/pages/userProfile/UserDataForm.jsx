@@ -4,38 +4,15 @@ import { useSelector } from "react-redux";
 import ErrorFlag from "../../components/ErrorFlag";
 import NavBarFormUserData from "../../components/navbar/NavBarFormUserData";
 import SectionTitle from "../../components/SectionTitle";
-import userDataFormValidator from "../../helpers/userDataFormValidator";
+import { colombianStatesList } from "../../helpers/colombianStatesList";
+import userDataFormValidator, {
+  userFormDataInitialErrorsState,
+  userFormDataInitialFormValues,
+} from "../../helpers/userDataFormValidator";
 import useForm from "../../hooks/useForm";
-import latamCountries from "./../../helpers/latamCountries";
-
-const initialErrorsState = {
-  occupation: { hasErrors: false, message: "" },
-  cellphone: { hasErrors: false, message: "" },
-  email: { hasErrors: false, message: "" },
-  postalCode: { hasErrors: false, message: "" },
-  countryCode: { hasErrors: false, message: "" },
-  phone: { hasErrors: false, message: "" },
-  address: { hasErrors: false, message: "" },
-  dateOfBirth: { hasErrors: false, message: "" },
-  registerDate: { hasErrors: false, message: "" },
-};
 
 const UserDataForm = () => {
   const auth = useSelector((state) => state.auth);
-  console.log(auth);
-
-  const initialFormValues = {
-    name: auth.name,
-    occupation: "",
-    cellphone: "",
-    email: auth.email,
-    postalCode: "",
-    countryCode: "",
-    phone: "",
-    address: "",
-    dateOfBirth: "",
-    registerDate: auth.creationTime,
-  };
 
   useEffect(() => {
     window.alert(
@@ -43,7 +20,9 @@ const UserDataForm = () => {
     );
   }, []);
 
-  const [formValues, handleInputChange, resetForm] = useForm(initialFormValues);
+  const [formValues, handleInputChange, resetForm] = useForm(
+    userFormDataInitialFormValues
+  );
 
   const {
     name,
@@ -51,14 +30,16 @@ const UserDataForm = () => {
     cellphone,
     email,
     postalCode,
-    countryCode,
+    colombianState,
     phone,
     address,
     dateOfBirth,
     registerDate,
   } = formValues;
 
-  const [errorsState, setErrorsState] = useState(initialErrorsState);
+  const [errorsState, setErrorsState] = useState(
+    userFormDataInitialErrorsState
+  );
 
   const handleInputValidation = (e) => {
     handleInputChange(e);
@@ -77,8 +58,8 @@ const UserDataForm = () => {
 
   const handleResetForm = (e) => {
     e.preventDefault();
-    resetForm(initialFormValues);
-    setErrorsState(initialErrorsState);
+    resetForm(userFormDataInitialErrorsState);
+    setErrorsState(userFormDataInitialErrorsState);
   };
 
   return (
@@ -110,7 +91,7 @@ const UserDataForm = () => {
                 htmlFor="occupation"
                 className="user-form-data__input-label"
               >
-                Occupation
+                Ocupación
               </label>
               <input
                 type="text"
@@ -199,57 +180,32 @@ const UserDataForm = () => {
           <div className="user-form-data__inputs-container">
             <div className="user-form-data__input-container">
               <label
-                htmlFor="countryCode"
+                htmlFor="colombianState"
                 className="user-form-data__input-label"
               >
-                País
+                Departamento de Residencia
               </label>
               <select
                 type="select"
-                name="countryCode"
-                id="countryCode"
-                value={countryCode}
+                name="colombianState"
+                id="colombianState"
+                value={colombianState}
                 onChange={handleInputValidation}
                 className="user-form-data__input"
                 autoComplete="off"
               >
-                <option value={latamCountries[0].code}>
-                  {latamCountries[0].name}
-                </option>
-                <optgroup label="Norteamérica">
-                  {latamCountries
-                    .filter((country) => country.region === "North America")
-                    .map((country) => (
-                      <option value={country.code}>{country.name}</option>
-                    ))}
-                </optgroup>
-                <optgroup label="Centroamérica">
-                  {latamCountries
-                    .filter((country) => country.region === "Central America")
-                    .map((country) => (
-                      <option value={country.code}>{country.name}</option>
-                    ))}
-                </optgroup>
-                <optgroup label="Suramérica">
-                  {latamCountries
-                    .filter((country) => country.region === "South America")
-                    .map((country) => (
-                      <option value={country.code}>{country.name}</option>
-                    ))}
-                </optgroup>
-                <optgroup label="El Caribe">
-                  {latamCountries
-                    .filter((country) => country.region === "Caribean")
-                    .map((country) => (
-                      <option value={country.code}>{country.name}</option>
-                    ))}
-                </optgroup>
+                <option value="NN">Seleccione el departamento</option>
+                {colombianStatesList.map((state) => (
+                  <option key={state.id} value={state.name}>
+                    {state.name}
+                  </option>
+                ))}
               </select>
             </div>
             <div className="user-form-data__error-flag">
-              {errorsState.countryCode.hasErrors && (
+              {errorsState.colombianState.hasErrors && (
                 <ErrorFlag
-                  message={errorsState.countryCode.message}
+                  message={errorsState.colombianState.message}
                   width="93%"
                 />
               )}

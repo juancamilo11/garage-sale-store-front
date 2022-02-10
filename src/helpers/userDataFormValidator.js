@@ -1,6 +1,29 @@
 import moment from "moment";
 import validator from "validator";
 
+export const userFormDataInitialFormValues = (auth) => ({
+  name: auth.name,
+  occupation: "",
+  cellphone: "",
+  email: auth.email,
+  postalCode: "",
+  colombianState: "",
+  phone: "",
+  address: "",
+  dateOfBirth: "",
+  registerDate: auth.creationTime,
+});
+
+export const userFormDataInitialErrorsState = {
+  occupation: { hasErrors: false, message: "" },
+  cellphone: { hasErrors: false, message: "" },
+  postalCode: { hasErrors: false, message: "" },
+  colombianState: { hasErrors: false, message: "" },
+  phone: { hasErrors: false, message: "" },
+  address: { hasErrors: false, message: "" },
+  dateOfBirth: { hasErrors: false, message: "" },
+};
+
 const userDataFormValidator = (e, setErrorsState) => {
   const { name: fieldName, value } = e.target;
   console.log(fieldName + " " + value);
@@ -199,6 +222,72 @@ const handleDateOfBirthValidation = (value, setErrorsState) => {
       return { ...state, ["dateOfBirth"]: { hasErrors: false, message: "" } };
     });
   }
+};
+
+export const UserDataFormSubmitValidation = (formValues, errorsState) => {
+  const {
+    occupation, //Optional
+    cellphone, //Optional
+    postalCode,
+    colombianState,
+    phone,
+    address,
+    dateOfBirth,
+  } = formValues;
+
+  let errorsReport = { hasErrors: false };
+
+  if (errorsState.occupation.hasErrors) {
+    errorsReport = {
+      ...errorsReport,
+      storeName: "Has dejado el campo ocupación con errores",
+      hasErrors: true,
+    };
+  }
+  if (errorsState.cellphone.hasErrors) {
+    errorsReport = {
+      ...errorsReport,
+      slogan: "Has dejado el número de telefono de hogar con errores",
+      hasErrors: true,
+    };
+  }
+  if (postalCode === "" || errorsState.postalCode.hasErrors) {
+    errorsReport = {
+      ...errorsReport,
+      tag: "Has dejado el código postal con errores",
+      hasErrors: true,
+    };
+  }
+  if (colombianState === "Seleccione su departamento") {
+    errorsReport = {
+      ...errorsReport,
+      tag: "No has seleccionado ningún departamento de residencia",
+      hasErrors: true,
+    };
+  }
+  if (phone === "" || errorsState.phone.hasErrors) {
+    errorsReport = {
+      ...errorsReport,
+      description: "Has dejado el número de celular con errores",
+      hasErrors: true,
+    };
+  }
+  if (address === "" || errorsState.address.hasErrors) {
+    errorsReport = {
+      ...errorsReport,
+      description: "Has dejado el número de dirección domicilio con errores",
+      hasErrors: true,
+    };
+  }
+  if (!moment(dateOfBirth).isValid() || errorsState.startingDate.hasErrors) {
+    errorsReport = {
+      ...errorsReport,
+      startingDate: "La fecha de apertura de la tienda es inválida",
+      hasErrors: true,
+    };
+  }
+
+  return errorsReport;
 };
 
 export default userDataFormValidator;

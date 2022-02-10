@@ -1,7 +1,7 @@
-const colombianStatesList = [
+export const colombianStatesList = [
   {
     id: 1,
-    name: "Departamento de Residencia",
+    name: "Seleccione su departamento",
     urlFlag: "",
   },
   {
