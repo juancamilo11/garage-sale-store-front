@@ -18,6 +18,7 @@ const types = {
 
   ConfirmStoreCreation: "[storeSetup] Confirm Store Creation",
 
+  //Actions to catalog store
   setActiveStore: "[StoreCatalog] Set Active Store",
   loadStores: "[StoreCatalog] Load Stores",
   storesLogoutCleaning: "[StoreCatalog] Stores Logout Cleaning",

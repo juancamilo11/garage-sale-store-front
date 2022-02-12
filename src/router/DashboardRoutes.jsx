@@ -10,7 +10,7 @@ const DashboardRoutes = () => {
   return (
     <Routes>
       <Route exact path="/store-catalog" element={<StoreCatalogPage />} />
-      <Route exact path="/store" element={<GarageSalePage />} />
+      <Route exact path="/store/:storeId" element={<GarageSalePage />} />
       <Route exact path="/store-setup" element={<StoreSetupPage />} />
       <Route exact path="/user-profile" element={<UserProfilePage />} />
       <Route exact path="/user-data-form" element={<UserDataForm />} />

@@ -364,3 +364,37 @@ export const sweetalertForErrorsReportUserDataFormBuilder = (errorsReport) =>
     showConfirmButton: true,
     timer: 20000,
   });
+
+export const sweetalertForAddingStoreToFavoritesBuilder = (storeName) =>
+  Swal.fire({
+    icon: "success",
+    title: "success",
+    timer: 3000,
+    allowEnterKey: false,
+    allowOutsideClick: false,
+    allowEscapeKey: false,
+    showConfirmButton: false,
+    html:
+      "La venta de garaje con nombre " +
+      "<b>" +
+      storeName +
+      "</b>" +
+      " ha sido agregada a tu lista de tiendas favoritas.",
+  });
+
+export const sweetalertForDeletingStoreFromFavoritesBuilder = (storeName) =>
+  Swal.fire({
+    icon: "success",
+    title: "success",
+    timer: 3000,
+    allowEnterKey: false,
+    allowOutsideClick: false,
+    allowEscapeKey: false,
+    showConfirmButton: false,
+    html:
+      "La venta de garaje con nombre " +
+      "<b>" +
+      storeName +
+      "</b>" +
+      " ha sido removida de tu lista de tiendas favoritas.",
+  });

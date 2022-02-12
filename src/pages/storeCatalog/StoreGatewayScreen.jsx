@@ -1,14 +1,17 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import NavBarStoreGateway from "../../components/navbar/NavBarStoreGateway";
 import SectionTitle from "../../components/SectionTitle";
 
 const StoreGatewayScreen = () => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const { activeStore } = useSelector((state) => state.stores);
 
   const handleVisitStore = (e) => {
     e.preventDefault();
+    navigate(`/store/${activeStore.id}`);
   };
 
   return (
