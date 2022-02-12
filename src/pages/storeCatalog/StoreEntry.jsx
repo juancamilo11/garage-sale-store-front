@@ -8,6 +8,7 @@ const StoreEntry = ({
   id,
   name,
   slogan,
+  description,
   endingDate,
   location,
   storeTags,
@@ -24,6 +25,7 @@ const StoreEntry = ({
       activeStore(id, {
         name,
         slogan,
+        description,
         endingDate,
         location,
         storeTags,
