@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
-import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { updateUserInformation } from "../../actions/usersActions";
 import ErrorFlag from "../../components/ErrorFlag";
 import NavBarFormUserData from "../../components/navbar/NavBarFormUserData";
@@ -20,7 +20,7 @@ import useForm from "../../hooks/useForm";
 
 const UserDataForm = () => {
   const auth = useSelector((state) => state.auth);
-  const dispatch = useDispatch();
+  const navigate = useNavigate();
   useEffect(() => {
     window.alert(
       "falta setear los valores cuando se carga este componente form."
@@ -66,7 +66,11 @@ const UserDataForm = () => {
       auth.email,
       formValues
     ).then((res) => {
-      sweetalertForGenericSuccessBuilder("Actualización de datos exitosa.");
+      sweetalertForGenericSuccessBuilder(
+        "Actualización de datos exitosa."
+      ).then((res) => {
+        navigate("/user-profile");
+      });
     });
   };
 

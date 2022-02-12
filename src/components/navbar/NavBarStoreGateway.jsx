@@ -4,39 +4,24 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { startLogout } from "../../actions/authActions";
 
-const NavBarStoreGateway = () => {
+const NavBarStoreGateway = ({ storeName }) => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
-  const { activeStore: active } = useSelector((state) => state.stores);
 
-  const handleGoToCatalog = () => {
-    navigate("/store-catalog");
-  };
-
-  const handleLogout = () => {
-    dispatch(startLogout());
+  const handleAddStoreToFavorites = (e) => {
+    e.preventDefault();
   };
 
   return (
     <nav className="navbar-store-gateway__main-container">
-      <div className="navbar-store-gateway__links-container">
-        <ul className="navbar-store-gateway__links-list">
-          <li className="navbar-store-gateway__link">
-            <a href="#navbar-store-gateway__section">
-              {JSON.stringify(active)}
-            </a>
-          </li>
-        </ul>
-      </div>
-      <div className="navbar-store-gateway__buttons-container">
+      <div className="navbar-store-gateway__content">
+        <p className="navbar-store-gateway__store-title">
+          {storeName || "Nombre tienda"}
+        </p>
         <button
-          className="navbar-store-gateway__button"
-          onClick={handleGoToCatalog}
+          className="nav-user-profile__button mr-2"
+          onClick={handleAddStoreToFavorites}
         >
-          Regresar al catálogo de tiendas
-        </button>
-        <button className="nav-user-profile__button" onClick={handleLogout}>
-          Salir
+          Agregar a favoritos
         </button>
       </div>
     </nav>

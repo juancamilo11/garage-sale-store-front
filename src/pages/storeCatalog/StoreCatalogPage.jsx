@@ -16,7 +16,7 @@ const StoreCatalogPage = () => {
   return (
     <div className="store-catalog__main-content">
       <Sidebar />
-      {stores.active ? <StoreGatewayScreen /> : <NothingSelected />}
+      {stores.activeStore ? <StoreGatewayScreen /> : <NothingSelected />}
     </div>
   );
 };

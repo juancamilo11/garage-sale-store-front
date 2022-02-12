@@ -4,12 +4,13 @@ import NavBarStoreGateway from "../../components/navbar/NavBarStoreGateway";
 
 const StoreGatewayScreen = () => {
   const dispatch = useDispatch();
-  const { activeStore: active } = useSelector((state) => state.stores);
+  const { activeStore } = useSelector((state) => state.stores);
 
   return (
     <div className="store-gateway__main-container">
       <div className="store-gateway__content">
         <NavBarStoreGateway />
+        {JSON.stringify(activeStore)}
       </div>
     </div>
   );
