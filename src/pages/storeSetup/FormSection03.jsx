@@ -26,6 +26,7 @@ const FormSection03 = () => {
 
   const [arrProducts, setArrProducts] = useState([]);
   const [categoryList, setCategoryList] = useState([]);
+  const [productImagesUrlList, setProductImagesUrlList] = useState(["hola"]);
   const [productTagList, setProductTagList] = useState([]);
 
   const [errorsState, setErrorsState] = useState(section_03ErrorState);
@@ -85,12 +86,15 @@ const FormSection03 = () => {
 
   const handleInputValidation = (e) => {
     handleInputChange(e);
-    section03Validator(e, setErrorsState);
+    section03Validator(e, setErrorsState, setProductImagesUrlList);
   };
 
   const handleFormSection_03Submit = (e) => {
     //Submit del formulario para el ingreso de un nuevo producto
     e.preventDefault();
+    handleInputChange({
+      target: { name: "productUrlImages", value: productImagesUrlList },
+    });
     const errorsReport = form03SubmitValidation(
       formValues,
       errorsState,
@@ -105,6 +109,8 @@ const FormSection03 = () => {
       ...arrProducts,
       { ...formValues, productTagList },
     ]);
+    resetForm(section_03FormValues);
+    setErrorsState(section_03ErrorState);
     sweetalertForGenericSuccessBuilder("¡Producto ingresado correctamente!");
   };
 
@@ -229,7 +235,7 @@ const FormSection03 = () => {
                   onChange={handleInputValidation}
                   className="store-setup__input"
                 >
-                  <option value="no-category-selected" selected>
+                  <option value="0" selected>
                     Seleccione una categoría para el producto
                   </option>
                   {categoryList.map((category) => (
@@ -278,7 +284,7 @@ const FormSection03 = () => {
               </div>
               <div className="store-setup__input-container">
                 <label htmlFor="price" className="store-setup__input-label">
-                  Precio unitario (COP)
+                  Descripción adicional
                 </label>
                 <textarea
                   name="additionalDescription"
@@ -293,9 +299,9 @@ const FormSection03 = () => {
                 className="store-setup__error-flag"
                 style={{ marginTop: "-30px" }}
               >
-                {errorsState.aditionalDescription.hasErrors && (
+                {errorsState.additionalDescription.hasErrors && (
                   <ErrorFlag
-                    message={errorsState.aditionalDescription.message}
+                    message={errorsState.additionalDescription.message}
                     width="100%"
                     marginTop="-25px"
                   />
@@ -337,7 +343,7 @@ const FormSection03 = () => {
                 )}
               </div>
             </div>
-            <div className="store-setup__product-tags-list-container--produts">
+            <div className="store-setup__product-tags-list-container--products">
               <ProductTagList
                 tags={productTagList}
                 setTagsList={setProductTagList}
@@ -379,7 +385,7 @@ const FormSection03 = () => {
                   />
                 )}
               </div>
-              {new Array(5).fill(0).map((elem, index) => (
+              {new Array(5).fill("").map((elem, index) => (
                 <>
                   <img
                     src={

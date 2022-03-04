@@ -21,9 +21,10 @@ const InputProductCategory = ({
   formChecking,
 }) => {
   const [formValues, handleCategoryInputChange, resetForm] = useForm({
-    categoryName: "",
+    categoryName: "sdsfsdfsdf",
     categoryImage: "",
-    imageUrl: "",
+    imageUrl:
+      "https://res.cloudinary.com/dahwtwzdl/image/upload/v1646359679/vefj8oqpik715qwsu8ja.jpg",
   });
 
   const [errorsState, setErrorsState] = useState(section_03ErrorState);

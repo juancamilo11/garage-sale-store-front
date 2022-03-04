@@ -10,6 +10,7 @@ export const section_03FormValues = {
   productTag: "",
   additionalDescription: "",
   productImages: [],
+  productUrlImages: [],
 };
 
 //Initial values for the section #3 errors of the store setup's.
@@ -26,7 +27,7 @@ export const section_03ErrorState = {
   productImages: { hasErrors: false, message: "" },
 };
 
-const section03Validator = (e, setErrorsState) => {
+const section03Validator = (e, setErrorsState, setProductImagesList) => {
   const { name: fieldName, value, files } = e.target;
   switch (fieldName) {
     case "categoryName":
@@ -47,31 +48,35 @@ const section03Validator = (e, setErrorsState) => {
     case "price":
       handlePriceValidation(value, setErrorsState);
       break;
-    case "currency":
-      handleCurrencyValidation(value, setErrorsState);
-      break;
     case "productState":
       handleProductStateValidation(value, setErrorsState);
       break;
     case "productTag":
       handleProductTagValidation(value, setErrorsState);
       break;
-    case "freeShipping":
-      handleFreeShippingValidation(value, setErrorsState);
+    case "additionalInformation":
+      handleAdditionalInformationValidation(value, setErrorsState);
       break;
     case "productImages":
-      handleProductImagesValidation(files, setErrorsState);
+      handleProductImagesValidation(
+        files,
+        setErrorsState,
+        setProductImagesList
+      );
       break;
     default:
       break;
   }
 };
 
-const sendImageToCloudinary = async (file, idTargetImage) => {
+const sendImageToCloudinary = async (
+  file,
+  idTargetImage,
+  setProductImagesList
+) => {
   const response = await uploadFileToCloudinary(file);
 
-  console.log(response);
-
+  setProductImagesList((productImagesList) => [...productImagesList, response]);
   const imageUrl = document.getElementById(`${idTargetImage}-url`);
   imageUrl.setAttribute("href", response);
   imageUrl.textContent = "Haz click aquí para ver la imágen en tamaño grande";
@@ -192,8 +197,16 @@ const handleProductNameValidation = (value, setErrorsState) => {
 };
 
 const handleCategoryValidation = (value, setErrorsState) => {
-  //no impl yet
+  if (value !== "0") {
+    setErrorsState((state) => {
+      return {
+        ...state,
+        ["category"]: { hasErrors: false, message: "" },
+      };
+    });
+  }
 };
+
 const handleQuantityValidation = (value, setErrorsState) => {
   const quantity = parseInt(value);
   if (value.trim().length === 0) {
@@ -238,10 +251,6 @@ const handlePriceValidation = (value, setErrorsState) => {
   }
 };
 
-const handleCurrencyValidation = (value, setErrorsState) => {
-  //no impl yet
-};
-
 const handleProductStateValidation = (value, setErrorsState) => {
   //no impl yet
 };
@@ -270,11 +279,15 @@ const handleProductTagValidation = (value, setErrorsState) => {
   }
 };
 
-const handleFreeShippingValidation = (value, setErrorsState) => {
-  //toDo
+const handleAdditionalInformationValidation = (value, setErrorsState) => {
+  // TODO
 };
 
-const handleProductImagesValidation = (arrFiles, setErrorsState) => {
+const handleProductImagesValidation = (
+  arrFiles,
+  setErrorsState,
+  setProductImagesList
+) => {
   if (arrFiles.length < 3 || arrFiles.length > 5) {
     setErrorsState((state) => {
       return {
@@ -333,15 +346,17 @@ const handleProductImagesValidation = (arrFiles, setErrorsState) => {
   //En este punto ya todo está bien validado
 
   //Enviar la imagen a cloudinary y en base a la peticion hacer lo siguiente.
-
+  setProductImagesList((productImagesUrl) => []);
   new Array(arrFiles.length).fill(0).forEach((num, index) => {
     const imagePreview = document.getElementById(
       `${"product-previsualization-preview" + (index + 1)}`
     );
     imagePreview.src = URL.createObjectURL(arrFiles.item(index));
+
     sendImageToCloudinary(
       arrFiles.item(index),
-      `${"product-previsualization-preview" + (index + 1)}`
+      `${"product-previsualization-preview" + (index + 1)}`,
+      setProductImagesList
     );
     imagePreview.classList.replace(
       "portrait-preview--no-content",
@@ -391,11 +406,9 @@ export const form03SubmitValidation = (
   const {
     productName,
     category,
-    currency,
     quantity,
     price,
     productState,
-    freeShipping,
     // productTag,
     productImages,
   } = formValues;
@@ -410,7 +423,7 @@ export const form03SubmitValidation = (
     };
   }
 
-  if (!category) {
+  if (category === "0") {
     setErrorsState((state) => {
       return {
         ...state,
@@ -426,26 +439,6 @@ export const form03SubmitValidation = (
     errorsReport = {
       ...errorsReport,
       category: "No ha seleccionado categoría para el producto",
-      hasErrors: true,
-    };
-  }
-
-  if (!currency) {
-    setErrorsState((state) => {
-      return {
-        ...state,
-        ["currency"]: {
-          hasErrors: true,
-          message: "No ha seleccionado la moneda para el precio del producto",
-        },
-      };
-    });
-  }
-
-  if (errorsState.currency.hasErrors) {
-    errorsReport = {
-      ...errorsReport,
-      currency: "No ha seleccionado la moneda base para el precio del producto",
       hasErrors: true,
     };
   }
@@ -484,28 +477,6 @@ export const form03SubmitValidation = (
     errorsReport = {
       ...errorsReport,
       productState: "No has seleccionado el estado actual del producto",
-      hasErrors: true,
-    };
-  }
-
-  if (freeShipping === "") {
-    setErrorsState((state) => {
-      return {
-        ...state,
-        ["freeShipping"]: {
-          hasErrors: true,
-          message:
-            "No has seleccionado una opción para el tipo de envío del producto",
-        },
-      };
-    });
-  }
-
-  if (errorsState.freeShipping.hasErrors) {
-    errorsReport = {
-      ...errorsReport,
-      freeShipping:
-        "No has seleccionado una opción para el tipo de envío del producto",
       hasErrors: true,
     };
   }
