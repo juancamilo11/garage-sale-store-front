@@ -19,8 +19,7 @@ const Footer = () => {
             </a>
           </div>
           <p className="copyright">
-            Hecho por: <br /> Juan Camilo Cardona Calderón & Jose Manuel Bernal
-            Aguilar
+            Hecho por: <br /> Juan Camilo Cardona Calderón
           </p>
           <p className="copyright">Curso: Análisis y Diseño de Sistemas II</p>
           <p className="copyright">Copyright &copy; Garage Sale Store</p>

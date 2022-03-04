@@ -41,10 +41,9 @@ const FormSection03 = () => {
     category,
     quantity,
     price,
-    currency,
     productState,
     productTag,
-    freeShipping,
+    additionalDescription,
     productImages,
   } = formValues;
 
@@ -255,7 +254,7 @@ const FormSection03 = () => {
 
               <div className="store-setup__input-container">
                 <label htmlFor="price" className="store-setup__input-label">
-                  Precio unitario
+                  Precio unitario (COP)
                 </label>
                 <input
                   type="number"
@@ -263,33 +262,10 @@ const FormSection03 = () => {
                   id="price"
                   value={price}
                   onChange={handleInputValidation}
-                  className="store-setup__input store-setup__input--price"
-                  style={{ marginRight: "4%" }}
+                  className="store-setup__input"
                   autoComplete="off"
                   min="1"
                 />
-                <select
-                  name="currency"
-                  id="currency"
-                  className="store-setup__input store-setup__input--price"
-                  value={currency}
-                  title={currency}
-                  onChange={handleInputValidation}
-                >
-                  {latamCountries.map((country) => (
-                    <option
-                      value={country.currencyCode}
-                      title={country.currencyName}
-                    >
-                      {country.currencyCode !== "no-currency-selected"
-                        ? "[" +
-                          `${country.currencyCode}` +
-                          "]" +
-                          ` \t ${country.currencyName}`
-                        : "Moneda"}
-                    </option>
-                  ))}
-                </select>
               </div>
               <div className="store-setup__error-flag">
                 {errorsState.price.hasErrors && (
@@ -300,65 +276,26 @@ const FormSection03 = () => {
                   />
                 )}
               </div>
-              <div className="store-setup__error-flag">
-                {errorsState.currency.hasErrors && (
-                  <ErrorFlag
-                    message={errorsState.currency.message}
-                    width="100%"
-                    marginTop="-25px"
-                  />
-                )}
-              </div>
-
               <div className="store-setup__input-container">
-                <label
-                  htmlFor="freeShipping"
-                  className="store-setup__input-label"
-                >
-                  ¿Envío gratis?
+                <label htmlFor="price" className="store-setup__input-label">
+                  Precio unitario (COP)
                 </label>
-                <div className="store-setup__input-ratio-container">
-                  <div className="store-setup__input-ratio-item">
-                    <input
-                      type="radio"
-                      name="freeShipping"
-                      className="store-setup__input"
-                      value="yes"
-                      id="freeShipping-yes"
-                      onChange={handleInputValidation}
-                    />
-                    <label
-                      htmlFor="freeShipping-yes"
-                      className="store-setup__input-label store-setup__input-ratio-label"
-                    >
-                      Si
-                    </label>
-                  </div>
-                  <div className="store-setup__input-ratio-item">
-                    <input
-                      type="radio"
-                      name="freeShipping"
-                      className="store-setup__input"
-                      value="no"
-                      id="freeShipping-no"
-                      onChange={handleInputValidation}
-                    />
-                    <label
-                      htmlFor="freeShipping-no"
-                      className="store-setup__input-label store-setup__input-ratio-label"
-                    >
-                      No
-                    </label>
-                  </div>
-                </div>
+                <textarea
+                  name="additionalDescription"
+                  id="additionalDescription"
+                  value={additionalDescription}
+                  onChange={handleInputValidation}
+                  className="store-setup__input"
+                  autoComplete="off"
+                />
               </div>
               <div
                 className="store-setup__error-flag"
                 style={{ marginTop: "-30px" }}
               >
-                {errorsState.freeShipping.hasErrors && (
+                {errorsState.aditionalDescription.hasErrors && (
                   <ErrorFlag
-                    message={errorsState.freeShipping.message}
+                    message={errorsState.aditionalDescription.message}
                     width="100%"
                     marginTop="-25px"
                   />

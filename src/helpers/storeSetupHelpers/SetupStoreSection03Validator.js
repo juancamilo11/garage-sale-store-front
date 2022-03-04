@@ -6,10 +6,9 @@ export const section_03FormValues = {
   category: "",
   quantity: "",
   price: "",
-  currency: "",
   productState: "",
   productTag: "",
-  freeShipping: "",
+  additionalDescription: "",
   productImages: [],
 };
 
@@ -21,10 +20,9 @@ export const section_03ErrorState = {
   category: { hasErrors: false, message: "" },
   quantity: { hasErrors: false, message: "" },
   price: { hasErrors: false, message: "" },
-  currency: { hasErrors: false, message: "" },
   productState: { hasErrors: false, message: "" },
   productTag: { hasErrors: false, message: "" },
-  freeShipping: { hasErrors: false, message: "" },
+  additionalDescription: { hasErrors: false, message: "" },
   productImages: { hasErrors: false, message: "" },
 };
 
