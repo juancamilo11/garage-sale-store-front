@@ -108,6 +108,7 @@ const FormSection03 = () => {
       ...arrProducts,
       { ...formValues, productTagList },
     ]);
+    console.log(formValues);
     resetForm(section_03FormValues);
     setErrorsState(section_03ErrorState);
     resetImagesFromView();
@@ -209,7 +210,11 @@ const FormSection03 = () => {
                 >
                   {productStates.map((state) => (
                     <option value={state.statusNumber} key={state.statusNumber}>
-                      {`(${state.statusNumber}) `}
+                      {`${
+                        state.statusNumber !== 0
+                          ? state.statusNumber + " - "
+                          : ""
+                      }`}
                       {state.statusName}
                     </option>
                   ))}

@@ -31,10 +31,16 @@ const storeSetupReducer = (state = initialState, action) => {
         formCheckSection03IsValidated: true,
       };
 
-    case types.ConfirmStoreCreation:
+    case types.confirmStoreCreation:
       return {
         ...state,
         creationConfirmationIsConfirmed: true,
+      };
+
+    case types.unConfirmStoreCreation:
+      return {
+        ...state,
+        creationConfirmationIsConfirmed: false,
       };
 
     case types.resetFirstFormInfoToCreateStore:

@@ -26,3 +26,11 @@ export const resetSecondFormInfoToCreateStore = () => ({
 export const resetThirdFormInfoToCreateStore = () => ({
   type: types.resetThirdFormInfoToCreateStore,
 });
+
+export const confirmStoreCreation = () => ({
+  type: types.confirmStoreCreation,
+});
+
+export const unConfirmStoreCreation = () => ({
+  type: types.unConfirmStoreCreation,
+});

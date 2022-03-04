@@ -16,7 +16,8 @@ const types = {
   resetSecondFormInfoToCreateStore: "[storeSetup] Reset Second Form Info",
   resetThirdFormInfoToCreateStore: "[storeSetup] Reset Third Form Info",
 
-  ConfirmStoreCreation: "[storeSetup] Confirm Store Creation",
+  confirmStoreCreation: "[storeSetup] Confirm Store Creation",
+  unConfirmStoreCreation: "[storeSetup] Unconfirm Store Creation",
 
   //Actions to catalog store
   setActiveStore: "[StoreCatalog] Set Active Store",
