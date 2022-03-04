@@ -1,4 +1,4 @@
-export const baseUrl = "http://localhost:8080";
+import { baseUrl } from "./../environment/environment";
 
 export const updateUserInformation = async (
   uid,

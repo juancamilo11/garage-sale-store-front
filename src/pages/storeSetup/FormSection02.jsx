@@ -14,8 +14,6 @@ import {
   sweetalertForErrorsReportForm02StoreSetupBuilder,
   sweetalertForGenericSuccessBuilder,
 } from "../../helpers/SweetalertBuilder";
-import { form02ReadyObjectBuilder } from "../../helpers/storeSetupHelpers/formValuesToObjectBuilder/ObjectBuilderForCompletedForm";
-import types from "../../types/types";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import {
@@ -135,15 +133,7 @@ const FormSection02 = () => {
       "Segunda parte completada exitosamente, vamos por la última parte!"
     );
 
-    dispatch(
-      addSecondFormInfoToCreateStore(
-        form02ReadyObjectBuilder({
-          portraitUrl,
-          prevImagesList,
-          physicalStoreImageUrl,
-        })
-      )
-    );
+    // dispatch(addSecondFormInfoToCreateStore());
   };
 
   return (

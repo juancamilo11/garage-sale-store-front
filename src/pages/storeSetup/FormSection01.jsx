@@ -18,9 +18,6 @@ import {
   sweetalertForInputTagErrorBuilder,
   sweetalertForInputCurrentLocationDenyBuilder,
 } from "../../helpers/SweetalertBuilder";
-import storeSetupReducer from "../../reducers/storeSetupReducer";
-import { form01ReadyObjectBuilder } from "../../helpers/storeSetupHelpers/formValuesToObjectBuilder/ObjectBuilderForCompletedForm";
-import types from "../../types/types";
 import { useDispatch } from "react-redux";
 import {
   addFirstFormInfoToCreateStore,

@@ -20,6 +20,10 @@ export const storesReducer = (state = initialState, action) => {
       };
     case types.storesLogoutCleaning:
       return { ...state, activeStore: null, garageSaleStores: [] };
+    case types.setStoreAsFavorite:
+      return { ...state, garageSaleStores: action.payload };
+    case types.deleteStoreFromFavorites:
+      return { ...state, garageSaleStores: action.payload };
     default:
       return state;
   }

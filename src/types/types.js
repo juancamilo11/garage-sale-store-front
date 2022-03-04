@@ -22,6 +22,11 @@ const types = {
   setActiveStore: "[StoreCatalog] Set Active Store",
   loadStores: "[StoreCatalog] Load Stores",
   storesLogoutCleaning: "[StoreCatalog] Stores Logout Cleaning",
+
+  setProductAsFavorite: "[StoreCatalog] Set Product As A Favorite",
+  deleteProductFromFavorites: "[StoreCatalog] Delete Product From Favorites",
+  setStoreAsFavorite: "[StoreCatalog] Set Store As A Favorite",
+  deleteStoreFromFavorites: "[StoreCatalog] Delete Store From Favorites",
 };
 
 export default types;

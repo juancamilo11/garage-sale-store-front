@@ -16,8 +16,6 @@ import {
   sweetalertForGenericSuccessBuilder,
   sweetalertForProductTagAlreadyDefinedBuilder,
 } from "../../helpers/SweetalertBuilder";
-import { form03ReadyObjectBuilder } from "../../helpers/storeSetupHelpers/formValuesToObjectBuilder/ObjectBuilderForCompletedForm";
-import types from "../../types/types";
 import { useDispatch } from "react-redux";
 import { addThirdFormInfoToCreateStore } from "../../actions/storeSetupActions";
 import { useSelector } from "react-redux";
@@ -64,11 +62,7 @@ const FormSection03 = () => {
           "Última parte completada exitosamente,sólo falta un paso más y todo estará listo!"
         );
         //Enviar este objeto al reducer de la construccion de la tienda
-        dispatch(
-          addThirdFormInfoToCreateStore(
-            form03ReadyObjectBuilder(categoryList, arrProducts)
-          )
-        );
+        dispatch(addThirdFormInfoToCreateStore());
       }
     });
   };
