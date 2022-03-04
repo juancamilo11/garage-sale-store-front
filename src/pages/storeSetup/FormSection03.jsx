@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import ErrorFlag from "../../components/ErrorFlag";
 import section03Validator, {
   form03SubmitValidation,
+  resetImagesFromView,
   section_03FormValues,
 } from "./../../helpers/storeSetupHelpers/SetupStoreSection03Validator";
 import { section_03ErrorState } from "./../../helpers/storeSetupHelpers/SetupStoreSection03Validator";
@@ -26,7 +27,7 @@ const FormSection03 = () => {
 
   const [arrProducts, setArrProducts] = useState([]);
   const [categoryList, setCategoryList] = useState([]);
-  const [productImagesUrlList, setProductImagesUrlList] = useState(["hola"]);
+  const [productImagesUrlList, setProductImagesUrlList] = useState([]);
   const [productTagList, setProductTagList] = useState([]);
 
   const [errorsState, setErrorsState] = useState(section_03ErrorState);
@@ -46,6 +47,7 @@ const FormSection03 = () => {
     productTag,
     additionalDescription,
     productImages,
+    productUrlImages,
   } = formValues;
 
   const handleLoadimage = (e) => {
@@ -86,15 +88,12 @@ const FormSection03 = () => {
 
   const handleInputValidation = (e) => {
     handleInputChange(e);
-    section03Validator(e, setErrorsState, setProductImagesUrlList);
+    section03Validator(e, setErrorsState, handleInputChange);
   };
 
   const handleFormSection_03Submit = (e) => {
     //Submit del formulario para el ingreso de un nuevo producto
     e.preventDefault();
-    handleInputChange({
-      target: { name: "productUrlImages", value: productImagesUrlList },
-    });
     const errorsReport = form03SubmitValidation(
       formValues,
       errorsState,
@@ -111,13 +110,17 @@ const FormSection03 = () => {
     ]);
     resetForm(section_03FormValues);
     setErrorsState(section_03ErrorState);
+    resetImagesFromView();
+    setProductTagList([]);
     sweetalertForGenericSuccessBuilder("¡Producto ingresado correctamente!");
   };
 
   const handleResetForm = (e) => {
     e.preventDefault();
     resetForm(section_03FormValues);
+    setProductTagList([]);
     setErrorsState(section_03ErrorState);
+    resetImagesFromView();
   };
 
   return (
@@ -363,7 +366,7 @@ const FormSection03 = () => {
                     id="preview-button"
                     onClick={handleLoadimage}
                   >
-                    Carga un archivo
+                    Carga de 3 a 5 archivos
                   </button>
                   <input
                     type="file"

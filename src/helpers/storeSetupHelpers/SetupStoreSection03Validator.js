@@ -27,7 +27,7 @@ export const section_03ErrorState = {
   productImages: { hasErrors: false, message: "" },
 };
 
-const section03Validator = (e, setErrorsState, setProductImagesList) => {
+const section03Validator = (e, setErrorsState, handleInputChange) => {
   const { name: fieldName, value, files } = e.target;
   switch (fieldName) {
     case "categoryName":
@@ -58,11 +58,7 @@ const section03Validator = (e, setErrorsState, setProductImagesList) => {
       handleAdditionalInformationValidation(value, setErrorsState);
       break;
     case "productImages":
-      handleProductImagesValidation(
-        files,
-        setErrorsState,
-        setProductImagesList
-      );
+      handleProductImagesValidation(files, setErrorsState, handleInputChange);
       break;
     default:
       break;
@@ -72,11 +68,17 @@ const section03Validator = (e, setErrorsState, setProductImagesList) => {
 const sendImageToCloudinary = async (
   file,
   idTargetImage,
-  setProductImagesList
+  productUrlImages,
+  handleInputChange
 ) => {
   const response = await uploadFileToCloudinary(file);
-
-  setProductImagesList((productImagesList) => [...productImagesList, response]);
+  productUrlImages.add(response);
+  handleInputChange({
+    target: {
+      name: "productUrlImages",
+      value: [...productUrlImages],
+    },
+  });
   const imageUrl = document.getElementById(`${idTargetImage}-url`);
   imageUrl.setAttribute("href", response);
   imageUrl.textContent = "Haz click aquí para ver la imágen en tamaño grande";
@@ -89,6 +91,36 @@ const sendImageToCloudinary = async (
   //       "Error al subir la imágen a cloudinary, intenta con otra."
   //     )
   //   );
+};
+
+const handleResetImagesFromView = (imageId) => {
+  const image = document.getElementById(imageId);
+  image.setAttribute("src", "/assets/common/emptyImage.png");
+  image.classList.replace(
+    "portrait-preview--with-content",
+    "portrait-preview--no-content"
+  );
+};
+
+export const resetImagesFromView = () => {
+  new Array(5).fill(0).forEach((num, index) => {
+    handleResetImagesFromView(
+      `${"product-previsualization-preview" + (index + 1)}`
+    );
+  });
+  resetTags();
+};
+
+const resetTags = () => {
+  Array(5)
+    .fill("")
+    .map((value, index) => {
+      const prevImageUrl = document.getElementById(
+        `product-previsualization-preview${index + 1}-url`
+      );
+      prevImageUrl.setAttribute("href", "#");
+      prevImageUrl.textContent = "";
+    });
 };
 
 export const isTheCategoryAlreadyDefined = (
@@ -286,7 +318,7 @@ const handleAdditionalInformationValidation = (value, setErrorsState) => {
 const handleProductImagesValidation = (
   arrFiles,
   setErrorsState,
-  setProductImagesList
+  handleInputChange
 ) => {
   if (arrFiles.length < 3 || arrFiles.length > 5) {
     setErrorsState((state) => {
@@ -346,7 +378,8 @@ const handleProductImagesValidation = (
   //En este punto ya todo está bien validado
 
   //Enviar la imagen a cloudinary y en base a la peticion hacer lo siguiente.
-  setProductImagesList((productImagesUrl) => []);
+  handleInputChange({ target: { name: "productUrlImages", value: [] } });
+  const productUrlImages = new Set();
   new Array(arrFiles.length).fill(0).forEach((num, index) => {
     const imagePreview = document.getElementById(
       `${"product-previsualization-preview" + (index + 1)}`
@@ -356,7 +389,8 @@ const handleProductImagesValidation = (
     sendImageToCloudinary(
       arrFiles.item(index),
       `${"product-previsualization-preview" + (index + 1)}`,
-      setProductImagesList
+      productUrlImages,
+      handleInputChange
     );
     imagePreview.classList.replace(
       "portrait-preview--no-content",
