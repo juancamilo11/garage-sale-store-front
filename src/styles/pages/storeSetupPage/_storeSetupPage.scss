@@ -22,11 +22,9 @@
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  background-color: darkgray;
 }
 
 .product-item__main-container {
-  border: 1px solid red;
   width: 300px;
   height: 400px;
   margin: 5px;
@@ -35,6 +33,12 @@
   border-radius: 5px;
   margin: 0px 10px;
   position: relative;
+  outline: 1px solid rgb(241, 239, 239);
+}
+
+.product-item__main-container:hover {
+  outline: 1px solid rgb(156, 155, 155);
+  transition: all 1s ease;
 }
 
 .product-item__main-image {
@@ -46,7 +50,6 @@
 }
 
 .product-item__description--header {
-  color: red;
   display: flex;
   flex-direction: row;
   justify-content: space-between;

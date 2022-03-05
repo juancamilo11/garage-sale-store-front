@@ -426,6 +426,10 @@ const FormSection03 = () => {
               </button>
             </div>
           </div>
+          <ProductItemList
+            arrProducts={arrProducts}
+            setArrProducts={setArrProducts}
+          />
           {arrProducts.length > 0 && (
             <>
               <div className="store-setup__final-form-ind store-setup__final-form-ind--product-category">
@@ -450,10 +454,6 @@ const FormSection03 = () => {
           />
         </div>
       )}
-      <ProductItemList
-        arrProducts={arrProducts}
-        setArrProducts={setArrProducts}
-      />
     </div>
   );
 };

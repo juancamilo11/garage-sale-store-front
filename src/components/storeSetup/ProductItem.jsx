@@ -34,7 +34,7 @@ const ProductItem = ({ product, setArrProducts }) => {
             <span className="product-item__category">{product.category}</span>
           </span>
           <p className="product-item__secondary--quantity">
-            {product.quantity}
+            Cantidad: <b>{product.quantity}</b> Unidades
           </p>
         </div>
       </div>
