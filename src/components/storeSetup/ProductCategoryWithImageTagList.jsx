@@ -1,18 +1,25 @@
 import React from "react";
 import { sweetalertForCategoryDeleteConfirmationForm03StoreSetupBuilder } from "../../helpers/SweetalertBuilder";
 
-const ProductCategoryWithImageTagList = ({ categoryList, setCategoryList }) => {
+const ProductCategoryWithImageTagList = ({
+  categoryList,
+  setCategoryList,
+  setArrProducts,
+}) => {
   const handleDeleteTag = (categoryToDelete) => {
     sweetalertForCategoryDeleteConfirmationForm03StoreSetupBuilder(
       categoryToDelete
     ).then((response) => {
       if (response.isConfirmed) {
+        setArrProducts((arrProducts) =>
+          arrProducts.filter(
+            (product) => product.category !== categoryToDelete.categoryName
+          )
+        );
         const newCategoryList = categoryList.filter(
           (category) => category.categoryName !== categoryToDelete.categoryName
         );
         setCategoryList(newCategoryList);
-        //toDo -> Delete category image from cloudinary
-        //toDo -> Dispatch action to reducer to delete products with the deleted category
       }
     });
   };

@@ -2,16 +2,38 @@
   padding: 3px 15px;
 }
 
-.buttons__button-new-store {
-  padding: 11px 10px;
-  border-radius: 50%;
+.button__button-new-store-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.button__button-new-store {
+  padding: 10px 20px 0px 20px;
+  border-radius: 15px;
   font-size: 30px;
-  position: fixed;
-  z-index: 10000;
-  right: 20px;
-  bottom: 15px;
   background-color: lightgray;
   border: 1px solid #222;
+  width: auto;
+  transition: all 0.5s ease;
+}
+
+.button__button-new-store:hover {
+  background-color: darkgray;
+  transition: all 0.5s ease;
+}
+
+.button__button-new-store-img {
+  width: 50px;
+}
+
+.button__button-new-store-text {
+  font-size: 20px;
+  font-weight: 600;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  cursor: pointer;
 }
 
 .button__input-file-hidden {

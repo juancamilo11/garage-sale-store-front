@@ -14,7 +14,6 @@ const HomeUserProfile = () => {
           })`,
         }}
       ></div>
-      <ButtonCreateNewStore />
 
       <div className="userprofile__home-content">
         <picture>

@@ -9,13 +9,19 @@ const ButtonCreateNewStore = () => {
   };
 
   return (
-    <button
-      onClick={handleCreateNewStore}
-      className="buttons__button-new-store"
-      title="Crear una nueva venta de garaje"
-    >
-      <i class="fas fa-store"></i>
-    </button>
+    <div className="button__button-new-store-container">
+      <button
+        onClick={handleCreateNewStore}
+        className="button__button-new-store"
+        title="Crear una nueva venta de garaje"
+      >
+        <img
+          src="https://res.cloudinary.com/dahwtwzdl/image/upload/v1646444689/garage-sale-store/assets/store-catalog/store_128_pu3frd.png"
+          className="button__button-new-store-img"
+        />
+        <p className="button__button-new-store-text">Crear nueva tienda</p>
+      </button>
+    </div>
   );
 };
 

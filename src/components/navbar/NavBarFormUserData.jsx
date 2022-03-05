@@ -7,12 +7,8 @@ const NavBarFormUserData = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const handleGoToProfile = () => {
-    navigate("/user-profile");
-  };
-
-  const handleLogout = () => {
-    dispatch(startLogout());
+  const handleGoToStoreCatalog = () => {
+    navigate("/store-catalog");
   };
 
   return (
@@ -21,12 +17,9 @@ const NavBarFormUserData = () => {
       <div className="nav-form-data__buttons-container">
         <button
           className="nav-user-profile__button"
-          onClick={handleGoToProfile}
+          onClick={handleGoToStoreCatalog}
         >
-          Regresar a tu perfil
-        </button>
-        <button className="nav-user-profile__button" onClick={handleLogout}>
-          Salir
+          Regresar al catálogo de tiendas
         </button>
       </div>
     </nav>

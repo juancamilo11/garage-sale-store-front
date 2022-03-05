@@ -58,6 +58,7 @@ const FormSection03 = () => {
 
   const handleFinalizeInputProducts = (e) => {
     e.preventDefault();
+    if (arrProducts.length === 0) return;
     sweetalertForFinalizeInputProductsBuilder(arrProducts).then((res) => {
       if (res.isConfirmed) {
         sweetalertForGenericSuccessBuilder(
@@ -109,15 +110,12 @@ const FormSection03 = () => {
       { ...formValues, productTagList },
     ]);
     console.log(formValues);
-    resetForm(section_03FormValues);
-    setErrorsState(section_03ErrorState);
-    resetImagesFromView();
-    setProductTagList([]);
+    handleResetForm();
     sweetalertForGenericSuccessBuilder("¡Producto ingresado correctamente!");
   };
 
   const handleResetForm = (e) => {
-    e.preventDefault();
+    e && e.preventDefault();
     resetForm(section_03FormValues);
     setProductTagList([]);
     setErrorsState(section_03ErrorState);
@@ -133,6 +131,7 @@ const FormSection03 = () => {
         categoryList={categoryList}
         setCategoryList={setCategoryList}
         formChecking={formCheckSection02IsValidated}
+        setArrProducts={setArrProducts}
       />
       {categoryList.length > 0 ? (
         <form

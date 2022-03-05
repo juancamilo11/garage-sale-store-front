@@ -7,6 +7,7 @@ import Paginator from "../../components/Paginator";
 import { getCatalogStoreFakeData } from "../../helpers/catalogStoreFakeData";
 import { sweetalertForSearchAndFilterStoresBuilder } from "../../helpers/SweetalertBuilder";
 import StoreEntries from "./StoreEntries";
+import ButtonCreateNewStore from "./../../components/ButtonCreateNewStore";
 
 const Sidebar = () => {
   const navigate = useNavigate();
@@ -54,7 +55,7 @@ const Sidebar = () => {
           Buscar y filtrar
         </button>
       </div>
-
+      <ButtonCreateNewStore />
       <StoreEntries stores={stores} />
       <Paginator />
     </aside>

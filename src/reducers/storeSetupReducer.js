@@ -3,7 +3,7 @@ import types from "./../types/types";
 const initialState = {
   firstFormInfo: {},
   secondFormInfo: {},
-  thirdfirstFormInfo: {},
+  thirdFormInfo: {},
   formCheckSection01IsValidated: true,
   formCheckSection02IsValidated: true,
   formCheckSection03IsValidated: false,
@@ -27,7 +27,7 @@ const storeSetupReducer = (state = initialState, action) => {
     case types.addThirdFormInfoToCreateStore:
       return {
         ...state,
-        thirdfirstFormInfo: action.payload,
+        thirdFormInfo: action.payload,
         formCheckSection03IsValidated: true,
       };
 
@@ -58,7 +58,7 @@ const storeSetupReducer = (state = initialState, action) => {
     case types.resetThirdFormInfoToCreateStore:
       return {
         ...state,
-        thirdfirstFormInfo: {},
+        thirdFormInfo: {},
         formCheckSection03IsValidated: false,
       };
     default:

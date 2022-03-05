@@ -19,6 +19,7 @@ const InputProductCategory = ({
   categoryList,
   setCategoryList,
   formChecking,
+  setArrProducts,
 }) => {
   const [formValues, handleCategoryInputChange, resetForm] = useForm({
     categoryName: "sdsfsdfsdf",
@@ -106,7 +107,7 @@ const InputProductCategory = ({
             {errorsState.categoryName.hasErrors && (
               <div
                 className="store-setup__product-categories-error-flag"
-                className={{ marginTop: "50px", backgroundColor: "blue" }}
+                style={{ marginTop: "50px", backgroundColor: "blue" }}
               >
                 <ErrorFlag
                   message={errorsState.categoryName.message}
@@ -176,6 +177,7 @@ const InputProductCategory = ({
                 <ProductCategoryWithImageTagList
                   categoryList={categoryList}
                   setCategoryList={setCategoryList}
+                  setArrProducts={setArrProducts}
                 />
               ) : (
                 <ErrorFlag
