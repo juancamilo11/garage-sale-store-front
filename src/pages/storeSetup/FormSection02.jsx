@@ -133,7 +133,13 @@ const FormSection02 = () => {
       "Segunda parte completada exitosamente, vamos por la última parte!"
     );
 
-    // dispatch(addSecondFormInfoToCreateStore());
+    dispatch(
+      addSecondFormInfoToCreateStore({
+        portraitUrl,
+        prevImagesList,
+        physicalStoreImageUrl,
+      })
+    );
   };
 
   return (

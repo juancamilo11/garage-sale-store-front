@@ -106,7 +106,7 @@ const FormSection01 = () => {
       sweetalertForErrorsReportForm01StoreSetupBuilder(errorsReport);
       return;
     }
-    dispatch(addFirstFormInfoToCreateStore());
+    dispatch(addFirstFormInfoToCreateStore({ ...formValues, tagsList }));
     sweetalertForGenericSuccessBuilder(
       "Primera parte completada exitosamente, vamos por la segunda parte!"
     );

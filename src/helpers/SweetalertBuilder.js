@@ -398,3 +398,26 @@ export const sweetalertForDeletingStoreFromFavoritesBuilder = (storeName) =>
       "</b>" +
       " ha sido removida de tu lista de tiendas favoritas.",
   });
+
+export const sweetalertFoProductDeleteConfirmationBuilder = (productToDelete) =>
+  Swal.fire({
+    icon: "warning",
+    html:
+      "<h3>Eliminación del producto <b>" +
+      productToDelete.productName +
+      "</b></h3>",
+    imageUrl: `${productToDelete.productUrlImages[0]}`,
+    imageHeight: "180",
+    imageAlt: `${"categoryToDelete.categoryName"}`,
+    footer: `<b>Esta acción no se puede deshacer</b> 
+      <br/>
+      <small></small>`,
+    showConfirmButton: true,
+    showDenyButton: false,
+    showCancelButton: true,
+    confirmButtonText: "Eliminar",
+    cancelButtonText: "Cancelar",
+    cancelButtonColor: "red",
+    allowEscapeKey: false,
+    allowOutsideClick: false,
+  });

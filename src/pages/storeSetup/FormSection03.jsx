@@ -20,6 +20,7 @@ import {
 import { useDispatch } from "react-redux";
 import { addThirdFormInfoToCreateStore } from "../../actions/storeSetupActions";
 import { useSelector } from "react-redux";
+import ProductItemList from "../../components/storeSetup/ProductItemList";
 
 const FormSection03 = () => {
   const [formValues, handleInputChange, resetForm] =
@@ -449,6 +450,10 @@ const FormSection03 = () => {
           />
         </div>
       )}
+      <ProductItemList
+        arrProducts={arrProducts}
+        setArrProducts={setArrProducts}
+      />
     </div>
   );
 };
