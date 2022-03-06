@@ -1,12 +1,27 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import newStoreObjectBuilder from "../../helpers/storeSetupHelpers/newStoreObjectBUilder";
 
 const FinalSectionStoreSetup = () => {
-  const { storeSetup } = useSelector((state) => state.state);
+  const { firstFormInfo, secondFormInfo, thirdFormInfo } = useSelector(
+    (state) => state.storeSetup
+  );
 
   const handleFinishStoreCreation = (e) => {
     e.preventDefault();
-    window.alert(JSON.stringify(storeSetup));
+    localStorage.setItem(
+      "newStore",
+      JSON.stringify({
+        ...firstFormInfo,
+        ...secondFormInfo,
+        productList: thirdFormInfo,
+      })
+    );
+    newStoreObjectBuilder({
+      ...firstFormInfo,
+      ...secondFormInfo,
+      productList: thirdFormInfo,
+    });
   };
 
   return (

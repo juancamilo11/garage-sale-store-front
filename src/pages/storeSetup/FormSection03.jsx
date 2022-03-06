@@ -66,7 +66,8 @@ const FormSection03 = () => {
           "Última parte completada exitosamente,sólo falta un paso más y todo estará listo!"
         );
         //Enviar este objeto al reducer de la construccion de la tienda
-        dispatch(addThirdFormInfoToCreateStore());
+        console.log(JSON.stringify({ arrProducts }));
+        dispatch(addThirdFormInfoToCreateStore({ productList: arrProducts }));
       }
     });
   };
@@ -110,7 +111,6 @@ const FormSection03 = () => {
       ...arrProducts,
       { ...formValues, productTagList },
     ]);
-    console.log(formValues);
     handleResetForm();
     sweetalertForGenericSuccessBuilder("¡Producto ingresado correctamente!");
   };

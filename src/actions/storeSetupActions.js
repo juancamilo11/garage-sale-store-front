@@ -12,7 +12,7 @@ export const addSecondFormInfoToCreateStore = (secondFormValues) => ({
 
 export const addThirdFormInfoToCreateStore = (thirdFormValues) => ({
   type: types.addThirdFormInfoToCreateStore,
-  payload: thirdFormValues,
+  payload: thirdFormValues.productList,
 });
 
 export const resetFirstFormInfoToCreateStore = () => ({
