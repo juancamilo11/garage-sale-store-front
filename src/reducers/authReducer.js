@@ -5,9 +5,10 @@ if(logged) ->
 {
   uid: 3DN43784387MCM7,
   name: Juan Camilo Cardona Calderón,
+  email: juancamilo19997814@gmail.com,
   photoUrl: https://lh3.googleusercontent.com/a-/AOh14GjnkTKE1MwBx1jBXLj6SCsCSUANvgmn28L0yh31wg=s96-c-rg-br100,
   creationTime: 1640499732459
-}
+  lastSignInTime: 1652034802309
 
 if(!logged) -> {} 
 

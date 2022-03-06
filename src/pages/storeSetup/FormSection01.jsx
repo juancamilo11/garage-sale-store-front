@@ -1,4 +1,4 @@
-import React, { useReducer, useState } from "react";
+import React, { useEffect, useState } from "react";
 import ErrorFlag from "../../components/ErrorFlag";
 import section01Validator, {
   form01SubmitValidation,
@@ -18,7 +18,7 @@ import {
   sweetalertForInputTagErrorBuilder,
   sweetalertForInputCurrentLocationDenyBuilder,
 } from "../../helpers/SweetalertBuilder";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
   addFirstFormInfoToCreateStore,
   resetFirstFormInfoToCreateStore,
@@ -26,6 +26,8 @@ import {
 import MapBuilderByStoreSetupLocation from "../../components/storeSetup/maps/MapBuilderByStoreSetupLocation";
 
 const FormSection01 = () => {
+  const { auth } = useSelector((state) => state);
+
   const [formValues, handleInputChange, resetForm] =
     useForm(section_01FormValues);
 
@@ -40,6 +42,7 @@ const FormSection01 = () => {
   const dispatch = useDispatch();
 
   const {
+    storeId,
     storeName,
     tag,
     slogan,
@@ -48,6 +51,19 @@ const FormSection01 = () => {
     endingDate,
     address,
   } = formValues;
+
+  useEffect(() => {
+    const sellerInformation = {
+      uid: auth.uid,
+      name: auth.name,
+      photoUrl: auth.photoUrl,
+      creationTime: Date.parse(auth.creationTime),
+      userContact: {
+        email: auth.email,
+      },
+    };
+    handleInputChange({ target: { name: "seller", value: sellerInformation } });
+  }, []);
 
   const handleRequestLocation = () => {
     sweetalertForInputCurrentLocationForStoreSetupBuilder().then((result) => {

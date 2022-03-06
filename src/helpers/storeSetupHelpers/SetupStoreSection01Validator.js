@@ -1,7 +1,9 @@
 import moment from "moment";
+import { v4 as uuidv4 } from "uuid";
 
 //Initial values for the section #1 form of the store setup.
 export const section_01FormValues = {
+  storeId: uuidv4(),
   storeName: "nombre de la tienda",
   tag: "",
   slogan: "Slogan de la tienda nueva",
@@ -9,6 +11,7 @@ export const section_01FormValues = {
   startingDate: "03-02-2022",
   endingDate: "04-02-2022",
   address: { latitude: 0, longitude: 0 },
+  seller: {},
 };
 
 //Initial values for the section #1 errors of the store setup.
