@@ -17,10 +17,12 @@ const FinalSectionStoreSetup = () => {
         productList: thirdFormInfo,
       })
     );
+
     newStoreObjectBuilder({
       ...firstFormInfo,
       ...secondFormInfo,
-      productList: thirdFormInfo,
+      productList: thirdFormInfo.productList,
+      productCategoryList: thirdFormInfo.productCategoryList,
     });
   };
 

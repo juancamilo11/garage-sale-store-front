@@ -42,7 +42,7 @@ const FormSection01 = () => {
   const dispatch = useDispatch();
 
   const {
-    storeId,
+    // storeId,
     storeName,
     tag,
     slogan,
@@ -50,6 +50,7 @@ const FormSection01 = () => {
     startingDate,
     endingDate,
     address,
+    // seller
   } = formValues;
 
   useEffect(() => {

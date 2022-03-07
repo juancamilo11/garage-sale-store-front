@@ -28,7 +28,6 @@ const FormSection03 = () => {
 
   const [arrProducts, setArrProducts] = useState([]);
   const [categoryList, setCategoryList] = useState([]);
-  const [productImagesUrlList, setProductImagesUrlList] = useState([]);
   const [productTagList, setProductTagList] = useState([]);
 
   const [errorsState, setErrorsState] = useState(section_03ErrorState);
@@ -66,8 +65,17 @@ const FormSection03 = () => {
           "Última parte completada exitosamente,sólo falta un paso más y todo estará listo!"
         );
         //Enviar este objeto al reducer de la construccion de la tienda
-        console.log(JSON.stringify({ arrProducts }));
-        dispatch(addThirdFormInfoToCreateStore({ productList: arrProducts }));
+        dispatch(
+          addThirdFormInfoToCreateStore({
+            productList: arrProducts.map((product) => {
+              return {
+                ...product,
+                productState: `STATUS_${product.productState}`,
+              };
+            }),
+            productCategoryList: categoryList,
+          })
+        );
       }
     });
   };
