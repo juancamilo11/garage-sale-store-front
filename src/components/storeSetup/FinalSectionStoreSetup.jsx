@@ -1,29 +1,25 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { startPostGarageSaleStore } from "../../actions/storeSetupActions";
 import newStoreObjectBuilder from "../../helpers/storeSetupHelpers/newStoreObjectBUilder";
 
 const FinalSectionStoreSetup = () => {
+  const dispatch = useDispatch();
+
   const { firstFormInfo, secondFormInfo, thirdFormInfo } = useSelector(
     (state) => state.storeSetup
   );
 
   const handleFinishStoreCreation = (e) => {
     e.preventDefault();
-    localStorage.setItem(
-      "newStore",
-      JSON.stringify({
-        ...firstFormInfo,
-        ...secondFormInfo,
-        productList: thirdFormInfo,
-      })
-    );
 
-    newStoreObjectBuilder({
+    const storeReadyToSend = newStoreObjectBuilder({
       ...firstFormInfo,
       ...secondFormInfo,
       productList: thirdFormInfo.productList,
       productCategoryList: thirdFormInfo.productCategoryList,
     });
+    dispatch(startPostGarageSaleStore(storeReadyToSend));
   };
 
   return (

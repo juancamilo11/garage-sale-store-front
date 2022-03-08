@@ -41,6 +41,9 @@ const newStoreObjectBuilder = (store) => {
     purchaseTestimonialList: [],
     purchaseOrderList: [],
   };
+
+  return storeToSend;
+
   localStorage.setItem("storeReadyToSend", JSON.stringify(storeToSend));
 };
 

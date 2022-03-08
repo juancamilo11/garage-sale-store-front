@@ -1,4 +1,6 @@
+import { baseUrl } from "../environment/environment";
 import types from "../types/types";
+import { finishLoading, startLoading } from "./uiActions";
 
 export const addFirstFormInfoToCreateStore = (firstFormValues) => ({
   type: types.addFirstFormInfoToCreateStore,
@@ -34,3 +36,34 @@ export const confirmStoreCreation = () => ({
 export const unConfirmStoreCreation = () => ({
   type: types.unConfirmStoreCreation,
 });
+
+export const setActiveStore = (store) => ({
+  type: types.setActiveStore,
+  payload: store,
+});
+
+export const startPostGarageSaleStore = (objectStore) => {
+  return async (dispatch) => {
+    dispatch(startLoading());
+    try {
+      const response = await fetch(`${baseUrl}/api/v1/post/store`, {
+        method: "POST",
+        headers: {
+          "Content-Type:": "application/json",
+        },
+        body: JSON.stringify(objectStore),
+      });
+      if (response.ok) {
+        const newStore = await response.json();
+        dispatch(setActiveStore(newStore));
+      } else {
+        throw await response.json();
+      }
+      dispatch(finishLoading());
+    } catch (err) {
+      throw err;
+    } finally {
+      dispatch(finishLoading());
+    }
+  };
+};

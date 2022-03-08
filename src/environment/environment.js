@@ -1,2 +1,1 @@
-export const baseUrl = "http://localhost:8080";
-// export const baseUrl = "https://garage-sale-store.web.app/";
+export const baseUrl = "http://192.168.1.3:8084";

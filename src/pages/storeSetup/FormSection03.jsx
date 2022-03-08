@@ -9,7 +9,6 @@ import { section_03ErrorState } from "./../../helpers/storeSetupHelpers/SetupSto
 import useForm from "../../hooks/useForm";
 import ProductTagList from "../../components/storeSetup/ProductTagList";
 import InputProductCategory from "../../components/storeSetup/InputProductCategory";
-import latamCountries from "../../helpers/latamCountries";
 import productStates from "./../../helpers/productStates";
 import {
   sweetalertForErrorsReportForm03StoreSetupBuilder,
@@ -56,6 +55,14 @@ const FormSection03 = () => {
     inputImage.click();
   };
 
+  const getArrProductWithProperStatus = (arrProducts) =>
+    arrProducts.map((product) => {
+      return {
+        ...product,
+        productState: `STATUS_${product.productState}`,
+      };
+    });
+
   const handleFinalizeInputProducts = (e) => {
     e.preventDefault();
     if (arrProducts.length === 0) return;
@@ -67,12 +74,7 @@ const FormSection03 = () => {
         //Enviar este objeto al reducer de la construccion de la tienda
         dispatch(
           addThirdFormInfoToCreateStore({
-            productList: arrProducts.map((product) => {
-              return {
-                ...product,
-                productState: `STATUS_${product.productState}`,
-              };
-            }),
+            productList: getArrProductWithProperStatus(arrProducts),
             productCategoryList: categoryList,
           })
         );
