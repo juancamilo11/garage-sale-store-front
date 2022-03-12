@@ -55,7 +55,6 @@ const Sidebar = () => {
           Buscar y filtrar
         </button>
       </div>
-      <ButtonCreateNewStore />
       <StoreEntries stores={stores} />
       <Paginator />
     </aside>
