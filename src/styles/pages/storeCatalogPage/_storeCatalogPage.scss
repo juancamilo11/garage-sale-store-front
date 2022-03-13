@@ -58,8 +58,12 @@
 }
 
 .store-catalog__search-button:hover {
-  background-color: rgb(78, 77, 77);
+  background-color: #5c62c5;
   transition: all 0.2s ease-in;
+}
+
+.store-catalog__logout-button:hover {
+  background-color: rgb(241, 67, 67);
 }
 
 //new entry
@@ -190,12 +194,13 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  padding-right: 5px;
+  padding-right: 10px;
+  padding-left: 10px;
   border-radius: 5px;
 }
 
 .store-catalog__sidebar-user-info:hover {
-  background-color: rgb(56, 56, 56);
+  background-color: rgb(112, 110, 110);
   transition: all 0.2s ease-in;
 }
 

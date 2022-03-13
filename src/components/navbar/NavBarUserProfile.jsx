@@ -11,10 +11,6 @@ const NavBarUserProfile = () => {
     navigate("/store-catalog");
   };
 
-  const handleLogout = () => {
-    dispatch(startLogout());
-  };
-
   return (
     <nav className="navbar-user-profile__main-container">
       <div className="nav-user-profile__links-container">
@@ -42,9 +38,6 @@ const NavBarUserProfile = () => {
           onClick={handleGoToCatalog}
         >
           Regresar al catálogo de tiendas
-        </button>
-        <button className="nav-user-profile__button" onClick={handleLogout}>
-          Salir
         </button>
       </div>
     </nav>

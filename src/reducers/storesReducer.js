@@ -16,7 +16,7 @@ export const storesReducer = (state = initialState, action) => {
     case types.loadStores:
       return {
         ...state,
-        garageSaleStores: [...action.payload],
+        garageSaleStores: action.payload,
       };
     case types.storesLogoutCleaning:
       return { ...state, activeStore: null, garageSaleStores: [] };

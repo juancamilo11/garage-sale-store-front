@@ -1,5 +1,5 @@
 import types from "../types/types";
-import { startLoading } from "./uiActions";
+import { finishLoading, startLoading } from "./uiActions";
 import { baseUrl } from "./../environment/environment";
 
 export const FAVORITE_TYPE_STORE = "Favorite Store Type";
@@ -7,6 +7,11 @@ export const FAVORITE_TYPE_PRODUCT = "Favorite Product Type";
 
 export const ACTION_TYPE_ADD_NEW_FAVORITE = "Add new Favorite";
 export const ACTION_TYPE_DELETE_FAVORITE = "Delete From Favorites";
+
+export const loadStores = (storeList) => ({
+  type: types.loadStores,
+  payload: storeList,
+});
 
 export const activeStore = (id, store) => ({
   type: types.setActiveStore,
@@ -53,6 +58,27 @@ const getActionToState = (stores, result) => {
       return deleteStoreFromFavorites(stores, result);
     }
   }
+};
+
+export const startFetchAllActiveStores = () => {
+  return async (dispatch) => {
+    dispatch(startLoading());
+    try {
+      const response = await fetch(`${baseUrl}/api/v1/get/stores`);
+      if (response.ok) {
+        const storeList = await response.json();
+        console.log(storeList);
+        dispatch(loadStores(storeList));
+      } else {
+        dispatch(finishLoading());
+        throw await response.json();
+      }
+    } catch (err) {
+      throw err;
+    } finally {
+      dispatch(finishLoading());
+    }
+  };
 };
 
 export const setStoreOrProductAsFavorite = (
