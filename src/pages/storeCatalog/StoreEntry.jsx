@@ -55,9 +55,11 @@ const StoreEntry = ({
         </p>
         <p className="store-catalog__store-entry-content">
           <i class="fas fa-calendar-alt store-catalog__icon-entry-value"></i>
-          Desde el{" "}
-          <span className="bold-text">{storeExistencePeriod.startingDate}</span>
-          Hasta el -{" "}
+          Desde{" "}
+          <span className="bold-text">
+            {storeExistencePeriod.startingDate}
+          </span>{" "}
+          hasta{" "}
           <span className="bold-text">{storeExistencePeriod.endingDate}</span>
         </p>
         <p className="store-catalog__store-entry-content">

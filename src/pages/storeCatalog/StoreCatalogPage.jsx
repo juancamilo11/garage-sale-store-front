@@ -8,11 +8,6 @@ import StoreGatewayScreen from "./StoreGatewayScreen";
 const StoreCatalogPage = () => {
   const { stores } = useSelector((state) => state);
 
-  //This useEffect'll be used to make a request for user current location
-  useEffect(() => {
-    return () => {};
-  }, []);
-
   return (
     <div className="store-catalog__main-content">
       <Sidebar />

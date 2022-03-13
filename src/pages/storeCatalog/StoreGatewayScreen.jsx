@@ -13,28 +13,41 @@ const StoreGatewayScreen = () => {
     e.preventDefault();
     navigate(`/store/${activeStore.id}`);
   };
+  /*
+
+    id
+    storeName,
+    storeExistencePeriod,
+    storeDescription,
+    storeVisualDescription,
+    storeAddress,
+    viewsCount,
+      
+*/
 
   return (
     <div className="store-gateway__main-container">
       <div className="store-gateway__content">
-        <NavBarStoreGateway storeName={activeStore.name} />
-        <div className="user-form-data__section-title user-form-data__section-title-store-catalog">
+        <NavBarStoreGateway storeName={activeStore.storeName} />
+        <div className="user-form-data__section-title user-form-data__section-title-store-catalog mt-5">
           <SectionTitle sectionTitle="Previsualización de la tienda" />
         </div>
         {/* {JSON.stringify(activeStore)} */}
         <div className="store-gateway__description">
           <div className="store-gateway__description-text">
-            <p className="store-gateway__descriptor">"{activeStore.slogan}"</p>
             <p className="store-gateway__descriptor">
-              {activeStore.description}
+              "{activeStore.storeDescription.slogan}"
+            </p>
+            <p className="store-gateway__descriptor">
+              {activeStore.storeDescription.description}
             </p>
             <p className="store-gateway__store-taglist">
-              {activeStore.storeTags.map((storeTag) => (
+              {activeStore.storeDescription.tagsList.map((storeTag) => (
                 <h6 key={storeTag}>{storeTag}</h6>
               ))}
             </p>
             <button
-              className="nav-user-profile__button mr-2"
+              className="nav-user-profile__button visit-store__button"
               onClick={handleVisitStore}
             >
               Visitar la tienda
@@ -43,7 +56,7 @@ const StoreGatewayScreen = () => {
           <div className="store-gateway__description-img-container">
             <img
               className="store-gateway__description-img"
-              src={process.env.PUBLIC_URL + "/assets/common/emptyImage.png"}
+              src={activeStore.storeVisualDescription.physicalStoreImageUrl}
               alt="empty"
             />
           </div>

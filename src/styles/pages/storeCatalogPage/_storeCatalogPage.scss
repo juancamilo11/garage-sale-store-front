@@ -412,6 +412,8 @@
 .store-gateway__main-container {
   width: 55%;
   overflow-wrap: break-word;
+  height: 100vh;
+  overflow-y: scroll;
 }
 
 .navbar-store-gateway__content {
@@ -461,6 +463,8 @@
 
 .store-gateway__description-img {
   width: 90%;
+  border-radius: 5px;
+  border: 2px solid darkgray;
 }
 
 .store-gateway__descriptor {

@@ -59,6 +59,7 @@
 }
 
 .nav-user-profile__button {
+  margin-right: 15px;
   padding: 0px 20px;
   border: 1px solid black;
   border-radius: 5px;
@@ -78,4 +79,10 @@
   justify-content: space-evenly;
   width: 360px;
   height: 100%;
+}
+
+.visit-store__button {
+  position: absolute;
+  top: 60px;
+  right: 15px;
 }

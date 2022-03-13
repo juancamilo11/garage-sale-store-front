@@ -101,7 +101,6 @@ const UserDataForm = () => {
                 value={name}
                 className="user-form-data__input"
                 autoComplete="off"
-                readOnly
               />
             </div>
             <div className="user-form-data__input-container">
@@ -313,7 +312,7 @@ const UserDataForm = () => {
         <div className="user-form-data__centered-container">
           <div className="user-form-data__buttons-container">
             <button className="user-form-data__button-update" type="submit">
-              Confirmar cambios
+              Ingresar producto
             </button>
             <button
               className="user-form-data__button-update"
