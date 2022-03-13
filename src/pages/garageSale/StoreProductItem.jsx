@@ -1,4 +1,5 @@
 import React from "react";
+import { getProductStatusNameByNumber } from "../../helpers/productStates";
 
 const StoreProductItem = ({
   id,
@@ -31,8 +32,12 @@ const StoreProductItem = ({
         </div>
         <div className="product-item__description--secondary">
           <span className="product-item__secondary">
-            Categoría:{" "}
-            <span className="product-item__category">{productStatus}</span>
+            Estado:{" "}
+            <span className="product-item__category">
+              {getProductStatusNameByNumber(
+                parseInt(productStatus.split("_")[1])
+              )}
+            </span>
           </span>
           <p className="product-item__secondary--quantity">
             Cantidad: <b>{quantity}</b> Unidades

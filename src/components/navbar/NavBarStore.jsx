@@ -19,16 +19,16 @@ const NavBarStore = () => {
       <div className="nav-user-profile__links-container">
         <ul className="nav-user-profile__links-list">
           <li className="nav-user-profile__link">
-            <a href="#navbar-user-profile__section">Principal</a>
+            <a href="#">Principal</a>
           </li>
           <li className="nav-user-profile__link">
-            <a href="#store-card-list__section">Productos</a>
+            <a href="#hcategory-list__main-container">Productos</a>
           </li>
           <li className="nav-user-profile__link">
-            <a href="#transaction-card-list__section">Testimonios</a>
+            <a href="#">Testimonios</a>
           </li>
           <li className="nav-user-profile__link">
-            <a href="#favorite-store-list__section">Contactos</a>
+            <a href="#">Contacto</a>
           </li>
         </ul>
       </div>

@@ -25,4 +25,8 @@ const productStates = [
   },
 ];
 
+export const getProductStatusNameByNumber = (number) =>
+  productStates.filter((status) => status.statusNumber === number)[0]
+    .statusName;
+
 export default productStates;
