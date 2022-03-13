@@ -8,6 +8,8 @@ import SectionTitle from "../../components/SectionTitle";
 import HomeUserProfile from "../../components/user-profile/HomeUserProfile";
 import UserPersonalData from "../../components/user-profile/UserPersonalData";
 import GarageSaleHome from "./GarageSaleHome";
+import HorizontalProductCategoryList from "./HorizontalProductCategoryList";
+import NoProductCategorySelected from "./NoProductCategorySelected";
 
 const GarageSalePage = () => {
   const params = useParams();
@@ -16,12 +18,21 @@ const GarageSalePage = () => {
   const [activeStore, setActiveStore] = useState(
     garageSaleStores.filter((store) => store.id === params.storeId)[0]
   );
+  const [activeCategory, setActiveCategory] = useState(""); //Name of the active category
 
   useEffect(() => {
     if (activeStore === undefined) {
       navigate("/store-catalog");
     }
+    const lastActiveCategory = localStorage.getItem("activeCategory");
+    if (lastActiveCategory) {
+      setActiveCategory(lastActiveCategory);
+    }
   }, []);
+
+  useEffect(() => {
+    localStorage.setItem("activeCategory", activeCategory);
+  }, [activeCategory]);
 
   return (
     // <h1>Venta de garaje {params.storeId}</h1>
@@ -33,16 +44,28 @@ const GarageSalePage = () => {
         id="navbar-user-profile__section"
       >
         <GarageSaleHome
-          storeName={activeStore.storeName}
-          slogan={activeStore.storeDescription.slogan}
-          portraitUrl={activeStore.storeVisualDescription.portraitUrl}
+          storeName={activeStore?.storeName}
+          slogan={activeStore?.storeDescription.slogan}
+          portraitUrl={activeStore?.storeVisualDescription.portraitUrl}
         />
       </div>
-      <div
-        className="userprofile__data-container"
-        id="user-personal-data__section"
-      ></div>
-      <SectionTitle sectionTitle="Lista de productos" />
+      <div className="store__categories-section">
+        <HorizontalProductCategoryList
+          setActiveCategory={setActiveCategory}
+          productCategoryList={activeStore?.productCategoryList || []}
+        />
+      </div>
+      <div className="any">
+        {activeCategory ? (
+          <>
+            <SectionTitle
+              sectionTitle={`Lista de productos de tipo ${activeCategory}`}
+            />
+          </>
+        ) : (
+          <NoProductCategorySelected />
+        )}
+      </div>
     </div>
   );
 };
