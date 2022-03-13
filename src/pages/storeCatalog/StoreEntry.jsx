@@ -6,33 +6,26 @@ const MAX_NUM_TAGS_DISPLAYED = 10;
 
 const StoreEntry = ({
   id,
-  name,
-  slogan,
-  description,
-  endingDate,
-  location,
-  storeTags,
-  urlStore,
-  isAFavorite,
+  storeName,
+  storeExistencePeriod,
+  storeDescription,
+  storeVisualDescription,
+  storeAddress,
   viewsCount,
-  portraitImageUrl,
 }) => {
   const dispatch = useDispatch();
   const stores = useSelector((state) => state.stores);
   const activedStore = stores.activeStore;
+
   const handleSelectStore = () => {
     dispatch(
       activeStore(id, {
-        name,
-        slogan,
-        description,
-        endingDate,
-        location,
-        storeTags,
-        urlStore,
-        isAFavorite,
+        storeName,
+        storeExistencePeriod,
+        storeDescription,
+        storeVisualDescription,
+        storeAddress,
         viewsCount,
-        portraitImageUrl,
       })
     );
   };
@@ -47,30 +40,34 @@ const StoreEntry = ({
           className="store-catalog__store-entry-picture"
           style={{
             backgroundSize: "cover",
-            backgroundImage: `url(https://cdn.blacksoft.ca/assets/blacksoft/img/empty.png)`,
+            backgroundImage: `url(${storeVisualDescription.portraitUrl})`,
           }}
         ></div>
       }
 
       <div className="store-catalog__store-entry-body">
-        <h2 className="store-catalog__store-entry-title">{name}</h2>
+        <h2 className="store-catalog__store-entry-title">{storeName}</h2>
         <div className="store-catalog__decoration-line">
           <hr />
         </div>
         <p className="store-catalog__store-entry-content store-catalog__store-entry-slogan">
-          {slogan}
+          {storeDescription.slogan}
         </p>
         <p className="store-catalog__store-entry-content">
           <i class="fas fa-calendar-alt store-catalog__icon-entry-value"></i>
-          Abierta hasta el <span className="bold-text">{endingDate}</span>
+          Desde el{" "}
+          <span className="bold-text">{storeExistencePeriod.startingDate}</span>
+          Hasta el -{" "}
+          <span className="bold-text">{storeExistencePeriod.endingDate}</span>
         </p>
         <p className="store-catalog__store-entry-content">
           <i class="fas fa-map-marker-alt store-catalog__icon-entry-value"></i>
-          {location}
+          {storeAddress?.latitude || "latitude"} -{" "}
+          {storeAddress?.longitude || "longitude"}
         </p>
         <p>
           <i class="fas fa-tags store-catalog__icon-entry-value"></i>
-          {storeTags
+          {storeDescription.tagsList
             .slice(0, MAX_NUM_TAGS_DISPLAYED)
             .toString()
             .replaceAll(",", ", ")}
@@ -83,7 +80,7 @@ const StoreEntry = ({
             Ver tienda
           </button>
 
-          {isAFavorite ? (
+          {true ? (
             <i class="fas fa-heart store-catalog__icon-fav-store"></i>
           ) : (
             <i class="far fa-heart store-catalog__icon-fav-store"></i>

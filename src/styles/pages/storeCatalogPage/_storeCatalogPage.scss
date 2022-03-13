@@ -33,6 +33,7 @@
   // min-width: 700px;
   width: 45%;
   height: 100vh;
+  position: relative;
 }
 
 .store-catalog__sidebar-navbar {
@@ -257,6 +258,24 @@
   padding: 10px;
 }
 
+.stores__pagination-buttons {
+  display: flex;
+  justify-content: center;
+}
+
+.stores__pagination-button {
+  margin: 5px;
+  background-color: #5c62c5;
+  color: white;
+  padding: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.stores__pagination-button:active {
+  background-color: #7e83f0;
+}
+
 .store__country-input {
   width: 85%;
 }
@@ -388,57 +407,6 @@
   align-self: center;
   min-width: 100px;
   max-width: 250px;
-}
-
-.paginator__main-container {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-}
-
-.paginator__pagination-button {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  justify-content: center;
-  align-items: center;
-  margin: 5px 10px;
-  padding: 7px 15px;
-  background-color: $primary;
-  padding: 5px 10px;
-  border-radius: 4px;
-  font-weight: 600;
-  font-size: 0.8rem;
-  color: #ddd;
-}
-
-.store-catalog__icon-pagination {
-  margin: 5px;
-}
-.paginator__buttons-container {
-  display: flex;
-  flex-direction: row;
-}
-
-.paginator__pagination-items-container {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  vertical-align: auto;
-  margin-left: 30px;
-}
-
-#pagination-quantity-items {
-  margin-left: 20px;
-  width: 70px;
-  height: 30px;
-  font-weight: bold;
-  background-color: #ccc;
-  border-radius: 5px;
-}
-
-.paginator__pagination-items-container label {
-  margin-top: 5px;
 }
 
 .store-gateway__main-container {

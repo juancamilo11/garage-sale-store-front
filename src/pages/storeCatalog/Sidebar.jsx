@@ -2,8 +2,6 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import Swal from "sweetalert2";
-import Paginator from "../../components/Paginator";
 import { getCatalogStoreFakeData } from "../../helpers/catalogStoreFakeData";
 import { sweetalertForSearchAndFilterStoresBuilder } from "../../helpers/SweetalertBuilder";
 import StoreEntries from "./StoreEntries";
@@ -19,10 +17,6 @@ const Sidebar = () => {
   //const { stores } = useSelector((state) => state);
   //Aquí es donde se llevan a cabo los procesos de filtrado y búsqueda y ordenamiento
   const [stores, setStores] = useState(getCatalogStoreFakeData);
-  const [storesPagination, setStoresPagination] = useState({
-    skip: 0,
-    limit: 30,
-  });
   const [searchValue, setSearchValue] = useState("");
 
   const handleGoToProfile = (e) => {
@@ -77,8 +71,7 @@ const Sidebar = () => {
           </button>
         </div>
       </div>
-      <StoreEntries stores={stores} />
-      <Paginator />
+      <StoreEntries />
     </aside>
   );
 };
