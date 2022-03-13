@@ -3,6 +3,7 @@ import ProductCategoryItem from "./ProductCategoryItem";
 
 const HorizontalProductCategoryList = ({
   setActiveCategory,
+  activeCategory,
   productCategoryList,
 }) => {
   const productCategoryList2 = [
@@ -16,11 +17,15 @@ const HorizontalProductCategoryList = ({
   ];
 
   return (
-    <div className="hcategory-list__main-container">
+    <div
+      className="hcategory-list__main-container"
+      id="hcategory-list__main-container"
+    >
       {productCategoryList2.map((productCategory) => (
         <ProductCategoryItem
           {...productCategory}
           setActiveCategory={setActiveCategory}
+          activeCategory={activeCategory}
         />
       ))}
     </div>

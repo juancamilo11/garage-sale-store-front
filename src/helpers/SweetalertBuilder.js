@@ -421,3 +421,14 @@ export const sweetalertFoProductDeleteConfirmationBuilder = (productToDelete) =>
     allowEscapeKey: false,
     allowOutsideClick: false,
   });
+
+export const sweeralertForWelcomeToStore = (storeName) =>
+  Swal.fire({
+    icon: "success",
+    imageUrl: `${
+      process.env.PUBLIC_URL + "/assets/garage-store/welcome-store.png"
+    }`,
+    html: `<h5>¡Bienvenid@ a <b>${storeName}</b>!</h5>`,
+    showConfirmButton: false,
+    timer: 2000,
+  });

@@ -18,9 +18,12 @@ const GarageSaleHome = ({ storeName, slogan, portraitUrl }) => {
           <h3 className="userprofile__home-name store__home-slogan">
             {slogan}
           </h3>
-          <button className="store__home-button">
+          <a
+            href="#hcategory-list__main-container"
+            className="store__home-button"
+          >
             Empezar a explorar la tienda
-          </button>
+          </a>
         </div>
       </div>
     </div>

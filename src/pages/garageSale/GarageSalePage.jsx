@@ -7,9 +7,12 @@ import NavBarUserProfile from "../../components/navbar/NavBarUserProfile";
 import SectionTitle from "../../components/SectionTitle";
 import HomeUserProfile from "../../components/user-profile/HomeUserProfile";
 import UserPersonalData from "../../components/user-profile/UserPersonalData";
+import { sweeralertForWelcomeToStore } from "../../helpers/SweetalertBuilder";
 import GarageSaleHome from "./GarageSaleHome";
 import HorizontalProductCategoryList from "./HorizontalProductCategoryList";
 import NoProductCategorySelected from "./NoProductCategorySelected";
+import StoreProductCategoryList from "./StoreProductCategoryList";
+import StoreProductList from "./StoreProductCategoryList";
 
 const GarageSalePage = () => {
   const params = useParams();
@@ -23,6 +26,9 @@ const GarageSalePage = () => {
   useEffect(() => {
     if (activeStore === undefined) {
       navigate("/store-catalog");
+      return;
+    } else {
+      sweeralertForWelcomeToStore(activeStore?.storeName);
     }
     const lastActiveCategory = localStorage.getItem("activeCategory");
     if (lastActiveCategory) {
@@ -52,14 +58,21 @@ const GarageSalePage = () => {
       <div className="store__categories-section">
         <HorizontalProductCategoryList
           setActiveCategory={setActiveCategory}
+          activeCategory={activeCategory}
           productCategoryList={activeStore?.productCategoryList || []}
         />
       </div>
-      <div className="any">
+      {activeCategory && (
+        <SectionTitle
+          sectionTitle={`Lista de productos de tipo ${activeCategory}`}
+        />
+      )}
+      <div className="">
         {activeCategory ? (
           <>
-            <SectionTitle
-              sectionTitle={`Lista de productos de tipo ${activeCategory}`}
+            <StoreProductCategoryList
+              productCategoryList={activeStore.productCategoryList}
+              activeCategory={activeCategory}
             />
           </>
         ) : (
