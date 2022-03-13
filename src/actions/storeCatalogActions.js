@@ -18,6 +18,11 @@ export const activeStore = (id, store) => ({
   payload: { id, ...store },
 });
 
+export const setNoActiveStore = () => ({
+  type: types.setNoActiveStore,
+  payload: null,
+});
+
 //No implemented yet
 export const setProductAsFavorite = (stores, result) => ({
   type: types.setProductAsFavorite,

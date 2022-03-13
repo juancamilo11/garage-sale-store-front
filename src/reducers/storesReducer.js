@@ -13,6 +13,13 @@ export const storesReducer = (state = initialState, action) => {
           ...action.payload,
         },
       };
+    case types.setNoActiveStore:
+      return {
+        ...state,
+        activeStore: {
+          ...action.payload,
+        },
+      };
     case types.loadStores:
       return {
         ...state,

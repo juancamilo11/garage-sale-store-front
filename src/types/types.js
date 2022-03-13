@@ -21,6 +21,7 @@ const types = {
 
   //Actions to catalog store
   setActiveStore: "[StoreCatalog] Set Active Store",
+  setNoActiveStore: "[StoreCatalog] Set No Active Store",
   loadStores: "[StoreCatalog] Load Stores",
   storesLogoutCleaning: "[StoreCatalog] Stores Logout Cleaning",
 

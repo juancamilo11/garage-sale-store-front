@@ -8,6 +8,7 @@ import PublicRoute from "./PublicRoute";
 import PrivateRoute from "./PrivateRoute";
 import DashboardRoutes from "./DashboardRoutes";
 import Loader from "../components/Loader";
+import { startFetchAllActiveStores } from "../actions/storeCatalogActions";
 const AppRouter = () => {
   const [checkingAuthState, setCheckingAuthState] = useState(true);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -30,6 +31,7 @@ const AppRouter = () => {
             user.metadata.lastSignInTime
           )
         );
+        dispatch(startFetchAllActiveStores());
       } else {
         setIsLoggedIn(false);
       }

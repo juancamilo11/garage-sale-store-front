@@ -13,17 +13,6 @@ const StoreGatewayScreen = () => {
     e.preventDefault();
     navigate(`/store/${activeStore.id}`);
   };
-  /*
-
-    id
-    storeName,
-    storeExistencePeriod,
-    storeDescription,
-    storeVisualDescription,
-    storeAddress,
-    viewsCount,
-      
-*/
 
   return (
     <div className="store-gateway__main-container">
@@ -32,7 +21,6 @@ const StoreGatewayScreen = () => {
         <div className="user-form-data__section-title user-form-data__section-title-store-catalog mt-5">
           <SectionTitle sectionTitle="Previsualización de la tienda" />
         </div>
-        {/* {JSON.stringify(activeStore)} */}
         <div className="store-gateway__description">
           <div className="store-gateway__description-text">
             <p className="store-gateway__descriptor">
