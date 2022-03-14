@@ -1,3 +1,5 @@
+import { v4 as uuidv4 } from "uuid";
+
 const newStoreObjectBuilder = (store) => {
   // localStorage.setItem("StoreWithoutModify", JSON.stringify(store));
   const storeToSend = {
@@ -33,18 +35,25 @@ const newStoreObjectBuilder = (store) => {
     productCategoryList: store.productCategoryList.map((productCategory) => {
       return {
         ...productCategory,
-        productList: store.productList.filter(
-          (product) => product.category === productCategory.categoryName
-        ),
+        productList: store.productList
+          .filter(
+            (product) => product.category === productCategory.categoryName
+          )
+          .map((product) => ({
+            ...product,
+            id: uuidv4(),
+            quantity: parseInt(product.quantity),
+            price: parseFloat(product.price),
+          })),
       };
     }),
     purchaseTestimonialList: [],
     purchaseOrderList: [],
   };
+  localStorage.removeItem("storeReadyToSend");
+  localStorage.setItem("storeReadyToSend", JSON.stringify(storeToSend));
 
   return storeToSend;
-
-  localStorage.setItem("storeReadyToSend", JSON.stringify(storeToSend));
 };
 
 let getCurrentDate = (date) => new Date(date).toISOString().split("T")[0];

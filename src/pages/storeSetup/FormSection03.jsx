@@ -191,6 +191,7 @@ const FormSection03 = () => {
                   className="store-setup__input"
                   autoComplete="off"
                   min="1"
+                  step="1"
                 />
               </div>
               <div className="store-setup__error-flag">

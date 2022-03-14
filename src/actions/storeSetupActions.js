@@ -42,28 +42,22 @@ export const setActiveStore = (store) => ({
   payload: store,
 });
 
-export const startPostGarageSaleStore = (objectStore) => {
-  return async (dispatch) => {
-    dispatch(startLoading());
-    try {
-      const response = await fetch(`${baseUrl}/api/v1/post/store`, {
-        method: "POST",
-        headers: {
-          "Content-Type:": "application/json",
-        },
-        body: JSON.stringify(objectStore),
-      });
-      if (response.ok) {
-        const newStore = await response.json();
-        dispatch(setActiveStore(newStore));
-      } else {
-        throw await response.json();
-      }
-      dispatch(finishLoading());
-    } catch (err) {
-      throw err;
-    } finally {
-      dispatch(finishLoading());
+export const startPostGarageSaleStore = async (objectStore) => {
+  try {
+    const response = await fetch(`${baseUrl}/api/v1/post/store`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(objectStore),
+    });
+    if (response.ok) {
+      console.log("Biennnn");
+      return await response.json();
+    } else {
+      throw await response.json();
     }
-  };
+  } catch (err) {
+  } finally {
+  }
 };
