@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { getProductStatusNameByNumber } from "../../helpers/productStates";
 
 const StoreProductItem = ({
@@ -10,9 +11,13 @@ const StoreProductItem = ({
   productStatus,
   productImageUrlList,
   productTagList,
+  storeId,
 }) => {
+  const navigate = useNavigate();
+
   const handleShowProductDetail = (e) => {
     e.preventDefault();
+    navigate(`/store/${storeId}/product/${id}`);
   };
 
   return (
@@ -27,7 +32,7 @@ const StoreProductItem = ({
         <div className="product-item__description--header">
           <h5 className="product-item__name">{productName}</h5>
           <h4 className="product-item__price">
-            <b>$</b> {price}
+            <b>$</b> {price} COP
           </h4>
         </div>
         <div className="product-item__description--secondary">

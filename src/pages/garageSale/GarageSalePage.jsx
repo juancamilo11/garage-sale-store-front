@@ -30,8 +30,6 @@ const GarageSalePage = () => {
     if (activeStore === undefined) {
       navigate("/store-catalog");
       return;
-    } else {
-      sweeralertForWelcomeToStore(activeStore?.storeName);
     }
     const lastActiveCategory = localStorage.getItem("activeCategory");
     if (lastActiveCategory) {
@@ -76,6 +74,7 @@ const GarageSalePage = () => {
             <StoreProductCategoryList
               productCategoryList={activeStore?.productCategoryList}
               activeCategory={activeCategory}
+              storeId={params.storeId}
             />
           </>
         ) : (
