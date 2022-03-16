@@ -6,13 +6,10 @@
 .product-page__main-section {
   width: 100%;
   display: flex;
-  background-color: blue;
   flex-direction: row;
+  flex-wrap: wrap;
   justify-content: center;
-}
-
-.product-page__product-info {
-  width: 40%;
+  margin-top: 20px;
 }
 
 .product-page__images-container {
@@ -24,9 +21,8 @@
 .product-page__down-scroll {
   display: flex;
   flex-direction: column;
-  height: 600px;
+  height: 550px;
   background: transparent;
-  background-color: red;
   align-items: center;
   min-width: 240px;
   overflow-y: scroll;
@@ -37,12 +33,12 @@
 }
 
 .product-page__showed-img {
-  height: 600px;
+  height: 550px;
   //   min-width: ;
 }
 
 .product-page__product-info {
   margin-left: 20px;
-  min-width: 600px;
-  background-color: red;
+  min-width: 500px;
+  flex-shrink: 5;
 }
