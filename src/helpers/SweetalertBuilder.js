@@ -432,3 +432,24 @@ export const sweeralertForWelcomeToStore = (storeName) =>
     showConfirmButton: false,
     timer: 2000,
   });
+
+export const sweetalertForOrderCreationConfirmationBuilder = (name, quantity) =>
+  Swal.fire({
+    icon: "info",
+    title: "Confirmación de la creación de orden de compra",
+    html:
+      "A continuación se creará una órden de compra para comprar <b>" +
+      quantity +
+      "</b> unidad(es) del producto <b>" +
+      name +
+      "</b>",
+    footer: "<b>La órden de compra aparecerá en tu perfil de usuario</b>",
+    showConfirmButton: true,
+    showDenyButton: false,
+    showCancelButton: true,
+    confirmButtonText: "Confirmar",
+    cancelButtonText: "Cancelar",
+    cancelButtonColor: "red",
+    allowEscapeKey: false,
+    allowOutsideClick: false,
+  });
