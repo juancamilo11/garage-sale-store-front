@@ -453,3 +453,10 @@ export const sweetalertForOrderCreationConfirmationBuilder = (name, quantity) =>
     allowEscapeKey: false,
     allowOutsideClick: false,
   });
+
+export const sweeralertForShowProductImage = (urlImage, name) =>
+  Swal.fire({
+    imageUrl: `${urlImage}`,
+    html: `Producto: <b>${name}</b>`,
+    showConfirmButton: false,
+  });
