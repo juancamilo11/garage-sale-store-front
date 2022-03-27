@@ -1,4 +1,4 @@
-import { baseUrl } from "../environment/environment";
+import environment from "../environment/environment";
 import types from "../types/types";
 import { finishLoading, startLoading } from "./uiActions";
 
@@ -44,13 +44,17 @@ export const setActiveStore = (store) => ({
 
 export const startPostGarageSaleStore = async (objectStore) => {
   try {
-    const response = await fetch(`${baseUrl}/api/v1/post/store`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(objectStore),
-    });
+    const response = await fetch(
+      `${environment.msAdminStoresUrl}/api/v1/post/store`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(objectStore),
+      }
+    );
+    console.log(JSON.stringify(objectStore));
     if (response.ok) {
       console.log("Biennnn");
       return await response.json();

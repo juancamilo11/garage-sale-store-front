@@ -89,68 +89,81 @@ const StoreProductPage = ({}) => {
                 className="product-page__down-scroll-item"
               />
             ))}
+            {productInfo?.productImageUrlList?.map((imageUrl) => (
+              <img
+                onClick={(e) => handleChangeSelectedImage(imageUrl)}
+                key={imageUrl}
+                src={imageUrl}
+                alt="product-img"
+                className="product-page__down-scroll-item"
+              />
+            ))}
           </div>
-          <div className="product-page__showed-image">
-            <img
+
+          <div
+            className="product-page__showed-image"
+            style={{ backgroundImage: `url(${showedImageUrl})` }}
+          >
+            {/* <img
               onClick={handleShowImageInPopup}
               src={showedImageUrl}
               alt="showed-img"
               className="product-page__showed-img"
-            />
+            /> */}
           </div>
+        </div>
 
-          <div className="product-page__product-info">
-            <div className="product-page__product-name">
-              <h2 className="product-page__product-name">
-                {productInfo.productName}
-              </h2>
-              <hr />
-            </div>
-            <div className="product-page__product-status">
-              <h4>Estado del producto: {getProductStatus()}</h4>
-            </div>
+        <div className="product-page__product-info">
+          <div className="product-page__product-name">
+            <h2 className="product-page__product-name">
+              {productInfo.productName}
+            </h2>
             <hr />
-            <div className="product-page__additional-information">
-              <h5 className="product-page__additional-info-title">
-                Unidades disponibles: {productInfo.quantity}
-              </h5>
-            </div>
-            <div className="product-page__additional-information">
-              <h5 className="product-page__additional-info-title">
-                Información adicional
-              </h5>
-              <p>{productInfo.additionalDescription}</p>
-            </div>
-            <div className="product-page__tag-list">
-              <h5 className="product-page__additional-info-title">Etiquetas</h5>
-              - {productInfo.productTagList?.join(" | ")}
-            </div>
-            <div className="product-page__add-to-cart-container">
-              <div className="product-page__action-buttons">
-                <button
-                  className="product-page__action-button"
-                  onClick={handleAddOneProduct}
-                >
-                  +1
-                </button>
-                <button
-                  className="product-page__action-button"
-                  onClick={handleSubtractProduct}
-                >
-                  -1
-                </button>
-              </div>
-
-              <span className="product-page__purchased-quantity">
-                Cantidad a comprar: <b>{quantitySelected}</b>
-              </span>
+          </div>
+          <div className="product-page__product-status">
+            <h4>Estado del producto: {getProductStatus()}</h4>
+          </div>
+          <hr />
+          <div className="product-page__additional-information">
+            <h5 className="product-page__additional-info-title">
+              Unidades disponibles: {productInfo.quantity}
+            </h5>
+          </div>
+          <div className="product-page__additional-information">
+            <h5 className="product-page__additional-info-title">
+              Información adicional
+            </h5>
+            <p>{productInfo.additionalDescription}</p>
+          </div>
+          <div className="product-page__tag-list">
+            <h5 className="product-page__additional-info-title">Etiquetas</h5>-{" "}
+            {productInfo.productTagList?.join(" | ")}
+          </div>
+          <div className="product-page__add-to-cart-container">
+            <div className="product-page__action-buttons">
               <button
-                className="product-page__buy-button"
-                onClick={handleCreatePurchaseOrder}
+                className="product-page__action-button"
+                onClick={handleAddOneProduct}
               >
-                Comprar
+                +1
+              </button>
+              <button
+                className="product-page__action-button"
+                onClick={handleSubtractProduct}
+              >
+                -1
               </button>
             </div>
+
+            <span className="product-page__purchased-quantity">
+              Cantidad a comprar: <b>{quantitySelected}</b>
+            </span>
+            <button
+              className="product-page__buy-button"
+              onClick={handleCreatePurchaseOrder}
+            >
+              Comprar
+            </button>
           </div>
         </div>
       </div>

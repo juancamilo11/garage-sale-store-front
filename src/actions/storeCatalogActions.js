@@ -1,6 +1,6 @@
 import types from "../types/types";
 import { finishLoading, startLoading } from "./uiActions";
-import { baseUrl } from "./../environment/environment";
+import environment from "./../environment/environment";
 
 export const FAVORITE_TYPE_STORE = "Favorite Store Type";
 export const FAVORITE_TYPE_PRODUCT = "Favorite Product Type";
@@ -69,7 +69,9 @@ export const startFetchAllActiveStores = () => {
   return async (dispatch) => {
     dispatch(startLoading());
     try {
-      const response = await fetch(`${baseUrl}/api/v1/get/stores`);
+      const response = await fetch(
+        `${environment.msAdminStoresUrl}/api/v1/get/stores`
+      );
       if (response.ok) {
         const storeList = await response.json();
         console.log(storeList);
@@ -98,16 +100,19 @@ export const setStoreOrProductAsFavorite = (
     console.log(stores);
     dispatch(startLoading());
     try {
-      const response = await fetch(`${baseUrl}/update/set-element-favorite`, {
-        method: "POST",
-        body: {
-          userId,
-          currentDate,
-          elementId,
-          type,
-          action,
-        },
-      });
+      const response = await fetch(
+        `${environment.msAdminStoresUrl}/update/set-element-favorite`,
+        {
+          method: "POST",
+          body: {
+            userId,
+            currentDate,
+            elementId,
+            type,
+            action,
+          },
+        }
+      );
       const result = await response.json();
       if (!response.ok) {
         dispatch(
