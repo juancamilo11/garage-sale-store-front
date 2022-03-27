@@ -89,28 +89,12 @@ const StoreProductPage = ({}) => {
                 className="product-page__down-scroll-item"
               />
             ))}
-            {productInfo?.productImageUrlList?.map((imageUrl) => (
-              <img
-                onClick={(e) => handleChangeSelectedImage(imageUrl)}
-                key={imageUrl}
-                src={imageUrl}
-                alt="product-img"
-                className="product-page__down-scroll-item"
-              />
-            ))}
           </div>
 
           <div
             className="product-page__showed-image"
             style={{ backgroundImage: `url(${showedImageUrl})` }}
-          >
-            {/* <img
-              onClick={handleShowImageInPopup}
-              src={showedImageUrl}
-              alt="showed-img"
-              className="product-page__showed-img"
-            /> */}
-          </div>
+          ></div>
         </div>
 
         <div className="product-page__product-info">
@@ -136,19 +120,19 @@ const StoreProductPage = ({}) => {
             <p>{productInfo.additionalDescription}</p>
           </div>
           <div className="product-page__tag-list">
-            <h5 className="product-page__additional-info-title">Etiquetas</h5>-{" "}
+            <h5 className="product-page__additional-info-title">Etiquetas</h5> -{" "}
             {productInfo.productTagList?.join(" | ")}
           </div>
           <div className="product-page__add-to-cart-container">
             <div className="product-page__action-buttons">
               <button
-                className="product-page__action-button"
+                className="product-page__action-button product-page__action-button--add"
                 onClick={handleAddOneProduct}
               >
                 +1
               </button>
               <button
-                className="product-page__action-button"
+                className="product-page__action-button product-page__action-button--subtract"
                 onClick={handleSubtractProduct}
               >
                 -1
