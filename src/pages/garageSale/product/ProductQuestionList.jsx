@@ -1,7 +1,12 @@
 import React, { useEffect, useState } from "react";
+import {
+  startFetchUserInfo,
+  startFetchUserInfoById,
+  startFetchUsersInfoByIds,
+} from "../../../actions/usersActions";
 import ProductQuestionItem from "./ProductQuestionItem";
 
-const ProductQuestionList = ({ productQuestionList }) => {
+const ProductQuestionList = ({ productQuestionList, sellerId }) => {
   const [customersInfo, setCustomersInfo] = useState([]);
   const [sellerInfo, setSellerInfo] = useState([]);
 
@@ -9,18 +14,25 @@ const ProductQuestionList = ({ productQuestionList }) => {
     const usersIdList = productQuestionList.map(
       (productQuestion) => productQuestion.customerId
     );
-    // startFetchUsersInfoById([, ...usersIdList]).then(customersInfo => {
-    //     setCustomersInfo(customersInfo);
-    // });
+    startFetchUsersInfoByIds([sellerId, ...usersIdList]).then(
+      (customersInfo) => {
+        setCustomersInfo(customersInfo);
+      }
+    );
+    startFetchUserInfoById(sellerId).then((sellerInfoFromServer) => {
+      setSellerInfo(sellerInfoFromServer);
+    });
   }, []);
+
+  const getCustomerInfo = (customerId) =>
+    customersInfo?.find((customer) => customer?.id === customerId);
 
   return (
     <div>
-      {/* {JSON.stringify(productQuestionList)} */}
       {productQuestionList.map((productQuestion) => (
         <ProductQuestionItem
           {...productQuestion}
-          customerInfo={customersInfo}
+          customerInfo={getCustomerInfo(productQuestion.customerId)}
           sellerInfo={sellerInfo}
         />
       ))}

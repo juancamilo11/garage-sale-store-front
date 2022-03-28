@@ -1,6 +1,8 @@
 .product-page__main-container {
   width: 100%;
   overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
 .product-page__main-section {
@@ -120,4 +122,51 @@
 }
 .product-page__action-button--subtract {
   border-bottom-left-radius: 10px;
+}
+
+//Product Question
+.product-question__container {
+  border: 1px solid red;
+  width: 90%;
+  margin: auto;
+  margin-top: 20px;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.product-question__question-container {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  position: relative;
+}
+
+.product-question__customer-photo {
+  border-radius: 50%;
+  width: 70px;
+}
+
+.product-question__question-content {
+  width: 80%;
+}
+
+.product-question__customer-name {
+  margin: 10px;
+}
+
+.product-question__question {
+  margin-left: 30px;
+}
+
+.product-question__question-date {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+}
+
+.product-question__answer-container {
+  background-color: darkgray;
+  padding-left: 70px;
 }

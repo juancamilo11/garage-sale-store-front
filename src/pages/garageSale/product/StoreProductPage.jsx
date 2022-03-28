@@ -15,23 +15,25 @@ const productQuestionList = [
   {
     questionDate: "2022-03-22",
     answerDate: "2022-03-23",
-    question: "Hola, pregunta de prueba",
-    response: "hola, respuesta de prueba",
-    customerId: "12345",
+    question: "Hola, pregunta de prueba 1",
+    response: "hola, respuesta de prueba 1",
+    customerId: "Tg2h8glzNLed8cpwyecdBnq6BT93",
   },
   {
     questionDate: "2022-03-22",
     answerDate: "2022-03-23",
-    question: "Hola, pregunta de prueba",
-    response: "hola, respuesta de prueba",
-    customerId: "12345",
+    question:
+      "Hola, pregunta de prueba 2Hola, pregunta de prueba 1Hola, pregunta de prueba 1Hola, pregunta de prueba 1Hola, pregunta de prueba 1Hola, pregunta de prueba 1Hola, pregunta de prueba 1Hola, pregunta de prueba 1Hola, pregunta de prueba 1Hola, pregunta de prueba 1Hola, pregunta de prueba 1Hola, pregunta de prueba 1Hola, pregunta de prueba 1Hola, pregunta de prueba 1Hola, pregunta de prueba 1Hola, pregunta de prueba 1",
+    response:
+      "Hola, pregunta de prueba 2Hola, pregunta de prueba 1Hola, pregunta de prueba 1Hola, pregunta de prueba 1Hola, pregunta de prueba 1Hola, pregunta de prueba 1Hola, pregunta de prueba 1Hola, pregunta de prueba 1Hola, pregunta de prueba 1Hola, pregunta de prueba 1Hola, pregunta de prueba 1Hola, pregunta de prueba 1Hola, pregunta de prueba 1Hola, pregunta de prueba 1Hola, pregunta de prueba 1Hola, pregunta de prueba 1",
+    customerId: "ctxyFJcUhscbrjBOMWyCo6s1mZp2",
   },
   {
     questionDate: "2022-03-22",
     answerDate: "2022-03-23",
-    question: "Hola, pregunta de prueba",
-    response: "hola, respuesta de prueba",
-    customerId: "12345",
+    question: "Hola, pregunta de prueba 3",
+    response: "hola, respuesta de prueba 4",
+    customerId: "ctxyFJcUhscbrjBOMWyCo6s1mZp2",
   },
 ];
 
@@ -181,8 +183,11 @@ const StoreProductPage = ({}) => {
       <div className="product-page__question-section">
         <div className="user-form-data__section-title">
           <SectionTitle sectionTitle="Preguntas acerca de este producto" />
-          <ProductQuestionList productQuestionList={productQuestionList} />
         </div>
+        <ProductQuestionList
+          productQuestionList={productQuestionList}
+          sellerId={storeInfo.sellerId}
+        />
       </div>
     </div>
   );

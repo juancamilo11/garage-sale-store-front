@@ -63,3 +63,32 @@ export const startFetchUserInfo = async (
     throw await response.json();
   } catch (err) {}
 };
+
+export const startFetchUsersInfoByIds = async (idList) => {
+  try {
+    const response = await fetch(
+      `${environment.msAdminInfoUserUrl}/get/users/id`,
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(idList),
+      }
+    );
+    if (response.ok) {
+      return await response.json();
+    }
+    throw await response.json();
+  } catch (err) {}
+};
+
+export const startFetchUserInfoById = async (id) => {
+  try {
+    const response = await fetch(
+      `${environment.msAdminInfoUserUrl}/get/user/${id}`
+    );
+    if (response.ok) {
+      return await response.json();
+    }
+    throw await response.json();
+  } catch (err) {}
+};
