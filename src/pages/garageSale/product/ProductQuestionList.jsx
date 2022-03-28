@@ -14,6 +14,7 @@ const ProductQuestionList = ({
   storeId,
   productId,
   categoryName,
+  setQuestionListToShow,
 }) => {
   const { auth } = useSelector((state) => state);
   const [customersInfo, setCustomersInfo] = useState([]);
@@ -41,13 +42,12 @@ const ProductQuestionList = ({
 
   return (
     <div>
-      {JSON.stringify(customersInfo)}
-      {sellerId}
       {sellerId !== auth.id && (
         <NewQuestionToProduct
           storeId={storeId}
           productId={productId}
           categoryName={categoryName}
+          setQuestionListToShow={setQuestionListToShow}
         />
       )}
 
@@ -59,6 +59,7 @@ const ProductQuestionList = ({
           storeId={storeId}
           productId={productId}
           categoryName={categoryName}
+          setQuestionListToShow={setQuestionListToShow}
         />
       ))}
     </div>

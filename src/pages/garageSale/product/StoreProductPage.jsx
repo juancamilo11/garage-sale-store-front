@@ -10,6 +10,7 @@ import ProductImagesSlider from "./ProductImagesSlider";
 import NavBarFormUserData from "./../../../components/navbar/NavBarFormUserData";
 import SectionTitle from "../../../components/SectionTitle";
 import ProductQuestionList from "./ProductQuestionList";
+import Footer from "./../../../components/Footer";
 
 const StoreProductPage = () => {
   const params = useParams();
@@ -18,6 +19,7 @@ const StoreProductPage = () => {
   const [storeInfo, setStoreInfo] = useState({});
   const [showedImageUrl, setShowedImageUrl] = useState("");
   const [quantitySelected, setQuantitySelected] = useState(0);
+  const [questionListToShow, setQuestionListToShow] = useState([]);
 
   useEffect(() => {
     setStoreInfo(
@@ -40,6 +42,10 @@ const StoreProductPage = () => {
       process.env.PUBLIC_URL + "/assets/garage-store/select-image.png"
     );
   }, []);
+
+  useEffect(() => {
+    setQuestionListToShow(productInfo?.productQuestionList);
+  }, [productInfo?.productQuestionList]);
 
   const handleAddOneProduct = (e) => {
     e.preventDefault();
@@ -159,13 +165,15 @@ const StoreProductPage = () => {
           <SectionTitle sectionTitle="Preguntas acerca de este producto" />
         </div>
         <ProductQuestionList
-          productQuestionList={productInfo?.productQuestionList || []}
+          productQuestionList={questionListToShow || []}
           sellerId={storeInfo.sellerId}
           storeId={params.storeId}
           productId={params.productId}
           categoryName={params.categoryName}
+          setQuestionListToShow={setQuestionListToShow}
         />
       </div>
+      <Footer />
     </div>
   );
 };

@@ -3,7 +3,13 @@ import { useSelector } from "react-redux";
 import { startPostNewQuestionToProduct } from "../../../actions/storeCatalogActions";
 import useForm from "../../../hooks/useForm";
 import { v4 as uuidv4 } from "uuid";
-const NewQuestionToProduct = ({ storeId, productId, categoryName }) => {
+
+const NewQuestionToProduct = ({
+  storeId,
+  productId,
+  categoryName,
+  setQuestionListToShow,
+}) => {
   const { auth } = useSelector((state) => state);
   const [formValues, handleInputChange, resetForm] = useForm({
     questionValue: "",
@@ -15,7 +21,7 @@ const NewQuestionToProduct = ({ storeId, productId, categoryName }) => {
 
   const handleQuestionSubmit = (e) => {
     e.preventDefault();
-    window.alert(storeId);
+
     const newQuestion = {
       questionId: uuidv4(),
       questionDate: getCurrentDate(new Date()),
@@ -29,7 +35,14 @@ const NewQuestionToProduct = ({ storeId, productId, categoryName }) => {
       productId,
       categoryName,
       newQuestion
-    );
+    ).then((res) => {
+      setQuestionListToShow((setQuestionListToShow) => {
+        return [newQuestion, ...setQuestionListToShow];
+      });
+      resetForm({
+        questionValue: "",
+      });
+    });
   };
 
   return (

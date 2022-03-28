@@ -31,7 +31,6 @@ const AnswerToQuestion = ({
       response: answerValue,
       customerId: auth.id,
     };
-    window.alert(JSON.stringify(theAnswer));
     startPostAnswerToProductQuestion(
       storeId,
       productId,
