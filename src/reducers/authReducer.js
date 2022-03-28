@@ -19,12 +19,18 @@ const authReducer = (state = {}, action) => {
     case types.authLogin:
       return {
         ...state,
-        uid: action.payload.uid,
-        name: action.payload.displayName,
-        email: action.payload.email,
+        id: action.payload.id,
+        name: action.payload.name,
         photoUrl: action.payload.photoUrl,
-        creationTime: action.payload.creationTime,
-        lastSignInTime: action.payload.lastSignInTime,
+        occupation: action.payload.occupation,
+        cellphone: action.payload.cellphone,
+        email: action.payload.email,
+        postalCode: action.payload.postalCode,
+        colombianState: action.payload.colombianState,
+        phone: action.payload.phone,
+        address: action.payload.address,
+        dateOfBirth: action.payload.dateOfBirth,
+        registerDate: action.payload.registerDate,
       };
     case types.authLogout:
       return {};

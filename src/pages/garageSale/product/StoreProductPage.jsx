@@ -8,6 +8,32 @@ import {
 } from "../../../helpers/SweetalertBuilder";
 import ProductImagesSlider from "./ProductImagesSlider";
 import NavBarFormUserData from "./../../../components/navbar/NavBarFormUserData";
+import SectionTitle from "../../../components/SectionTitle";
+import ProductQuestionList from "./ProductQuestionList";
+
+const productQuestionList = [
+  {
+    questionDate: "2022-03-22",
+    answerDate: "2022-03-23",
+    question: "Hola, pregunta de prueba",
+    response: "hola, respuesta de prueba",
+    customerId: "12345",
+  },
+  {
+    questionDate: "2022-03-22",
+    answerDate: "2022-03-23",
+    question: "Hola, pregunta de prueba",
+    response: "hola, respuesta de prueba",
+    customerId: "12345",
+  },
+  {
+    questionDate: "2022-03-22",
+    answerDate: "2022-03-23",
+    question: "Hola, pregunta de prueba",
+    response: "hola, respuesta de prueba",
+    customerId: "12345",
+  },
+];
 
 const StoreProductPage = ({}) => {
   const params = useParams();
@@ -35,7 +61,7 @@ const StoreProductPage = ({}) => {
 
   useEffect(() => {
     setShowedImageUrl(
-      productInfo?.productImageUrlList?.find((urlImage) => urlImage !== "")
+      process.env.PUBLIC_URL + "/assets/garage-store/select-image.png"
     );
   }, []);
 
@@ -92,6 +118,7 @@ const StoreProductPage = ({}) => {
           </div>
 
           <div
+            onClick={handleShowImageInPopup}
             className="product-page__showed-image"
             style={{ backgroundImage: `url(${showedImageUrl})` }}
           ></div>
@@ -149,6 +176,12 @@ const StoreProductPage = ({}) => {
               Comprar
             </button>
           </div>
+        </div>
+      </div>
+      <div className="product-page__question-section">
+        <div className="user-form-data__section-title">
+          <SectionTitle sectionTitle="Preguntas acerca de este producto" />
+          <ProductQuestionList productQuestionList={productQuestionList} />
         </div>
       </div>
     </div>

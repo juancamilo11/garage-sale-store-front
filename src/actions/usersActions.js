@@ -1,3 +1,4 @@
+import { async } from "@firebase/util";
 import environment from "./../environment/environment";
 
 export const updateUserInformation = async (
@@ -11,6 +12,7 @@ export const updateUserInformation = async (
       `${environment.msAdminInfoUserUrl}/post/user`,
       {
         method: "POST",
+        headers: { "Content-Type": "application/json" },
         body: {
           id: uid,
           name: displayName,
@@ -25,13 +27,39 @@ export const updateUserInformation = async (
         },
       }
     );
-
     if (response.ok) {
       return await response.json();
     } else {
       throw await response.json();
     }
-  } catch (err) {
-    throw err;
-  }
+  } catch (err) {}
+};
+
+export const startFetchUserInfo = async (
+  id,
+  displayName,
+  photoUrl,
+  email,
+  creationTime
+) => {
+  try {
+    const response = await fetch(
+      `${environment.msAdminInfoUserUrl}/post/user/${id}`,
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          id,
+          name: displayName,
+          photoUrl,
+          email,
+          creationTime,
+        }),
+      }
+    );
+    if (response.ok) {
+      return await response.json();
+    }
+    throw await response.json();
+  } catch (err) {}
 };

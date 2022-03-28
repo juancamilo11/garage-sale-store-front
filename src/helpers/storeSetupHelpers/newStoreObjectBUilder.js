@@ -2,6 +2,7 @@ import { v4 as uuidv4 } from "uuid";
 
 const newStoreObjectBuilder = (store) => {
   // localStorage.setItem("StoreWithoutModify", JSON.stringify(store));
+
   const storeToSend = {
     id: store.storeId,
     storeName: store.storeName,
@@ -19,15 +20,7 @@ const newStoreObjectBuilder = (store) => {
       prevImagesList: store.prevImagesList,
       physicalStoreImageUrl: store.physicalStoreImageUrl,
     },
-    user: {
-      uid: store.seller.uid,
-      name: store.seller.name,
-      photoUrl: store.seller.photoUrl,
-      creationTime: getCurrentDate(store.seller.creationTime),
-      userContact: {
-        email: store.seller.userContact.email,
-      },
-    },
+    user: store.id,
     storeAddress: {
       latitude: store.address.latitude,
       longitude: store.address.longitude,

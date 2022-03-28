@@ -2,7 +2,10 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { updateUserInformation } from "../../actions/usersActions";
+import {
+  startFetchUserInfoById,
+  updateUserInformation,
+} from "../../actions/usersActions";
 import ErrorFlag from "../../components/ErrorFlag";
 import NavBarFormUserData from "../../components/navbar/NavBarFormUserData";
 import SectionTitle from "../../components/SectionTitle";
@@ -21,17 +24,16 @@ import useForm from "../../hooks/useForm";
 const UserDataForm = () => {
   const auth = useSelector((state) => state.auth);
   const navigate = useNavigate();
-  useEffect(() => {
-    window.alert(
-      "falta setear los valores cuando se carga este componente form."
-    );
-  }, []);
 
   const [formValues, handleInputChange, resetForm] = useForm(
     userFormDataInitialFormValues(auth)
   );
+  const [errorsState, setErrorsState] = useState(
+    userFormDataInitialErrorsState
+  );
 
   const {
+    id,
     name,
     occupation,
     cellphone,
@@ -44,9 +46,11 @@ const UserDataForm = () => {
     registerDate,
   } = formValues;
 
-  const [errorsState, setErrorsState] = useState(
-    userFormDataInitialErrorsState
-  );
+  // useEffect(() => {
+  //   startFetchUserInfoById(auth.uid).then((userInfo) => {
+  //     resetForm(userInfo);
+  //   });
+  // }, []);
 
   const handleInputValidation = (e) => {
     handleInputChange(e);

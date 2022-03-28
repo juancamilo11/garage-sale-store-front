@@ -2,20 +2,40 @@ import types from "../types/types";
 import app from "../firebase/firebaseConfig";
 import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { finishLoading, startLoading } from "./uiActions";
+import { startFetchUserInfo } from "./usersActions";
 
 const auth = getAuth();
 const provider = new GoogleAuthProvider();
 
 export const login = (
-  uid,
-  displayName,
-  email,
+  id,
+  name,
   photoUrl,
-  creationTime,
-  lastSignInTime
+  occupation,
+  cellphone,
+  email,
+  postalCode,
+  colombianState,
+  phone,
+  address,
+  dateOfBirth,
+  registerDate
 ) => ({
   type: types.authLogin,
-  payload: { uid, displayName, email, photoUrl, creationTime, lastSignInTime },
+  payload: {
+    id,
+    name,
+    photoUrl,
+    occupation,
+    cellphone,
+    email,
+    postalCode,
+    colombianState,
+    phone,
+    address,
+    dateOfBirth,
+    registerDate,
+  },
 });
 
 export const logout = () => ({
@@ -23,27 +43,43 @@ export const logout = () => ({
 });
 
 export const startGoogleLogin = () => {
-  return (dispatch) => {
+  return async (dispatch) => {
     dispatch(startLoading());
-    signInWithPopup(auth, provider)
-      .then(({ user }) => {
+    try {
+      const firebaseResponse = await signInWithPopup(auth, provider);
+
+      const { id, displayName, photoUrl, email, metadata } =
+        firebaseResponse.user;
+      const { creationTime } = metadata;
+
+      const userFromServer = await startFetchUserInfo(
+        id,
+        displayName,
+        photoUrl,
+        email,
+        new Date(creationTime)
+      );
+      if (userFromServer) {
         dispatch(
           login(
-            user.uid,
-            user.displayName,
-            user.email,
-            user.photoURL,
-            user.metadata.creationTime,
-            user.metadata.lastSignInTime
+            userFromServer.id,
+            userFromServer.name,
+            userFromServer.photoUrl,
+            userFromServer.occupation,
+            userFromServer.cellphone,
+            userFromServer.email,
+            userFromServer.postalCode,
+            userFromServer.colombianState,
+            userFromServer.phone,
+            userFromServer.address,
+            userFromServer.dateOfBirth,
+            userFromServer.registerDate
           )
         );
-        console.warn(user);
-        dispatch(finishLoading());
-      })
-      .catch((err) => {
-        dispatch(finishLoading());
-        console.log(err);
-      });
+      }
+    } catch (err) {
+      dispatch(finishLoading());
+    }
   };
 };
 

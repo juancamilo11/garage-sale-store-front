@@ -8,6 +8,8 @@ const FinalSectionStoreSetup = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  const { id } = useSelector((state) => state.auth);
+
   const { firstFormInfo, secondFormInfo, thirdFormInfo } = useSelector(
     (state) => state.storeSetup
   );
@@ -20,11 +22,11 @@ const FinalSectionStoreSetup = () => {
       ...secondFormInfo,
       productList: thirdFormInfo.productList,
       productCategoryList: thirdFormInfo.productCategoryList,
+      id,
     });
     startPostGarageSaleStore(storeReadyToSend);
     navigate(`/store-catalog`);
   };
-
   return (
     <div>
       <div className="store-setup__centered-container">

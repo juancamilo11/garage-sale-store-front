@@ -6,7 +6,7 @@ import LoginPage from "../pages/login/LoginPage";
 const PrivateRoute = ({ children }) => {
   const auth = useSelector((state) => state.auth);
 
-  return auth?.uid ? (
+  return auth?.id ? (
     children
   ) : (
     <Navigate to="/auth/login" element={<loginPage />} />

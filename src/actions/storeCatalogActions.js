@@ -70,7 +70,7 @@ export const startFetchAllActiveStores = () => {
     dispatch(startLoading());
     try {
       const response = await fetch(
-        `${environment.msAdminStoresUrl}/api/v1/get/stores`
+        `${environment.msAdminStoresUrl}/get/stores`
       );
       if (response.ok) {
         const storeList = await response.json();

@@ -2,6 +2,7 @@ import moment from "moment";
 import validator from "validator";
 
 export const userFormDataInitialFormValues = (auth) => ({
+  id: auth.uid,
   name: auth.name,
   occupation: "",
   cellphone: "",
