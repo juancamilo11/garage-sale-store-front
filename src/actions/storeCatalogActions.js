@@ -163,6 +163,27 @@ export const startPostNewQuestionToProduct = async (
   } catch (err) {}
 };
 
+export const startPostAnswerToProductQuestion = async (
+  storeId,
+  productId,
+  categoryName,
+  theAnswer
+) => {
+  try {
+    const response = await fetch(
+      `${environment.msAdminStoresUrl}/post/answer/${storeId}/${categoryName}/${productId}`,
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(theAnswer),
+      }
+    );
+    if (response.ok) {
+      return;
+    }
+  } catch (err) {}
+};
+
 // export const setStoreOrProductAsFavorite = (
 //   userId,
 //   currentDate,

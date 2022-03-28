@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import {
   startFetchUserInfo,
   startFetchUserInfoById,
@@ -14,11 +15,12 @@ const ProductQuestionList = ({
   productId,
   categoryName,
 }) => {
+  const { auth } = useSelector((state) => state);
   const [customersInfo, setCustomersInfo] = useState([]);
   const [sellerInfo, setSellerInfo] = useState([]);
 
   useEffect(() => {
-    const usersIdList = productQuestionList.map(
+    const usersIdList = productQuestionList?.map(
       (productQuestion) => productQuestion.customerId
     );
     startFetchUsersInfoByIds([sellerId, ...usersIdList]).then(
@@ -26,26 +28,37 @@ const ProductQuestionList = ({
         setCustomersInfo(customersInfo);
       }
     );
+  }, [customersInfo]);
+
+  useEffect(() => {
     startFetchUserInfoById(sellerId).then((sellerInfoFromServer) => {
       setSellerInfo(sellerInfoFromServer);
     });
-  }, []);
+  }, [sellerInfo]);
 
   const getCustomerInfo = (customerId) =>
     customersInfo?.find((customer) => customer?.id === customerId);
 
   return (
     <div>
-      <NewQuestionToProduct
-        storeId={storeId}
-        productId={productId}
-        categoryName={categoryName}
-      />
-      {productQuestionList.map((productQuestion) => (
+      {JSON.stringify(customersInfo)}
+      {sellerId}
+      {sellerId !== auth.id && (
+        <NewQuestionToProduct
+          storeId={storeId}
+          productId={productId}
+          categoryName={categoryName}
+        />
+      )}
+
+      {productQuestionList?.map((productQuestion) => (
         <ProductQuestionItem
           {...productQuestion}
           customerInfo={getCustomerInfo(productQuestion.customerId)}
           sellerInfo={sellerInfo}
+          storeId={storeId}
+          productId={productId}
+          categoryName={categoryName}
         />
       ))}
     </div>
