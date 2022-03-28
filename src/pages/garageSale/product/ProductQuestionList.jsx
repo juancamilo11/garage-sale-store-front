@@ -29,6 +29,7 @@ const ProductQuestionList = ({ productQuestionList, sellerId }) => {
 
   return (
     <div>
+      {JSON.stringify(sellerInfo)}
       {productQuestionList.map((productQuestion) => (
         <ProductQuestionItem
           {...productQuestion}

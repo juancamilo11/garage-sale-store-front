@@ -126,7 +126,7 @@
 
 //Product Question
 .product-question__container {
-  border: 1px solid red;
+  border: 1px solid darkgray;
   width: 90%;
   margin: auto;
   margin-top: 20px;
@@ -167,6 +167,15 @@
 }
 
 .product-question__answer-container {
-  background-color: darkgray;
   padding-left: 70px;
+}
+
+.product-question__separator {
+  width: 90%;
+  margin: auto;
+}
+
+.product-question__separator hr {
+  height: 1px;
+  color: lightgray;
 }

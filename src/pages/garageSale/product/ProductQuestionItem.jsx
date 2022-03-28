@@ -27,18 +27,21 @@ const ProductQuestionItem = ({
           <p className="product-question__question-date">{questionDate}</p>
         </div>
       </div>
+      <div className="product-question__separator">
+        <hr />
+      </div>
 
       <div className="product-question__question-container product-question__answer-container">
         <div className="product-question__customer-photo-container">
           <img
-            src={customerInfo?.photoUrl}
+            src={sellerInfo?.photoUrl}
             alt="customer-pic"
             className="product-question__customer-photo"
           />
         </div>
         <div className="product-question__question-content">
           <h5 className="product-question__customer-name">
-            {customerInfo?.name}
+            {sellerInfo?.name}
           </h5>
           <p className="product-question__question">{response}</p>
           <p className="product-question__question-date">{answerDate}</p>

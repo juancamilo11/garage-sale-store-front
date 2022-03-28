@@ -13,8 +13,8 @@ import ProductQuestionList from "./ProductQuestionList";
 
 const productQuestionList = [
   {
-    questionDate: "2022-03-22",
-    answerDate: "2022-03-23",
+    questionDate: "2022-03-03",
+    answerDate: "2022-03-05",
     question: "Hola, pregunta de prueba 1",
     response: "hola, respuesta de prueba 1",
     customerId: "Tg2h8glzNLed8cpwyecdBnq6BT93",
@@ -29,8 +29,8 @@ const productQuestionList = [
     customerId: "ctxyFJcUhscbrjBOMWyCo6s1mZp2",
   },
   {
-    questionDate: "2022-03-22",
-    answerDate: "2022-03-23",
+    questionDate: "2022-03-12",
+    answerDate: "2022-03-13",
     question: "Hola, pregunta de prueba 3",
     response: "hola, respuesta de prueba 4",
     customerId: "ctxyFJcUhscbrjBOMWyCo6s1mZp2",
