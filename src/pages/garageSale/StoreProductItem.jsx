@@ -12,12 +12,13 @@ const StoreProductItem = ({
   productImageUrlList,
   productTagList,
   storeId,
+  activeCategory,
 }) => {
   const navigate = useNavigate();
 
   const handleShowProductDetail = (e) => {
     e.preventDefault();
-    navigate(`/store/${storeId}/product/${id}`);
+    navigate(`/store/${storeId}/product/${id}/${activeCategory}`);
   };
 
   return (

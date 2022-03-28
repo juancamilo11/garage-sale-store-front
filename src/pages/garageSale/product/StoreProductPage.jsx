@@ -37,7 +37,7 @@ const productQuestionList = [
   },
 ];
 
-const StoreProductPage = ({}) => {
+const StoreProductPage = () => {
   const params = useParams();
   const [productInfo, setProductInfo] = useState({});
   const { garageSaleStores } = useSelector((state) => state.stores);
@@ -187,6 +187,9 @@ const StoreProductPage = ({}) => {
         <ProductQuestionList
           productQuestionList={productQuestionList}
           sellerId={storeInfo.sellerId}
+          storeId={params.storeId}
+          productId={params.productId}
+          categoryName={params.categoryName}
         />
       </div>
     </div>

@@ -142,6 +142,27 @@ export const setStoreOrProductAsFavorite = (
   };
 };
 
+export const startPostNewQuestionToProduct = async (
+  storeId,
+  productId,
+  categoryName,
+  newQuestion
+) => {
+  try {
+    const response = await fetch(
+      `${environment.msAdminStoresUrl}/post/question/${storeId}/${categoryName}/${productId}`,
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(newQuestion),
+      }
+    );
+    if (response.ok) {
+      return;
+    }
+  } catch (err) {}
+};
+
 // export const setStoreOrProductAsFavorite = (
 //   userId,
 //   currentDate,

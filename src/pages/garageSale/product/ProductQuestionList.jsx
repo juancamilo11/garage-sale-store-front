@@ -4,9 +4,16 @@ import {
   startFetchUserInfoById,
   startFetchUsersInfoByIds,
 } from "../../../actions/usersActions";
+import NewQuestionToProduct from "./NewQuestionToProduct";
 import ProductQuestionItem from "./ProductQuestionItem";
 
-const ProductQuestionList = ({ productQuestionList, sellerId }) => {
+const ProductQuestionList = ({
+  productQuestionList,
+  sellerId,
+  storeId,
+  productId,
+  categoryName,
+}) => {
   const [customersInfo, setCustomersInfo] = useState([]);
   const [sellerInfo, setSellerInfo] = useState([]);
 
@@ -29,7 +36,11 @@ const ProductQuestionList = ({ productQuestionList, sellerId }) => {
 
   return (
     <div>
-      {JSON.stringify(sellerInfo)}
+      <NewQuestionToProduct
+        storeId={storeId}
+        productId={productId}
+        categoryName={categoryName}
+      />
       {productQuestionList.map((productQuestion) => (
         <ProductQuestionItem
           {...productQuestion}

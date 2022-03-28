@@ -28,7 +28,11 @@ const StoreProductCategoryList = ({
     <>
       <div className="products-list__main-container">
         {productList.map((product) => (
-          <StoreProductItem {...product} storeId={storeId} />
+          <StoreProductItem
+            {...product}
+            storeId={storeId}
+            activeCategory={activeCategory}
+          />
         ))}
       </div>
     </>
