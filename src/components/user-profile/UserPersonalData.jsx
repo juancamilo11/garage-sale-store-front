@@ -3,31 +3,21 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import ErrorFlag from "../ErrorFlag";
 
-const userData = {
-  name: "Juan Camilo Cardona",
-  email: "juancamilo19997814@gmail.com",
-  cellphone: "(4) 5537781",
-  phone: "",
-  dateOfBirth: "",
-  dateRegistred: "2021-12-15",
-  address: "Crra 14# 8-21 Barrio el divino niño",
-  postalCode: "055010",
-};
-
 const UserPersonalData = () => {
   const auth = useSelector((state) => state.auth);
   const navigate = useNavigate();
+
   const showUserFormData = () => {
     navigate("/user-data-form");
   };
 
   return (
     <div className="userprofile__data-main-container">
-      {(userData.cellphone === "" ||
-        userData.phone === "" ||
-        userData.dateOfBirth === "" ||
-        userData.address === "" ||
-        userData.postalCode === "") && (
+      {(auth.cellphone === "" ||
+        auth.phone === "" ||
+        auth.dateOfBirth === "" ||
+        auth.address === "" ||
+        auth.postalCode === "") && (
         <ErrorFlag
           message="Aún te faltan datos personales por especificar"
           width="100%"
@@ -57,7 +47,7 @@ const UserPersonalData = () => {
                       Correo electrónico
                     </h4>
                     <span className="userprofile__data-item-value">
-                      {userData.email}
+                      {auth.email}
                     </span>
                   </div>
                 </div>
@@ -75,7 +65,7 @@ const UserPersonalData = () => {
                   <div className="userprofile__data-item">
                     <h4 className="userprofile__data-title">Teléfono</h4>
                     <span className="userprofile__data-item-value">
-                      {userData.cellphone}
+                      {auth.cellphone}
                     </span>
                   </div>
                 </div>
@@ -92,7 +82,7 @@ const UserPersonalData = () => {
                       Fecha de nacimiento
                     </h4>
                     <span className="userprofile__data-item-value">
-                      {userData.dateOfBirth}
+                      {auth.dateOfBirth}
                     </span>
                   </div>
                 </div>
@@ -110,7 +100,7 @@ const UserPersonalData = () => {
                   <div className="userprofile__data-item">
                     <h4 className="userprofile__data-title">Celular</h4>
                     <span className="userprofile__data-item-value">
-                      {userData.phone}
+                      {auth.phone}
                     </span>
                   </div>
                 </div>
@@ -127,7 +117,7 @@ const UserPersonalData = () => {
                       Fecha de registro
                     </h4>
                     <span className="userprofile__data-item-value">
-                      {userData.dateRegistred}
+                      {auth.registerDate}
                     </span>
                   </div>
                 </div>
@@ -145,7 +135,7 @@ const UserPersonalData = () => {
                   <div className="userprofile__data-item">
                     <h4 className="userprofile__data-title">Dirección</h4>
                     <span className="userprofile__data-item-value">
-                      {userData.address}
+                      {auth.address}
                     </span>
                   </div>
                 </div>
@@ -160,7 +150,7 @@ const UserPersonalData = () => {
                   <div className="userprofile__data-item">
                     <h4 className="userprofile__data-title">Código Postal</h4>
                     <span className="userprofile__data-item-value">
-                      {userData.postalCode}
+                      {auth.postalCode}
                     </span>
                   </div>
                 </div>

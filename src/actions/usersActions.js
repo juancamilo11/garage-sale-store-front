@@ -31,7 +31,6 @@ export const startUpdateUserInformation = (formValues) => {
       );
       if (response.ok) {
         const userUpdatedInfo = await response.json();
-        window.alert(JSON.stringify(userUpdatedInfo));
         dispatch(
           login(
             userUpdatedInfo.id,
@@ -41,14 +40,13 @@ export const startUpdateUserInformation = (formValues) => {
             userUpdatedInfo.cellphone,
             userUpdatedInfo.email,
             userUpdatedInfo.postalCode,
-            getColombianStateNameByValue(userUpdatedInfo.colombianState),
+            userUpdatedInfo.colombianState,
             userUpdatedInfo.phone,
             userUpdatedInfo.address,
             userUpdatedInfo.dateOfBirth,
             userUpdatedInfo.registerDate
           )
         );
-
         sweetalertForGenericSuccessBuilder("Actualización de datos exitosa.");
         return await response.json();
       } else {

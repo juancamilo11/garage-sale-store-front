@@ -6,15 +6,7 @@ const HorizontalProductCategoryList = ({
   activeCategory,
   productCategoryList,
 }) => {
-  const productCategoryList2 = [
-    ...productCategoryList,
-    ...productCategoryList,
-    ...productCategoryList,
-    ...productCategoryList,
-    ...productCategoryList,
-    ...productCategoryList,
-    ...productCategoryList,
-  ];
+  const productCategoryList2 = [...productCategoryList];
 
   return (
     <div

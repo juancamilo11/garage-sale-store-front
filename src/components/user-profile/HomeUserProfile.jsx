@@ -1,10 +1,14 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { getColombianStateFlagByValue } from "../../helpers/colombianStatesList";
+import {
+  getColombianStateFlagByValue,
+  getColombianStateNameByValue,
+} from "../../helpers/colombianStatesList";
 import ButtonCreateNewStore from "../ButtonCreateNewStore";
 
 const HomeUserProfile = () => {
   const auth = useSelector((state) => state.auth);
+
   return (
     <div className="userprofile__main-container">
       <div
@@ -26,7 +30,11 @@ const HomeUserProfile = () => {
         </picture>
         <div className="userprofile__home-description">
           <h1 className="userprofile__home-name">{auth.name}</h1>
-          <h3>{auth.colombianState}</h3>
+          <h5>
+            {auth.colombianState === "NN"
+              ? "No has seleccionado tu departamento de residencia"
+              : getColombianStateNameByValue(auth.colombianState)}
+          </h5>
           <img
             className="userprofile__nationality-flag"
             src={getColombianStateFlagByValue(auth.colombianState)}

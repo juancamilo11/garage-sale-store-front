@@ -47,12 +47,6 @@ const UserDataForm = () => {
     registerDate,
   } = formValues;
 
-  // useEffect(() => {
-  //   startFetchUserInfoById(auth.uid).then((userInfo) => {
-  //     resetForm(userInfo);
-  //   });
-  // }, []);
-
   const handleInputValidation = (e) => {
     handleInputChange(e);
     userDataFormValidator(e, setErrorsState);
@@ -65,14 +59,12 @@ const UserDataForm = () => {
       sweetalertForErrorsReportUserDataFormBuilder(errorsReport);
       return;
     }
-
     dispatch(startUpdateUserInformation(formValues));
-    navigate("/user-profile");
   };
 
   const handleResetForm = (e) => {
     e.preventDefault();
-    resetForm(userFormDataInitialErrorsState);
+    resetForm(userFormDataInitialFormValues(auth));
     setErrorsState(userFormDataInitialErrorsState);
   };
 
