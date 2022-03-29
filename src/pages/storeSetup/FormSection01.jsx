@@ -30,12 +30,7 @@ const FormSection01 = () => {
   const [formValues, handleInputChange, resetForm] =
     useForm(section_01FormValues);
 
-  const [tagsList, setTagsList] = useState([
-    "T. Etiqueta 1",
-    "T. Etiqueta 2",
-    "T. Etiqueta 3",
-    "T. Etiqueta 4",
-  ]);
+  const [tagsList, setTagsList] = useState([]);
   const [errorsState, setErrorsState] = useState(section_01ErrorState);
 
   const dispatch = useDispatch();

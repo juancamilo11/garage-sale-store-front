@@ -4,8 +4,6 @@ import {
   activeStore,
   startFetchStoreViews,
 } from "../../actions/storeCatalogActions";
-import { startFetchUsersInfoByIds } from "../../actions/usersActions";
-import { sweetalertForViewersList } from "../../helpers/SweetalertBuilder";
 
 const MAX_NUM_TAGS_DISPLAYED = 10;
 
@@ -39,7 +37,6 @@ const StoreEntry = ({
   useEffect(() => {
     startFetchStoreViews(id).then((viewerInfoList) => {
       setViewerList(viewerInfoList);
-      // window.alert(viewerList);
     });
   }, []);
 

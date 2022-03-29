@@ -7,7 +7,6 @@ const AuthRouter = () => {
     <BrowserRouter>
       <Routes>
         <Route exact path="/auth/login" element={<LoginPage />} />
-        {/* <Route exact path="/auth/register" element={<RegisterPage />}/> */}
         <Route path="/*" element={<GarageSalePage />} />
       </Routes>
     </BrowserRouter>

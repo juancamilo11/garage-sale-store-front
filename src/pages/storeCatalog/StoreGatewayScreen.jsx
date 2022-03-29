@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import {
   startFetchStoreViews,
@@ -13,7 +13,6 @@ import ViewerInfoList from "./ViewerInfoList";
 const StoreGatewayScreen = () => {
   const { id: userId } = useSelector((state) => state.auth);
   const navigate = useNavigate();
-  const dispatch = useDispatch();
   const { activeStore } = useSelector((state) => state.stores);
 
   const [viewerList, setViewerList] = useState([]);
@@ -31,7 +30,6 @@ const StoreGatewayScreen = () => {
     if (showViewerList) {
       startFetchStoreViews(activeStore.id).then((viewerInfoList) => {
         setViewerList(viewerInfoList);
-        // window.alert(viewerList);
       });
     }
   }, [activeStore, showViewerList]);
@@ -40,7 +38,6 @@ const StoreGatewayScreen = () => {
     startFetchUsersInfoByIds(viewerList?.map((viewer) => viewer.userId)).then(
       (viewersInfo) => {
         setViewerInfoList(viewersInfo);
-        // window.alert(viewerInfoList);
       }
     );
   }, [viewerList]);

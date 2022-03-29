@@ -1,6 +1,6 @@
 import React from "react";
 
-const ViewerInfoItem = ({ id, name, photoUrl, email }) => {
+const ViewerInfoItem = ({ name, photoUrl, email }) => {
   return (
     <div className="store-view__main-container">
       <img src={photoUrl} alt="" className="product-view__photo" />

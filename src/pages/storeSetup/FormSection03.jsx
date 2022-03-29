@@ -36,8 +36,6 @@ const FormSection03 = () => {
   const { formCheckSection02IsValidated } = storeSetupState;
 
   const {
-    categoryName,
-    categoryImage,
     productName,
     category,
     quantity,
@@ -46,7 +44,6 @@ const FormSection03 = () => {
     productTag,
     additionalDescription,
     productImages,
-    productUrlImages,
   } = formValues;
 
   const handleLoadimage = (e) => {

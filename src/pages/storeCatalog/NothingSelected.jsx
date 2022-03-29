@@ -12,7 +12,7 @@ export const NothingSelected = () => {
         alt="welcome"
       />
       <div className="nothing-selected__welcome-message text-center">
-        <h1 className="text-center">¡Hola {auth.name}!</h1>
+        <h1 className="text-center">¡Hola, {auth.name}!</h1>
         <br />
         <h5 className="text-center">
           No has seleccionado aún ninguna venta de garaje

@@ -1,19 +1,12 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import {
-  startFetchUserInfoById,
-  startUpdateUserInformation,
-} from "../../actions/usersActions";
+import { startUpdateUserInformation } from "../../actions/usersActions";
 import ErrorFlag from "../../components/ErrorFlag";
 import NavBarFormUserData from "../../components/navbar/NavBarFormUserData";
 import SectionTitle from "../../components/SectionTitle";
 import { colombianStatesList } from "../../helpers/colombianStatesList";
-import {
-  sweetalertForErrorsReportUserDataFormBuilder,
-  sweetalertForGenericSuccessBuilder,
-} from "../../helpers/SweetalertBuilder";
+import { sweetalertForErrorsReportUserDataFormBuilder } from "../../helpers/SweetalertBuilder";
 import userDataFormValidator, {
   userDataFormSubmitValidation,
   userFormDataInitialErrorsState,
@@ -24,7 +17,6 @@ import useForm from "../../hooks/useForm";
 const UserDataForm = () => {
   const dispatch = useDispatch();
   const auth = useSelector((state) => state.auth);
-  const navigate = useNavigate();
 
   const [formValues, handleInputChange, resetForm] = useForm(
     userFormDataInitialFormValues(auth)
@@ -34,7 +26,7 @@ const UserDataForm = () => {
   );
 
   const {
-    id,
+    // id,
     name,
     occupation,
     cellphone,
