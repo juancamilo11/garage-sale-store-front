@@ -184,36 +184,13 @@ export const startPostAnswerToProductQuestion = async (
   } catch (err) {}
 };
 
-// export const setStoreOrProductAsFavorite = (
-//   userId,
-//   currentDate,
-//   elementId,
-//   type, //STORE or PRODUCT
-//   action //Add or Delete
-// ) => {
-//   return async (dispatch, getState) => {
-//     const { stores } = getState();
-//     dispatch(startLoading());
-//     try {
-//       const response = await fetch(`${baseUrl}/update/set-element-favorite`, {
-//         method: "POST",
-//         body: {
-//           userId,
-//           currentDate,
-//           elementId,
-//           type,
-//           action,
-//         },
-//       });
-//       const result = await response.json();
-//       if (response.ok) {
-//         dispatch(getActionToState(stores, result));
-//       } else {
-//         throw await response.json();
-//       }
-
-//     } catch (err) {
-//       throw err;
-//     }
-//   };
-// };
+export const startFetchAllActiveStoresBySellerId = async (sellerId) => {
+  try {
+    const response = await fetch(
+      `${environment.msAdminStoresUrl}/get/stores/seller/${sellerId}`
+    );
+    if (response.ok) {
+      return await response.json();
+    }
+  } catch (error) {}
+};

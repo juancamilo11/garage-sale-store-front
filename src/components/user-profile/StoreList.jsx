@@ -1,11 +1,22 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import { startFetchAllActiveStoresBySellerId } from "../../actions/storeCatalogActions";
 import StoreCard from "./StoreCard";
 
 const StoreList = () => {
+  const { id } = useSelector((state) => state.auth);
+  const [stores, setStores] = useState([]);
+
+  useEffect(() => {
+    startFetchAllActiveStoresBySellerId(id).then((storeList) => {
+      setStores(storeList);
+    });
+  }, []);
+
   return (
     <section className="userprofile__store-list">
-      {new Array(10).fill(0).map((store) => (
-        <StoreCard />
+      {stores?.map((store) => (
+        <StoreCard {...store} />
       ))}
     </section>
   );

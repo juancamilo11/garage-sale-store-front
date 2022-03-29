@@ -13,17 +13,6 @@ const UserPersonalData = () => {
 
   return (
     <div className="userprofile__data-main-container">
-      {(auth.cellphone === "" ||
-        auth.phone === "" ||
-        auth.dateOfBirth === "" ||
-        auth.address === "" ||
-        auth.postalCode === "") && (
-        <ErrorFlag
-          message="Aún te faltan datos personales por especificar"
-          width="100%"
-        />
-      )}
-
       <table className="userprofile__data-table">
         <tr className="userprofile__table-row">
           <td className="userprofile__table-item">

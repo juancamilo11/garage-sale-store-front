@@ -37,7 +37,7 @@ const UserProfilePage = () => {
         <StoreList />
       </div>
 
-      <SectionTitle sectionTitle="Historial de tus compras" />
+      {/* <SectionTitle sectionTitle="Historial de tus compras" />
       <div
         className="userprofile__purchases-container"
         id="transaction-card-list__section"
@@ -61,7 +61,7 @@ const UserProfilePage = () => {
       <SectionTitle sectionTitle="Tus productos favoritos" />
       <div className="userprofile__fav-products-container">
         <FavoriteProductList />
-      </div>
+      </div> */}
       <Footer />
     </div>
   );

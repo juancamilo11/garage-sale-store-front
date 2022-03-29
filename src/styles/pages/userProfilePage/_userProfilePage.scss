@@ -149,20 +149,20 @@
 // List of user active stores
 
 .userprofile__store-list {
-  width: 90%;
-  margin-left: 5%;
-  margin-right: 5%;
+  width: 50%;
+  margin: auto;
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
+  flex-wrap: nowrap;
+  // justify-content: center;
   align-items: center;
+  overflow-x: scroll;
 }
 
 .userprofile__store-item-container {
   position: relative;
   height: 33vw;
-  width: 40vw;
+  width: 30vw;
   outline: 1px solid rgb(202, 202, 202);
   min-width: 500px;
   min-height: 400px;
