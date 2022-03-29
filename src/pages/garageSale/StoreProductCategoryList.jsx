@@ -14,7 +14,7 @@ const StoreProductCategoryList = ({
     setActiveProductCategory(getActiveProductCategory());
   }, [activeCategory]);
 
-  const { productList } = activeProductCategory;
+  const productList = activeProductCategory?.productList;
 
   function getActiveProductCategory() {
     return productCategoryList.filter(
@@ -22,12 +22,10 @@ const StoreProductCategoryList = ({
     )[0];
   }
 
-  console.log(JSON.stringify(productList));
-
   return (
     <>
       <div className="products-list__main-container">
-        {productList.map((product) => (
+        {activeProductCategory?.productList.map((product) => (
           <StoreProductItem
             {...product}
             storeId={storeId}

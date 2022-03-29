@@ -23,7 +23,6 @@ import {
   addFirstFormInfoToCreateStore,
   resetFirstFormInfoToCreateStore,
 } from "../../actions/storeSetupActions";
-import MapBuilderByStoreSetupLocation from "../../components/storeSetup/maps/MapBuilderByStoreSetupLocation";
 
 const FormSection01 = () => {
   const { auth } = useSelector((state) => state);
@@ -323,13 +322,6 @@ const FormSection01 = () => {
                 >
                   Obtener tu dirección actual
                 </button>
-              </div>
-
-              <div
-                className="store-setup__error-flag"
-                style={{ height: "100", width: "500" }}
-              >
-                <MapBuilderByStoreSetupLocation address={address} />
               </div>
 
               <div className="store-setup__error-flag">

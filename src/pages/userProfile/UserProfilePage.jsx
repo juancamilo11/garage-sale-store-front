@@ -5,10 +5,7 @@ import HomeUserProfile from "../../components/user-profile/HomeUserProfile";
 import NavBarUserProfile from "../../components/navbar/NavBarUserProfile";
 import UserPersonalData from "../../components/user-profile/UserPersonalData";
 import SectionTitle from "../../components/SectionTitle";
-import FavoriteProductList from "../../components/user-profile/FavoriteProductList";
-import FavoriteStoreList from "../../components/user-profile/FavoriteStoreList";
 import StoreList from "../../components/user-profile/StoreList";
-import TransactionList from "../../components/user-profile/TransactionList";
 
 const UserProfilePage = () => {
   return (
@@ -36,32 +33,6 @@ const UserProfilePage = () => {
       >
         <StoreList />
       </div>
-
-      {/* <SectionTitle sectionTitle="Historial de tus compras" />
-      <div
-        className="userprofile__purchases-container"
-        id="transaction-card-list__section"
-      >
-        <TransactionList transactionType="buy" />
-      </div>
-
-      <SectionTitle sectionTitle="Historial de tus ventas" />
-      <div className="userprofile__sales-container">
-        <TransactionList transactionType="sell" />
-      </div>
-
-      <SectionTitle sectionTitle="Tus tiendas favoritas" />
-      <div
-        className="userprofile__fav-stores-container"
-        id="favorite-store-list__section"
-      >
-        <FavoriteStoreList />
-      </div>
-
-      <SectionTitle sectionTitle="Tus productos favoritos" />
-      <div className="userprofile__fav-products-container">
-        <FavoriteProductList />
-      </div> */}
       <Footer />
     </div>
   );

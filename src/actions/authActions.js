@@ -38,10 +38,6 @@ export const login = (
   },
 });
 
-export const logout = () => ({
-  type: types.authLogout,
-});
-
 export const startGoogleLogin = () => {
   return async (dispatch) => {
     dispatch(startLoading());
@@ -83,11 +79,14 @@ export const startGoogleLogin = () => {
   };
 };
 
+export const logout = () => ({
+  type: types.authLogout,
+});
+
 export const startLogout = () => {
   return async (dispatch) => {
     await auth.signOut().then(() => {
       dispatch(logout());
-      // dispatch(finishLoading());
     });
   };
 };

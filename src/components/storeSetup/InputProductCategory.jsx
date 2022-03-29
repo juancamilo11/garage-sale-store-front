@@ -6,14 +6,10 @@ import section03Validator, {
   isTheCategoryAlreadyDefined,
   section_03ErrorState,
 } from "../../helpers/storeSetupHelpers/SetupStoreSection03Validator";
-import {
-  sweetalertForErrorsReportForm03StoreSetupBuilder,
-  sweetalertForErrorsReportInputCategoryForm03StoreSetupBuilder,
-} from "../../helpers/SweetalertBuilder";
+import { sweetalertForErrorsReportInputCategoryForm03StoreSetupBuilder } from "../../helpers/SweetalertBuilder";
 import useForm from "../../hooks/useForm";
 import ErrorFlag from "../ErrorFlag";
 import ProductCategoryWithImageTagList from "./ProductCategoryWithImageTagList";
-import ProductWithImageTagList from "./ProductCategoryWithImageTagList";
 
 const InputProductCategory = ({
   categoryList,
@@ -30,7 +26,7 @@ const InputProductCategory = ({
 
   const [errorsState, setErrorsState] = useState(section_03ErrorState);
 
-  const { categoryName, categoryImage, imageUrl } = formValues;
+  const { categoryName, categoryImage } = formValues;
 
   const handleInputValidation = (e) => {
     handleCategoryInputChange(e);

@@ -9,11 +9,8 @@ const StoreCard = ({
   storeExistencePeriod,
   storeDescription,
   storeVisualDescription,
-  user,
   storeAddress,
-  productCategoryList,
-  purchaseTestimonialList,
-  purchaseOrderList,
+  purchaseOrderList, // --> Podría servir para mostrar el número de ordenes de compra pendientes
 }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();

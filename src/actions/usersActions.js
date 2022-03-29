@@ -4,22 +4,26 @@ import { sweetalertForGenericSuccessBuilder } from "../helpers/SweetalertBuilder
 import environment from "./../environment/environment";
 import { login } from "./authActions";
 
+const getUserByFormValues = (formValues) => {
+  return {
+    id: formValues.id,
+    name: formValues.name,
+    photoUrl: formValues.photoUrl,
+    occupation: formValues.occupation,
+    cellphone: formValues.cellphone,
+    email: formValues.email,
+    postalCode: formValues.postalCode,
+    colombianState: formValues.colombianState.toUpperCase(),
+    phone: formValues.phone,
+    address: formValues.address,
+    dateOfBirth: formValues.dateOfBirth,
+    registerDate: formValues.registerDate,
+  };
+};
+
 export const startUpdateUserInformation = (formValues) => {
   return async (dispatch) => {
-    const userInfoUpdated = {
-      id: formValues.id,
-      name: formValues.name,
-      photoUrl: formValues.photoUrl,
-      occupation: formValues.occupation,
-      cellphone: formValues.cellphone,
-      email: formValues.email,
-      postalCode: formValues.postalCode,
-      colombianState: formValues.colombianState.toUpperCase(),
-      phone: formValues.phone,
-      address: formValues.address,
-      dateOfBirth: formValues.dateOfBirth,
-      registerDate: formValues.registerDate,
-    };
+    const userInfoUpdated = getUserByFormValues(formValues);
     try {
       const response = await fetch(
         `${environment.msAdminInfoUserUrl}/put/user`,

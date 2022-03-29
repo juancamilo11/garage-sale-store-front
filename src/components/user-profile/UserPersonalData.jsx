@@ -1,7 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import ErrorFlag from "../ErrorFlag";
 
 const UserPersonalData = () => {
   const auth = useSelector((state) => state.auth);

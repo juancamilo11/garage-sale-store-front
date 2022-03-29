@@ -10,10 +10,6 @@ const NavBarStore = () => {
     navigate("/store-catalog");
   };
 
-  const handleAddOrRemoveFromFavorites = (e) => {
-    e.preventDefault();
-  };
-
   return (
     <nav className="navbar-user-profile__main-container">
       <div className="nav-user-profile__links-container">

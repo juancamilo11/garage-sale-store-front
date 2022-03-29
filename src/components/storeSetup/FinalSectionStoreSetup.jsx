@@ -1,13 +1,9 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 import { startPostGarageSaleStore } from "../../actions/storeSetupActions";
 import newStoreObjectBuilder from "../../helpers/storeSetupHelpers/newStoreObjectBUilder";
 
 const FinalSectionStoreSetup = () => {
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-
   const { id } = useSelector((state) => state.auth);
 
   const { firstFormInfo, secondFormInfo, thirdFormInfo } = useSelector(

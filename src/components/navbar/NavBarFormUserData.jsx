@@ -3,7 +3,6 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 const NavBarFormUserData = () => {
-  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const handleGoToStoreCatalog = () => {
