@@ -25,7 +25,7 @@ const FinalSectionStoreSetup = () => {
       id,
     });
     startPostGarageSaleStore(storeReadyToSend);
-    navigate(`/store-catalog`);
+    // navigate(`/store-catalog`);
   };
   return (
     <div>

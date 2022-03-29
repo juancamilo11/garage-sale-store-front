@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import { startPostNewQuestionToProduct } from "../../../actions/storeCatalogActions";
 import useForm from "../../../hooks/useForm";
 import { v4 as uuidv4 } from "uuid";
+import { sweetAlertForQuestionPublished } from "../../../helpers/SweetalertBuilder";
 
 const NewQuestionToProduct = ({
   storeId,
@@ -39,6 +40,7 @@ const NewQuestionToProduct = ({
       setQuestionListToShow((setQuestionListToShow) => {
         return [newQuestion, ...setQuestionListToShow];
       });
+      sweetAlertForQuestionPublished();
       resetForm({
         questionValue: "",
       });

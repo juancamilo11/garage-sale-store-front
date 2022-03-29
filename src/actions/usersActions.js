@@ -5,6 +5,7 @@ export const updateUserInformation = async (
   uid,
   displayName,
   email,
+  photoUrl,
   formValues
 ) => {
   try {
@@ -17,6 +18,7 @@ export const updateUserInformation = async (
           id: uid,
           name: displayName,
           email,
+          photoUrl,
           occupation: formValues.occupation,
           cellphone: formValues.cellphone,
           postalCode: formValues.postalCode,

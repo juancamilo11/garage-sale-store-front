@@ -68,6 +68,7 @@ const UserDataForm = () => {
       auth.uid,
       auth.displayName,
       auth.email,
+      auth.photoUrl,
       formValues
     ).then((res) => {
       sweetalertForGenericSuccessBuilder(
@@ -316,7 +317,7 @@ const UserDataForm = () => {
         <div className="user-form-data__centered-container">
           <div className="user-form-data__buttons-container">
             <button className="user-form-data__button-update" type="submit">
-              Ingresar producto
+              Actualizar datos
             </button>
             <button
               className="user-form-data__button-update"

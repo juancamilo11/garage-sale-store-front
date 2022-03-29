@@ -35,6 +35,7 @@ const newStoreObjectBuilder = (store) => {
           .map((product) => ({
             ...product,
             id: uuidv4(),
+            productQuestionList: [],
             quantity: parseInt(product.quantity),
             price: parseFloat(product.price),
           })),

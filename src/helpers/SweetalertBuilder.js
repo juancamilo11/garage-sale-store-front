@@ -460,3 +460,14 @@ export const sweeralertForShowProductImage = (urlImage, name) =>
     html: `Producto: <b>${name}</b>`,
     showConfirmButton: false,
   });
+
+export const sweetAlertForQuestionPublished = () =>
+  Swal.fire({
+    icon: "success",
+    text: "Se ha publicado tu pregunta, una vez el vendedor te responda se te avisará por correo electrónico",
+    showConfirmButton: false,
+    allowOutsideClick: false,
+    allowEscapeKey: false,
+    allowEnterKey: false,
+    timer: 3500,
+  });

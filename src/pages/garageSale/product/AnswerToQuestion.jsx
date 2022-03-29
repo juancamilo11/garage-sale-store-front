@@ -60,7 +60,7 @@ const AnswerToQuestion = ({
             className="product-question__new-question-input"
             onChange={handleInputChange}
             maxLength="2000"
-            placeholder="Escribe una pregunta a tu posible comprador..."
+            placeholder="Escribe una respuesta a tu posible comprador..."
           />
           <button
             type="submit"
