@@ -51,7 +51,6 @@ export const startPostGarageSaleStore = async (objectStore) => {
       },
       body: JSON.stringify(objectStore),
     });
-    console.log(JSON.stringify(objectStore));
     if (response.ok) {
       return await response.json();
     } else {

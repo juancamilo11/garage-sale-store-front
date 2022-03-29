@@ -60,6 +60,8 @@ export const startUpdateUserInformation = (formValues) => {
   };
 };
 
+const getDate = (date) => new Date(date).toISOString().split("T")[0];
+
 export const startFetchUserInfo = async (
   id,
   displayName,
@@ -78,7 +80,7 @@ export const startFetchUserInfo = async (
           name: displayName,
           photoUrl,
           email,
-          creationTime,
+          creationTime: getDate(creationTime),
         }),
       }
     );

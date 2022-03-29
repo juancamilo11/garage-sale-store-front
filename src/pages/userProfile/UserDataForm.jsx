@@ -302,7 +302,6 @@ const UserDataForm = () => {
           </div>
         </div>
       </form>
-      {JSON.stringify(auth)}
     </div>
   );
 };
