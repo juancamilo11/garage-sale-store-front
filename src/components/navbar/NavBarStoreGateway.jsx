@@ -50,14 +50,6 @@ const NavBarStoreGateway = ({ storeName }) => {
         <p className="navbar-store-gateway__store-title">
           {storeName || "Nombre tienda"}
         </p>
-        <button
-          className="nav-user-profile__button"
-          onClick={handleAddOrDeleteStoreToFavorites}
-        >
-          {activeStore.isAFavorite
-            ? "Eliminar de favoritos"
-            : "Agregar a tus favoritos"}
-        </button>
       </div>
     </nav>
   );

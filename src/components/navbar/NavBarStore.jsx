@@ -35,12 +35,6 @@ const NavBarStore = () => {
       <div className="nav-user-profile__buttons-container nav-store__buttons-container">
         <button
           className="nav-user-profile__button nav-store__button"
-          onClick={handleAddOrRemoveFromFavorites}
-        >
-          Agregar a tus favoritos
-        </button>
-        <button
-          className="nav-user-profile__button nav-store__button"
           onClick={handleGoToCatalog}
         >
           Ir al catalogo de tiendas

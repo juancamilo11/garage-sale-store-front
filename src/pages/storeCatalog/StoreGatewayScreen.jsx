@@ -18,6 +18,7 @@ const StoreGatewayScreen = () => {
 
   const [viewerList, setViewerList] = useState([]);
   const [viewerInfoList, setViewerInfoList] = useState([]);
+  const [showViewerList, setShowViewerList] = useState(false);
 
   const handleVisitStore = (e) => {
     e.preventDefault();
@@ -27,11 +28,13 @@ const StoreGatewayScreen = () => {
   };
 
   useEffect(() => {
-    startFetchStoreViews(activeStore.id).then((viewerInfoList) => {
-      setViewerList(viewerInfoList);
-      // window.alert(viewerList);
-    });
-  }, [activeStore]);
+    if (showViewerList) {
+      startFetchStoreViews(activeStore.id).then((viewerInfoList) => {
+        setViewerList(viewerInfoList);
+        // window.alert(viewerList);
+      });
+    }
+  }, [activeStore, showViewerList]);
 
   useEffect(() => {
     startFetchUsersInfoByIds(viewerList?.map((viewer) => viewer.userId)).then(
@@ -41,6 +44,11 @@ const StoreGatewayScreen = () => {
       }
     );
   }, [viewerList]);
+
+  const handleShowViewerList = (e) => {
+    e.preventDefault();
+    setShowViewerList((showViewerList) => !showViewerList);
+  };
 
   return (
     <div className="store-gateway__main-container">
@@ -68,6 +76,12 @@ const StoreGatewayScreen = () => {
             >
               Visitar la tienda
             </button>
+            <button
+              className="nav-user-profile__button visit-store__button show-viewers__button"
+              onClick={handleShowViewerList}
+            >
+              {showViewerList ? "Ocultar visitantes" : "Ver visitantes"}
+            </button>
           </div>
           <div className="store-gateway__description-img-container">
             <img
@@ -78,7 +92,20 @@ const StoreGatewayScreen = () => {
           </div>
         </div>
       </div>
-      <ViewerInfoList viewerInfoList={viewerInfoList} />
+      {showViewerList && (
+        <>
+          <div className="user-form-data__section-title user-form-data__section-title-store-catalog">
+            <SectionTitle sectionTitle="Lista de usuarios que han visto la tienda" />
+          </div>
+          {viewerInfoList?.length > 0 ? (
+            <ViewerInfoList viewerInfoList={viewerInfoList} />
+          ) : (
+            <h4 className="text-center">
+              Nadie ha visto esta venta de garaje aún
+            </h4>
+          )}
+        </>
+      )}
     </div>
   );
 };

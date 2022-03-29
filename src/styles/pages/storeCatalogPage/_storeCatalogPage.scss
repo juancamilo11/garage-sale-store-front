@@ -493,10 +493,13 @@
 .product-view__name {
   font-weight: bold;
   width: 40%;
+  padding-top: 10px;
   text-align: center;
+  align-self: center;
 }
 
 .product-view__email {
+  padding-top: 10px;
   width: 35%;
   text-align: center;
 }
