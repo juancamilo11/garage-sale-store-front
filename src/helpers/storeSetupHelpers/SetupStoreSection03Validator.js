@@ -82,15 +82,6 @@ const sendImageToCloudinary = async (
   const imageUrl = document.getElementById(`${idTargetImage}-url`);
   imageUrl.setAttribute("href", response);
   imageUrl.textContent = "Haz click aquí para ver la imágen en tamaño grande";
-
-  // .then((responseUrl) => {
-  //     sweetalertForGenericSuccessBuilder("Enlace a la imágen: " + responseUrl);
-  //   })
-  //   .catch((err) =>
-  //     sweetalertForGenericErrorBuilder(
-  //       "Error al subir la imágen a cloudinary, intenta con otra."
-  //     )
-  //   );
 };
 
 const handleResetImagesFromView = (imageId) => {

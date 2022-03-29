@@ -1,17 +1,13 @@
 import { uploadFileToCloudinary } from "../../actions/cloudinaryActions";
-import {
-  sweetalertForGenericErrorBuilder,
-  sweetalertForGenericSuccessBuilder,
-} from "../SweetalertBuilder";
 
-//Initial values for the section #1 form of the store setup's.
+//Initial values for the section #2 form of the store setup.
 export const section_02FormValues = {
   portraitUrl: "",
   prevImagesUrls: [],
   physicalStoreUrl: "",
 };
 
-//Initial values for the section #1 errors of the store setup's.
+//Initial values for the section #2 errors of the store setup.
 export const section_02ErrorState = {
   portraitUrl: { hasErrors: false, message: "", hasContent: false },
   prevImagesUrls: { hasErrors: false, message: "", hasContent: false },
@@ -43,15 +39,6 @@ const sendImageToCloudinary = async (file, idTargetImage) => {
   const imageUrl = document.getElementById(`${idTargetImage}-url`);
   imageUrl.setAttribute("href", response);
   imageUrl.textContent = "Haz click aquí para ver la imágen en tamaño grande";
-
-  // .then((responseUrl) => {
-  //     sweetalertForGenericSuccessBuilder("Enlace a la imágen: " + responseUrl);
-  //   })
-  //   .catch((err) =>
-  //     sweetalertForGenericErrorBuilder(
-  //       "Error al subir la imágen a cloudinary, intenta con otra."
-  //     )
-  //   );
 };
 
 const setErrorStateForField = (

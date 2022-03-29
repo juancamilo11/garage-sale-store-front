@@ -1,9 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import { useSelector } from "react-redux";
-import {
-  startPostAnswerToProductQuestion,
-  startPostNewQuestionToProduct,
-} from "../../../actions/storeCatalogActions";
+import { startPostAnswerToProductQuestion } from "../../../actions/storeCatalogActions";
 import useForm from "../../../hooks/useForm";
 
 const AnswerToQuestion = ({

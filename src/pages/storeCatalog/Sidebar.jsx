@@ -2,10 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { getCatalogStoreFakeData } from "../../helpers/catalogStoreFakeData";
 import { sweetalertForSearchAndFilterStoresBuilder } from "../../helpers/SweetalertBuilder";
 import StoreEntries from "./StoreEntries";
-import ButtonCreateNewStore from "./../../components/ButtonCreateNewStore";
 import { startLogout } from "../../actions/authActions";
 import { startFetchAllActiveStores } from "../../actions/storeCatalogActions";
 
@@ -13,11 +11,6 @@ const Sidebar = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { auth } = useSelector((state) => state);
-
-  //const { stores } = useSelector((state) => state);
-  //Aquí es donde se llevan a cabo los procesos de filtrado y búsqueda y ordenamiento
-  const [stores, setStores] = useState(getCatalogStoreFakeData);
-  const [searchValue, setSearchValue] = useState("");
 
   const handleGoToProfile = (e) => {
     e.preventDefault();

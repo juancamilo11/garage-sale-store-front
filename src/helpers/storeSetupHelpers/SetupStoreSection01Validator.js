@@ -4,12 +4,12 @@ import { v4 as uuidv4 } from "uuid";
 //Initial values for the section #1 form of the store setup.
 export const section_01FormValues = {
   storeId: uuidv4(),
-  storeName: "nombre de la tienda",
+  storeName: "",
   tag: "",
-  slogan: "Slogan de la tienda nueva",
-  description: "Descripcion de la tienda nueva, prueba",
-  startingDate: "03-02-2022",
-  endingDate: "04-02-2022",
+  slogan: "",
+  description: "",
+  startingDate: "",
+  endingDate: "",
   address: { latitude: 0, longitude: 0 },
   seller: {},
 };

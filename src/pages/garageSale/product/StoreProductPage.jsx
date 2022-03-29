@@ -6,7 +6,6 @@ import {
   sweeralertForShowProductImage,
   sweetalertForOrderCreationConfirmationBuilder,
 } from "../../../helpers/SweetalertBuilder";
-import ProductImagesSlider from "./ProductImagesSlider";
 import NavBarFormUserData from "./../../../components/navbar/NavBarFormUserData";
 import SectionTitle from "../../../components/SectionTitle";
 import ProductQuestionList from "./ProductQuestionList";

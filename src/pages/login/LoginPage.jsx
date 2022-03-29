@@ -6,15 +6,16 @@ const LoginPage = () => {
   const dispatch = useDispatch();
 
   const handleLoginWithGoogle = (e) => {
+    e.preventDefault();
     dispatch(startGoogleLogin());
   };
 
   const handleLoginWithFacebook = (e) => {
-    // dispatch(startFacebookLogin());
+    e.preventDefault();
   };
 
   const handleLoginWithMicrosoft = (e) => {
-    // dispatch(startMicrosoftLogin());
+    e.preventDefault();
   };
 
   return (

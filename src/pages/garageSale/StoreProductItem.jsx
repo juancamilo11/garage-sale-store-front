@@ -5,12 +5,10 @@ import { getProductStatusNameByNumber } from "../../helpers/productStates";
 const StoreProductItem = ({
   id,
   productName,
-  additionalDescription,
   price,
   quantity,
   productStatus,
   productImageUrlList,
-  productTagList,
   storeId,
   activeCategory,
 }) => {
