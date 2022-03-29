@@ -1,5 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import { getColombianStateFlagByValue } from "../../helpers/colombianStatesList";
 import ButtonCreateNewStore from "../ButtonCreateNewStore";
 
 const HomeUserProfile = () => {
@@ -25,12 +26,10 @@ const HomeUserProfile = () => {
         </picture>
         <div className="userprofile__home-description">
           <h1 className="userprofile__home-name">{auth.name}</h1>
+          <h3>{auth.colombianState}</h3>
           <img
             className="userprofile__nationality-flag"
-            src={
-              process.env.PUBLIC_URL +
-              "/assets/user-profile/nationality-flag.svg"
-            }
+            src={getColombianStateFlagByValue(auth.colombianState)}
             alt="Nationality flag"
           />
         </div>

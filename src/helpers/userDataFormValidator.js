@@ -1,18 +1,21 @@
 import moment from "moment";
 import validator from "validator";
 
+const getDate = (date) => new Date(date).toISOString().split("T")[0];
+
 export const userFormDataInitialFormValues = (auth) => ({
-  id: auth.uid,
+  id: auth.id,
   name: auth.name,
-  occupation: "",
-  cellphone: "",
+  photoUrl: auth.photoUrl,
+  occupation: auth.occupation,
+  cellphone: auth.cellphone,
   email: auth.email,
-  postalCode: "",
-  colombianState: "",
-  phone: "",
-  address: "",
-  dateOfBirth: "",
-  registerDate: auth.creationTime,
+  postalCode: auth.phone,
+  colombianState: auth.colombianState,
+  phone: auth.phone,
+  address: auth.address,
+  dateOfBirth: auth.dateOfBirth,
+  registerDate: getDate(auth.registerDate),
 });
 
 export const userFormDataInitialErrorsState = {
@@ -170,9 +173,9 @@ const handleAddressValidation = (value, setErrorsState) => {
         ["address"]: {
           hasErrors: true,
           message:
-            "La ocupación '" +
+            "La dirección '" +
             value +
-            "' es inválida, intente con otra ocupación.",
+            "' es inválida, intente con otra dirección.",
         },
       };
     });

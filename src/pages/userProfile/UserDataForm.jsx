@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import {
   startFetchUserInfoById,
-  updateUserInformation,
+  startUpdateUserInformation,
 } from "../../actions/usersActions";
 import ErrorFlag from "../../components/ErrorFlag";
 import NavBarFormUserData from "../../components/navbar/NavBarFormUserData";
@@ -22,6 +22,7 @@ import userDataFormValidator, {
 import useForm from "../../hooks/useForm";
 
 const UserDataForm = () => {
+  const dispatch = useDispatch();
   const auth = useSelector((state) => state.auth);
   const navigate = useNavigate();
 
@@ -64,19 +65,9 @@ const UserDataForm = () => {
       sweetalertForErrorsReportUserDataFormBuilder(errorsReport);
       return;
     }
-    updateUserInformation(
-      auth.uid,
-      auth.displayName,
-      auth.email,
-      auth.photoUrl,
-      formValues
-    ).then((res) => {
-      sweetalertForGenericSuccessBuilder(
-        "Actualización de datos exitosa."
-      ).then((res) => {
-        navigate("/user-profile");
-      });
-    });
+
+    dispatch(startUpdateUserInformation(formValues));
+    navigate("/user-profile");
   };
 
   const handleResetForm = (e) => {
@@ -218,7 +209,7 @@ const UserDataForm = () => {
               >
                 <option value="NN">Seleccione el departamento</option>
                 {colombianStatesList.map((state) => (
-                  <option key={state.id} value={state.name}>
+                  <option key={state.id} value={state.value}>
                     {state.name}
                   </option>
                 ))}
@@ -300,16 +291,15 @@ const UserDataForm = () => {
                 htmlFor="registerDate"
                 className="user-form-data__input-label"
               >
-                F.de registro
+                F. de registro
               </label>
               <input
-                type="text"
+                type="date"
                 name="registerDate"
                 id="registerDate"
                 value={registerDate}
                 className="user-form-data__input"
                 autoComplete="off"
-                readOnly
               />
             </div>
           </div>
@@ -328,6 +318,7 @@ const UserDataForm = () => {
           </div>
         </div>
       </form>
+      {JSON.stringify(auth)}
     </div>
   );
 };
