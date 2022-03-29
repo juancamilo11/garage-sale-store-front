@@ -471,3 +471,32 @@
   font-weight: bold;
   font-size: 20px;
 }
+
+.store-view__main-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 95%;
+  margin: auto;
+  margin-top: 10px;
+  padding: 5px;
+  border-radius: 10px;
+  border: 1px solid darkgray;
+}
+
+.product-view__photo {
+  width: 10%;
+  border-radius: 50%;
+}
+
+.product-view__name {
+  font-weight: bold;
+  width: 40%;
+  text-align: center;
+}
+
+.product-view__email {
+  width: 35%;
+  text-align: center;
+}

@@ -1,18 +1,46 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import {
+  startFetchStoreViews,
+  startRegisterStoreVisualization,
+} from "../../actions/storeCatalogActions";
+import { startFetchUsersInfoByIds } from "../../actions/usersActions";
 import NavBarStoreGateway from "../../components/navbar/NavBarStoreGateway";
 import SectionTitle from "../../components/SectionTitle";
+import ViewerInfoList from "./ViewerInfoList";
 
 const StoreGatewayScreen = () => {
+  const { id: userId } = useSelector((state) => state.auth);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { activeStore } = useSelector((state) => state.stores);
 
+  const [viewerList, setViewerList] = useState([]);
+  const [viewerInfoList, setViewerInfoList] = useState([]);
+
   const handleVisitStore = (e) => {
     e.preventDefault();
-    navigate(`/store/${activeStore.id}`);
+    startRegisterStoreVisualization(userId, activeStore.id).then((res) => {
+      navigate(`/store/${activeStore.id}`);
+    });
   };
+
+  useEffect(() => {
+    startFetchStoreViews(activeStore.id).then((viewerInfoList) => {
+      setViewerList(viewerInfoList);
+      // window.alert(viewerList);
+    });
+  }, [activeStore]);
+
+  useEffect(() => {
+    startFetchUsersInfoByIds(viewerList?.map((viewer) => viewer.userId)).then(
+      (viewersInfo) => {
+        setViewerInfoList(viewersInfo);
+        // window.alert(viewerInfoList);
+      }
+    );
+  }, [viewerList]);
 
   return (
     <div className="store-gateway__main-container">
@@ -50,6 +78,7 @@ const StoreGatewayScreen = () => {
           </div>
         </div>
       </div>
+      <ViewerInfoList viewerInfoList={viewerInfoList} />
     </div>
   );
 };

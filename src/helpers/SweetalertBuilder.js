@@ -471,3 +471,14 @@ export const sweetAlertForQuestionPublished = () =>
     allowEnterKey: false,
     timer: 3500,
   });
+
+export const sweetalertForViewersList = (viewerInfoList) =>
+  Swal.fire({
+    title: "Lista de usuarios que han visto esta venta de garage",
+    text: JSON.stringify(viewerInfoList),
+    showConfirmButton: true,
+    allowOutsideClick: false,
+    allowEscapeKey: false,
+    allowEnterKey: false,
+    timer: 3500,
+  });

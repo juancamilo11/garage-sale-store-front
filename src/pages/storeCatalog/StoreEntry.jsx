@@ -1,6 +1,11 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { activeStore } from "../../actions/storeCatalogActions";
+import {
+  activeStore,
+  startFetchStoreViews,
+} from "../../actions/storeCatalogActions";
+import { startFetchUsersInfoByIds } from "../../actions/usersActions";
+import { sweetalertForViewersList } from "../../helpers/SweetalertBuilder";
 
 const MAX_NUM_TAGS_DISPLAYED = 10;
 
@@ -15,7 +20,8 @@ const StoreEntry = ({
 }) => {
   const dispatch = useDispatch();
   const stores = useSelector((state) => state.stores);
-  const activedStore = stores.activeStore;
+  const [viewerList, setViewerList] = useState([]);
+  const activeStoreItem = stores.activeStore;
 
   const handleSelectStore = () => {
     dispatch(
@@ -30,10 +36,17 @@ const StoreEntry = ({
     );
   };
 
+  useEffect(() => {
+    startFetchStoreViews(id).then((viewerInfoList) => {
+      setViewerList(viewerInfoList);
+      // window.alert(viewerList);
+    });
+  }, []);
+
   return (
     <div
       className="store-catalog__store-entry"
-      style={{ backgroundColor: activedStore?.id === id && "#94DAFF" }}
+      style={{ backgroundColor: activeStoreItem?.id === id && "#94DAFF" }}
     >
       {
         <div
@@ -90,7 +103,7 @@ const StoreEntry = ({
           <div className="store-catalog__store-view-count text-center">
             <h6 className="mt-2">
               <i class="fas fa-eye store-catalog__icon-entry-value"></i>
-              {viewsCount} visitas
+              {viewerList?.length || 0} visitas
             </h6>
           </div>
         </div>

@@ -1,6 +1,7 @@
 import types from "../types/types";
 import { finishLoading, startLoading } from "./uiActions";
 import environment from "./../environment/environment";
+import { async } from "@firebase/util";
 
 export const FAVORITE_TYPE_STORE = "Favorite Store Type";
 export const FAVORITE_TYPE_PRODUCT = "Favorite Product Type";
@@ -188,6 +189,29 @@ export const startFetchAllActiveStoresBySellerId = async (sellerId) => {
   try {
     const response = await fetch(
       `${environment.msAdminStoresUrl}/get/stores/seller/${sellerId}`
+    );
+    if (response.ok) {
+      return await response.json();
+    }
+  } catch (error) {}
+};
+
+export const startFetchStoreViews = async (storeId) => {
+  try {
+    const usersResponse = await fetch(
+      `${environment.msAdminInfoUserUrl}/get/store/views/users/${storeId}`
+    );
+    if (usersResponse.ok) {
+      return await usersResponse.json();
+    }
+  } catch (error) {}
+};
+
+export const startRegisterStoreVisualization = async (userId, storeId) => {
+  try {
+    const response = await fetch(
+      `${environment.msAdminStoresUrl}/post/view/${storeId}/${userId}`,
+      { method: "POST" }
     );
     if (response.ok) {
       return await response.json();
