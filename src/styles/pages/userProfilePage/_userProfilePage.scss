@@ -599,3 +599,22 @@
 .purchase-order__info-button {
   margin-top: 0px !important;
 }
+
+.purchase-order__product-images-container {
+  height: 80px !important;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  min-width: 380px;
+}
+
+.purchase-order__product-image {
+  width: 70px;
+  border-radius: 3px;
+  margin-right: 3px;
+  margin-left: 3px;
+}
+
+.purchase-order__quantity {
+  margin-right: 15px;
+}

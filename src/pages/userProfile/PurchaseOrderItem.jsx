@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { startFetchStoreById } from "../../actions/storeCatalogActions";
 import { startFetchUserInfoById } from "../../actions/usersActions";
+import getProductInformationById from "../../helpers/store/storeHelpers";
 import { sweetAlertForShowUserInfo } from "../../helpers/SweetalertBuilder";
 
 const PurchaseOrderItem = ({
@@ -37,7 +38,9 @@ const PurchaseOrderItem = ({
     });
   }, []);
 
-  useEffect(() => {}, [storeInfo]);
+  useEffect(() => {
+    setProductInfo(getProductInformationById(storeInfo, productId));
+  }, [storeInfo]);
 
   const handleShowUserInfo = (e) => {
     e.preventDefault();
@@ -78,8 +81,28 @@ const PurchaseOrderItem = ({
         </div>
       </div>
 
-      <div className="purchase-order__purchase-info">
-        {JSON.stringify(productInfo)}
+      {JSON.stringify(productInfo)}
+
+      <div className="purchase-order__user-info">
+        <h4 className="purchase-order__user-info-title">
+          {type === "BUY"
+            ? "Información del producto a comprar"
+            : "Información del producto a vender"}
+        </h4>
+        <div className="store-view__main-container purchase-order__user-info-container">
+          <div className="purchase-order__product-images-container">
+            {productInfo?.productUrlImages.map((productUrlImage) => (
+              <img
+                src={productUrlImage}
+                alt=""
+                className="product-view__photo purchase-order__user-photo purchase-order__product-image"
+              />
+            ))}
+          </div>
+          <b className="purchase-order__name">{productInfo?.productName}</b>
+          <b className="purchase-order__price">{productInfo?.price} COP</b>
+          <b className="purchase-order__quantity">{quantity} unidades</b>
+        </div>
       </div>
     </div>
   );
