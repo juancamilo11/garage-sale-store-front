@@ -149,7 +149,6 @@
 // List of user active stores
 
 .userprofile__store-list {
-  background-color: red;
   width: 100vw !important;
   margin: auto;
   display: flex;
@@ -566,9 +565,17 @@
 
 .purchase-order__item-main-container {
   border: 1px solid darkgray;
+  background-color: rgb(235, 240, 240);
   padding: 10px;
   border-radius: 5px;
   margin-bottom: 30px;
+  position: relative;
+}
+
+.purchase-order__order-id {
+  position: absolute;
+  right: 15px;
+  text-align: end;
 }
 
 .purchase-order__list-container {
@@ -584,7 +591,7 @@
 .purchase-order__user-info-container {
   width: 100%;
   border-radius: 5px;
-  border: 1px solid lightgray;
+  border: 1px solid darkgray;
 }
 
 .purchase-order__title {
@@ -598,6 +605,11 @@
 
 .purchase-order__info-button {
   margin-top: 0px !important;
+  color: black;
+}
+
+.purchase-order__info-button:hover {
+  color: white;
 }
 
 .purchase-order__product-images-container {
@@ -617,4 +629,34 @@
 
 .purchase-order__quantity {
   margin-right: 15px;
+}
+
+.purchase-order__name-commands-section {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.purchase-order__name-command-button {
+  width: 100%;
+  color: black;
+  font-weight: 600;
+}
+
+.purchase-order__name-command-button--contact {
+  text-align: center;
+}
+
+.purchase-order__name-command-button--contact:hover {
+  color: white;
+  background: #00bb2d !important;
+  text-decoration: none;
+}
+.purchase-order__name-command-button--accept:hover {
+  color: white;
+  background-color: blue;
+}
+.purchase-order__name-command-button--decline:hover {
+  color: white;
+  background-color: red;
 }
