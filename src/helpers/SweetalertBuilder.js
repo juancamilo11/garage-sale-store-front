@@ -484,3 +484,31 @@ export const sweetAlertForShowUserInfo = (userInfo) =>
     allowEscapeKey: false,
     allowOutsideClick: false,
   });
+
+export const sweetalertForAcceptPurchaseOrder = (productName, quantity) =>
+  Swal.fire({
+    icon: "info",
+    html: `¿Desea <b>aprobar</b> la compra de <b>${quantity} unidad(es)</b> de <b>${productName}</b>?`,
+    footer: "<b>Los productos serán descontados de la tienda</b>",
+    showConfirmButton: true,
+    showCancelButton: true,
+    confirmButtonText: "Aprobar",
+    cancelButtonText: "Cancelar",
+    cancelButtonColor: "red",
+    allowEscapeKey: false,
+    allowOutsideClick: false,
+  });
+
+export const sweetalertForDeclinePurchaseOrder = (productName, quantity) =>
+  Swal.fire({
+    icon: "warning",
+    html: `¿Desea <b>rechazar</b> la compra de <b>${quantity}</b> unidad(es) de <b>${productName}</b>?`,
+    footer: "<b>Los productos no serán descontados de la tienda</b>",
+    showConfirmButton: true,
+    showCancelButton: true,
+    confirmButtonText: "Rechazar",
+    cancelButtonText: "Cancelar",
+    cancelButtonColor: "red",
+    allowEscapeKey: false,
+    allowOutsideClick: false,
+  });

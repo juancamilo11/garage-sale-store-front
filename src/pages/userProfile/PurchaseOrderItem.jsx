@@ -1,8 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { startFetchStoreById } from "../../actions/storeCatalogActions";
 import { startFetchUserInfoById } from "../../actions/usersActions";
-import getProductInformationById from "../../helpers/store/storeHelpers";
-import { sweetAlertForShowUserInfo } from "../../helpers/SweetalertBuilder";
+import getProductInformationById, {
+  getUrlForWhatsappMessage,
+} from "../../helpers/store/storeHelpers";
+import {
+  sweetalertForAcceptPurchaseOrder,
+  sweetalertForDeclinePurchaseOrder,
+  sweetAlertForShowUserInfo,
+} from "../../helpers/SweetalertBuilder";
 
 const PurchaseOrderItem = ({
   type,
@@ -45,6 +51,36 @@ const PurchaseOrderItem = ({
   const handleShowUserInfo = (e) => {
     e.preventDefault();
     sweetAlertForShowUserInfo(userInfo);
+  };
+
+  const handleAcceptOrder = (e) => {
+    e.preventDefault();
+    sweetalertForAcceptPurchaseOrder(productInfo?.productName, quantity).then(
+      (res) => {
+        if (res.isConfirmed) {
+          //Continuar aquí
+        }
+      }
+    );
+  };
+  const handleDeclineOrder = (e) => {
+    e.preventDefault();
+    sweetalertForDeclinePurchaseOrder(productInfo?.productName, quantity).then(
+      (res) => {
+        if (res.isConfirmed) {
+          //Continuar aquí
+        }
+      }
+    );
+  };
+
+  const getWhatsappUrl = () => {
+    return getUrlForWhatsappMessage(
+      userInfo.phone,
+      userInfo.name,
+      productInfo?.productName,
+      quantity
+    );
   };
 
   return (
@@ -105,13 +141,23 @@ const PurchaseOrderItem = ({
         </div>
       </div>
       <div className="purchase-order__name-commands-section">
-        <button className="purchase-order__name-command-button store-catalog__search-button purchase-order__name-command-button--contact">
+        <a
+          href={getWhatsappUrl()}
+          target="_blank"
+          className="purchase-order__name-command-button store-catalog__search-button purchase-order__name-command-button--contact"
+        >
           Contactar <i className="fab fa-whatsapp"></i>
-        </button>
-        <button className="purchase-order__name-command-button store-catalog__search-button purchase-order__name-command-button--accept">
+        </a>
+        <button
+          className="purchase-order__name-command-button store-catalog__search-button purchase-order__name-command-button--accept"
+          onClick={handleAcceptOrder}
+        >
           Aprobar
         </button>
-        <button className="purchase-order__name-command-button store-catalog__search-button purchase-order__name-command-button--decline">
+        <button
+          className="purchase-order__name-command-button store-catalog__search-button purchase-order__name-command-button--decline"
+          onClick={handleDeclineOrder}
+        >
           Rechazar
         </button>
       </div>
