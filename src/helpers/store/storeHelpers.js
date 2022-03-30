@@ -1,7 +1,7 @@
 const getProductInformationById = (storeInfo, productId) => {
   const { productCategoryList } = storeInfo;
 
-  const category = productCategoryList.find((productCategory) => {
+  const category = productCategoryList?.find((productCategory) => {
     return (
       productCategory.productList.find(
         (product) => product.id === productId
@@ -9,7 +9,7 @@ const getProductInformationById = (storeInfo, productId) => {
     );
   });
 
-  return category.productList.find((product) => product.id === productId);
+  return category?.productList.find((product) => product.id === productId);
 };
 
 export default getProductInformationById;

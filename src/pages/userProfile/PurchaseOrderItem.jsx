@@ -49,6 +49,9 @@ const PurchaseOrderItem = ({
 
   return (
     <div className="purchase-order__item-main-container">
+      <p className="purchase-order__order-id">
+        Identificador de orden <br /> <b>{orderId}</b>
+      </p>
       <div className="purchase-order__store-info">
         <h4 className="purchase-order__title">
           Orden de compra en la tienda <b>{storeInfo?.storeName}</b>
@@ -80,9 +83,6 @@ const PurchaseOrderItem = ({
           </button>
         </div>
       </div>
-
-      {JSON.stringify(productInfo)}
-
       <div className="purchase-order__user-info">
         <h4 className="purchase-order__user-info-title">
           {type === "BUY"
@@ -91,7 +91,7 @@ const PurchaseOrderItem = ({
         </h4>
         <div className="store-view__main-container purchase-order__user-info-container">
           <div className="purchase-order__product-images-container">
-            {productInfo?.productUrlImages.map((productUrlImage) => (
+            {productInfo?.productUrlImages?.map((productUrlImage) => (
               <img
                 src={productUrlImage}
                 alt=""
@@ -103,6 +103,17 @@ const PurchaseOrderItem = ({
           <b className="purchase-order__price">{productInfo?.price} COP</b>
           <b className="purchase-order__quantity">{quantity} unidades</b>
         </div>
+      </div>
+      <div className="purchase-order__name-commands-section">
+        <button className="purchase-order__name-command-button store-catalog__search-button purchase-order__name-command-button--contact">
+          Contactar <i className="fab fa-whatsapp"></i>
+        </button>
+        <button className="purchase-order__name-command-button store-catalog__search-button purchase-order__name-command-button--accept">
+          Aprobar
+        </button>
+        <button className="purchase-order__name-command-button store-catalog__search-button purchase-order__name-command-button--decline">
+          Rechazar
+        </button>
       </div>
     </div>
   );
