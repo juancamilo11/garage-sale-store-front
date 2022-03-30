@@ -115,3 +115,34 @@ export const startRegisterStoreVisualization = async (userId, storeId) => {
     }
   } catch (error) {}
 };
+
+export const startCreatePurchaseOrder = async (
+  storeId,
+  productId,
+  quantity,
+  customerId,
+  dateCreated
+) => {
+  try {
+    window.alert(
+      JSON.stringify({ storeId, productId, quantity, customerId, dateCreated })
+    );
+    const response = await fetch(
+      `${environment.msAdminStoresUrl}/post/purchase-order`,
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          storeId,
+          productId,
+          quantity,
+          customerId,
+          dateCreated,
+        }),
+      }
+    );
+    if (response.ok) {
+      return await response.json();
+    }
+  } catch (error) {}
+};

@@ -2,9 +2,11 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { startPostGarageSaleStore } from "../../actions/storeSetupActions";
 import newStoreObjectBuilder from "../../helpers/storeSetupHelpers/newStoreObjectBUilder";
+import { useNavigate } from "react-router-dom";
 
 const FinalSectionStoreSetup = () => {
   const { id } = useSelector((state) => state.auth);
+  const navigate = useNavigate();
 
   const { firstFormInfo, secondFormInfo, thirdFormInfo } = useSelector(
     (state) => state.storeSetup
@@ -21,7 +23,7 @@ const FinalSectionStoreSetup = () => {
       id,
     });
     startPostGarageSaleStore(storeReadyToSend);
-    // navigate(`/store-catalog`);
+    navigate(`/store-catalog`);
   };
   return (
     <div>

@@ -18,7 +18,7 @@ const InputProductCategory = ({
   setArrProducts,
 }) => {
   const [formValues, handleCategoryInputChange, resetForm] = useForm({
-    categoryName: "sdsfsdfsdf",
+    categoryName: "",
     categoryImage: "",
     imageUrl:
       "https://res.cloudinary.com/dahwtwzdl/image/upload/v1646359679/vefj8oqpik715qwsu8ja.jpg",

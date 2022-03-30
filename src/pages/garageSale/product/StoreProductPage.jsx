@@ -10,9 +10,11 @@ import NavBarFormUserData from "./../../../components/navbar/NavBarFormUserData"
 import SectionTitle from "../../../components/SectionTitle";
 import ProductQuestionList from "./ProductQuestionList";
 import Footer from "./../../../components/Footer";
+import { startCreatePurchaseOrder } from "../../../actions/storeCatalogActions";
 
 const StoreProductPage = () => {
   const params = useParams();
+  const { id } = useSelector((state) => state.auth);
   const [productInfo, setProductInfo] = useState({});
   const { garageSaleStores } = useSelector((state) => state.stores);
   const [storeInfo, setStoreInfo] = useState({});
@@ -62,13 +64,25 @@ const StoreProductPage = () => {
     setShowedImageUrl(urlImage);
   };
 
+  const getDate = (date) => new Date(date).toISOString().split("T")[0];
+
   const handleCreatePurchaseOrder = (e) => {
     e.preventDefault();
     if (quantitySelected === 0) return;
     sweetalertForOrderCreationConfirmationBuilder(
       productInfo.productName,
       quantitySelected
-    );
+    ).then((res) => {
+      if (res.isConfirmed) {
+        startCreatePurchaseOrder(
+          params.storeId,
+          params.productId,
+          quantitySelected,
+          id,
+          getDate(Date.now())
+        );
+      }
+    });
   };
 
   const handleShowImageInPopup = (e) => {
