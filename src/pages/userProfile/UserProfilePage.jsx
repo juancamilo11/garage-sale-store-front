@@ -6,6 +6,7 @@ import NavBarUserProfile from "../../components/navbar/NavBarUserProfile";
 import UserPersonalData from "../../components/user-profile/UserPersonalData";
 import SectionTitle from "../../components/SectionTitle";
 import StoreList from "../../components/user-profile/StoreList";
+import PurchaseOrderList from "./PurchaseOrderList";
 
 const UserProfilePage = () => {
   return (
@@ -33,6 +34,23 @@ const UserProfilePage = () => {
       >
         <StoreList />
       </div>
+
+      <SectionTitle sectionTitle="Tus tus órdenes de compra pendientes" />
+      <div
+        className="userprofile__stores-container"
+        id="store-card-list__section"
+      >
+        <PurchaseOrderList type="BUY" />
+      </div>
+
+      <SectionTitle sectionTitle="Tus tus órdenes de venta pendientes" />
+      <div
+        className="userprofile__stores-container"
+        id="store-card-list__section"
+      >
+        <PurchaseOrderList type="SELL" />
+      </div>
+
       <Footer />
     </div>
   );

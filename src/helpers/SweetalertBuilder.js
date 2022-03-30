@@ -1,4 +1,5 @@
 import Swal from "sweetalert2";
+import { getColombianStateNameByValue } from "./colombianStatesList";
 
 export const sweetalertForGenericSuccessBuilder = (message) =>
   Swal.fire({
@@ -84,27 +85,23 @@ export const sweetalertForErrorsReportForm01StoreSetupBuilder = (
     ${
       errorsReport.storeName === undefined
         ? ""
-        : "<li>" + errorsReport.storeName + "</li>"
+        : "" + errorsReport.storeName + ""
     }
-    ${
-      errorsReport.slogan === undefined
-        ? ""
-        : "<li>" + errorsReport.slogan + "</li>"
-    }
+    ${errorsReport.slogan === undefined ? "" : "" + errorsReport.slogan + ""}
     ${
       errorsReport.description === undefined
         ? ""
-        : "<li>" + errorsReport.description + "</li>"
+        : "" + errorsReport.description + ""
     }
     ${
       errorsReport.startingDate === undefined
         ? ""
-        : "<li>" + errorsReport.startingDate + "</li>"
+        : "" + errorsReport.startingDate + ""
     }
     ${
       errorsReport.endingDate === undefined
         ? ""
-        : "<li>" + errorsReport.endingDate + "</li>"
+        : "" + errorsReport.endingDate + ""
     } 
     </ul>
     <br/>
@@ -125,17 +122,17 @@ export const sweetalertForErrorsReportForm02StoreSetupBuilder = (
     ${
       errorsReport.portraitUrl === undefined
         ? ""
-        : "<li>" + errorsReport.portraitUrl + "</li>"
+        : "" + errorsReport.portraitUrl + ""
     }
     ${
       errorsReport.prevImagesUrls === undefined
         ? ""
-        : "<li>" + errorsReport.prevImagesUrls + "</li>"
+        : "" + errorsReport.prevImagesUrls + ""
     }
     ${
       errorsReport.physicalStoreUrl === undefined
         ? ""
-        : "<li>" + errorsReport.physicalStoreUrl + "</li>"
+        : "" + errorsReport.physicalStoreUrl + ""
     } 
     </ul>
     <br/>
@@ -156,12 +153,12 @@ export const sweetalertForErrorsReportInputCategoryForm03StoreSetupBuilder = (
     ${
       errorsReport.categoryName === undefined
         ? ""
-        : "<li>" + errorsReport.categoryName + "</li>"
+        : "" + errorsReport.categoryName + ""
     }
     ${
       errorsReport.categoryImage === undefined
         ? ""
-        : "<li>" + errorsReport.categoryImage + "</li>"
+        : "" + errorsReport.categoryImage + ""
     }
     </ul>
     <br/>
@@ -182,47 +179,37 @@ export const sweetalertForErrorsReportForm03StoreSetupBuilder = (
     ${
       errorsReport.productName === undefined
         ? ""
-        : "<li>" + errorsReport.productName + "</li>"
+        : "" + errorsReport.productName + ""
     }
     ${
-      errorsReport.category === undefined
-        ? ""
-        : "<li>" + errorsReport.category + "</li>"
+      errorsReport.category === undefined ? "" : "" + errorsReport.category + ""
     }
     ${
-      errorsReport.currency === undefined
-        ? ""
-        : "<li>" + errorsReport.currency + "</li>"
+      errorsReport.currency === undefined ? "" : "" + errorsReport.currency + ""
     } 
     ${
-      errorsReport.quantity === undefined
-        ? ""
-        : "<li>" + errorsReport.quantity + "</li>"
+      errorsReport.quantity === undefined ? "" : "" + errorsReport.quantity + ""
     } 
-    ${
-      errorsReport.price === undefined
-        ? ""
-        : "<li>" + errorsReport.price + "</li>"
-    } 
+    ${errorsReport.price === undefined ? "" : "" + errorsReport.price + ""} 
     ${
       errorsReport.productState === undefined
         ? ""
-        : "<li>" + errorsReport.productState + "</li>"
+        : "" + errorsReport.productState + ""
     } 
     ${
       errorsReport.freeShipping === undefined
         ? ""
-        : "<li>" + errorsReport.freeShipping + "</li>"
+        : "" + errorsReport.freeShipping + ""
     } 
     ${
       errorsReport.productTag === undefined
         ? ""
-        : "<li>" + errorsReport.productTag + "</li>"
+        : "" + errorsReport.productTag + ""
     } 
     ${
       errorsReport.productImages === undefined
         ? ""
-        : "<li>" + errorsReport.productImages + "</li>"
+        : "" + errorsReport.productImages + ""
     } 
     </ul>
     <br/>
@@ -325,37 +312,29 @@ export const sweetalertForErrorsReportUserDataFormBuilder = (errorsReport) =>
     ${
       errorsReport.occupation === undefined
         ? ""
-        : "<li>" + errorsReport.occupation + "</li>"
+        : "" + errorsReport.occupation + ""
     }
     ${
       errorsReport.cellphone === undefined
         ? ""
-        : "<li>" + errorsReport.cellphone + "</li>"
+        : "" + errorsReport.cellphone + ""
     }
     ${
       errorsReport.postalCode === undefined
         ? ""
-        : "<li>" + errorsReport.postalCode + "</li>"
+        : "" + errorsReport.postalCode + ""
     } 
     ${
       errorsReport.colombianState === undefined
         ? ""
-        : "<li>" + errorsReport.colombianState + "</li>"
+        : "" + errorsReport.colombianState + ""
     } 
-    ${
-      errorsReport.phone === undefined
-        ? ""
-        : "<li>" + errorsReport.phone + "</li>"
-    } 
-    ${
-      errorsReport.address === undefined
-        ? ""
-        : "<li>" + errorsReport.address + "</li>"
-    } 
+    ${errorsReport.phone === undefined ? "" : "" + errorsReport.phone + ""} 
+    ${errorsReport.address === undefined ? "" : "" + errorsReport.address + ""} 
     ${
       errorsReport.dateOfBirth === undefined
         ? ""
-        : "<li>" + errorsReport.dateOfBirth + "</li>"
+        : "" + errorsReport.dateOfBirth + ""
     } 
     </ul>
     <br/>
@@ -481,4 +460,27 @@ export const sweetalertForViewersList = (viewerInfoList) =>
     allowEscapeKey: false,
     allowEnterKey: false,
     timer: 3500,
+  });
+
+export const sweetAlertForShowUserInfo = (userInfo) =>
+  Swal.fire({
+    icon: "info",
+    imageUrl: `${userInfo.photoUrl}`,
+    imageHeight: "100",
+    html: `<ul>
+      <p>Nombre completo: <b>${userInfo.name}</b></p>
+      <p>Número telefónico: <b>${userInfo.cellphone}</b></p>
+      <p>Número de celular: <b>(+57) ${userInfo.phone}</b></p>
+      <p>Correo electrónico : <b>${userInfo.email}</b></p>
+      <p>Departamento: <b>${getColombianStateNameByValue(
+        userInfo.colombianState
+      )}</b></p>
+      <p>Código postal: <b>${userInfo.postalCode}</b></p>
+      <p>Dir. residencia: <b>${userInfo.address}</b></p>
+    </ul>`,
+    showConfirmButton: true,
+    showCancelButton: false,
+    confirmButtonText: "Ok",
+    allowEscapeKey: false,
+    allowOutsideClick: false,
   });

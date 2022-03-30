@@ -149,7 +149,8 @@
 // List of user active stores
 
 .userprofile__store-list {
-  width: 50%;
+  background-color: red;
+  width: 100vw !important;
   margin: auto;
   display: flex;
   flex-direction: row;
@@ -561,4 +562,40 @@
   border-radius: 5px;
   border: 1px solid darkgray;
   font-size: 18px;
+}
+
+.purchase-order__item-main-container {
+  border: 1px solid darkgray;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 30px;
+}
+
+.purchase-order__list-container {
+  width: 98vw;
+  margin: auto;
+}
+
+.purchase-order__user-info-title {
+  margin-top: 40px;
+  margin-left: 10px;
+}
+
+.purchase-order__user-info-container {
+  width: 100%;
+  border-radius: 5px;
+  border: 1px solid lightgray;
+}
+
+.purchase-order__title {
+  margin-left: 10px;
+  margin-top: 10px;
+}
+
+.purchase-order__user-photo {
+  width: 5%;
+}
+
+.purchase-order__info-button {
+  margin-top: 0px !important;
 }

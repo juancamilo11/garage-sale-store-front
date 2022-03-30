@@ -119,3 +119,15 @@ export const startFetchUserInfoById = async (id) => {
     throw await response.json();
   } catch (err) {}
 };
+
+export const startFetchAllPurchaseOrdersByType = async (type, id) => {
+  try {
+    const response = await fetch(
+      `${environment.msAdminStoresUrl}/get/purchase-order/${type}/${id}`
+    );
+    if (response.ok) {
+      return await response.json();
+    }
+    throw await response.json();
+  } catch (err) {}
+};

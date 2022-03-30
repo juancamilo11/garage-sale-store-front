@@ -40,6 +40,19 @@ export const startFetchAllActiveStores = () => {
   };
 };
 
+export const startFetchStoreById = async (storeId) => {
+  try {
+    const response = await fetch(
+      `${environment.msAdminStoresUrl}/get/store/${storeId}`
+    );
+    if (response.ok) {
+      return await response.json();
+    } else {
+      throw await response.json();
+    }
+  } catch (err) {}
+};
+
 export const startPostNewQuestionToProduct = async (
   storeId,
   productId,
@@ -117,24 +130,25 @@ export const startRegisterStoreVisualization = async (userId, storeId) => {
 };
 
 export const startCreatePurchaseOrder = async (
+  orderId,
   storeId,
   productId,
+  sellerId,
   quantity,
   customerId,
   dateCreated
 ) => {
   try {
-    window.alert(
-      JSON.stringify({ storeId, productId, quantity, customerId, dateCreated })
-    );
     const response = await fetch(
       `${environment.msAdminStoresUrl}/post/purchase-order`,
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
+          orderId,
           storeId,
           productId,
+          sellerId,
           quantity,
           customerId,
           dateCreated,

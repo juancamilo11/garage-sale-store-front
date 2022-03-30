@@ -11,6 +11,7 @@ import SectionTitle from "../../../components/SectionTitle";
 import ProductQuestionList from "./ProductQuestionList";
 import Footer from "./../../../components/Footer";
 import { startCreatePurchaseOrder } from "../../../actions/storeCatalogActions";
+import { v4 as uuidv4 } from "uuid";
 
 const StoreProductPage = () => {
   const params = useParams();
@@ -75,8 +76,10 @@ const StoreProductPage = () => {
     ).then((res) => {
       if (res.isConfirmed) {
         startCreatePurchaseOrder(
+          uuidv4(),
           params.storeId,
           params.productId,
+          storeInfo.sellerId,
           quantitySelected,
           id,
           getDate(Date.now())
