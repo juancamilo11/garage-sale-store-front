@@ -65,6 +65,11 @@
   margin-left: 10px;
 }
 
+.product-item__product-unavailable {
+  color: red;
+  font-weight: bold;
+}
+
 .product-item__delete-btn {
   position: absolute;
   top: 5px;

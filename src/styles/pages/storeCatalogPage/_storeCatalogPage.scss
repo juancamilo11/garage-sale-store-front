@@ -272,6 +272,13 @@
   cursor: pointer;
 }
 
+.stores__pagination-quantity-title {
+  position: absolute;
+  bottom: 5px;
+  right: 40px;
+  color: lightgray;
+}
+
 .stores__pagination-button:active {
   background-color: #7e83f0;
 }

@@ -29,7 +29,7 @@ const HomeUserProfile = () => {
         </picture>
         <div className="userprofile__home-description">
           <h1 className="userprofile__home-name">{auth.name}</h1>
-          <h5>
+          <h5 className="userprofile__home-colombian-state">
             {auth.colombianState === "NN"
               ? "No has seleccionado tu departamento de residencia"
               : getColombianStateNameByValue(auth.colombianState)}
