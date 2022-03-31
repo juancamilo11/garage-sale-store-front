@@ -50,6 +50,9 @@ const StoreEntries = () => {
         >
           Siguiente
         </button>
+        <h6 className="stores__pagination-quantity-title">
+          10 tiendas por página
+        </h6>
       </div>
     </div>
   );

@@ -14,6 +14,7 @@ const ProductQuestionItem = ({
   storeId,
   productId,
   categoryName,
+  setQuestionListToShow,
 }) => {
   const { id } = useSelector((state) => state.auth);
 
@@ -70,6 +71,7 @@ const ProductQuestionItem = ({
           productId={productId}
           categoryName={categoryName}
           questionToAnswer={getQuestionToAnswer()}
+          setQuestionListToShow={setQuestionListToShow}
         />
       )}
     </div>

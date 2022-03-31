@@ -1,6 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { startPostAnswerToProductQuestion } from "../../../actions/storeCatalogActions";
+import { sweetAlertForQuestionPublished } from "../../../helpers/SweetalertBuilder";
 import useForm from "../../../hooks/useForm";
 
 const AnswerToQuestion = ({
@@ -8,6 +9,7 @@ const AnswerToQuestion = ({
   productId,
   categoryName,
   questionToAnswer,
+  setQuestionListToShow,
 }) => {
   const { auth } = useSelector((state) => state);
   const [formValues, handleInputChange, resetForm] = useForm({
@@ -33,7 +35,28 @@ const AnswerToQuestion = ({
       productId,
       categoryName,
       theAnswer
-    );
+    ).then((res) => {
+      sweetAlertForQuestionPublished();
+      resetForm({
+        answerValue: "",
+      });
+      setQuestionListToShow((questionListToShow) => {
+        window.alert(JSON.stringify(questionListToShow));
+        return questionListToShow.map((question) => {
+          if (question.id === theAnswer.questionId) {
+            return {
+              id: theAnswer.questionId,
+              questionDate: theAnswer.questionDate,
+              question: theAnswer.question,
+              answerDate: theAnswer.answerDate,
+              response: theAnswer.response,
+              customerId: theAnswer.customerId,
+            };
+          }
+          return question;
+        });
+      });
+    });
   };
 
   return (
