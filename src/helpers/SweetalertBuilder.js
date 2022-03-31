@@ -499,10 +499,16 @@ export const sweetalertForAcceptPurchaseOrder = (productName, quantity) =>
     allowOutsideClick: false,
   });
 
-export const sweetalertForDeclinePurchaseOrder = (productName, quantity) =>
+export const sweetalertForDeclinePurchaseOrder = (
+  productName,
+  quantity,
+  type
+) =>
   Swal.fire({
     icon: "warning",
-    html: `¿Desea <b>rechazar</b> la compra de <b>${quantity}</b> unidad(es) de <b>${productName}</b>?`,
+    html: `¿Desea <b>${
+      type === "BUY" ? "cancelar" : "rechazar"
+    }</b> la compra de <b>${quantity}</b> unidad(es) de <b>${productName}</b>?`,
     footer: "<b>Los productos no serán descontados de la tienda</b>",
     showConfirmButton: true,
     showCancelButton: true,

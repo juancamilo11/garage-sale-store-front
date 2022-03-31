@@ -65,13 +65,15 @@ const PurchaseOrderItem = ({
   };
   const handleDeclineOrder = (e) => {
     e.preventDefault();
-    sweetalertForDeclinePurchaseOrder(productInfo?.productName, quantity).then(
-      (res) => {
-        if (res.isConfirmed) {
-          //Continuar aquí
-        }
+    sweetalertForDeclinePurchaseOrder(
+      productInfo?.productName,
+      quantity,
+      type
+    ).then((res) => {
+      if (res.isConfirmed) {
+        //Continuar aquí
       }
-    );
+    });
   };
 
   const getWhatsappUrl = () => {
@@ -100,8 +102,8 @@ const PurchaseOrderItem = ({
       <div className="purchase-order__user-info">
         <h4 className="purchase-order__user-info-title">
           {type === "BUY"
-            ? "Información de tu vendedor"
-            : "Información de tu comprador"}
+            ? "Información del vendedor"
+            : "Información del comprador"}
         </h4>
         <div className="store-view__main-container purchase-order__user-info-container">
           <img
@@ -148,17 +150,19 @@ const PurchaseOrderItem = ({
         >
           Contactar <i className="fab fa-whatsapp"></i>
         </a>
-        <button
-          className="purchase-order__name-command-button store-catalog__search-button purchase-order__name-command-button--accept"
-          onClick={handleAcceptOrder}
-        >
-          Aprobar
-        </button>
+        {type === "SELL" && (
+          <button
+            className="purchase-order__name-command-button store-catalog__search-button purchase-order__name-command-button--accept"
+            onClick={handleAcceptOrder}
+          >
+            Aprobar
+          </button>
+        )}
         <button
           className="purchase-order__name-command-button store-catalog__search-button purchase-order__name-command-button--decline"
           onClick={handleDeclineOrder}
         >
-          Rechazar
+          {type === "BUY" ? "Cancelar" : "Rechazar"}
         </button>
       </div>
     </div>
