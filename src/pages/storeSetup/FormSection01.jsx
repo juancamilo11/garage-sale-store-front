@@ -318,16 +318,21 @@ const FormSection01 = () => {
                   Obtener tu dirección actual
                 </button>
               </div>
-
-              <div className="store-setup__error-flag">
-                {errorsState.address.hasErrors && (
-                  <ErrorFlag
-                    message={errorsState.address.message}
-                    width="100%"
-                    marginTop="-25px"
+              {address.latitude !== 0 && address.longitude !== 0 && (
+                <a
+                  href={`https://www.google.com/maps/@${address.latitude},${address.longitude},18z`}
+                  target="_blank"
+                  className="store-setup__map-preview-container"
+                >
+                  <img
+                    className="store-setup__map-image"
+                    src={
+                      process.env.PUBLIC_URL + "/assets/garage-store/map.png"
+                    }
+                    alt="map-preview"
                   />
-                )}
-              </div>
+                </a>
+              )}
             </div>
           </div>
           <div className="store-setup__final-form-ind">
