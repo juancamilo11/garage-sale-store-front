@@ -518,3 +518,27 @@ export const sweetalertForDeclinePurchaseOrder = (
     allowEscapeKey: false,
     allowOutsideClick: false,
   });
+
+export const sweetAlertForPurchaseApproved = () =>
+  Swal.fire({
+    icon: "success",
+    text: "Se ha aprobado la compra, los productos han sido descontados de la tienda",
+    showConfirmButton: true,
+    showCancelButton: false,
+    allowOutsideClick: false,
+    allowEscapeKey: false,
+    allowEnterKey: false,
+    timer: 5000,
+  });
+
+export const sweetAlertForPurchaseDeclined = () =>
+  Swal.fire({
+    icon: "success",
+    text: "Se ha eliminado la compra, los productos no serán descontados de la tienda",
+    showConfirmButton: true,
+    showCancelButton: false,
+    allowOutsideClick: false,
+    allowEscapeKey: false,
+    allowEnterKey: false,
+    timer: 5000,
+  });

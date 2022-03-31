@@ -22,10 +22,9 @@ const NavBarUserProfile = () => {
             <a href="#store-card-list__section">Tiendas</a>
           </li>
           <li className="nav-user-profile__link">
-            <a href="#transaction-card-list__section">Historiales</a>
-          </li>
-          <li className="nav-user-profile__link">
-            <a href="#favorite-store-list__section">Favoritos</a>
+            <a href="#purchase-order__item-main-container">
+              Ordenes pendientes
+            </a>
           </li>
         </ul>
       </div>

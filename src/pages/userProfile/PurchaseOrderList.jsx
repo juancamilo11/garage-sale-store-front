@@ -23,7 +23,11 @@ const PurchaseOrderList = ({ type }) => {
 
   return (
     <div className="purchase-order__list-container">
-      <h3>{orderList.length === 0 && <h3>No hay ordenes aquí</h3>}</h3>
+      {orderList.length === 0 && (
+        <h3 className="purchase-order__no-order-title">
+          No hay ordenes de {type === "BUY" ? "compra" : "venta"} de aquí
+        </h3>
+      )}
       {orderList?.map((orderItem) => (
         <PurchaseOrderItem {...orderItem} type={type} />
       ))}

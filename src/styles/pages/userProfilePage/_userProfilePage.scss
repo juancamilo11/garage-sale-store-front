@@ -561,6 +561,14 @@
   border-radius: 5px;
   border: 1px solid darkgray;
   font-size: 18px;
+  text-decoration: none;
+}
+
+.store__home-button:hover {
+  text-decoration: none;
+  font-weight: 600;
+  color: lightgray;
+  background-color: #42479e;
 }
 
 .purchase-order__item-main-container {
@@ -627,7 +635,7 @@
   margin-left: 3px;
 }
 
-.purchase-order__quantity {
+.product-view__quantity-field-container {
   margin-right: 15px;
 }
 
@@ -659,4 +667,9 @@
 .purchase-order__name-command-button--decline:hover {
   color: white;
   background-color: red;
+}
+
+.purchase-order__no-order-title {
+  text-align: center;
+  font-size: 17px;
 }

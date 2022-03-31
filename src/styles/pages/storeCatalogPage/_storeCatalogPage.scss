@@ -490,6 +490,13 @@
   border-radius: 50%;
 }
 
+.product-view__field-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .product-view__name {
   font-weight: bold;
   width: 40%;

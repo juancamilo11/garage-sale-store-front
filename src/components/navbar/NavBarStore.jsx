@@ -21,10 +21,7 @@ const NavBarStore = () => {
             <a href="#hcategory-list__main-container">Productos</a>
           </li>
           <li className="nav-user-profile__link">
-            <a href="#">Testimonios</a>
-          </li>
-          <li className="nav-user-profile__link">
-            <a href="#">Contacto</a>
+            <a href="#store__map-section">Ubicación</a>
           </li>
         </ul>
       </div>

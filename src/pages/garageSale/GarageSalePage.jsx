@@ -75,7 +75,7 @@ const GarageSalePage = () => {
 
       <SectionTitle sectionTitle={`Ubicación física de la venta de garaje`} />
 
-      <div className="store__map-section">
+      <div className="store__map-section" id="store__map-section">
         <h6 className="store__map-title">
           Haz click sobre el mapa para ver la dirección física de la tienda
         </h6>

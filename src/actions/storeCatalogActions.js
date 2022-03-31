@@ -160,3 +160,31 @@ export const startCreatePurchaseOrder = async (
     }
   } catch (error) {}
 };
+
+export const startAcceptOrderById = async (orderId) => {
+  try {
+    const response = await fetch(
+      `${environment.msAdminStoresUrl}/post/accept/order/${orderId}`,
+      {
+        method: "POST",
+      }
+    );
+    if (response.ok) {
+      return await response.json();
+    }
+  } catch (error) {}
+};
+
+export const startDeclineOrderById = async (orderId) => {
+  try {
+    const response = await fetch(
+      `${environment.msAdminStoresUrl}/post/decline/order/${orderId}`,
+      {
+        method: "POST",
+      }
+    );
+    if (response.ok) {
+      return await response.json();
+    }
+  } catch (error) {}
+};
