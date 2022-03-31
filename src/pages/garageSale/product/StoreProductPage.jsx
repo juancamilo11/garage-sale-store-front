@@ -148,32 +148,41 @@ const StoreProductPage = () => {
             <h5 className="product-page__additional-info-title">Etiquetas</h5> -{" "}
             {productInfo.productTagList?.join(" | ")}
           </div>
-          <div className="product-page__add-to-cart-container">
-            <div className="product-page__action-buttons">
+          {productInfo.quantity > 0 ? (
+            <div className="product-page__add-to-cart-container">
+              <div className="product-page__action-buttons">
+                <button
+                  className="product-page__action-button product-page__action-button--add"
+                  onClick={handleAddOneProduct}
+                  disabled={storeInfo.sellerId === id}
+                >
+                  +1
+                </button>
+                <button
+                  className="product-page__action-button product-page__action-button--subtract"
+                  onClick={handleSubtractProduct}
+                  disabled={storeInfo.sellerId === id}
+                >
+                  -1
+                </button>
+              </div>
+
+              <span className="product-page__purchased-quantity">
+                Cantidad a comprar: <b>{quantitySelected}</b>
+              </span>
               <button
-                className="product-page__action-button product-page__action-button--add"
-                onClick={handleAddOneProduct}
+                className="product-page__buy-button"
+                onClick={handleCreatePurchaseOrder}
+                disabled={storeInfo.sellerId === id}
               >
-                +1
-              </button>
-              <button
-                className="product-page__action-button product-page__action-button--subtract"
-                onClick={handleSubtractProduct}
-              >
-                -1
+                Comprar
               </button>
             </div>
-
-            <span className="product-page__purchased-quantity">
-              Cantidad a comprar: <b>{quantitySelected}</b>
-            </span>
-            <button
-              className="product-page__buy-button"
-              onClick={handleCreatePurchaseOrder}
-            >
-              Comprar
-            </button>
-          </div>
+          ) : (
+            <h3 className="product-page__no-product-available">
+              *** Producto agotado ***
+            </h3>
+          )}
         </div>
       </div>
       <div className="product-page__question-section">

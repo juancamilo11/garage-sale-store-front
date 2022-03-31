@@ -278,29 +278,10 @@ export const sweetalertForSearchAndFilterStoresBuilder = () =>
       autocapitalize: "off",
     },
     showCancelButton: true,
-    confirmButtonText: "Look up",
+    confirmButtonText: "Buscar",
     showLoaderOnConfirm: true,
     allowEscapeKey: false,
     allowOutsideClick: () => !Swal.isLoading(),
-    preConfirm: async (searchValue) => {
-      try {
-        // const response = await fetch(`//api.github.com/users/${searchValue}`);
-        const response = await fetch(
-          `//jsonplaceholder.typicode.com/todos/${searchValue}`
-        );
-        if (!response.ok) throw new Error("response.statusText");
-
-        return await response.json();
-      } catch (error) {
-        Swal.showValidationMessage(`Request failed: ${error}`);
-      }
-    },
-  }).then((result) => {
-    if (result.isConfirmed) {
-      Swal.fire({
-        text: `${JSON.stringify(result.value)}`,
-      });
-    }
   });
 
 export const sweetalertForErrorsReportUserDataFormBuilder = (errorsReport) =>

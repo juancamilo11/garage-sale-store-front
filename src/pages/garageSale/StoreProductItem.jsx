@@ -44,7 +44,15 @@ const StoreProductItem = ({
             </span>
           </span>
           <p className="product-item__secondary--quantity">
-            Cantidad: <b>{quantity}</b> Unidades
+            {quantity > 0 ? (
+              <p>
+                Cantidad: <b>{quantity}</b> Unidades
+              </p>
+            ) : (
+              <h5 className="product-item__product-unavailable">
+                *** Agotado ***
+              </h5>
+            )}
           </p>
         </div>
       </div>

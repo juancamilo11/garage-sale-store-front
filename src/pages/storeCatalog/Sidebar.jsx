@@ -6,11 +6,14 @@ import { sweetalertForSearchAndFilterStoresBuilder } from "../../helpers/Sweetal
 import StoreEntries from "./StoreEntries";
 import { startLogout } from "../../actions/authActions";
 import { startFetchAllActiveStores } from "../../actions/storeCatalogActions";
+import Swal from "sweetalert2";
 
 const Sidebar = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { auth } = useSelector((state) => state);
+  const [searchValue, setSearchValue] = useState("");
+  const [hasFilters, setHasFilters] = useState(false);
 
   const handleGoToProfile = (e) => {
     e.preventDefault();
@@ -23,7 +26,18 @@ const Sidebar = () => {
 
   const handleSearch = (e) => {
     e.preventDefault();
-    sweetalertForSearchAndFilterStoresBuilder();
+    sweetalertForSearchAndFilterStoresBuilder().then((result) => {
+      if (result.isConfirmed) {
+        setSearchValue(result.value);
+        setHasFilters(true);
+      }
+    });
+  };
+
+  const handleDeleteSearchValue = (e) => {
+    e.preventDefault();
+    setSearchValue("");
+    setHasFilters(false);
   };
 
   useEffect(() => {
@@ -50,6 +64,15 @@ const Sidebar = () => {
           <span className="store-catalog__display-name"> {auth.name}</span>
         </div>
         <div>
+          {searchValue !== "" && (
+            <button
+              className="store-catalog__search-button"
+              onClick={handleDeleteSearchValue}
+              title={`Click aquí para eliminar el filtro '${searchValue}'`}
+            >
+              <i className="fas fa fa-filter"></i>
+            </button>
+          )}
           <button
             className="store-catalog__search-button"
             onClick={handleSearch}
@@ -64,7 +87,7 @@ const Sidebar = () => {
           </button>
         </div>
       </div>
-      <StoreEntries />
+      <StoreEntries searchValue={searchValue} />
     </aside>
   );
 };

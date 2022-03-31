@@ -91,12 +91,6 @@ const StoreEntry = ({
           >
             Ver tienda
           </button>
-
-          {true ? (
-            <i class="fas fa-heart store-catalog__icon-fav-store"></i>
-          ) : (
-            <i class="far fa-heart store-catalog__icon-fav-store"></i>
-          )}
           <div className="store-catalog__store-view-count text-center">
             <h6 className="mt-2">
               <i class="fas fa-eye store-catalog__icon-entry-value"></i>
