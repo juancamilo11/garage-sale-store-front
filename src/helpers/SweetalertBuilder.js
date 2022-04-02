@@ -523,3 +523,15 @@ export const sweetAlertForPurchaseDeclined = () =>
     allowEnterKey: false,
     timer: 5000,
   });
+
+export const sweetalertForOrderSuccessfullyCreated = () =>
+  Swal.fire({
+    icon: "success",
+    text: "Se ha creado la órden de compra, esta aparecerá en tu perfil de usuario, una vez que el comprador la apruebe recibirás una notificación por correo electrónico.",
+    showConfirmButton: true,
+    showCancelButton: false,
+    allowOutsideClick: false,
+    allowEscapeKey: false,
+    allowEnterKey: false,
+    timer: 8000,
+  });

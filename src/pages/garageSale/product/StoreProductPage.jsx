@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { getProductStatusNameByNumber } from "../../../helpers/productStates";
 import {
   sweeralertForShowProductImage,
   sweetalertForOrderCreationConfirmationBuilder,
+  sweetalertForOrderSuccessfullyCreated,
 } from "../../../helpers/SweetalertBuilder";
 import NavBarFormUserData from "./../../../components/navbar/NavBarFormUserData";
 import SectionTitle from "../../../components/SectionTitle";
@@ -14,6 +15,7 @@ import { startCreatePurchaseOrder } from "../../../actions/storeCatalogActions";
 import { v4 as uuidv4 } from "uuid";
 
 const StoreProductPage = () => {
+  const navigate = useNavigate();
   const params = useParams();
   const { id } = useSelector((state) => state.auth);
   const [productInfo, setProductInfo] = useState({});
@@ -83,7 +85,11 @@ const StoreProductPage = () => {
           quantitySelected,
           id,
           getDate(Date.now())
-        );
+        ).then((res) => {
+          sweetalertForOrderSuccessfullyCreated().then((res) => {
+            navigate("/");
+          });
+        });
       }
     });
   };

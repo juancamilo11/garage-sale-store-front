@@ -165,26 +165,31 @@ const PurchaseOrderItem = ({
               />
             ))}
           </div>
-
           <div className="product-view__field-container">
             <small>Nombre</small>
             <b className="purchase-order__name">{productInfo?.productName}</b>
           </div>
-
           <div className="product-view__field-container">
             <small>Precio</small>
             <b className="purchase-order__price">{productInfo?.price} COP</b>
           </div>
-
           <div className="product-view__field-container">
             <small>Unidades solicitadas</small>
             <b className="purchase-order__quantity">{quantity} unidades</b>
           </div>
-
           <div className="product-view__field-container product-view__quantity-field-container">
-            <small>Unidades solicitadas</small>
+            <small>Fecha de creación de la orden</small>
             <b className="purchase-order__quantity">{dateCreated}</b>
           </div>
+
+          {productInfo?.quantity < quantity && (
+            <div className="product-view__field-container product-view__quantity-field-container">
+              <small className="purchase-order__invalid-quantity">
+                *** ORDEN INVALIDA ***
+              </small>
+              <b>No hay suficientes unidades</b>
+            </div>
+          )}
         </div>
       </div>
       <div className="purchase-order__name-commands-section">
@@ -199,6 +204,7 @@ const PurchaseOrderItem = ({
           <button
             className="purchase-order__name-command-button store-catalog__search-button purchase-order__name-command-button--accept"
             onClick={handleAcceptOrder}
+            disabled={productInfo?.quantity < quantity}
           >
             Aprobar
           </button>

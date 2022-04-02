@@ -504,6 +504,11 @@
   align-items: center;
 }
 
+.purchase-order__invalid-quantity {
+  color:red;
+  font-weight: bold;
+}
+
 .product-view__name {
   font-weight: bold;
   width: 40%;

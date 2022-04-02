@@ -424,7 +424,7 @@ const FormSection03 = () => {
           <div className="store-setup__centered-container">
             <div className="store-setup__buttons-container">
               <button className="store-setup__button-update" type="submit">
-                Confirmar cambios
+                Agregar producto
               </button>
               <button
                 className="store-setup__button-update"
