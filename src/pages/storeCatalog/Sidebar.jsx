@@ -40,6 +40,11 @@ const Sidebar = () => {
     setHasFilters(false);
   };
 
+  const handleGoToAdminConsole = (e) => {
+    e.preventDefault();
+    navigate("/admin-console");
+  };
+
   useEffect(() => {
     dispatch(startFetchAllActiveStores());
   }, []);
@@ -73,6 +78,12 @@ const Sidebar = () => {
               <i className="fas fa fa-filter"></i>
             </button>
           )}
+          <button
+            className="store-catalog__search-button"
+            onClick={handleGoToAdminConsole}
+          >
+            Administración
+          </button>
           <button
             className="store-catalog__search-button"
             onClick={handleSearch}

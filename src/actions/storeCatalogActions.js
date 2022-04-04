@@ -188,3 +188,14 @@ export const startDeclineOrderById = async (orderId) => {
     }
   } catch (error) {}
 };
+
+export const startFetchLastMinuteTraceability = async () => {
+  try {
+    const usersResponse = await fetch(
+      `${environment.msAdminTraceabilityUrl}/get/traceability`
+    );
+    if (usersResponse.ok) {
+      return await usersResponse.json();
+    }
+  } catch (error) {}
+};
