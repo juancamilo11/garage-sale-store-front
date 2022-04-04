@@ -6,7 +6,6 @@ import { sweetalertForSearchAndFilterStoresBuilder } from "../../helpers/Sweetal
 import StoreEntries from "./StoreEntries";
 import { startLogout } from "../../actions/authActions";
 import { startFetchAllActiveStores } from "../../actions/storeCatalogActions";
-import Swal from "sweetalert2";
 
 const Sidebar = () => {
   const navigate = useNavigate();
@@ -78,12 +77,14 @@ const Sidebar = () => {
               <i className="fas fa fa-filter"></i>
             </button>
           )}
-          <button
-            className="store-catalog__search-button"
-            onClick={handleGoToAdminConsole}
-          >
-            Administración
-          </button>
+          {auth.email === "garage.sale.store.app@gmail.com" && (
+            <button
+              className="store-catalog__search-button"
+              onClick={handleGoToAdminConsole}
+            >
+              Administración
+            </button>
+          )}
           <button
             className="store-catalog__search-button"
             onClick={handleSearch}

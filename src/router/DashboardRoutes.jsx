@@ -23,7 +23,9 @@ const DashboardRoutes = () => {
       <Route exact path="/store-setup" element={<StoreSetupPage />} />
       <Route exact path="/user-profile" element={<UserProfilePage />} />
       <Route exact path="/user-data-form" element={<UserDataForm />} />
-      <Route exact path="/admin-console" element={<AdminConsole />} />
+      {email === "garage.sale.store.app@gmail.com" && (
+        <Route exact path="/admin-console" element={<AdminConsole />} />
+      )}
       <Route path="/*" element={<StoreCatalogPage />} />
     </Routes>
   );
