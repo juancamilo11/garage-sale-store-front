@@ -23,6 +23,7 @@ const ProductQuestionItem = ({
       questionId,
       questionDate,
       question,
+      customerId,
     };
   };
 

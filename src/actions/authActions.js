@@ -44,10 +44,14 @@ export const startGoogleLogin = () => {
     try {
       const firebaseResponse = await signInWithPopup(auth, provider);
 
-      const { id, displayName, photoUrl, email, metadata } =
-        firebaseResponse.user;
+      const {
+        uid: id,
+        displayName,
+        photoUrl,
+        email,
+        metadata,
+      } = firebaseResponse.user;
       const { creationTime } = metadata;
-
       const userFromServer = await startFetchUserInfo(
         id,
         displayName,

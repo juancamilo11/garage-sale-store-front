@@ -28,8 +28,9 @@ const AnswerToQuestion = ({
       question: questionToAnswer.question,
       answerDate: getCurrentDate(new Date()),
       response: answerValue,
-      customerId: auth.id,
+      customerId: questionToAnswer.customerId,
     };
+    alert(JSON.stringify(theAnswer));
     startPostAnswerToProductQuestion(
       storeId,
       productId,
@@ -41,7 +42,6 @@ const AnswerToQuestion = ({
         answerValue: "",
       });
       setQuestionListToShow((questionListToShow) => {
-        window.alert(JSON.stringify(questionListToShow));
         return questionListToShow.map((question) => {
           if (question.id === theAnswer.questionId) {
             return {
@@ -61,6 +61,7 @@ const AnswerToQuestion = ({
 
   return (
     <div className="product-question__container answer-question__container">
+      {JSON.stringify(questionToAnswer)}
       <form
         onSubmit={handleAnswerSubmit}
         className="product-question__question-container"

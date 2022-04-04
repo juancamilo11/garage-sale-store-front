@@ -31,6 +31,7 @@ const NewQuestionToProduct = ({
       response: "",
       customerId: auth.id,
     };
+    // alert(JSON.stringify(newQuestion));
     startPostNewQuestionToProduct(
       storeId,
       productId,
