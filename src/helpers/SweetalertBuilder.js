@@ -432,6 +432,17 @@ export const sweetAlertForQuestionPublished = () =>
     timer: 3500,
   });
 
+export const sweetAlertForAnswerPublished = () =>
+  Swal.fire({
+    icon: "success",
+    text: "Se ha publicado tu respuesta, el clicnete será informado por correo electrónico",
+    showConfirmButton: false,
+    allowOutsideClick: false,
+    allowEscapeKey: false,
+    allowEnterKey: false,
+    timer: 3500,
+  });
+
 export const sweetalertForViewersList = (viewerInfoList) =>
   Swal.fire({
     title: "Lista de usuarios que han visto esta venta de garage",

@@ -1,7 +1,10 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { startPostAnswerToProductQuestion } from "../../../actions/storeCatalogActions";
-import { sweetAlertForQuestionPublished } from "../../../helpers/SweetalertBuilder";
+import {
+  sweetAlertForAnswerPublished,
+  sweetAlertForQuestionPublished,
+} from "../../../helpers/SweetalertBuilder";
 import useForm from "../../../hooks/useForm";
 
 const AnswerToQuestion = ({
@@ -22,6 +25,10 @@ const AnswerToQuestion = ({
 
   const handleAnswerSubmit = (e) => {
     e.preventDefault();
+    if (answerValue.trim() === "") {
+      resetForm({ answerValue: "" });
+      return;
+    }
     const theAnswer = {
       questionId: questionToAnswer.questionId,
       questionDate: questionToAnswer.questionDate,
@@ -30,14 +37,13 @@ const AnswerToQuestion = ({
       response: answerValue,
       customerId: questionToAnswer.customerId,
     };
-    alert(JSON.stringify(theAnswer));
     startPostAnswerToProductQuestion(
       storeId,
       productId,
       categoryName,
       theAnswer
     ).then((res) => {
-      sweetAlertForQuestionPublished();
+      sweetAlertForAnswerPublished();
       resetForm({
         answerValue: "",
       });
@@ -61,7 +67,6 @@ const AnswerToQuestion = ({
 
   return (
     <div className="product-question__container answer-question__container">
-      {JSON.stringify(questionToAnswer)}
       <form
         onSubmit={handleAnswerSubmit}
         className="product-question__question-container"

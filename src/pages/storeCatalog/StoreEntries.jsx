@@ -47,7 +47,6 @@ const StoreEntries = ({ searchValue }) => {
   return (
     <div className="store-catalog__entries">
       <ButtonCreateNewStore />
-      {/* {JSON.stringify(garageSaleStores)} */}
       {garageSaleStoreToShow.slice(min, max).map((store) => (
         <StoreEntry key={store.id} {...store} />
       ))}

@@ -22,7 +22,10 @@ const NewQuestionToProduct = ({
 
   const handleQuestionSubmit = (e) => {
     e.preventDefault();
-
+    if (questionValue.trim() === "") {
+      resetForm({ questionValue: "" });
+      return;
+    }
     const newQuestion = {
       questionId: uuidv4(),
       questionDate: getCurrentDate(new Date()),
@@ -31,7 +34,6 @@ const NewQuestionToProduct = ({
       response: "",
       customerId: auth.id,
     };
-    // alert(JSON.stringify(newQuestion));
     startPostNewQuestionToProduct(
       storeId,
       productId,
